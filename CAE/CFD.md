@@ -6,10 +6,6 @@ nav_order: 99
 date: 2023-08-17
 last_modified_date: 2023-08-21 10:02:26
 tags: AI CFD
-aside:
-  toc: true
-sidebar:
-  nav: layouts
 ---
 
 # CFD在水務工程中的應用與AI發展
