@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 自然語言處理
-nav_order: 4
+nav_order: 6
 has_children: true
 permalink: /NLP/
 date: 2023-09-17

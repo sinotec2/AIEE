@@ -1,15 +1,15 @@
 ---
 layout: default
-title: 回顧與綜覽
-nav_order: 2
+title: 時空數據之解析及訓練
+nav_order: 4
 has_children: true
-permalink: /Reviews/
+permalink: /STDataAna/
 date: 2023-09-17
 last_modified_date: 2023-09-17 16:12:32
-tags: Reviews
+tags: STD
 ---
 
-# 回顧與綜覽
+# 時空數據之解析及訓練
 {: .no_toc }
 
 

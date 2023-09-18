@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 型態與辨識
-nav_order: 2
+nav_order: 3
 has_children: true
 permalink: /Identify/
 date: 2023-09-17
