@@ -13,7 +13,7 @@ tags: AI chat
 ## 背景
 
 - [chatWeb][3]安裝在[node03:7860](http://200.200.31.47:7860/)之後，對模型的核心計算使用別人的機器，總覺得有點過意不去，希望能用自己的機器來執行全套系統看看，畢竟還是要了解整個布建需要哪些軟/硬體。就去發現了[lmsys][1]在2023/4月公開的這套[FastChat][2]。
-- 除了[官網][2]之外，另有不多的中文介紹，如<知乎>網友[薛定谔的皮丘(2023/08)][9]以及[Hok(2023/04)][10]，想讀中文介紹的讀者也可以去訪問他們的筆記。
+- 除了[官網][2]之外，另有不多的中文介紹，如<知乎>網友[薛定谔的皮丘(2023/08)][9][^2]以及[Hok(2023/04)][10][^3]，想讀中文介紹的讀者也可以去訪問他們的筆記。
 - 這裡除了留存一些技術心得以外，併同前面[chatWeb][3]的經驗想法，也對未來語言模型在局地的應用架構有些總結。
 - 落地實例可以點選[這裡][8](公司內網)。
 
@@ -207,3 +207,5 @@ register_model_info(
 [11]: https://chat.openai.com/share/029f3f0f-7f68-436d-8145-66a75ef63d0f "在AI領域，prompting engineer 是一個角色或職位，其主要職責是設計、構建和優化用於訓練和操作大型語言模型（如GPT-3、BERT等）的提示（prompts）或輸入文本。"
 
 [^1]: Zheng, L., Chiang, W.-L., Sheng, Y., Zhuang, S., Wu, Z., Zhuang, Y., Lin, Z., Li, Z., Li, D., Xing, E.P., Zhang, H., Gonzalez, J.E., Stoica, I. (2023). **Judging LLM-as-a-judge with MT-Bench and Chatbot Arena**. [doi](https://doi.org/10.48550/arXiv.2306.05685)
+[^2]: https://zhuanlan.zhihu.com/p/620801429 薛定谔的皮丘(2023/08/10)小羊驼模型(FastChat-vicuna)运行踩坑记录@[知乎][9]
+[^3]: https://zhuanlan.zhihu.com/p/622292418 Hok(发布于 2023-04-16)FastChat使用感受@[知乎][10]
