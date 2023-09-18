@@ -9,6 +9,19 @@ tags: AI chat
 permalink: /NLP/ChatWeb
 ---
 
+# chatWeb的裝置與應用
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
 ## 背景
 
 - 這項openAI的gpt3.5 turbo API應用是源自於[SkywalkerDarren/chatWeb(2022/05)](https://github.com/SkywalkerDarren/chatWeb)提供的程式碼。安裝及相關需求詳見github說明。此處說明應用的方式與結果啟發。

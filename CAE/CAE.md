@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 計算機輔助工程
-nav_order: 2
+nav_order: 3
 has_children: true
 permalink: /CAE/
 date: 2023-09-17

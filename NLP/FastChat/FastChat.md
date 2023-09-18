@@ -10,6 +10,20 @@ tags: AI chat
 
 ---
 
+
+# FastChat的裝置與應用
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
 ## 背景
 
 - [chatWeb][3]安裝在[node03:7860](http://200.200.31.47:7860/)之後，對模型的核心計算使用別人的機器，總覺得有點過意不去，希望能用自己的機器來執行全套系統看看，畢竟還是要了解整個布建需要哪些軟/硬體。就去發現了[lmsys][1]在2023/4月公開的這套[FastChat][2]。
