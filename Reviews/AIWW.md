@@ -1,7 +1,7 @@
 ---
 layout: default
 title: AI在水廠及管線工程領域之應用
-parent: 型態與辨識
+parent: 回顧與綜覽
 nav_order: 99
 date: 2023-08-15
 last_modified_date: 2023-08-22 10:42:27

@@ -8,6 +8,18 @@ last_modified_date: 2023-08-18 14:06:05
 tags: AI
 ---
 
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
 # 音訊AI應用
 
 ## 背景

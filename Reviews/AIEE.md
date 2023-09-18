@@ -1,32 +1,14 @@
 ---
 layout: default
 title: AI在環工領域的衝擊與因應
-parent: DB
-grand_parent: utilities
+parent: 回顧與綜覽
 nav_order: 99
 date: 2023-08-01
 last_modified_date: 2023-08-18 17:17:06
 tags: AI
-aside:
-  toc: true
-sidebar:
-  nav: layouts
 ---
 
----
-layout: 
-title: FastChat的裝置與應用
-parent: 自然語言處理
-nav_order: 99
-date: 2023-09-05
-last_modified_date: 2023-09-05 13:44:37
-permalink: /NLP/FastChat
-tags: AI chat
-
----
-
-
-# FastChat的裝置與應用
+# AI在環工領域的衝擊與因應
 {: .no_toc }
 
 <details open markdown="block">

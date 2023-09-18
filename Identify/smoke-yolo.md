@@ -10,6 +10,18 @@ tags: python matplotlib AI
 
 # 目測判煙、影像分析之自動及智慧化
 
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
 ## 背景
 
 ### 研究著眼點
