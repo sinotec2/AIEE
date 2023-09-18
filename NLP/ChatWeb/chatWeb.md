@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: default
 title: chatWeb的裝置與應用
 parent: 自然語言處理
 nav_order: 99
