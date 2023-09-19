@@ -4,7 +4,7 @@ title: Deep learning of S/T interpolation, CMAQ and WRF
 parent: 時空數據之解析及訓練
 nav_order: 99
 date: 2023-05-09
-last_modified_date: 2023-07-16 19:44:32
+last_modified_date: 2023-09-18 14:53:05
 tags: ML DL EE CMAQ WRF AI
 ---
 
@@ -80,6 +80,18 @@ Hong et al., 2022[^23]|釜山|local scale predictions|CMAQ+RNN+LSTM
 Huang et al., 2022[^25]|北卡|source apportionment|CMAQ + datafusion + CMBGC-Iteration
 Jang et al., 2022[^26]|釜山|hr PM2.5 predictions|CMAQ+datafusion
 Huang et al., 2023[^24]|京津冀|emission adjustments and AQ forecasting|nudging+exRT
+
+## AIoT and Data Fusion
+
+- Lin, Y.-C., Chi, W.-J., Lin, Y.-Q. (2020). **The improvement of spatial-temporal resolution of PM2.5 estimation based on micro-air quality sensors by using data fusion technique**. Environment International 134, 105305. [doi](https://doi.org/10.1016/j.envint.2019.105305)
+  - 本研究開發一套針對空氣細懸浮微粒(PM2.5)擴散時空機制萃取的研究流程，並以台灣中部地區2010至2018年空污季節(10月至隔年3月)資料作為此研究架構之示範，探討在污染日(環保署定義之PM2.5日均值大於35μg/m3)發生時，PM2.5的擴散特徵。
+  - 首先建構創新多感測器時空資料融合技術，整合時空異質性資料(於本研究為空氣盒子及環保署測站資料)以提升推估PM2.5濃度分布之時空解析度。
+  - 此技術藉由最佳線性數據融合理論搭配克利金空間推估法(Kriging)，計算監測資料之日變動程度及空間推估時產生之可能誤差作為將資料線性融合時的權重。
+  - 研究結果顯示透過資料融合技術能夠更合理地推估PM2.5濃度時空分布；接著，本研究首創以地表觀測資料所驅動的PM2.5擴散特徵萃取技術，而此階段技術首先利用移動平均及區域極值之計算找出PM2.5於污染日中濃度開始累積的時間點(Local minima)，針對這些時間點以小波訊號分析(Continuous wavelet transform, CWT)搭配主成分分析法(Principal component analysis, PCA)萃取出PM2.5在日尺度天氣變化影響下於研究區域主要的擴散行為。
+  - CWT運作方式為拆解原始時間序列將其表示為數個頻率組合的函數，而透過小波訊號相關方法中之交叉小波分析(Cross wavelet transform, XWT)能夠計算兩訊號(兩測站監測之PM2.5濃度時間序列)在各頻段於不同時間的相關性以及其相位角之差異，相位差在空間分布上可顯示PM2.5在不同測站間傳遞的延遲時間，將XWT分析之PM2.5傳遞延遲時間於空間分布上推估之結果定為污染物擴散的空間分布情況，最後將所有污染日之擴散情況藉由PCA將巨量資料作線性降維與特徵萃取，運作上將時空變數拆解成多個時間與空間的變數成乘積之線性疊加，以此得到PM2.5在時間與空間上的主要變動特徵，意即得到研究區域(中部地區)主要的PM2.5擴散行為。
+  - 研究結果發現中部地區約有六種主要擴散特徵(Principal components, PC1~6)；最後，本研究更討論了各擴散特徵所對應的大氣因子及污染物特性，如地表風場、東北風強度、大環境氣壓場、污染物日濃度、濃度標高百分比等等，嘗試建立天氣因子與擴散特徵之關聯性。
+
+![](https://ars.els-cdn.com/content/image/1-s2.0-S0160412018326552-gr11.jpg)
 
 ## WRF and AI'S
 

@@ -8,18 +8,6 @@ last_modified_date: 2023-04-18 22:24:12
 tags: YOLO EE AI
 ---
 
-{: .no_toc }
-
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
----
-
 # 環境工程中的YOLO
 
 {: .no_toc }
