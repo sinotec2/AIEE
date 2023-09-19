@@ -26,9 +26,10 @@ tags: YOLO EE AI
 
 ## 即時影像
 
-- [](https://tw.live/)
+- [tw.live](https://tw.live/)
   - [最新天氣觀測](https://tw.live/weather/)
-  - 即時影像監視器網站提供台灣各地旅遊景點、市區道路、省道、國道高速公路等 CCTV 閉路電視攝影機即時影像，免費提供民眾隨時查看交通路況、天氣資訊以及旅遊景點人潮狀況以規劃旅行路線。本站影像來源由交通部、高公局、公路總局、各地縣市政府、國家公園風景區以及警廣即時路況等資料庫提供。© Copyright 2023 即時影像監視器 All rights reserved.
+  - 即時影像監視器網站提供台灣各地旅遊景點、市區道路、省道、國道高速公路等 CCTV 閉路電視攝影機即時影像，免費提供民眾隨時查看交通路況、天氣資訊以及旅遊景點人潮狀況以規劃旅行路線。本站影像來源由交通部、高公局、公路總局、各地縣市政府、國家公園風景區以及警廣即時路況等資料庫提供。
+  - © Copyright 2023 即時影像監視器 All rights reserved.
 - 台灣即時影像監視器[twipcam](https://www.twipcam.com/cam/n5-s-28k+235)
 
 ```html
@@ -44,16 +45,17 @@ onclick="open_full_image();">
 ### 觀光局4K影像
 - 高雄觀光局4K及時影像[旗津海水浴場即時影像](https://youtu.be/ka7FV0sCvxQ)
 
-![](https://github.com/sinotec2/Focus-on-Air-Quality/raw/main/attachments/2023-09-18-15-27-41.png)
+![](https://raw.githubusercontent.com/sinotec2/AIEE/e49ca1e79d1ef845f95b60e1a99fd1e55102513e/attachments/2023-09-18-15-27-41.png)
 
 [蓮池潭小龜山](https://www.youtube.com/watch?v=dCycHSYZBmg)
-![](https://github.com/sinotec2/Focus-on-Air-Quality/raw/main/attachments/2023-09-18-15-51-56.png)
+![](https://raw.githubusercontent.com/sinotec2/AIEE/e49ca1e79d1ef845f95b60e1a99fd1e55102513e/attachments/2023-09-18-15-51-56.png)
 
-[高雄壽山情人觀景台](https://www.youtube.com/watch?v=C03Itx8iSC0)
-![](https://github.com/sinotec2/Focus-on-Air-Quality/raw/main/attachments/2023-09-18-16-10-20.png)
+- [高雄壽山情人觀景台](https://www.youtube.com/watch?v=C03Itx8iSC0)
+ 
+![](https://raw.githubusercontent.com/sinotec2/AIEE/e49ca1e79d1ef845f95b60e1a99fd1e55102513e/attachments/2023-09-18-16-10-20.png)
 
 - [台中高美濕地](https://www.youtube.com/watch?v=fjhg3gAnMFg)
-![](https://github.com/sinotec2/Focus-on-Air-Quality/raw/main/attachments/2023-09-18-16-27-54.png)
+![](https://raw.githubusercontent.com/sinotec2/AIEE/e49ca1e79d1ef845f95b60e1a99fd1e55102513e/attachments/2023-09-18-16-27-54.png)
 
 ## Youtube
 
