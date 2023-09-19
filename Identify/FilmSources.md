@@ -44,16 +44,16 @@ onclick="open_full_image();">
 ### 觀光局4K影像
 - 高雄觀光局4K及時影像[旗津海水浴場即時影像](https://youtu.be/ka7FV0sCvxQ)
 
-![](2023-09-18-15-27-41.png)
+![](https://github.com/sinotec2/Focus-on-Air-Quality/raw/main/attachments/2023-09-18-15-27-41.png)
 
 [蓮池潭小龜山](https://www.youtube.com/watch?v=dCycHSYZBmg)
-![](2023-09-18-15-51-56.png)
+![](https://github.com/sinotec2/Focus-on-Air-Quality/raw/main/attachments/2023-09-18-15-51-56.png)
 
 [高雄壽山情人觀景台](https://www.youtube.com/watch?v=C03Itx8iSC0)
-![](2023-09-18-16-10-20.png)
+![](https://github.com/sinotec2/Focus-on-Air-Quality/raw/main/attachments/2023-09-18-16-10-20.png)
 
 - [台中高美濕地](https://www.youtube.com/watch?v=fjhg3gAnMFg)
-![](2023-09-18-16-27-54.png)
+![](https://github.com/sinotec2/Focus-on-Air-Quality/raw/main/attachments/2023-09-18-16-27-54.png)
 
 ## Youtube
 
