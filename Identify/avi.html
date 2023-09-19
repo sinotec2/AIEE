@@ -1,0 +1,1079 @@
+<html lang="zh-tw"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="stylesheet" href="/css/w3-4.15.css">
+  <script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202309130101/reactive_library_fy2021.js?bust=31077890"></script>
+  <script src="https://partner.googleadservices.com/gampad/cookie.js?domain=www.twipcam.com&amp;callback=_gfp_s_&amp;client=ca-pub-9857843162062228&amp;cookie=ID%3D610953d246a9cabd-22db6032d4e70027%3AT%3D1695026920%3ART%3D1695101836%3AS%3DALNI_MZy00cvYMug6aJCUsLr7Pl4hjoBAg&amp;gpic=UID%3D00000c49b30e6c6a%3AT%3D1695026920%3ART%3D1695101836%3AS%3DALNI_Ma1x1j3NHCTyMMJ5UTqKaCDclLAfQ"></script>
+  <script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202309130101/show_ads_impl_fy2021.js?bust=31077890" id="google_shimpl"></script>
+  <script src="/js/jquery-3.6.0.js"></script>
+  
+  <script type="text/javascript" charset="utf-8">
+  var DarkModeEn = false;
+  $(document).ready(function()
+  {
+    if (getCookie("DarkModeEn") == "true")
+    {
+      DarkModeEn = false;
+      dark_mode_select();
+    }
+  });
+  function getCookie(cname)
+  {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for(let i = 0; i <ca.length; i++)
+    {
+      let c = ca[i];
+      while (c.charAt(0) == " ")
+      {
+        c = c.substring(1);
+      }
+        if (c.indexOf(name) == 0)
+        {
+          return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+  }
+  function dark_mode_select()
+  {
+    if (DarkModeEn == true)
+    {
+      DarkModeEn = false;
+      document.getElementById("DarkSwitchNavbar").checked = DarkModeEn;
+      document.getElementById("DarkSwitchSidebar").checked = DarkModeEn;
+      document.getElementById("Navbar").style.backgroundColor = "#ffffff";
+    }
+    else
+    {
+      DarkModeEn = true;
+      document.getElementById("DarkSwitchNavbar").checked = DarkModeEn;
+      document.getElementById("DarkSwitchSidebar").checked = DarkModeEn;
+      document.getElementById("Navbar").style.backgroundColor = "#606060";
+    }
+    document.body.classList.toggle("dark-mode");
+    const d = new Date();
+    d.setTime(d.getTime() + (30 * 86400 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = "DarkModeEn=" + DarkModeEn + ";" + expires + ";path=/;";
+  }
+  </script>
+  <style>
+  body, html
+  {
+    height: 100%;
+    line-height: 1.8;
+  }
+  .w3-bar .w3-button
+  {
+    padding: 16px;
+  }
+  h1
+  {
+    font-size:24px;
+  }
+  h2
+  {
+    font-size:20px;
+  }
+  h3
+  {
+    font-size:18px;
+  }
+  h4
+  {
+    font-size:16px;
+  }
+  h5
+  {
+    font-size:14px;
+  }
+  h6
+  {
+    font-size:12px;
+  }
+  </style>
+  <style>
+  div.scrollmenu
+  {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  div.scrollmenu a
+  {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+  }
+  div.scrollmenu a:hover
+  {
+    background-color: #777;
+  }
+  </style>
+  
+  <style>
+  .switch
+  {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+    top: 3px;
+  }
+  
+  .switch input
+  {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider
+  {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e0e0e0;
+    -webkit-transition: 0s;
+    transition: 0s;
+  }
+  
+  .slider:before
+  {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0s;
+    transition: 0s;
+  }
+  
+  input:checked + .slider
+  {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider
+  {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before
+  {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  .slider.round
+  {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before
+  {
+    border-radius: 50%;
+  }
+  </style>
+  
+  
+  <style>
+  body
+  {
+    background-color: white;
+    color: black;
+  }
+  .dark-mode
+  {
+    background-color: black;
+    color: white;
+  }
+  .normal-mode
+  {
+    background-color: white;
+    color: black;
+  }
+  </style>
+  
+  
+  
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-W4YPE9HDQ4"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-W4YPE9HDQ4");
+  </script>
+  
+  
+  <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9857843162062228" crossorigin="anonymous" data-checked-head="true"></script>
+  
+    <title>台17線 249K+000 即時影像 - 台灣即時影像監視器</title>
+  <meta name="description" content="台17線249K+000的即時影像。地點在高雄市林園區，氣溫31.1度，日累積雨量0mm。本站將為你提供高雄市的即時影像與氣象資訊。">
+    <meta property="og:site_name" content="台灣即時影像監視器">
+  <meta property="og:title" content="台17線 249K+000 即時影像">
+  <meta property="og:url" content="https://www.twipcam.com/cam/t17-249k+000">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="台17線249K+000的即時影像。地點在高雄市林園區，氣溫31.1度，日累積雨量0mm。本站將為你提供高雄市的即時影像與氣象資訊。">
+  <meta property="og:image" content="https://c1.twipcam.com/cam-cache/t17-249k+000.jpg">
+    <meta property="fb:admins" content="{twipcam}">
+    <style type="text/css">/* Chart.js */
+  @keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}</style><meta http-equiv="origin-trial" content="A7CQXglZzTrThjGTBEn1rWTxHOEtkWivwzgea+NjyardrwlieSjVuyG44PkYgIPGs8Q9svD8sF3Yedn0BBBjXAkAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A3vKT9yxRPjmXN3DpIiz58f5JykcWHjUo/W7hvmtjgh9jPpQgem9VbADiNovG8NkO6mRmk70Kex8/KUqAYWVWAEAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A4A26Ymj79UVY7C7JGUS4BG1s7MdcDokAQf/RP0paks+RoTYbXHxceT/5L4iKcsleFCngi75YfNRGW2+SpVv1ggAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="As0hBNJ8h++fNYlkq8cTye2qDLyom8NddByiVytXGGD0YVE+2CEuTCpqXMDxdhOMILKoaiaYifwEvCRlJ/9GcQ8AAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="AgRYsXo24ypxC89CJanC+JgEmraCCBebKl8ZmG7Tj5oJNx0cmH0NtNRZs3NB5ubhpbX/bIt7l2zJOSyO64NGmwMAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="></head>
+  <body data-new-gr-c-s-check-loaded="14.1125.0" data-gr-ext-installed="" style="padding: 0px 0px 154px;">
+  
+  <div class="w3-top" style="z-index:15;">
+  <div class="w3-bar w3-card" id="Navbar" style="background-color:#ffffff;">
+  <a href="/" class="w3-wide" style="position:absolute;top:8px;left:10px;text-decoration:none;"><b style="font-size:24px;">台灣即時影像監視器</b></a>
+  <div class="w3-right" style="font-size:16px;">
+  <div class="w3-bar-item w3-button w3-hide-small w3-hide-medium" style="" onclick="dark_mode_select();">
+  <label class="switch">
+  <input type="checkbox" id="DarkSwitchNavbar" onclick="dark_mode_select();" aria-label="深色模式切換">
+  <span class="slider round"></span>
+  </label>
+  <label><span style=""><b>深色模式</b></span></label>
+  </div>
+  <a href="/" class="w3-bar-item w3-button w3-hide-small w3-hide-medium"><span style=""><b>即時影像</b></span></a>
+  <a href="/user/playlist" class="w3-bar-item w3-button w3-hide-small w3-hide-medium"><span style=""><b>自訂播放清單</b></span></a>
+  <a href="/pbs" class="w3-bar-item w3-button w3-hide-small w3-hide-medium"><span style=""><b>即時路況</b></span></a>
+  <a href="/weather" class="w3-bar-item w3-button w3-hide-small w3-hide-medium"><span style=""><b>天氣觀測</b></span></a>
+  <a href="/about" class="w3-bar-item w3-button w3-hide-small w3-hide-medium"><span style=""><b>關於本站</b></span></a>
+  <button href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-padding-12 w3-hide-large" style="" onclick="w3_open()"><b>≡</b></button>
+  </div>
+  </div>
+  
+  <div class="scrollmenu" style="font-size:16px;">
+  <b>
+  <a href="/" style="">回首頁</a>
+  <a href="/map" style="">地圖查找</a>
+  <a href="/user/playlist" style="">自訂清單</a>
+  <a href="/tourist-spot/hehuanshan" style="">合歡山 武嶺</a>
+  <a href="/tourist-spot/alishan" style="">阿里山</a>
+  <a href="/tourist-spot/taitung" style="">台東景點</a>
+  <a href="/tourist-spot/yangmingshan" style="">陽明山</a>
+  <a href="/tourist-spot/spnp" style="">雪霸國家公園</a>
+  <a href="/tourist-spot/sunmoonlake" style="">日月潭</a>
+  <a href="/weather/typhoon-live" style="">颱風即時影像</a>
+  </b>
+  </div>
+  </div>
+  
+  <nav class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-dark-gray w3-hide-large" style="display:none;right:0px;top:61px;z-index:16;font-size:16px;" id="Sidebar">
+  <div class="w3-bar-item w3-button" onclick="dark_mode_select();">
+  <label class="switch">
+  <input type="checkbox" id="DarkSwitchSidebar" onclick="dark_mode_select();" aria-label="深色模式切換">
+  <span class="slider round"></span>
+  </label>
+  <label><b>深色模式</b></label>
+  </div>
+  <a href="/" onclick="w3_close()" class="w3-bar-item w3-button" style="color:white;"><b>即時影像</b></a>
+  <a href="/user/playlist" onclick="w3_close()" class="w3-bar-item w3-button" style="color:white;"><b>自訂播放清單</b></a>
+  <a href="/pbs" onclick="w3_close()" class="w3-bar-item w3-button" style="color:white;"><b>即時路況</b></a>
+  <a href="/weather" onclick="w3_close()" class="w3-bar-item w3-button" style="color:white;"><b>天氣觀測</b></a>
+  <a href="/about" onclick="w3_close()" class="w3-bar-item w3-button" style="color:white;"><b>關於本站</b></a>
+  </nav>
+  
+  
+  <div style="padding-top:108px;"></div>
+  
+  <div class="w3-content" style="max-width:95%;">
+  <div class="w3-row">
+  
+  <div class="w3-col l8 s12">
+  <div class="w3-container" style="margin-top:18px;">
+    <div class="w3-content" style="max-width:100%;">
+      <img data-src="https://cctv-ss04.thb.gov.tw:443/T17-249K+000" src="/img/connect-error.jpg" onerror="this.src='/img/connect-error.jpg';" alt="台17線 249K+000" class="video_obj" style="width:100%;max-height:600px;" onclick="open_full_image();">
+      <div class="" style="font-size:16px;"><i>點選影像畫面切換到全螢幕</i></div>
+      <h1 class="" style="font-size:20px;"><b>台17線 249K+000 即時影像</b></h1>
+      <div>
+        <a style="margin-left:4px;" href="https://social-plugins.line.me/lineit/share?url=https://www.twipcam.com/cam/t17-249k+000" target="_blank" rel="nofollow noopener"><img width="40" height="40" src="/img/LINE_Brand_icon.png" alt="分享到LINE" title="分享到LINE"></a>
+        <a style="margin-left:4px;" href="https://www.facebook.com/share.php?u=https://www.twipcam.com/cam/t17-249k+000" target="_blank" rel="nofollow noopener"><img width="40" height="40" src="/img/f_logo_RGB-Blue_144.png" alt="分享到FB" title="分享到FB"></a>
+      </div>
+      <h2 style="font-size:18px;"><b>地點資訊</b></h2>
+      <div style="font-size:16px;">高雄市 林園區</div>
+      <div style="font-size:16px;">當地氣溫: 31.1 度</div>
+      <div style="font-size:16px;">日累積雨量: 0 mm</div>
+      <div style="font-size:16px;">相對濕度: 64 %</div>
+      <div style="font-size:16px;">風速: 3.5 公尺/秒</div>
+      <div style="font-size:16px;">氣壓: 1010.7 百帕</div>
+      <div style="font-size:16px;">海拔: 4 公尺</div>
+      <div style="font-size:16px;">經度: 120.415</div>
+      <div style="font-size:16px;">緯度: 22.4979</div>
+      <div style="font-size:16px;">其他: <a href="/query-cam-list-by-coordinate/22.4979/120.415/0" class="w3-text-blue">附近的即時影像</a></div>
+      <div style="font-size:16px;">影像來源: <a href="https://www.thb.gov.tw/" target="_blank" class="w3-text-blue" rel="nofollow noopener">交通部公路總局</a></div>
+      <div style="margin-top:12px;"></div>
+      <button id="PlayListEditBtn" class="w3-btn w3-round w3-text-white" style="font-size: 16px; background-color: rgb(33, 150, 243);" onclick="EditPlayList();">加入到自訂清單</button>
+      <button class="w3-btn w3-pink w3-round w3-text-white" style="font-size:16px;" onclick="ReportProblem();">連線異常回報</button>
+    </div>
+  </div>
+  <div class="w3-padding-16"></div>
+  
+  <div class="w3-container">
+    <h2 style="font-size:18px;"><b>即時影像附近的地圖</b></h2>
+    <div class="w3-display-container">
+    <img class="w3-display-middle" alt="即時影像在地圖上的標記" style="max-width:32px;" src="/img/map-place.png">
+    <img src="https://c1.twipcam.com/cam-map/t17-249k+000.png" alt="即時影像附近的地圖" class="w3-border w3-round" style="max-height:240px;width:100%;object-fit:fill;" onerror="this.src='/img/taiwan.jpg';" loading="lazy">
+    <div class="w3-right" style="font-size:12px;"><a href="http://www.openstreetmap.org/copyright" target="_blank" style="text-decoration:none;" rel="nofollow noopener">© OpenStreetMap contributors</a></div>
+    </div>
+  </div>
+  <div class="w3-padding-16"></div>
+  
+  <script src="/js/chart-2.9.4.js"></script>
+  <div class="w3-container">
+    <div class="w3-content">
+      <div style="position:relative;width:100%;max-height:320px;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+        <h2 style="font-size:18px;"><b>歷史溫度曲線圖</b></h2>
+        <canvas id="history_chart" class="w3-white chartjs-render-monitor" height="320" alt="歷史溫度曲線圖" title="" style="display: block; width: 633px; height: 320px;" width="633"></canvas>
+      </div>
+    </div>
+    <div class="w3-padding-32"></div>
+  </div>
+  
+  <script>
+  const x = ["2023-09-17 13:44:59","2023-09-17 14:45:00","2023-09-17 15:45:00","2023-09-17 16:45:00","2023-09-17 17:45:00","2023-09-17 18:45:00","2023-09-17 19:45:00","2023-09-17 20:45:00","2023-09-17 21:45:00","2023-09-17 22:45:00","2023-09-17 23:44:59","2023-09-18 00:45:01","2023-09-18 01:45:00","2023-09-18 02:45:00","2023-09-18 03:45:00","2023-09-18 04:45:00","2023-09-18 05:45:00","2023-09-18 06:45:00","2023-09-18 07:45:00","2023-09-18 08:44:59","2023-09-18 09:45:00","2023-09-18 10:45:00","2023-09-18 11:45:00","2023-09-18 12:45:00","2023-09-18 13:45:00","2023-09-18 14:44:59","2023-09-18 15:45:00","2023-09-18 16:45:00","2023-09-18 17:45:00","2023-09-18 18:45:00","2023-09-18 19:45:00","2023-09-18 20:45:00","2023-09-18 21:45:00","2023-09-18 22:45:00","2023-09-18 23:45:00","2023-09-19 00:45:00","2023-09-19 01:45:00","2023-09-19 02:45:00","2023-09-19 03:45:00","2023-09-19 04:45:00","2023-09-19 05:45:00","2023-09-19 06:45:00","2023-09-19 07:45:00","2023-09-19 08:45:00","2023-09-19 09:45:00","2023-09-19 10:45:00","2023-09-19 11:45:00","2023-09-19 12:45:00"];
+  const y = [30.5,30.3,30.7,30.7,30.4,29.6,29.4,29.6,29.2,29.1,28.7,28.2,28.4,28.3,28.2,28,26.8,26.5,27,28,29.7,30.9,30.5,30.4,30.4,31.3,31.5,31,27.4,26.5,26.5,26.6,27.2,26.8,26.6,26.3,26.2,25.7,25.6,25.6,25.3,25.3,25.9,27.4,29,30.1,30.3,30.2];
+  
+  const chn_name = '歷史溫度°C';
+  
+  var config =
+  {
+      type: 'line',
+      data:
+      {
+          labels: x,
+          datasets:
+          [
+              {
+                  backgroundColor: ['rgb(75, 192, 192)'],
+                  borderColor: 'rgb(75, 192, 192)',
+                  label: chn_name,
+                  data: y,
+                  fill: false,
+                  tension: 0,
+              },
+          ],
+      },
+      options:
+      {
+          animation: false,
+          responsive: true,
+          maintainAspectRatio: false,
+          title:
+          {
+              display: false,
+              text: '',
+              fontSize: 16,
+          },
+          scales:
+          {
+              yAxes:
+              [{
+                  ticks:
+                  {
+                      maxTicksLimit: 5,
+                      fontSize: 16,
+                  },
+                  scaleLabel:
+                  {
+                      display: true,
+                      labelString: '溫度°C',
+                      fontSize: 16,
+                  },
+              }],
+              xAxes:
+              [{
+                  ticks:
+                  {
+                      autoSkip: true,
+                      maxTicksLimit: 10,
+                      fontSize: 16,
+                  },
+                  type: 'time',
+                  scaleLabel:
+                  {
+                      display: true,
+                      labelString: '時間',
+                      fontSize: 16,
+                  },
+              }],
+          },
+          legend:
+          {
+        display: false,
+              labels:
+              {
+                  fontSize: 16,
+                  filter: function(item, chart)
+                  {
+                      return item.text.includes(chn_name);
+                  },
+              },
+          },
+      },
+  };
+  var ctx = document.getElementById('history_chart').getContext('2d');
+  var myChart = new Chart(ctx, config);
+  </script>
+  
+  <h2 class="w3-hide-small w3-hide-medium" style="font-size:18px;"><b>歷史溫度記錄表</b></h2>
+  <div class="w3-container w3-hide-small w3-hide-medium" style="margin-top:16px;overflow-x:auto;height:300px;">
+        <table id="ui_temp24h_table" class="w3-table-all w3-white" style="font-size:16px;">
+        <thead>
+          <tr>
+            <th style="text-align:center;vertical-align:middle;width:50%;">時間</th>
+            <th style="text-align:center;vertical-align:middle;width:50%;">溫度°C</th>
+          </tr>
+        </thead>
+        <tbody>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-19 12:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">30.2</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-19 11:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">30.3</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-19 10:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">30.1</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-19 09:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">29</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-19 08:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">27.4</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-19 07:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">25.9</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-19 06:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">25.3</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-19 05:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">25.3</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-19 04:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">25.6</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-19 03:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">25.6</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-19 02:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">25.7</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-19 01:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">26.2</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-19 00:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">26.3</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 23:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">26.6</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 22:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">26.8</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 21:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">27.2</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 20:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">26.6</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 19:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">26.5</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 18:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">26.5</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 17:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">27.4</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 16:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">31</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 15:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">31.5</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 14:44:59</td>
+  <td style="text-align:center;vertical-align:middle;">31.3</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 13:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">30.4</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 12:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">30.4</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 11:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">30.5</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 10:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">30.9</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 09:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">29.7</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 08:44:59</td>
+  <td style="text-align:center;vertical-align:middle;">28</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 07:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">27</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 06:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">26.5</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 05:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">26.8</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 04:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">28</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 03:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">28.2</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 02:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">28.3</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 01:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">28.4</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-18 00:45:01</td>
+  <td style="text-align:center;vertical-align:middle;">28.2</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-17 23:44:59</td>
+  <td style="text-align:center;vertical-align:middle;">28.7</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-17 22:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">29.1</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-17 21:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">29.2</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-17 20:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">29.6</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-17 19:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">29.4</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-17 18:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">29.6</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-17 17:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">30.4</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-17 16:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">30.7</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-17 15:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">30.7</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-17 14:45:00</td>
+  <td style="text-align:center;vertical-align:middle;">30.3</td>
+  </tr>
+  <tr>
+  <td style="text-align:center;vertical-align:middle;">2023-09-17 13:44:59</td>
+  <td style="text-align:center;vertical-align:middle;">30.5</td>
+  </tr>
+  
+        </tbody>
+        </table>
+  </div>
+  <div class="w3-padding-16"></div>
+  </div>
+  
+  <div class="w3-col l4">
+  
+    <div class="w3-container" style="margin-top:18px;">
+      <div class="w3-card w3-white">
+      <div class="w3-container w3-light-gray">
+      <h2 style="font-size:18px;margin-top:10px;margin-bottom:10px;"><b>附近即時影像</b></h2>
+      </div>
+      
+  
+  <div class="w3-hoverable w3-white" style="font-size:16px;">
+    <div class="w3-margin">
+    <a href="/cam/wra-000390">
+    <img src="https://c1.twipcam.com/cam-cache/wra-000390.jpg" alt="水利署水資源 水利行政組 雙園大橋 1" title="水利署水資源 水利行政組 雙園大橋 1" class="w3-left w3-margin-right" onerror="this.src='/img/connect-error.jpg';" style="width:100%;">
+    </a>
+    <div>水利署水資源</div>
+    <div>水利行政組 雙園大橋 1</div>
+    <div>距離: 0.6 公里</div>
+    <a class="w3-text-blue" style="font-size:16px;" href="/cam/wra-000390">即時影像</a>
+    </div>
+  </div>
+  <hr>
+  
+  <div class="w3-hoverable w3-white" style="font-size:16px;">
+    <div class="w3-margin">
+    <a href="/cam/wra-000392">
+    <img src="https://c1.twipcam.com/cam-cache/wra-000392.jpg" alt="水利署水資源 水利行政組 雙園大橋 2" title="水利署水資源 水利行政組 雙園大橋 2" class="w3-left w3-margin-right" onerror="this.src='/img/connect-error.jpg';" style="width:100%;">
+    </a>
+    <div>水利署水資源</div>
+    <div>水利行政組 雙園大橋 2</div>
+    <div>距離: 0.6 公里</div>
+    <a class="w3-text-blue" style="font-size:16px;" href="/cam/wra-000392">即時影像</a>
+    </div>
+  </div>
+  <hr>
+  
+  <div class="w3-hoverable w3-white" style="font-size:16px;">
+    <div class="w3-margin">
+    <a href="/cam/wra-000389">
+    <img src="https://c1.twipcam.com/cam-cache/wra-000389.jpg" alt="水利署水資源 水利行政組 雙園大橋 3" title="水利署水資源 水利行政組 雙園大橋 3" class="w3-left w3-margin-right" onerror="this.src='/img/connect-error.jpg';" style="width:100%;">
+    </a>
+    <div>水利署水資源</div>
+    <div>水利行政組 雙園大橋 3</div>
+    <div>距離: 0.6 公里</div>
+    <a class="w3-text-blue" style="font-size:16px;" href="/cam/wra-000389">即時影像</a>
+    </div>
+  </div>
+  <hr>
+  
+  <div class="w3-hoverable w3-white" style="font-size:16px;">
+    <div class="w3-margin">
+    <a href="/cam/wra-000391">
+    <img src="https://c1.twipcam.com/cam-cache/wra-000391.jpg" alt="水利署水資源 水利行政組 雙園大橋 4" title="水利署水資源 水利行政組 雙園大橋 4" class="w3-left w3-margin-right" onerror="this.src='/img/connect-error.jpg';" style="width:100%;">
+    </a>
+    <div>水利署水資源</div>
+    <div>水利行政組 雙園大橋 4</div>
+    <div>距離: 0.6 公里</div>
+    <a class="w3-text-blue" style="font-size:16px;" href="/cam/wra-000391">即時影像</a>
+    </div>
+  </div>
+  <hr>
+  
+  <div class="w3-hoverable w3-white" style="font-size:16px;">
+    <div class="w3-margin">
+    <a href="/cam/t25-18k+175">
+    <img src="https://c1.twipcam.com/cam-cache/t25-18k+175.jpg" alt="台25線 18K+175" title="台25線 18K+175" class="w3-left w3-margin-right" onerror="this.src='/img/connect-error.jpg';" style="width:100%;">
+    </a>
+    <div>台25線</div>
+    <div>18K+175</div>
+    <div>距離: 1.8 公里</div>
+    <a class="w3-text-blue" style="font-size:16px;" href="/cam/t25-18k+175">即時影像</a>
+    </div>
+  </div>
+  <hr>
+  
+  <div class="w3-hoverable w3-white" style="font-size:16px;">
+    <div class="w3-margin">
+    <a href="/cam/khh-000174">
+    <img src="https://c1.twipcam.com/cam-cache/khh-000174.jpg" alt="高雄市道路 林園區-鳳林路一段與東林東路交岔路口" title="高雄市道路 林園區-鳳林路一段與東林東路交岔路口" class="w3-left w3-margin-right" onerror="this.src='/img/connect-error.jpg';" style="width:100%;">
+    </a>
+    <div>高雄市道路</div>
+    <div>林園區-鳳林路一段與東林東路交岔路口</div>
+    <div>距離: 1.9 公里</div>
+    <a class="w3-text-blue" style="font-size:16px;" href="/cam/khh-000174">即時影像</a>
+    </div>
+  </div>
+  <hr>
+  
+  <div class="w3-hoverable w3-white" style="font-size:16px;">
+    <div class="w3-margin">
+    <a href="/cam/moenv-000048">
+    <img src="https://c1.twipcam.com/cam-cache/moenv-000048.jpg" alt="空氣品質監測站 林園" title="空氣品質監測站 林園" class="w3-left w3-margin-right" onerror="this.src='/img/connect-error.jpg';" style="width:100%;">
+    </a>
+    <div>空氣品質監測站</div>
+    <div>林園</div>
+    <div>距離: 2.1 公里</div>
+    <a class="w3-text-blue" style="font-size:16px;" href="/cam/moenv-000048">即時影像</a>
+    </div>
+  </div>
+  <hr>
+  
+      
+      </div>
+      <br>
+      
+    </div>
+  
+  </div>
+  
+  <div id="EditPlayListMsg" class="w3-modal" style="z-index:32;font-size:16px;">
+  <div class="w3-modal-content w3-light-gray">
+  <div class="w3-bar w3-blue">
+  <div class="w3-bar-item w3-left"><b>系統訊息</b></div>
+  <div class="w3-bar-item w3-hover-grey w3-right" style="cursor:pointer;" onclick="document.getElementById('EditPlayListMsg').style.display='none'"><b>×</b></div>
+  </div>
+  <div class="w3-padding w3-center" style="width:100%;">
+  <div id="PlayListAddResult"></div>
+  </div>
+  <div class="w3-center w3-padding" style="width:100%;">
+  <button class="w3-btn w3-blue w3-round w3-center" style="min-width:100px;" onclick="document.getElementById('EditPlayListMsg').style.display='none'">確定</button>
+  </div>
+  <div class="w3-padding" style="width:100%;">
+  </div>
+  </div>
+  </div>
+  
+  <div id="ReportProblemSuccess" class="w3-modal" style="z-index:32;font-size:16px;">
+  <div class="w3-modal-content w3-light-gray">
+  <div class="w3-bar w3-blue">
+  <div class="w3-bar-item w3-left"><b>系統訊息</b></div>
+  <div class="w3-bar-item w3-hover-grey w3-right" style="cursor:pointer;" onclick="document.getElementById('ReportProblemSuccess').style.display='none'"><b>×</b></div>
+  </div>
+  <div class="w3-padding w3-center" style="width:100%;">
+  <div style="">已收到連線異常回報</div>
+  <div style="">感謝您的提供與支持</div>
+  </div>
+  <div class="w3-center w3-padding" style="width:100%;">
+  <button class="w3-btn w3-blue w3-round w3-center" style="min-width:100px;" onclick="document.getElementById('ReportProblemSuccess').style.display='none'">確定</button>
+  </div>
+  <div class="w3-padding" style="width:100%;">
+  </div>
+  </div>
+  </div>
+  
+  <div id="full_image" class="w3-modal" style="z-index: 15; background-color: black; opacity: 1; display: block;">
+    <img data-src="https://cctv-ss04.thb.gov.tw:443/T17-249K+000" src="https://cctv-ss04.thb.gov.tw:443/T17-249K+000?t=0.4747105966013927" onerror="this.src='/img/connect-error.jpg';" alt="台17線 249K+000" class="video_obj2" style="max-height:100%;display:block;width:100%;position:absolute;top:0px;left:0px;backgroundColor:black;opacity:1;" onclick="close_full_image();">
+  </div>
+  
+  <script>
+  var full_image_en = false;
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+  function checkCamIdInPlaylist(CamId, Playlist) {
+    var result_buf = false;
+    var playlist_length = Playlist.length;
+    for (i=0; i<playlist_length; i++)
+    {
+      if (Playlist[i] == CamId)
+      {
+        result_buf = true;
+        break;
+      }
+    }
+    return result_buf;
+  }
+  var CamId = 't17-249k+000';
+  var Playlist = [];
+  var CamIdInPlaylist = false;
+  try {
+    Playlist = getCookie('PlayList');
+    Playlist = JSON.parse(Playlist);
+  }
+  catch (e) {
+    Playlist = [];
+  }
+  if (checkCamIdInPlaylist(CamId, Playlist) == true)
+  {
+    CamIdInPlaylist = true;
+  }
+  
+  $(document).ready(function()
+  {
+    if (CamIdInPlaylist == false)
+    {
+      $('#PlayListEditBtn').html("加入到自訂清單");
+      document.getElementById('PlayListEditBtn').style.backgroundColor='#2196F3';
+    }
+    else
+    {
+      $('#PlayListEditBtn').html("從自訂清單移除");
+      document.getElementById('PlayListEditBtn').style.backgroundColor='#ff7f00';
+    }
+  });
+  setInterval
+  (
+    function()
+    {
+      if (full_image_en == false)
+      {
+        $(".video_obj").each
+        (
+          function()
+          {
+            var video_obj_path = $(this).attr("data-src");
+            if(video_obj_path.indexOf("?") >= 0)
+            {
+              $(this).attr("src", video_obj_path + "&t=" + Math.random());
+            }
+            else
+            {
+              $(this).attr("src", video_obj_path + "?t=" + Math.random());
+            }
+          }
+        );
+      }
+      else
+      {
+        $(".video_obj2").each
+        (
+          function()
+          {
+            var video_obj_path = $(this).attr("data-src");
+            if(video_obj_path.indexOf("?") >= 0)
+            {
+              $(this).attr("src", video_obj_path + "&t=" + Math.random());
+            }
+            else
+            {
+              $(this).attr("src", video_obj_path + "?t=" + Math.random());
+            }
+          }
+        );
+      }
+    }
+  , 10000);
+  function EditPlayList()
+  {
+    var count_buf1 = Playlist.length;
+    if (CamIdInPlaylist == false)
+    {
+      if (count_buf1 >= 16)
+      {
+        $('#PlayListAddResult').html("自訂清單數量已達最大值");
+        document.getElementById('EditPlayListMsg').style.display='block';
+      }
+      else
+      {
+        Playlist.push(CamId);
+        CamIdInPlaylist = true;
+        setCookie('PlayList', JSON.stringify(Playlist), 60);
+        
+        $('#PlayListEditBtn').html("從自訂清單移除");
+        document.getElementById('PlayListEditBtn').style.backgroundColor='#ff7f00';
+        $('#PlayListAddResult').html("加入清單成功");
+        document.getElementById('EditPlayListMsg').style.display='block';
+      }
+    }
+    else
+    {
+      var array_buf1 = [];
+      for (i=0; i<count_buf1; i++)
+      {
+        if (Playlist[i] != CamId)
+        {
+          array_buf1.push(Playlist[i]);
+        }
+      }
+      Playlist = array_buf1;
+      CamIdInPlaylist = false;
+      setCookie('PlayList', JSON.stringify(Playlist), 60);
+      
+      $('#PlayListEditBtn').html("加入到自訂清單");
+      document.getElementById('PlayListEditBtn').style.backgroundColor='#2196F3';
+      $('#PlayListAddResult').html("從清單移除成功");
+      document.getElementById('EditPlayListMsg').style.display='block';
+    }
+  }
+  function ReportProblem()
+  {
+    $.get("/cam/feedback", function(data, status)
+    {
+      if (status == "success" && data == "ok")
+      {
+        document.getElementById('ReportProblemSuccess').style.display='block';
+      }
+    });
+  }
+  function open_full_image()
+  {
+    full_image_en = true;
+    
+    $(".video_obj2").each
+    (
+      function()
+      {
+        var video_obj_path = $(this).attr("data-src");
+        if(video_obj_path.indexOf("?") >= 0)
+        {
+          $(this).attr("src", video_obj_path + "&t=" + Math.random());
+        }
+        else
+        {
+          $(this).attr("src", video_obj_path + "?t=" + Math.random());
+        }
+      }
+    );
+    
+    $(".video_obj").each
+    (
+      function()
+      {
+        $(this).attr("src", "");
+      }
+    );
+    
+    document.getElementById('full_image').style.display='block';
+  }
+  function close_full_image()
+  {
+    full_image_en = false;
+    
+    $(".video_obj").each
+    (
+      function()
+      {
+        var video_obj_path = $(this).attr("data-src");
+        if(video_obj_path.indexOf("?") >= 0)
+        {
+          $(this).attr("src", video_obj_path + "&t=" + Math.random());
+        }
+        else
+        {
+          $(this).attr("src", video_obj_path + "?t=" + Math.random());
+        }
+      }
+    );
+    
+    $(".video_obj2").each
+    (
+      function()
+      {
+        $(this).attr("src", "");
+      }
+    );
+    
+    document.getElementById('full_image').style.display='none';
+  }
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "台17線 249K+000 即時影像",
+    "description": "台17線 249K+000 即時影像",
+    "thumbnailUrl": "https://c1.twipcam.com/cam-cache/t17-249k+000.jpg",
+    "uploadDate": "2023-02-19T22:23:00+08:00",
+    "contentUrl": "https://cctv-ss04.thb.gov.tw:443/T17-249K+000",
+    "embedUrl": "https://cctv-ss04.thb.gov.tw:443/T17-249K+000",
+    "publication": {
+      "@type": "BroadcastEvent",
+      "isLiveBroadcast": true
+    },
+    "locationCreated": {
+      "@type": "Place",
+      "name": "台17線 249K+000",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "林園區",
+        "addressRegion": "高雄市",
+        "addressCountry": "台灣"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 22.4979,
+        "longitude": 120.415
+      }
+    }
+  }
+  </script>
+  
+  
+  </div>
+  </div>
+  
+  <script>
+    //=======================================================================
+    $(function(){
+      $(window).keydown(
+        function (event)
+        {
+          if (event.keyCode == 27)
+          {
+            document.getElementById('EditPlayListMsg').style.display='none';
+            document.getElementById('ReportProblemSuccess').style.display='none';
+          }
+        }
+      );
+    });
+    //=======================================================================
+  </script>
+  
+  
+  <script>
+  var Sidebar = document.getElementById("Sidebar");
+  function w3_open()
+  {
+    if (Sidebar.style.display === "block")
+    {
+      Sidebar.style.display = "none";
+    }
+    else
+    {
+      Sidebar.style.display = "block";
+    }
+  }
+  function w3_close()
+  {
+    Sidebar.style.display = "none";
+  }
+  </script>
+  
+  
+  <ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled"><div id="aswift_0_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"><iframe id="aswift_0" name="aswift_0" browsingtopics="true" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allow="attribution-reporting" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-9857843162062228&amp;output=html&amp;adk=1812271804&amp;adf=3025194257&amp;lmt=1695102123&amp;plat=2%3A16777216%2C3%3A65536%2C4%3A65536%2C8%3A134217728%2C9%3A134250504%2C16%3A8388608%2C17%3A32%2C24%3A32%2C25%3A32%2C30%3A1048576%2C32%3A32%2C41%3A32%2C42%3A32&amp;format=0x0&amp;url=https%3A%2F%2Fwww.twipcam.com%2Fcam%2Ft17-249k%2B000&amp;ea=0&amp;pra=5&amp;wgl=1&amp;easpi=0&amp;asro=0&amp;asiscm=1&amp;aslmt=0.4&amp;asamt=-1&amp;asedf=0&amp;asefa=1&amp;aseiel=1&amp;uach=WyJXaW5kb3dzIiwiMTAuMC4wIiwieDg2IiwiIiwiMTE2LjAuNTg0NS4xODgiLFtdLDAsbnVsbCwiNjQiLFtbIkNocm9taXVtIiwiMTE2LjAuNTg0NS4xODgiXSxbIk5vdClBO0JyYW5kIiwiMjQuMC4wLjAiXSxbIkdvb2dsZSBDaHJvbWUiLCIxMTYuMC41ODQ1LjE4OCJdXSwwXQ..&amp;dt=1695102123290&amp;bpp=5&amp;bdt=203&amp;idt=68&amp;shv=r20230914&amp;mjsv=m202309130101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3D610953d246a9cabd-22db6032d4e70027%3AT%3D1695026920%3ART%3D1695101836%3AS%3DALNI_MZy00cvYMug6aJCUsLr7Pl4hjoBAg&amp;gpic=UID%3D00000c49b30e6c6a%3AT%3D1695026920%3ART%3D1695101836%3AS%3DALNI_Ma1x1j3NHCTyMMJ5UTqKaCDclLAfQ&amp;nras=1&amp;correlator=690941176107&amp;frm=20&amp;pv=2&amp;ga_vid=550412066.1695026920&amp;ga_sid=1695102123&amp;ga_hid=39530713&amp;ga_fc=1&amp;u_tz=480&amp;u_his=12&amp;u_h=1080&amp;u_w=1920&amp;u_ah=1040&amp;u_aw=1920&amp;u_cd=24&amp;u_sd=1&amp;dmc=8&amp;adx=-12245933&amp;ady=-12245933&amp;biw=1050&amp;bih=931&amp;scr_x=0&amp;scr_y=0&amp;eid=44759875%2C44759926%2C44759842%2C31077328%2C31076994%2C31077890%2C31067146%2C31067147%2C31067148%2C31068556&amp;oid=2&amp;pvsid=2115458949027440&amp;tmod=184787527&amp;uas=0&amp;nvt=1&amp;topics=3&amp;tps=3&amp;fsapi=1&amp;ref=https%3A%2F%2Fwww.twipcam.com%2Fcam%2Fmoenv-000048&amp;fc=1920&amp;brdim=0%2C0%2C0%2C0%2C1920%2C0%2C1920%2C1040%2C1067%2C931&amp;vis=1&amp;rsz=%7C%7Cs%7C&amp;abl=NS&amp;fu=32768&amp;bc=31&amp;td=1&amp;nt=1&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;dtd=168" data-google-container-id="a!1" data-load-complete="true"></iframe></div></ins><ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" data-anchor-status="displayed" style="display: block; width: 100% !important; height: 129px !important; bottom: 0px; clear: none !important; float: none !important; left: 0px; margin: 0px !important; max-height: none !important; max-width: none !important; opacity: 1; overflow: visible !important; padding: 0px !important; position: fixed; right: auto !important; top: auto !important; vertical-align: baseline !important; visibility: visible !important; z-index: 2147483647; background: rgb(250, 250, 250) !important;" data-ad-status="filled" data-anchor-shown="true"><div class="grippy-host"></div><div id="aswift_1_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none !important; height: 124px !important; width: 100% !important; margin: 0px !important; padding: 0px !important; position: relative !important; visibility: visible !important; background-color: transparent !important; display: inline-block !important; inset: auto !important; clear: none !important; float: none !important; max-height: none !important; max-width: none !important; opacity: 1 !important; overflow: visible !important; vertical-align: baseline !important; z-index: auto !important;"><iframe id="aswift_1" name="aswift_1" browsingtopics="true" style="width: 1005px !important; height: 124px !important; display: block; margin: 0px auto;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="1005" height="124" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allow="attribution-reporting" src="https://googleads.g.doubleclick.net/pagead/html/r20230914/r20110914/zrt_lookup.html?fsb=1#RS-0-&amp;adk=1812271801&amp;client=ca-pub-9857843162062228&amp;fa=1&amp;ifi=2&amp;uci=a!2&amp;btvi=1&amp;xpc=qwrBIqBCHV&amp;p=https%3A//www.twipcam.com" data-google-container-id="a!2" data-google-query-id="CKzytr_7tYEDFQ8GXAod3vAEow" data-load-complete="true"></iframe></div></ins><iframe src="https://www.google.com/recaptcha/api2/aframe" width="0" height="0" style="display: none;"></iframe></body><iframe id="google_esf" name="google_esf" src="https://googleads.g.doubleclick.net/pagead/html/r20230914/r20190131/zrt_lookup.html" style="display: none;"></iframe><iframe name="goog_topics_frame" src="https://securepubads.g.doubleclick.net/static/topics/topics_frame.html" style="display: none;"></iframe><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

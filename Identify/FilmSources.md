@@ -30,7 +30,7 @@ tags: YOLO EE AI
   - [最新天氣觀測](https://tw.live/weather/)
   - 即時影像監視器網站提供台灣各地旅遊景點、市區道路、省道、國道高速公路等 CCTV 閉路電視攝影機即時影像，免費提供民眾隨時查看交通路況、天氣資訊以及旅遊景點人潮狀況以規劃旅行路線。本站影像來源由交通部、高公局、公路總局、各地縣市政府、國家公園風景區以及警廣即時路況等資料庫提供。
   - © Copyright 2023 即時影像監視器 All rights reserved.
-- 台灣即時影像監視器[twipcam](https://www.twipcam.com/cam/n5-s-28k+235)
+- 台灣即時影像監視器 [twipcam](https://www.twipcam.com/cam/n5-s-28k+235)
 
 ```html
 <div class="w3-content" style="max-width:100%;">
@@ -42,7 +42,77 @@ style="width:100%;max-height:600px;"
 onclick="open_full_image();">
 ```
 
+### 龍德工業區
+
+- 來源：高速公路局
+- 定點即時影像
+  - 擷取週期：(似無限制)
+  - 連線時間：不接受連續連線。每次連線
+    - 12秒(YOLO直接連線)
+    - 15秒：wget下載後、附加檔名命名為.mpeg檔
+    - (https://www.twipcam.com/每10秒更新連結，用`?t=0.XXX`隨機時間戳記來連結)
+    - 40秒(`"https://tw.live/cam/?id=CCTV-N5-S-29-512-M"` chrome連線)。
+  - 下載檔案：約6~8MB
+
+- 羅東蘇澳路段南向(54K+364)
+  - 同時可以看到交流道及龍德工業區
+  - IP: https://cctvp02.freeway.gov.tw/mjpeg/X01001614900301
+
+![](../attachments/2023-09-19-11-53-16.png)
+
+![](../attachments/2023-09-19-13-05-14.png)
+
+## 高雄市即時影像
+
+### 大林煉油廠
+
+- 來源：高雄市交通局
+- 高雄市道路 沿海四路、中林路 即時影像
+  - 位置22.52470940967401, 120.3502816597705
+  - IP: `https://cctv6.kctmc.nat.gov.tw/47e2aeaf`
+  - 網站自動更新的原理過程，似乎藉cookie.js持續將使用者cookie與該公司連線。
+
+```html
+Indicate whether to send a cookie in a cross-site request by specifying its SameSite attribute
+
+at cookie.js?domain=www.twipcam.com&callback=_gfp_s_&client=ca-pub-9857843162062228&cookie=ID%3D610953d246a9cabd-22db6032d4e70027%3AT%3D1695026920%3ART%3D1695101836%3AS%3DALNI_MZy00cvYMug6aJCUsLr7Pl4hjoBAg&gpic=UID%3D00000c49b30e6c6a%3AT%3D1695026920%3ART%3D1695101836%3AS%3DALNI_Ma1x1j3NHCTyMMJ5UTqKaCDclLAfQ:1:1
+```
+
+![](../attachments/2023-09-19-13-35-08.png)
+![](../attachments/2023-09-19-13-32-31.png)
+
+### 林園工業區
+
+- 來源：環境部 空氣品質監測站[測站影像](https://airtw.moenv.gov.tw/cht/EnvMonitoring/Central/SitePhoto.aspx)
+  - 每小時更新、只存留24小時
+  - IP https://airtw.moenv.gov.tw/AirSitePic/20230919/052-202309191410.jpg
+
+![](https://airtw.moenv.gov.tw/AirSitePic/20230919/052-202309191410.jpg)
+
+- 來源：交通部公路總局
+  - 台17線 249K+000 即時影像
+  - 22.4979, 120.415
+  - IP: `https://cctv-ss04.thb.gov.tw/T17-249K+000`
+
+### 仁大工業區
+
+- 環境部左營空品測站的東北方(測站介紹)
+![](https://airtw.moenv.gov.tw/AirQualityExpert/Photo/Site_pic/17/%E6%9D%B1%E5%8C%97.jpg)
+- 夜間排放
+ ![](https://airtw.moenv.gov.tw/AirSitePic/20230912/054-202309120300.jpg)
+- 黑煙(054-202202031500)
+
+```bash
+s=054;for m in {01..12};do for y in 20{22..23};do for h in {00..23}; do for d in {01..31};do for dir in {01..99};do ymd=$y$m$d;fn=${s}-${ymd}${h}$dir.jpg;if ! [[ -e $fn ]];then wget -q https://airtw.moenv.gov.tw/AirSitePic/$ymd/$fn;fi;done;done;done;done;done &
+```
+
+### 中鋼公司
+
+![](https://airtw.moenv.gov.tw/AirSitePic/20230919/058-202309191400.jpg)
+
+
 ### 觀光局4K影像
+
 - 高雄觀光局4K及時影像[旗津海水浴場即時影像](https://youtu.be/ka7FV0sCvxQ)
 
 ![](https://raw.githubusercontent.com/sinotec2/AIEE/e49ca1e79d1ef845f95b60e1a99fd1e55102513e/attachments/2023-09-18-15-27-41.png)
