@@ -30,7 +30,7 @@ tags: YOLO EE AI
   - [最新天氣觀測](https://tw.live/weather/)
   - 即時影像監視器網站提供台灣各地旅遊景點、市區道路、省道、國道高速公路等 CCTV 閉路電視攝影機即時影像，免費提供民眾隨時查看交通路況、天氣資訊以及旅遊景點人潮狀況以規劃旅行路線。本站影像來源由交通部、高公局、公路總局、各地縣市政府、國家公園風景區以及警廣即時路況等資料庫提供。
   - © Copyright 2023 即時影像監視器 All rights reserved.
-- 台灣即時影像監視器 [twipcam](https://www.twipcam.com/cam/n5-s-28k+235)
+- 台灣即時影像監視器 [twipcam地圖查找](https://www.twipcam.com/map)
 
 ```html
 <div class="w3-content" style="max-width:100%;">
@@ -62,7 +62,7 @@ onclick="open_full_image();">
 
 ![](../attachments/2023-09-19-13-05-14.png)
 
-## 高雄市即時影像
+## 高雄市污染源附近之即時影像
 
 ### 大林煉油廠
 
@@ -83,32 +83,107 @@ at cookie.js?domain=www.twipcam.com&callback=_gfp_s_&client=ca-pub-9857843162062
 
 ### 林園工業區
 
-- 來源：環境部 空氣品質監測站[測站影像](https://airtw.moenv.gov.tw/cht/EnvMonitoring/Central/SitePhoto.aspx)
+- 環境部 空氣品質監測站[測站影像](https://airtw.moenv.gov.tw/cht/EnvMonitoring/Central/SitePhoto.aspx)
   - 每小時更新、只存留24小時
   - IP https://airtw.moenv.gov.tw/AirSitePic/20230919/052-202309191410.jpg
 
 ![](https://airtw.moenv.gov.tw/AirSitePic/20230919/052-202309191410.jpg)
+
+- 林園測站向北
+- 林園先進(國際中橡碳黑事業、近景蒸氣X2)(google map)
+- 中油林園(遠景紅白色X4)
+![](../attachments/2023-09-20-15-55-18.png)
 
 - 來源：交通部公路總局
   - 台17線 249K+000 即時影像
   - 22.4979, 120.415
   - IP: `https://cctv-ss04.thb.gov.tw/T17-249K+000`
 
+```bash
+s=054;for m in {01..12};do for y in 20{22..23};do for h in {00..23}; do for d in {01..31};do for dir in {01..99};do ymd=$y$m$d;fn=${s}-${ymd}${h}$dir.jpg;if ! [[ -e $fn ]];then wget -q https://airtw.moenv.gov.tw/AirSitePic/$ymd/$fn;fi;done;done;done;done;done &
+```
+
+- 環境部060潮州測站西南向
+
+![](https://airtw.moenv.gov.tw/AirSitePic/20230919/060-202309191800.jpg)
+
+### 大發工業區
+
+- 環境部大寮測站東北向~東向
+  - 2022/02/01開始拍攝
+  - 初期每10分鐘一張
+  - 2022/04/01開始每小時一張
+  - 2022/07/08改朝東方
+  
+![](https://airtw.moenv.gov.tw/AirQualityExpert/Photo/Site_pic/9/%E6%9D%B1%E5%8C%97.jpg)
+
+### 中鋼公司
+
+![](https://airtw.moenv.gov.tw/AirSitePic/20230919/058-202309191400.jpg)
+
 ### 仁大工業區
+
+- 高工局 國道1號 358K+273 楠梓交流道到鼎金系統交流道 即時影像
+  - IP：https://cctvs.freeway.gov.tw/live-view/mjpg/video.cgi?camera=3061&t=0.08643320020021528
+  - 每次連線下載最多15秒
+![](../attachments/2023-09-20-09-38-54.png)
 
 - 環境部左營空品測站的東北方(測站介紹)
 ![](https://airtw.moenv.gov.tw/AirQualityExpert/Photo/Site_pic/17/%E6%9D%B1%E5%8C%97.jpg)
 - 夜間排放
  ![](https://airtw.moenv.gov.tw/AirSitePic/20230912/054-202309120300.jpg)
 - 黑煙(054-202202031500)
+- (環境部仁武站的影像是朝西南市區)[](https://airtw.moenv.gov.tw/AirSitePic/20230919/049-202309191800.jpg)
+- (楠梓站是朝東北向山區)[](https://airtw.moenv.gov.tw/AirSitePic/20230920/053-202309200100.jpg)
 
-```bash
-s=054;for m in {01..12};do for y in 20{22..23};do for h in {00..23}; do for d in {01..31};do for dir in {01..99};do ymd=$y$m$d;fn=${s}-${ymd}${h}$dir.jpg;if ! [[ -e $fn ]];then wget -q https://airtw.moenv.gov.tw/AirSitePic/$ymd/$fn;fi;done;done;done;done;done &
+## 六輕附近即時影像
+
+### 環境部測站
+
+- 台西站(041)正北方
+![](https://airtw.moenv.gov.tw/AirQualityExpert/Photo/Site_pic/65/02.jpg)
+
+- 大城站(085)西南方
+![](https://airtw.moenv.gov.tw/AirSitePic/20230920/085-202309201000.jpg)
+
+- 環境部083麥寮測站西南向
+
+![](https://airtw.moenv.gov.tw/AirSitePic/20230919/083-202309191800.jpg)
+
+https://airtw.moenv.gov.tw/AirSitePic/20230920/085-202309201000.jpg
+
+### 水利署水資源 雲林縣政府水利處
+
+- 蚊港大排二出水口抽水站CH4 即時影像
+  - 每次只能下載一個timeframe
+
+![](https://c2.twipcam.com/cam/wra-water-resources/snapshot.php?data=JOAeusq2joZ2Y%2FWtEOan8hKoTpPDP6IeZ%2FWOkHFbuZUqC%2FqmPmDjB%2BUvBCS7rrTT%2Bfaj26%2BOTJvWrZmzo54QEqgjZxBbfrejwh92DYMI9c9PJbLXGtD0bwdld4yJ9AWq&t=0.9854936389504274)
+
+## 台中港與台中電廠
+
+### 環境部測站
+ 
+- 沙鹿站(029)正西方官網照片
+![](https://airtw.moenv.gov.tw/AirQualityExpert/Photo/Site_pic/26/04.jpg)
+- 實際紀錄
+![](https://airtw.moenv.gov.tw/AirSitePic/20220221/029-202202211000.jpg)
+
+### 水利署
+
+- 水資源 水利行政組 伸港堤防(1K+700) 1 即時影像
+- 120.51 24.18
+
+![](https://c2.twipcam.com/cam/wra-water-resources/snapshot.php?data=JkN8zDnhmruiEA5AIBwoLHi%2FgYkjb6RMLkdD2jlzHIw0tFTgE0BVMwffI4jFv8CG4K7LHiibFG1USV%2FtJH2KsRA1yNophiLBqW6wu%2BursNjD21EXIOT%2F5lqt1q5qEzvj&t=0.30435488027975754)
+
+## 桃園煉油廠
+
+- 國道1號五股楊梅高架道路 47K+705  泰山轉接道交流道到機場系統交流道即時影像
+
+```htlm
+src="https://cctvn.freeway.gov.tw/abs2mjpg/bmjpg?camera=14770&t=0.7420104768597939"
 ```
 
-### 中鋼公司
-
-![](https://airtw.moenv.gov.tw/AirSitePic/20230919/058-202309191400.jpg)
+![](../attachments/2023-09-20-14-05-34.png)
 
 
 ### 觀光局4K影像
