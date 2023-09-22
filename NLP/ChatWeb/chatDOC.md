@@ -2,9 +2,10 @@
 layout: default
 title: chatDOC的應用
 parent: chatWeb的裝置與應用
+grand_parent: 自然語言處理
 nav_order: 99
 date: 2023-08-31
-last_modified_date: 2023-08-31 10:32:48
+last_modified_date: 2023-09-22 17:07:25
 tags: AI chat
 ---
 
