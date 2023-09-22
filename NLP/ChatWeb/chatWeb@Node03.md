@@ -2,6 +2,7 @@
 layout: default
 title: chatWeb的裝置
 parent: chatWeb的裝置與應用
+grand_parent: 自然語言處理
 nav_order: 99
 date: 2023-08-31
 last_modified_date: 2023-08-31 10:32:48
