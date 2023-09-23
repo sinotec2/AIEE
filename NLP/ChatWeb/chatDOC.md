@@ -24,14 +24,16 @@ tags: AI chat
 
 ## 背景
 
-- 文件檔案的搜尋、解析、綜合等等對話(chatbot)有許多API、付費、或自建方案，如其他地方所做的說明。
-- 實地進行測試比較，發現以chatDOC.com的表現較佳。此處即以其為測試對象，以提供未來使用的參考。
+- 文件檔案的搜尋、解析、綜合等等對話(chatbot)有許多API、付費、或自建方案，如[其他地方](https://sinotec2.github.io/AIEE/NLP/ChatWeb)所做的說明。
+- 實地進行測試比較，發現以[chatDOC.com][1]的表現較佳。此處即以其為測試對象，以提供未來使用的參考。
 
 ### chatDOC 簡介
 
-- [chatDOC](https://chatdoc.com/chatdoc/#/sign-up?invite_code=7fimgzlv7f)是著名電腦作家esor2023年4月介紹推薦的優秀網站。(詳見其[推薦文章](https://www.playpcesor.com/2023/04/chatdoc-pdf-ai.html))
-- 可接受檔案格式(形式)：pdf / doc / docx / markdown / epub / 
-- txt / OCR
+- [chatDOC][1]是著名電腦作家esor(2023年4月)介紹推薦的優秀網站。(詳見其[推薦文章](https://www.playpcesor.com/2023/04/chatdoc-pdf-ai.html))
+- 可接受檔案格式(形式)
+  - pdf(會讀掃描檔、能解讀表格) 
+  - doc / docx / markdown / epub / 
+  - txt / OCR
 - 免費方案：登錄會員後即可得到3個免費檔案的優惠(僅限pdf檔)
 - 推薦會員：每推薦一人入會可得到5個免費檔案的優惠，最多1000個檔案(30日內)
 - 有'文件集'(collection)功能，類似目錄，可綜合分析集內之所有文件。
@@ -106,3 +108,5 @@ tags: AI chat
 {% include question.html content="條列出本文件的簡報重點" %}
 {% include question.html content="條列這份文件中有關空氣品質的章節架構。" %}
 {% include question.html content="摘述本段的事實" %}
+
+[1]: https://chatdoc.com/chatdoc/#/sign-up?invite_code=7fimgzlv7f "chatDoc官網"
