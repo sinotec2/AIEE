@@ -70,7 +70,7 @@ tags: AI ChatGPT
 
 {% include question.html content="依據"民法第 ９６９條：「稱姻親者，謂血親之配偶、配偶之血親及配偶之血親之配偶。」請問兒女的親家是否為民法中規定的姻親?" %}
 
-根據台灣民法第969條的規定，姻親是指血親的配偶、配偶的血親以及配偶的血親的配偶。根據這個定義，兒女的親家（兒女的配偶的父母）並不被視為民法中所定義的姻親。兒女的親家在法律上通常被稱為"岳父母"或"岳丈"和"岳母"。
+根據台灣民法第969條的規定，姻親是指血親的配偶、配偶的血親以及配偶的血親的配偶。根據這個定義，兒女的親家（兒女的配偶的父母）並不被視為民法中所定義的姻親。兒女的親家在法律上通常被稱為"岳父母"或"岳丈"和"岳母"。(正確)
 
 因此，根據台灣民法的規定，兒女的親家不屬於民法中所定義的姻親，而是被稱為岳父母或岳母。感謝您的指正，我之前的回答有誤。如果您有更多的法律問題，建議諮詢當地的法律專業人士以獲得正確的法律解釋和建議。
 
@@ -83,13 +83,13 @@ tags: AI ChatGPT
 {% include question.html content="依據民法第 ９６９條：「稱姻親者，謂血親之配偶、配偶之血親及配偶之血親之配偶。」請問兒女的親家是否為民法中規定的姻親?" %}
 
 依據"民法第 ９６９條：「稱姻親者，謂血親之配偶、配偶之血親及配偶之血親之配偶。」請問兒女的親家是否為民法中規定的姻親?
-根据民法第 969 条的定义，姻亲是指血亲之配偶、配偶之血亲及配偶之血亲的配偶。根据这个定义，兒女的親家不符合民法中规定的姻亲关系。
+根据民法第 969 条的定义，姻亲是指血亲之配偶、配偶之血亲及配偶之血亲的配偶。根据这个定义，兒女的親家不符合民法中规定的姻亲关系。(正確)
 
 ### chatWeb
 
 {% include question.html content="依據[民法九百六十九條規定註釋-姻親定義](https://shuofeng.com.tw/newsdetail_5_371.html)， 兒女的親家是否為民法中規定的姻親?"%}
 
-根據上下文，兒女的親家不是民法中規定的姻親關係。 根據最高法院的判決，即使兒女的配偶與兒女的父母有親屬關係，但根據民法第969條的規定，兒女的親家並不屬於法定的姻親關係。 因此，兒女的親家不符合民法中姻親的定義。
+根據上下文，兒女的親家不是民法中規定的姻親關係。 根據最高法院的判決，即使兒女的配偶與兒女的父母有親屬關係，但根據民法第969條的規定，兒女的親家並不屬於法定的姻親關係。 因此，兒女的親家不符合民法中姻親的定義。(正確)
 
 ### vicuna
 
@@ -98,9 +98,51 @@ tags: AI ChatGPT
 - 根據「民法第969條」，兒女的親家確實是民法中規定的姻親之一，具體包括：
   - 兒子的親家：指兒子的配偶及其血親。
   - 女兒的親家：指女兒的配偶及其血親。
-- 因此，兒女的親家確實可以被視為民法中規定的姻親，而根據這一規定，兒女在繼承、托管等法律事宜上可能會受到一定程度的限制或保障。
+- 因此，兒女的親家確實可以被視為民法中規定的姻親，而根據這一規定，兒女在繼承、托管等法律事宜上可能會受到一定程度的限制或保障。(wrong!)
 
 ## Hugging Face上的資源
+
+### 來源
+
+- 宝锣法律大模型1.0 [xuanxuanzl/BaoLuo-LawAssistant-sftglm-6b](https://huggingface.co/xuanxuanzl/BaoLuo-LawAssistant-sftglm-6b)
+
+### 執行
+
+```bash
+```
+
+### 模型綁定使用半精度GPU
+
+{% include question.html content="請解釋RuntimeError: 'LayerNormKernelImpl' not implemented for 'Half'是甚麼意思?"%}
+ 
+{% include question.html content="CPU是否沒有支援前述所謂半精度浮點數計算?(ChatGPT)"%}
+  
+- 不同的CPU架構和代碼庫可以對半精度浮點數計算提供不同的支援水平。一般來說，CPU本身是能夠處理半精度浮點數計算的，但具體的支援程度可能因CPU型號、代碼庫和軟體實現而異。
+- 在CPU上支援半精度浮點數計算主要依賴於以下因素：
+  - CPU型號：新一代的CPU通常會提供更廣泛的浮點運算支援，包括半精度浮點數。因此，較新的CPU可能會對半精度計算提供更好的性能。
+  - 軟體庫：在某些情況下，使用特定的軟體庫（如Intel的MKL或OpenBLAS）可以實現更高效的半精度浮點數計算。這些庫通常會優化特定數學操作，以提高性能。
+  - 編譯選項：在編譯代碼時，你可以選擇啟用或禁用半精度浮點數支援。一些編譯器可能需要相應的標誌才能充分利用CPU的半精度計算能力。
+- 總之，一般來說，現代CPU是能夠處理半精度浮點數計算的，但實際的性能和支援水平可能因多種因素而異。如果你在使用半精度浮點數時遇到性能或相容性問題，你可以考慮更新CPU驅動程序、使用優化的軟體庫，或者調整編譯選項，以確保最佳性能。
+
+### LawBERT(台灣)
+
+- Dataset Card for "LawBERT_data" [LawBERT-tw/LawBERT_data ](https://huggingface.co/datasets/LawBERT-tw/LawBERT_data)
+  - [law_exam](https://huggingface.co/datasets/LawBERT-tw/law_exam)
+  - [law_news](https://huggingface.co/datasets/LawBERT-tw/law_news)
+- model: [LawBERT-s](https://huggingface.co/LawBERT-tw/LawBERT-s)
+  - BertForMaskedLM
+
+### JessyTsu1
+
+- Model:[ChatLaw-13B](https://huggingface.co/JessyTsu1/ChatLaw-13B)
+
+### ssbuild
+
+- 中文法律案件预训练模型 [ssbuild/bert_base_wwm_law](https://huggingface.co/ssbuild/bert_base_wwm_law)
+
+### 1toTree
+
+- 1toTree/[chatglm2-6b-law-ptuning](https://huggingface.co/1toTree/chatglm2-6b-law-ptuning)
 
 
 [1]: https://www.bbc.com/zhongwen/trad/science-58236166 "查理士(2021) 人工智能AI和法律：機器人給你當律師會是什麼樣 by BBC NEWS 2021年8月19日中文"
