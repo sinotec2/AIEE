@@ -11,6 +11,64 @@ tags: AI chat
 
 # chatWeb的裝置
 
+## 背景
+
+- 這個服務是利用openAI的gpt3.5 turbo API，來解讀特定網頁、pdf或txt檔案的內容。
+- 界面程式來源、其他方案之比較說明等等，詳見上一層[chatWeb的裝置與應用](https://sinotec2.github.io/AIEE/NLP/ChatWeb)。
+
+## 裝置
+
+### 安裝與啟動
+
+```bash
+# Install Python3
+# Download this repository by running 
+git clone https://github.com/SkywalkerDarren/chatWeb.git
+# Navigate to the directory by running 
+cd chatWeb
+cp config.example.json to config.json
+# Edit config.json and set open_ai_key to your OpenAI API key
+# Install dependencies by running 
+pip3 install -r requirements.txt
+# Start the application by running 
+python3 main.py
+```
+
+### 服務設定
+
+```bash
+# kuang@node03 ~/MyPrograms/chatWeb
+cat config.json
+{
+  "open_ai_key": "sk-...",
+  "temperature": 0.1,
+  "language": "English",
+  "open_ai_chat_model": "gpt-3.5-turbo",
+  "use_stream": true,
+  "use_postgres": false,
+  "index_path": "./temp",
+  "postgres_url": "postgresql://localhost:5432/mydb",
+  "mode": "webui",
+  "api_port": 9531,
+  "api_host": "",
+  "webui_port": 7860,
+  "webui_host": "200.200.31.47"
+}
+```
+
+|項目|內容|說明|
+|-|:-:|-|
+|open_ai_key||登錄後取得|
+|temperature|0~1|越低越冷靜(符合事實)回答|
+|language|English或其他|也可以直接在對話中指定以中文回答|
+|open_ai_chat_model|gpt-3.5-turbo|似無其他選項|
+|use_stream|true|保持連線、非批次式處理|
+|use_postgres|false|true會連到本地的postgres資料庫|
+|index_path|"./temp"|索引檔案(包括文件csv及模型bin)暫存位置|
+|mode|console, api, or webui|終端機對話、IO連到別的api、網頁界面|
+|api_host/port|-|連到別的api服務|
+|webui_host/port|200.200.31.47:7860|node03:arbitary|
+
 ## 使用方式
 
 ### url輸入
