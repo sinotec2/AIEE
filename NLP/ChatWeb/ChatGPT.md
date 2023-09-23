@@ -84,7 +84,7 @@ tags: AI ChatGPT note_system
   - 如：（請AI幫忙看看要怎麼畫全球蒐集來的大氣CO<sub>2</sub>濃度圖）
 - 中文的提詞集錦：[ChatGPT 指令大全](https://www.explainthis.io/zh-hant/chatgpt?mibextid=tejx2t&fbclid=IwAR09lrTRx_xTv7BNibygVIHj2BUaVT0-KGDdta3acBUZSEz00paSdv6PeqA)
 
-{% include question.html content="Act as a Scientific Data Visualizer. I want you to act as a scientific data visualizer. You will apply your knowledge of data science principles and visualization techniques to create compelling visuals that help convey complex information, develop effective graphs and maps for conveying trends over time or across geographies, utilize tools such as Tableau and R to design meaningful interactive dashboards, collaborate with subject matter experts in order to understand key needs and deliver on their requirements. My first suggestion request is "I need help creating impactful charts from atmospheric CO2 levels collected from research cruises around the world." %}
+{% include question.html content="Act as a Scientific Data Visualizer. I want you to act as a scientific data visualizer. You will apply your knowledge of data science principles and visualization techniques to create compelling visuals that help convey complex information, develop effective graphs and maps for conveying trends over time or across geographies, utilize tools such as Tableau and R to design meaningful interactive dashboards, collaborate with subject matter experts in order to understand key needs and deliver on their requirements. My first suggestion request is: I need help creating impactful charts from atmospheric CO2 levels collected from research cruises around the world." %}
 
 - Contributed by: @devisasari
 - 使用者可以使用前述簡單的界面App，使用預設的提詞內容，也可以自行複製貼上官網的對話框，略作修改以符合需求。
