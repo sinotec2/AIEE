@@ -84,11 +84,9 @@ tags: AI ChatGPT note_system
   - 如：（請AI幫忙看看要怎麼畫全球蒐集來的大氣CO<sub>2</sub>濃度圖）
 - 中文的提詞集錦：[ChatGPT 指令大全](https://www.explainthis.io/zh-hant/chatgpt?mibextid=tejx2t&fbclid=IwAR09lrTRx_xTv7BNibygVIHj2BUaVT0-KGDdta3acBUZSEz00paSdv6PeqA)
 
-> Act as a Scientific Data Visualizer
-> Contributed by: @devisasari
+{% include question.html content="Act as a Scientific Data Visualizer. I want you to act as a scientific data visualizer. You will apply your knowledge of data science principles and visualization techniques to create compelling visuals that help convey complex information, develop effective graphs and maps for conveying trends over time or across geographies, utilize tools such as Tableau and R to design meaningful interactive dashboards, collaborate with subject matter experts in order to understand key needs and deliver on their requirements. My first suggestion request is "I need help creating impactful charts from atmospheric CO2 levels collected from research cruises around the world." %}
 
-> I want you to act as a scientific data visualizer. You will apply your knowledge of data science principles and visualization techniques to create compelling visuals that help convey complex information, develop effective graphs and maps for conveying trends over time or across geographies, utilize tools such as Tableau and R to design meaningful interactive dashboards, collaborate with subject matter experts in order to understand key needs and deliver on their requirements. My first suggestion request is "I need help creating impactful charts from atmospheric CO2 levels collected from research cruises around the world."
-
+- Contributed by: @devisasari
 - 使用者可以使用前述簡單的界面App，使用預設的提詞內容，也可以自行複製貼上官網的對話框，略作修改以符合需求。
 - 問過第1～2題、彼此測試之後，AI大致知道怎麼溝通，就可以放心問任何真正想問的問題了。
 
@@ -104,7 +102,7 @@ tags: AI ChatGPT note_system
 
 ### 設計參數
 
-> Please act as a professor in the domain of environmental engineering. You will provide knowledge from reviewing journal papers,  textbooks and field experiences on building and operating waste water treatment plants. I am a senior profession engineer in environmental engineering. My first request is "What is the meaning of MLSS?"
+{% include question.html content=" Please act as a professor in the domain of environmental engineering. You will provide knowledge from reviewing journal papers,  textbooks and field experiences on building and operating waste water treatment plants. I am a senior profession engineer in environmental engineering. My first request is 'What is the meaning of MLSS?'" %}
 
 As a professor in environmental engineering, I'd be happy to help answer your question on the meaning of MLSS.
 
@@ -116,7 +114,7 @@ A typical MLSS concentration range for wastewater treatment plants is between 2,
 
 Monitoring and controlling MLSS concentration is essential for achieving optimal treatment performance, avoiding solids washout and bulking, and minimizing operating costs. Regular sampling and analysis of MLSS, along with adjustments to aeration, sludge wasting, and other operational parameters, can help ensure that the WWTP is operating efficiently and effectively.
 
-> 目前所知最節能減排的生物處理方法、MLSS去除效率、用地面積、耗費能源等設計參數為何？
+{% include question.html content="目前所知最節能減排的生物處理方法、MLSS去除效率、用地面積、耗費能源等設計參數為何？" %}
 
 近年來，一些新興的生物處理技術被發展出來以更加節能減排。以下是其中幾種較為常見的技術：
 
@@ -128,7 +126,7 @@ Monitoring and controlling MLSS concentration is essential for achieving optimal
 
 對於MLSS去除效率、用地面積、耗費能源等設計參數，具體數值會根據不同的處理工藝、操作條件以及污水水質等因素而有所不同。例如，對於傳統的活性污泥處理工藝，MLSS去除效率一般在90%以上，用地面積一般在0.1-0.2平方米/立方米之間，而能源消耗則通常佔整個廢水處理廠能耗的50%以上。
 
-> Anammox在臺灣地區是否有實績、處理量為何？分攤處理費用多少新台幣？
+{% include question.html content="Anammox在臺灣地區是否有實績、處理量為何？分攤處理費用多少新台幣？" %}
 
 在台灣地區，Anammox技術已經被應用於一些廢水處理廠。以下是幾個實際案例：
 
@@ -140,7 +138,7 @@ Monitoring and controlling MLSS concentration is essential for achieving optimal
 
 至於處理費用和分攤方式，因為不同的處理廠和地區具體情況不同，因此可能會有所差異。一般來說，處理費用包括了固定費用和變動費用，固定費用主要是建設投資和固定成本（如人力、設備維護等），變動費用主要是能源和化學品等使用成本。而分攤方式可能會因地區而異，例如可能由政府出資一部分，使用戶出資一部分，或者由廠商全額承擔等。
 
-> 桃園市楊梅區污水下水道處理廠政府、用戶各分攤多少錢/每噸污水？
+{% include question.html content="桃園市楊梅區污水下水道處理廠政府、用戶各分攤多少錢/每噸污水？ "%}
 
 很抱歉，由於我是一個通用AI模型，無法獲取最新的、即時的、具體的資訊，也沒有權限瀏覽政府或公司的財務資訊。因此，我無法提供桃園市楊梅區污水下水道處理廠的最新費用分攤情況。
 
@@ -148,7 +146,7 @@ Monitoring and controlling MLSS concentration is essential for achieving optimal
 
 ### 名詞解釋、比較
 
-> 請解釋ISO14064與ISO14067規範的內容、適用對象、等差異
+{% include question.html content="請解釋ISO14064與ISO14067規範的內容、適用對象、等差異" %}
 
 ISO 14064和ISO 14067都是與減少溫室氣體排放和減少碳足跡相關的國際標準，但它們的內容和適用對象略有不同。
 
