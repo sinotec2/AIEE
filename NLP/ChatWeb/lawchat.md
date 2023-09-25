@@ -156,6 +156,8 @@ print(response)
   - 編譯選項：在編譯代碼時，你可以選擇啟用或禁用半精度浮點數支援。一些編譯器可能需要相應的標誌才能充分利用CPU的半精度計算能力。
 - 總之，一般來說，現代CPU是能夠處理半精度浮點數計算的，但實際的性能和支援水平可能因多種因素而異。如果你在使用半精度浮點數時遇到性能或相容性問題，你可以考慮更新CPU驅動程序、使用優化的軟體庫，或者調整編譯選項，以確保最佳性能。
 
+## 其他資料或模型
+
 ### LawBERT(台灣)
 
 - Dataset Card for "LawBERT_data" [LawBERT-tw/LawBERT_data](https://huggingface.co/datasets/LawBERT-tw/LawBERT_data)
