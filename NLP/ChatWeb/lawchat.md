@@ -100,15 +100,40 @@ tags: AI ChatGPT
   - 女兒的親家：指女兒的配偶及其血親。
 - 因此，兒女的親家確實可以被視為民法中規定的姻親，而根據這一規定，兒女在繼承、托管等法律事宜上可能會受到一定程度的限制或保障。(wrong!)
 
-## Hugging Face上的資源
+## 宝锣法律大模型1.0
 
 ### 來源
 
-- 宝锣法律大模型1.0 [xuanxuanzl/BaoLuo-LawAssistant-sftglm-6b](https://huggingface.co/xuanxuanzl/BaoLuo-LawAssistant-sftglm-6b)
+- 宝锣法律大模型1.0 @HuggingFace [xuanxuanzl/BaoLuo-LawAssistant-sftglm-6b](https://huggingface.co/xuanxuanzl/BaoLuo-LawAssistant-sftglm-6b)
+- 
+
+### 相關模組
+
+```bash
+# conda activate /nas2/kuang/.conda/envs/YOLOv8
+pip install protobuf==3.20.0 transformers>=4.27.1 icetk cpm_kernels torch==2.0.1
+```
 
 ### 執行
 
 ```bash
+from transformers import AutoTokenizer, AutoModel, AutoConfig
+tokenizer = AutoTokenizer.from_pretrained("THUDM/chatglm-6b", trust_remote_code=True)
+config = AutoConfig.from_pretrained("THUDM/chatglm-6b", trust_remote_code=True, pre_seq_len=256)
+prefix_state_dict = torch.load(os.path.join("xuanxuanzl/BaoLuo-LawAssistant-sftglm-6b", "pytorch_model.bin"), map_location=torch.device('cpu'))
+model = AutoModel.from_pretrained("THUDM/chatglm-6b", config=config, trust_remote_code=True).half()
+import torch,os
+model = model.quantize(bits=8, kernel_file="xuanxuanzl/BaoLuo-LawAssistant-sftglm-6b/quantization_kernels.so")
+#prefix_state_dict = torch.load(os.path.join("xuanxuanzl/BaoLuo-LawAssistant-sftglm-6b", "pytorch_model.bin"), map_location=torch.device('cpu'))
+new_prefix_state_dict = {}
+for k, v in prefix_state_dict.items():
+    if k.startswith("transformer.prefix_encoder."):
+        new_prefix_state_dict[k[len("transformer.prefix_encoder."):]] = v
+model.transformer.prefix_encoder.load_state_dict(new_prefix_state_dict)
+model.transformer.prefix_encoder.float()
+model = model.eval()
+response, history = model.chat(tokenizer, "你好", history=[])
+print(response)        
 ```
 
 ### 模型綁定使用半精度GPU
