@@ -1,15 +1,11 @@
 ---
-layout: article
+layout: default
 title: 數值模擬、數位對映與環工設計
 parent: 計算機輔助工程
 nav_order: 99
 date: 2023-08-16
 last_modified_date: 2023-08-16 11:46:27
 tags: AI
-aside:
-  toc: true
-sidebar:
-  nav: layouts
 ---
 
 {: .no_toc }
