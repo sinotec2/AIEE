@@ -40,7 +40,7 @@ tags: AI
 ### CFD的應用
 
 - CFD當中富含許多流體力學、紊流理論、質量、動量、能量守恆定律，以及多年來學者專家投入的參數化理論，經由現代顯示軟體的包裝，提供使用者貼近現實的數值經驗。這項利器也隨著計算機能力的提升、計算雲端化過程，而變得越來越普及。
-- CFD再水廠、管線設施的應用詳見[CFD在水務工程中的應用與AI發展](https://sinotec2.github.io/FAQ/2023/08/17/CFD.html)
+- CFD再水廠、管線設施的應用詳見[CFD在水務工程中的應用與AI發展](https://sinotec2.github.io/AIEE/CAE/CFD/)
 
 ### rethinking overview
 
