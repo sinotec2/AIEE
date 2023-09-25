@@ -30,6 +30,8 @@ tags: AI ChatGPT
 
 ### 國外法律AI的摘要介紹
 
+(下文由chatDOC摘要)
+
 - [BBC][1]提到的AI研究助理的名稱有Luminance、Litigate與TAX-I。
   - Luminance是一種 AI助理，透過搜索過程中運用的關鍵詞匯關聯能力和學習能力，能夠幾分鐘之內完成資料查閲、解讀、確定與案情相關的結論和建議，以節省時間和提高律師服務質量和價值[7][10]. 
   - Litigate則是另一款司法輔助軟件，導入案件概要和訴求後，可以快速檢索出關鍵人物、找出他們之間的關聯，列出重要事件時間表，並給出分析和解釋，從而提供專業的高級助理服務[14].
@@ -40,6 +42,8 @@ tags: AI ChatGPT
 
 ### DoNotPay
 
+(下文由chatWeb摘要)
+
 - DoNotPay是一個提供線上法律服務的對話機器人，利用人工智能提供各種法律服務，包括爭取交通罰單、退款申請、取消訂閱、起訴他人等。它還提供免費試用卡功能和自動化服務，並聲稱能幫助無家可歸者申請庇護和住房，以及為簽證和綠卡申請提供支援。然而，其有效性和準確性受到質疑，並面臨集體訴訟指控未經授權從事法律實踐。[wikipedia](https://zh.wikipedia.org/zh/DoNotPay)
 
 ### 司法院智慧客服
@@ -49,8 +53,6 @@ tags: AI ChatGPT
 - 回答「書狀範例」與「常見問答」題庫。
 - 查詢「開庭進度」與「庭期表」資訊。
 - 現階段沒有聊天功能，還不能回答複雜或實例情境、資料查詢等問題。
-
-[^1]: 人工智能AI和法律：機器人給你當律師會是什麼樣 by BBC NEWS 2021年8月19日中文 記者查理士存檔
 
 ## 現有模型的法學能力
 
@@ -93,7 +95,7 @@ tags: AI ChatGPT
 
 ### vicuna
 
-{% include question.html content="依據[民法九百六十九條規定註釋-姻親定義](https://shuofeng.com.tw/newsdetail_5_371.html)， 兒女的親家是否為民法中規定的姻親?"%}
+{% include question.html content="依據民法第 ９６９條：「稱姻親者，謂血親之配偶、配偶之血親及配偶之血親之配偶。」請問兒女的親家是否為民法中規定的姻親?" %}
 
 - 根據「民法第969條」，兒女的親家確實是民法中規定的姻親之一，具體包括：
   - 兒子的親家：指兒子的配偶及其血親。
@@ -104,8 +106,13 @@ tags: AI ChatGPT
 
 ### 來源
 
-- 宝锣法律大模型1.0 @HuggingFace [xuanxuanzl/BaoLuo-LawAssistant-sftglm-6b](https://huggingface.co/xuanxuanzl/BaoLuo-LawAssistant-sftglm-6b)
-- 
+- 宝锣法律大模型1.0 
+  - HuggingFace [xuanxuanzl/BaoLuo-LawAssistant-sftglm-6b](https://huggingface.co/xuanxuanzl/BaoLuo-LawAssistant-sftglm-6b)
+  - 基于“宝锣法律大模型”的应用[github](https://github.com/xuanxuanzl/BaoLuo-LawAssistant/tree/main)
+- 參考
+  - 一个可以自己在本地部署的ChatGLM网页，使用ChatGLM-6B模型来实现接近ChatGPT的对话效果。[NCZkevin/chatglm-web](https://github.com/NCZkevin/chatglm-web)
+  - 完整 SaaS 体验的 chatgpt-web 应用[Chanzhaoyu/chatgpt-web](https://github.com/Chanzhaoyu/chatgpt-web)
+  - 开源的、支持中英双语的对话语言模型[THUDM/ChatGLM-6B](https://github.com/THUDM/ChatGLM-6B)
 
 ### 相關模組
 
@@ -151,7 +158,7 @@ print(response)
 
 ### LawBERT(台灣)
 
-- Dataset Card for "LawBERT_data" [LawBERT-tw/LawBERT_data ](https://huggingface.co/datasets/LawBERT-tw/LawBERT_data)
+- Dataset Card for "LawBERT_data" [LawBERT-tw/LawBERT_data](https://huggingface.co/datasets/LawBERT-tw/LawBERT_data)
   - [law_exam](https://huggingface.co/datasets/LawBERT-tw/law_exam)
   - [law_news](https://huggingface.co/datasets/LawBERT-tw/law_news)
 - model: [LawBERT-s](https://huggingface.co/LawBERT-tw/LawBERT-s)
@@ -160,6 +167,11 @@ print(response)
 ### JessyTsu1
 
 - Model:[ChatLaw-13B](https://huggingface.co/JessyTsu1/ChatLaw-13B)
+  - 学术demo版，基于姜子牙Ziya-LLaMA-13B-v1训练而来(LLaMA权重的许可证限制，我们无法直接发布完整的模型权重，用户需自行合并)
+- ChatLaw-Text2Vec，使用93w条判决案例做成的数据集基于BERT训练了一个相似度匹配模型，可将用户提问信息和对应的法条相匹配，例如：
+  - “请问如果借款没还怎么办。”
+  - "合同法(1999-03-15): 第二百零六条 借款人应当按照约定的期限返还借款。对借款期限没有约定或者约定不明确，依照本法第六十一条的规定仍不能确定的，借款人可以随时返还；贷款人可以催告借款人在合理期限内返还。"
+  - 两段文本的相似度计算为0.9960
 
 ### ssbuild
 
@@ -169,5 +181,25 @@ print(response)
 
 - 1toTree/[chatglm2-6b-law-ptuning](https://huggingface.co/1toTree/chatglm2-6b-law-ptuning)
 
+## Things TODO
+
+### Data collections
+
+- 台灣基本法學能力相關資料庫([LawBERT-tw/LawBERT_data](https://huggingface.co/datasets/LawBERT-tw/LawBERT_data))
+- 環境方面法規、辦法、條例、縣市單行法、自治條例
+- 環境法判例、環保糾紛仲裁糾處案例
+- 環保法令新聞、說明會、研商公聽會資料
+
+### model
+
+- 基于Encoder-Decoder结构基座模型做的P-Tuning微调
 
 [1]: https://www.bbc.com/zhongwen/trad/science-58236166 "查理士(2021) 人工智能AI和法律：機器人給你當律師會是什麼樣 by BBC NEWS 2021年8月19日中文"
+
+### 布署
+
+- 硬體：因無涉及資訊安全，可以考慮布署於雲端資源
+- 軟體：(無特殊付費軟體)
+
+[^1]: 人工智能AI和法律：機器人給你當律師會是什麼樣 by BBC NEWS 2021年8月19日中文 記者查理士存檔
+
