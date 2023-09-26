@@ -2,7 +2,7 @@
 title: 環境部測站逐時照片之下載
 tags: AI
 layout: default
-parent: utility
+parent: Utilities
 date:  2023-09-26
 modify_date: 2023-09-26 14:45:42
 ---
