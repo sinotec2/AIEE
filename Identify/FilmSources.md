@@ -86,6 +86,7 @@ at cookie.js?domain=www.twipcam.com&callback=_gfp_s_&client=ca-pub-9857843162062
 - 環境部 空氣品質監測站[測站影像](https://airtw.moenv.gov.tw/cht/EnvMonitoring/Central/SitePhoto.aspx)
   - 每小時更新、只存留24小時
   - IP https://airtw.moenv.gov.tw/AirSitePic/20230919/052-202309191410.jpg
+- 環境部測站照片(排程)下載之腳本與設定，詳[]()
 
 ![](https://airtw.moenv.gov.tw/AirSitePic/20230919/052-202309191410.jpg)
 
