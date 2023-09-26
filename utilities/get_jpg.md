@@ -22,7 +22,7 @@ modify_date: 2023-09-26 14:45:42
 
 ## 背景說明
 
-- 此處挑了環境部測站其中的8站，逐時下載其周邊照片。
+- 此處挑了環境部測站其中的8站，逐時(每10分鐘)下載其周邊照片。
 - 測站的選擇、位置、照片的角度方向等等，詳[煙流影像來源資料庫](https://sinotec2.github.io/AIEE/Identify/FilmSources/)的說明。
 
 ## 腳本設計
@@ -68,6 +68,18 @@ modify_date: 2023-09-26 14:45:42
 ## weekend hourly
 0 * * * 6-7 /nas2/kuang/img_sources/EPA/get_jpgHourly.cs >& /nas2/kuang/img_sources/EPA/get_jpgHourly.out
 ```
+
+## Things TODO
+
+- 以web形式提供歷史與即時影像的瀏覽
+  - 環境部目前提供單一測站影像、因此同一主題的多站顯示應會是個好主意
+  - 歷史圖片的選擇、播放
+- 煙流的YOLO解析
+- 解析結果與其他環境資訊的連結
+  - 煙流走向與風向、煙流高度與混合層、
+  - 煙流長度、顏色與PM2.5濃度、相對溼度、能見度等的關係
+  - 蒸氣與flare活動、CEMS等的關聯
+- 煙流活動與其他活動量如船運、卡車交通等等之關聯
 
 ## 程式碼
 
