@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 重寫摘要
-parent: 生程式AI協助報告撰寫
+parent: 生成式AI協助報告撰寫
 grand_parent: 自然語言處理
 nav_order: 99
 date: 2023-09-26
@@ -9,7 +9,7 @@ last_modified_date: 2023-09-26 12:07:56
 tags: AI chat report
 ---
 
-# 生程式AI協助重寫是否為抄襲
+# 生成式AI協助重寫是否為抄襲
 {: .no_toc }
 
 <details open markdown="block">
