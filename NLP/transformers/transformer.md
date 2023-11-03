@@ -69,7 +69,7 @@ source: [Vaswani et. al 2017][Vaswani]
 
 ### Attention Is All You Need
 
-{% include question.html content="關於"Attention Is All You Needed"這篇文章你知道多少？" %}
+{% include question.html content="關於 'Attention Is All You Needed'這篇文章你知道多少？" %}
 
 "Attention Is All You Need" 是一篇重要的論文，由[Vaswani][Vaswani]等人於2017年發表，標誌著注意力機制的重大突破，對自然語言處理（NLP）和深度學習領域產生了深遠的影響。 這篇論文提出了一種新的神經網路架構，稱為[Transformer](#轉換器-transformer)，該架構是用於序列到序列（Sequence-to-Sequence，簡稱[Seq2Seq](https://zh.wikipedia.org/zh-hant/Seq2Seq模型)）任務的基礎，如機器翻譯和文字摘要。
 
