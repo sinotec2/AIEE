@@ -1,11 +1,14 @@
 ---
 layout: default
 title: docs
-parent: FastChat的裝置與應用
+parent: FastChat
 grand_parent: NLP
 nav_order: 1
 has_children: true
 permalink: /NLP/FastChat/docs/
+date: 2023-11-04
+last_modified_date: 2023-11-04 10:18:34
+tags: AI chat
 ---
 
 # docs

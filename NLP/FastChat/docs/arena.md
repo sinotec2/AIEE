@@ -4,6 +4,9 @@ title:  Chatbot Arena
 parent:  docs
 grand_parent: FastChat的裝置與應用
 last_modified_date: 2022-04-25 12:20:36
+date: 2023-11-04
+tags: AI chat
+nav_order: 99
 ---
 # Chatbot Arena
 {: .no_toc }

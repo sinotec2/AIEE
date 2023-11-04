@@ -3,7 +3,10 @@ layout: default
 title:  AWQ 4bit Inference
 parent:  docs
 grand_parent: FastChat的裝置與應用
-last_modified_date: 2023-11-02 15:48:15
+last_modified_date: 2023-11-04 10:18:34
+date: 2023-11-04
+tags: AI chat
+nav_order: 99
 ---
 # AWQ 4bit Inference
 {: .no_toc }
