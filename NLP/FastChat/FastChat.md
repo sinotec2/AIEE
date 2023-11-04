@@ -2,6 +2,7 @@
 layout: default
 title: FastChat的裝置與應用
 parent: 自然語言處理
+has_children: true
 nav_order: 99
 date: 2023-09-05
 last_modified_date: 2023-09-05 13:44:37
@@ -91,21 +92,26 @@ tags: AI chat
 - 如不指定host，則會是內設值localhost。如果為localhost，則其他2埠也必須設在localhost，因其他機器都無法存取控制埠。
 - 控制埠與UI埠的關係較為單純，為簡單的一對一。
 - 控制埠與模型作業埠的關係是一對多，因此需要每個作業埠都能呼叫得到的IP。
+- 啟動transformer與其他模組(env name=YOLOv8)
 
 ```bash
+conda activate /nas2/kuang/.conda/envs/YOLOv8
 python3 -m fastchat.serve.controller --host $ip &
 ```
 
 ### 模型作業埠
 
-- model-path可以指定到特定的模型。不一定是lmsys。優秀的公開模型如[lmsys/vicuna-33b-v1.3](https://huggingface.co/lmsys/vicuna-33b-v1.3)、[mosaicml/mpt-30b-chat](https://huggingface.co/mosaicml/mpt-30b-chat)及[WizardLM/WizardLM-13B-V1.1](https://huggingface.co/WizardLM/WizardLM-13B-V1.1)
+- model-path可以指定到特定的模型。不一定是lmsys。優秀的公開模型如[lmsys/vicuna-33b-v1.3](https://huggingface.co/lmsys/vicuna-33b-v1.3)、[mosaicml/mpt-30b-chat](https://huggingface.co/mosaicml/mpt-30b-chat)及[WizardLM/WizardLM-13B-V1.1](https://huggingface.co/WizardLM/WizardLM-13B-V1.1)。或者是中國公開可商用的百川([baichuan-7b](https://blog.csdn.net/jclian91/article/details/131650918)，不過要小心國家認同議題的回覆內容。)
 - 上接控制埠。所有的輸入及輸出都會通過控制埠到(從)UI埠。
 - 同一個控制埠及UI埠可以(同時)接受多個模型作業埠的呼叫，只要將作業開在不同的埠就好了。
 - 必須指定該機器可以提供的device，否則內設為gpu。
 - 模型作業埠的位址似乎沒有特別的作用。提供給測試用而已(詳下)。
 
 ```bash
-python3 -m fastchat.serve.model_worker --model-path lmsys/vicuna-7b-v1.5-16k \
+port=55083
+add="http://${ip}:$port"
+mdl="lmsys/vicuna-7b-v1.5-16k"
+python3 -m fastchat.serve.model_worker --model-path $mdl \
 --host $ip \
 --worker-address $add \
 --controller-address $addc --port $port --device cpu &
@@ -141,6 +147,35 @@ python3 -m fastchat.serve.gradio_web_server --host $ip --port $port1 --controlle
 register_model_info(
     ["gpt-4"], "ChatGPT-4", "https://openai.com/research/gpt-4", "ChatGPT-4 by OpenAI"
 )
+```
+
+### up_fastchat.cs
+
+```bash
+#activate transformer and other modules
+/home/anaconda3/condabin/conda activate /nas2/kuang/.conda/envs/YOLOv8
+
+#LAN IP address
+ip=200.200.32.195
+
+# control portal
+addc="http://${ip}:21001"
+
+# up the controller in background
+python3 -m fastchat.serve.controller --host $ip &
+
+# define the model paths and designated portals
+mdls=( "lmsys/vicuna-7b-v1.5-16k" "jondurbin/airoboros-13b-gpt4-1.4")
+port=( 55080 55081)
+
+#up the model kernerls
+for i in 0 1;do
+  add="http://${ip}:${port[$i]}"
+  python3 -m fastchat.serve.model_worker --model-path ${mdls[$i]} --host $ip --worker-address $add --controller-address $addc --port $port --device cpu &;done
+
+# the webUI python
+port=55083
+python3 -m fastchat.serve.gradio_web_server_multi --host $ip --port $port --controller-url $addc &
 ```
 
 ## 設定成果
