@@ -2,7 +2,7 @@
 layout: default
 title: docs
 parent: FastChat
-grand_parent: NLP
+grand_parent: 自然語言處理
 nav_order: 1
 has_children: true
 permalink: /NLP/FastChat/docs/

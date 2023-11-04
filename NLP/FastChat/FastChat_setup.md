@@ -2,6 +2,7 @@
 layout: default
 title: FastChat的裝置與應用
 parent: fastchat
+grand_parent: 自然語言處理
 nav_order: 99
 date: 2023-09-05
 last_modified_date: 2023-09-05 13:44:37
