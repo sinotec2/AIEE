@@ -2,6 +2,7 @@
 layout: default
 title:  OpenAI-Compatible RESTful APIs & SDK
 parent:  docs
+grand_parent: FastChat的裝置與應用
 last_modified_date: 2023-11-02 15:48:15
 ---
 # OpenAI-Compatible RESTful APIs & SDK

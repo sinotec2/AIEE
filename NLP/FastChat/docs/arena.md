@@ -2,6 +2,7 @@
 layout: default
 title:  Chatbot Arena
 parent:  docs
+grand_parent: FastChat的裝置與應用
 last_modified_date: 2022-04-25 12:20:36
 ---
 # Chatbot Arena
