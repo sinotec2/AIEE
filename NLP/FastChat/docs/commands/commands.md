@@ -8,8 +8,8 @@ has_children: true
 permalink: /NLP/FastChat/docs/commands
 ---
 
-# docs
+# commands
 {: .no_toc }
 
-FastChat Documents
+FastChat commands Documents
 {: .fs-6 .fw-300 }

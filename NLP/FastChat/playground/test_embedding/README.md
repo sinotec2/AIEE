@@ -1,4 +1,6 @@
+
 ## Machine Learning with Embeddings
+
 You can use embeddings to
 - Evaluate text similarity, see [test_sentence_similarity.py](test_sentence_similarity.py)
 - Build your own classifier, see [test_classification.py](test_classification.py)

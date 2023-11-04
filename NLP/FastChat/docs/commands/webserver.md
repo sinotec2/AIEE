@@ -1,12 +1,13 @@
 ---
 layout: default
-title:  Install
+title:  webserver
 parent: commands
 grand_parent:  docs
 last_modified_date: 2022-04-25 12:20:36
 tags: fastchat
 ---
-# Install
+# webserver
+
 {: .no_toc }
 
 <details open markdown="block">
@@ -18,6 +19,8 @@ tags: fastchat
 {:toc}
 </details>
 ---
+
+## Install
 
 ```
 sudo apt update
@@ -34,8 +37,8 @@ cd FastChat
 pip3 install -e .
 ```
 
-
 ### Launch servers
+
 ```
 cd fastchat_logs/controller
 python3 -m fastchat.serve.controller --host 0.0.0.0 --port 21001
@@ -52,35 +55,38 @@ python3 -m fastchat.serve.gradio_web_server_multi --controller http://localhost:
 python3 backup_logs.py
 ```
 
-
 ### Check the launch time
+
 ```
 for i in $(seq 0 11); do cat fastchat_logs/server$i/gradio_web_server.log | grep "Running on local URL" | tail -n 1; done
 ```
 
-
 ### Increase the limit of max open files
+
 One process (do not need reboot)
-```
+
+```bash
 sudo prlimit --nofile=1048576:1048576 --pid=$id
 
 for id in $(ps -ef | grep gradio_web_server | awk '{print $2}'); do echo $id; prlimit --nofile=1048576:1048576 --pid=$id; done
 ```
 
+```bash
 System (need reboot): Add the lines below to `/etc/security/limits.conf`
-```
+
 * hard nofile 65535
 * soft nofile 65535
 ```
 
-
 ### Gradio edit  (3.35.2)
+
 1. gtag and canvas
-```
+
+```bash
 vim /home/vicuna/anaconda3/envs/fastchat/lib/python3.9/site-packages/gradio/templates/frontend/index.html
 ```
 
-```
+```html
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K6D24EE9ED"></script><script>
   window.dataLayer = window.dataLayer || [];
@@ -93,10 +99,11 @@ vim /home/vicuna/anaconda3/envs/fastchat/lib/python3.9/site-packages/gradio/temp
 ```
 
 2. Loading
-```
+
+```bash
 vim /home/vicuna/anaconda3/envs/fastchat/lib/python3.9/site-packages/gradio/templates/frontend/assets/index-188ef5e8.js
 ```
 
-```
+```bash
 %s/"Loading..."/"Loading...(Please refresh if it takes more than 30 seconds)"/g
 ```
