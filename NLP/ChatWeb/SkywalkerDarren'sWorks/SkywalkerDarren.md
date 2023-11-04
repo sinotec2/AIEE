@@ -1,6 +1,6 @@
 ---
 layout: default
-title: SkywalkerDarren ChatWeb in Chinese
+title: SkywalkerDarren
 parent: chatWeb的裝置與應用
 grand_parent: 自然語言處理
 has_children: true
