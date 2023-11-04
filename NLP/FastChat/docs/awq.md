@@ -2,7 +2,7 @@
 layout: default
 title:  AWQ 4bit Inference
 parent:  docs
-grand_parent: FastChat的裝置與應用
+grand_parent: FastChat
 last_modified_date: 2023-11-04 10:18:34
 date: 2023-11-04
 tags: AI chat

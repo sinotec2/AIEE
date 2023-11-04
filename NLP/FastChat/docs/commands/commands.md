@@ -3,7 +3,7 @@ layout: default
 title: commands
 nav_order: 99
 parent:  docs
-grand_parent: FastChat的裝置與應用
+grand_parent: FastChat
 has_children: true
 permalink: /NLP/FastChat/docs/commands
 ---
