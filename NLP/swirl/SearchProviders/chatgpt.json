@@ -1,0 +1,24 @@
+{
+    "name": "ChatGPT - OpenAI",
+    "active": false,
+    "default": true,
+    "connector": "ChatGPT",
+    "url": "",
+    "query_template": "",
+    "query_processors": [
+        "AdaptiveQueryProcessor"
+    ],
+    "query_mappings": "PROMPT='Tell me about: {query_to_provider}'",
+    "result_processors": [
+        "GenericResultProcessor",
+        "CosineRelevancyResultProcessor"
+    ],
+    "response_mappings": "",
+    "result_mappings": "BLOCK=ai_summary",
+    "results_per_query": 10,
+    "credentials": "your-openai-API-key-here",
+    "tags": [
+        "ChatGPT",
+        "Question"
+    ]
+}
