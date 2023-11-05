@@ -1,4 +1,26 @@
+---
+layout: default
+title: ChatWeb
+parent: SkywalkerDarren
+grand_parent: chatWeb的裝置與應用
+nav_order: 99
+date: 2023-08-31
+last_modified_date: 2023-09-22 17:07:25
+tags: AI chat
+---
+
 # ChatWeb
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SkywalkerDarren/chatWeb/blob/master/example.ipynb)
 

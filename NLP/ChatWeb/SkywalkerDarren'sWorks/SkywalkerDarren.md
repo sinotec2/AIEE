@@ -9,7 +9,7 @@ date: 2023-08-31
 last_modified_date: 2023-08-31 10:32:48
 tags: AI chat
 has_children: true
-permalink: /NLP/ChatWeb/SkywalkerDarren
+permalink: /NLP/ChatWeb/SkywalkerDarren'sWorks
 ---
 
 # SkywalkerDarren ChatWeb in Chinese
