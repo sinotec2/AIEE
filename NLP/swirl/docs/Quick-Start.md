@@ -2,6 +2,12 @@
 layout: default
 title: Quick Start Guide
 nav_order: 2
+layout: default
+grand_parent: swirl搜尋引擎
+parent: docs
+date: 2023-11-04
+last_modified_date: 2023-11-04 20:37:49
+tags: AI chat report
 ---
 <details markdown="block">
   <summary>

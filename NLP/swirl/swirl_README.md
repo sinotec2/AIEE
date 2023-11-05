@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 
+title: 原版README
 parent: swirl搜尋引擎
 grand_parent: 自然語言處理
 nav_order: 99
@@ -10,7 +10,7 @@ has_children: true
 tags: AI chat report
 ---
 
-# swirl搜尋引擎+AI
+# swirl README
 {: .no_toc }
 
 <details open markdown="block">
