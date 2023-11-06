@@ -24,7 +24,7 @@ tags: AI chat report
 
 This guide is intended for developers, data scientists, program managers, or anyone who wants to use Swirl, including searching and customizing SearchProviders. 
 
-For background information on Swirl, please review the [Swirl Overview](index.md).
+For background information on Swirl, please review the [Swirl Overview](swirl_index.md).
 
 # Terminology
 

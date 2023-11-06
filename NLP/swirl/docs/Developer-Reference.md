@@ -182,7 +182,7 @@ Only Connectors should create Result objects.
 
 Developers are free to operate on individual Results as needed for their application. 
 
-However, the [goal of Swirl](index.md) (and federated search in general) is to provide unified results from all sources. Swirl uses Mixers to make this quick and easy.
+However, the [goal of Swirl](swirl_index.md) (and federated search in general) is to provide unified results from all sources. Swirl uses Mixers to make this quick and easy.
 
 ## Properties
 

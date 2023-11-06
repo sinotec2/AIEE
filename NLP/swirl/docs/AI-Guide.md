@@ -20,7 +20,7 @@ tags: AI chat report
 
 # AI Retrieval Augmented Generation (RAG) Guide
 
-Swirl supports Real Time [Retrieval Augmented Generation (RAG)](index.md#what-is-retrieval-augmented-generation-rag-does-swirl-support-it) out of the box, using existing search engines, databases and enterprise services. 
+Swirl supports Real Time [Retrieval Augmented Generation (RAG)](swirl_index.md#what-is-retrieval-augmented-generation-rag-does-swirl-support-it) out of the box, using existing search engines, databases and enterprise services. 
 
 ## Intended Audience
 
