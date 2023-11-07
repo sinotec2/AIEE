@@ -43,7 +43,7 @@ tags: AI chat report
 ### 選擇資料庫
 
 - 內設為`All Sources`
-- 可以案性質選擇公衛資料庫(Europe pubmed)、Linkedel、或swirl自家程式文件。
+- 可以案性質選擇公衛資料庫(Europe pubmed)、Linkedin、或swirl自家程式文件。
 
 ### 輸入搜尋字串
 
