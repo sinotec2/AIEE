@@ -225,3 +225,51 @@ At Swirl, every user matters to us. Whether you're a beginner finding your way o
 * 💼 **Request A Connector (Enterprise Support)** Want to see a new connector quickly and fast. Contact the Swirl Team at: [support@swirl.today](mailto:support@swirl.today)
 
 Remember, you're part of our family now. 🌍💙
+
+## 名詞解釋
+
+### swagger
+
+Swagger是一個開源的框架和工具集，用於設計、構建、文檔化和使用RESTful Web服務。Swagger的主要目標是幫助開發人員和團隊更容易地設計和理解API，以及提供一個互動式的方式來測試和使用API。
+
+以下是Swagger的主要特點和功能：
+
+1. **API文檔自動生成：** Swagger允許開發人員通過註釋代碼，自動生成API的詳細文檔，包括端點、請求方法、參數、響應等信息。這使得API的文檔保持最新且易於維護。
+
+2. **互動式API探索：** Swagger UI是Swagger的一個組件，它提供了一個互動式的Web界面，用戶可以在其中瀏覽和測試API端點。這使得開發人員可以輕鬆了解API的用法，而無需依賴其他工具。
+
+3. **程式化的API測試：** Swagger提供了一個程式化的方式來測試API，這對於自動化測試和集成測試非常有用。您可以使用Swagger的工具來發送請求並驗證響應。
+
+4. **支援多種語言和框架：** Swagger支援多種編程語言和Web框架，使其適用於各種技術堆棧。您可以在不同的編程語言中使用Swagger生成和使用API文檔。
+
+5. **集成到開發工具：** Swagger可以集成到許多開發工具中，包括IDE、CI/CD工具和API管理平台，以提高開發和部署效率。
+
+6. **規范化API設計：** Swagger遵循一個稱為OpenAPI Specification的開放標準，這使得API設計和文檔可以具有一致的格式和結構。
+
+總的來說，Swagger是一個用於簡化API開發、文檔化和測試的工具，它使開發人員能夠更容易地理解、使用和共享API。它在許多領域和行業中廣泛應用，並有助於提高API的可靠性和可用性。
+
+### Google Programmable Search Engines (PSEs)
+
+Google Programmable Search Engines（PSEs）是一種由Google提供的自訂搜索引擎服務。它允許開發人員和網站擁有者創建自己的自訂搜索引擎，以便在其網站上提供更有針對性的搜索體驗。以下是有關Google Programmable Search Engines的主要特點和功能：
+
+1. **自定義搜索範圍：** 使用PSEs，您可以指定要搜索的網站範圍，這意味著搜索結果將僅包含您指定的網站內容。這使您能夠提供與特定主題或主題相關的搜索結果。
+
+2. **自訂外觀：** 您可以自訂PSE的外觀，以使其與您的網站風格保持一致。您可以自訂搜索框的外觀、顏色、字體等，以達到視覺一致性。
+
+3. **簡單的集成：** Google Programmable Search Engines可以輕鬆集成到您的網站中，通常只需添加一小段HTML代碼即可。Google提供了相關的文檔和工具，以協助您完成集成。
+
+4. **自訂排名：** 您可以使用自定義排名功能來調整搜索結果的排名，以確保特定內容在搜索結果中更容易找到。
+
+5. **高級搜索功能：** PSEs支援高級搜索功能，如同義詞、排除詞、站內搜索等，以提供更精確的搜索結果。
+
+6. **統計和分析：** 您可以查看關於搜索活動的統計和分析報告，以了解用戶的搜索行為和網站上最受歡迎的內容。
+
+Google Programmable Search Engines是一個強大的工具，可讓網站擁有者為其訪問者提供定制的搜索體驗，並確保他們可以輕鬆找到所需的內容。這對於許多不同類型的網站，包括博客、教育網站、企業網站等都非常有用。
+
+Google Programmable Search Engines（PSEs）提供兩種不同的版本：免費版和付費版。以下是它們的主要區別：
+
+1. **免費版：** 免費版的PSEs允許您創建自訂搜索引擎，但在搜索結果頁面上可能會顯示Google廣告。此外，對於每個搜索查詢，您的PSE每天僅有一定數量的免費查詢限額。
+
+2. **付費版：** 如果您需要更高的搜索查詢限額、自訂搜索結果中無廣告顯示，以及其他高級功能，您可以選擇使用付費版PSEs，也稱為Custom Search JSON API。這需要支付相應的費用，費用取決於您的搜索使用情況和需求。
+
+因此，您可以根據您的需求和預算選擇使用免費版或付費版的PSEs。免費版適用於小型網站或較低的搜索需求，而付費版適用於需要更多功能和高級支援的情況。您可以訪問Google Programmable Search Engines的官方網站以瞭解詳細的價格和計劃信息。
