@@ -1,6 +1,6 @@
 ---
 layout: default
-title: chatgpt_query.py
+title: processors/chatgpt_query.py
 nav_order: 99
 layout: default
 grand_parent: swirl搜尋引擎

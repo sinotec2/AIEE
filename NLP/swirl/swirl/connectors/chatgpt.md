@@ -1,6 +1,6 @@
 ---
 layout: default
-title: chatgpt.py
+title: connectors/chatgpt.py
 nav_order: 99
 layout: default
 grand_parent: swirl搜尋引擎
@@ -59,3 +59,4 @@ tags: AI chat report
 這個類別還包含了一些用於配置和日誌記錄的變量，例如`MODEL_3`, `MODEL_4`, `MODEL`以及`MODEL_DEFAULT_SYSTEM_GUIDE`。這些配置變量允許定制 GPT 模型的使用以及定義系統對話指南。
 
 類別的方法使用 OpenAI 提供的 API 進行交互，並處理來自搜索系統或其他來源的查詢。這個處理包括組裝適當的提示（prompted query），發送給 GPT 模型，並將模型的回應轉換為標準格式的搜索結果。這些結果隨後可以被搜索系統顯示或進一步處理。
+
