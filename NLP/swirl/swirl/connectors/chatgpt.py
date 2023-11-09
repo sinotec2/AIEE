@@ -34,7 +34,7 @@ MODEL = MODEL_3
 ########################################
 ########################################
 
-MODEL_DEFAULT_SYSTEM_GUIDE = "You are a helpful assistant, keeping your response brief and to the point."
+MODEL_DEFAULT_SYSTEM_GUIDE = "You are a helpful assistant, keeping your response brief and to the point. "
 
 class ChatGPT(Connector):
 
