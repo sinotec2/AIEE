@@ -116,9 +116,134 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0')#,port=5000)
 ```
 
-## Query UI
+## interfaces
 
-在 Solr 的使用者介面（UI）中，你可以使用各種參數來建立和執行查詢。 以下是一些常用的參數及其意義：
+### html
+
+這個 HTML 文件是一個使用 Flask 和 Solr 的搜尋頁面範例。
+
+1. 首先,它匯入了 Bootstrap CSS 樣式,以美化頁面樣式。
+2. 然後它有一個表單,可以讓用戶輸入搜尋詞條,並提交表單到根路由 '/'。
+3. 在 Flask 路由中,它會從表單獲取搜索詞條,然後調用 Solr 進行搜尋,並獲取結果。
+4. 它使用 Jinja2 模板語句顯示結果的數量,如果有結果的話,會顯示結果列表。
+5. 列表顯示 Solr 中每個文件的一些字段,比如 ID、名稱、庫存狀態和價格。
+
+這樣就可以實現一個簡單的 Solr 搜索頁面。當用戶提交搜尋時,它會調用 Solr API,並在頁面上顯示匹配的結果。
+
+Flask 提供了路由和視圖,而 Solr 提供了全文搜尋功能。通過將兩者結合,可以快速構建搜索應用。
+
+這個例子中使用的是 Solr Python 客戶端,也可以使用 Flask-Solr 擴展來更方便的整合 Solr。
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+                           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Flask Solr Tutorial</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Flask Solr Tutorial!</h1>
+
+      <form class="form-inline" action="/" method="post">
+        <div class="form-group mx-sm-3 mb-2">
+          <input type="text" class="form-control" name="searchTerm" value="" placeholder="Enter search term(s)">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Search</button>
+      </form>
+
+      <div class="numresults" style="font-weight: bold;">
+        {% if numresults is not none %}
+        Number of Results:
+        <span style="margin-left: 12px;">{{ numresults }}</span>
+        {% endif %}
+      </div>
+
+      {% if results and results|length > 0 %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>In Stock?</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for document in results %}
+              <tr>
+                <td>{{ document['id'] }}</td>
+                <td>{% if document['name'] %}{{ document['name'][0] }}{% endif %}</td>
+                <td>{% if document['inStock']%}{{ document['inStock'][0] }}{% endif %}</td>
+                <td>{% if document['price']%}${{ document['price'][0] }}{% endif %}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% endif %}
+    </div>
+  </body>
+</html>
+
+```
+
+### without html
+
+這裡是一些在 Flask 中整合 Solr 搜尋的方法:
+
+1. 使用 Solr Python 客戶端連接 Solr,執行搜尋,並獲取結果。在 Flask 路由中,可以這樣做:
+
+```python
+from solr import SolrClient
+
+@app.route('/', methods=['GET', 'POST'])
+def search():
+  search_term = request.form.get('searchTerm')
+  
+  solr = SolrClient('http://localhost:8983/solr/')
+  results = solr.query(search_term)
+
+  return render_template('results.html', results=results)
+```
+
+2. 使用 Flask-Solr,一個用於整合 Solr 的 Flask 擴展。你可以創建一個 Solr 實例,執行搜尋並返回結果:
+
+```python 
+from flask_solr import Solr
+
+app.config['SOLR_URL'] = 'http://127.0.0.1:8983/solr'
+solr = Solr(app)
+
+@app.route('/', methods=['GET', 'POST'])  
+def search():
+  search_term = request.form.get('searchTerm')
+  results = solr.search(search_term)
+  return render_template('results.html', results=results)
+```
+
+3. 直接從 Flask 索引數據到 Solr,通過發送更新請求來添加、删除或更新文檔。
+
+```python
+from flask import request 
+import requests
+
+@app.route('/add')
+def add_document():
+  doc = {'id':1234, 'name': '產品'}
+  requests.post('http://localhost:8983/solr/update', data=doc)
+  return '新增文件!'
+```
+
+總結來說,你可以從 Flask 查詢 Solr,或者使用 Flask 管理索引到 Solr 的數據。Python Solr 客戶端或 Flask-Solr 擴展使得整合兩者變得簡單。
+
+### Query UI
+
+在 Solr 的使用者介面（UI）中，你可以使用各種參數來建立和執行查詢，*這些關鍵詞也可以用在RESTful API的指令中*。 以下是一些常用的參數及其意義：
 
 1. **q（Query）參數**：這是用來指定查詢字串的參數。 你可以在這裡定義你的搜尋查詢，以符合文件中的內容。 例如：
 
