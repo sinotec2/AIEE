@@ -80,3 +80,6 @@ permalink: /NLP/ChatWeb
 
 - 用的是huggingface的計算資源，所以解析與推演的速度慢了很多(還有queue的問題)。
 
+### Concensus 與 Elicit
+
+- esor在2023/10 又推介了[elicit與consensus](https://www.playpcesor.com/2023/04/elicit-consensus-ai.html)2款AI輔助英文文獻摘要的彙總服務網站。減省詳細閱讀摘要的時間。
