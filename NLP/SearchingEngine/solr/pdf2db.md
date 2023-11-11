@@ -24,7 +24,88 @@ tags: AI chat report
 
 ## 背景
 
-- 參考網友提供的程式碼及筆記：[Apache Solr for Web Search](https://jekhokie.github.io/solr/docker/flask/docker-compose/2020/06/24/apache-solr-web-search.html)
+- *參考網友提供的程式碼及筆記：[Apache Solr for Web Search](https://jekhokie.github.io/solr/docker/flask/docker-compose/2020/06/24/apache-solr-web-search.html)*
+
+在 Solr 中，管理 collection 內的文件通常涉及以下幾個主要操作：
+
+1. **新增文件**：將新文檔新增至 Solr collection 中。 您可以使用 Solr 的 API 或客戶端工具來新增文件。 通常，文件以 JSON、XML 或其他支援的格式傳送至 Solr，並透過 HTTP POST 請求或其他協定進行新增。
+
+2. **更新文檔**：如果需要更新已經存在的文檔，您可以傳送具有相同唯一識別（通常是文檔 ID）的文檔，並指示 Solr 更新現有文檔的內容。
+
+3. **刪除文件**：從 collection 中刪除文檔。 您可以依照文檔 ID 或其他標識符來刪除文檔。 Solr 支援單一文件的刪除、按查詢條件批次刪除以及刪除整個 collection。
+
+4. **查詢文件**：使用 Solr 的查詢功能來檢索文件。 您可以建立查詢，根據文件的欄位內容進行搜索，並取得與查詢相符的文件。
+
+5. **索引最佳化**：Solr 允許您對索引執行最佳化操作，以提高查詢效能。 您可以合併索引段、最佳化索引結構等。
+
+6. **備份與還原**：定期備份 Solr collection 的資料是一個重要的管理任務，以便在發生資料遺失或故障時進行還原。
+
+7. **監控與維護**：監視 collection 的效能和狀態，確保叢集正常運作。 您可以使用 Solr 提供的監控工具來實現這一點。
+
+8. **安全性管理**：確保 Solr collection 的資料得到適當的安全保護，以防止未經授權的存取和潛在的資料外洩。
+
+這些操作通常透過 Solr 的 API 或 Solr 用戶端工具（如 SolrJ、curl 等）來執行。 Solr 提供了豐富的功能和工具，以便於文件的管理和維護，使其成為強大的全文搜尋引擎和文件儲存解決方案。
+
+在 Solr 中，文件的管理主要是通過 Zookeeper 來實現的。Zookeeper 是一種分布式服務，用於維護配置信息、命名、提供分布式同步和提供組服務¹²³⁴。
+
+在 SolrCloud 集群模式下，`solrconfig.xml` 和 `schema.xml` 等配置文件都由 Zookeeper 集群管理⁴。因此，你需要將 SolrCloud 的配置文件上傳到 Zookeeper 中³。這可以通過命令行工具來實現³。
+
+在 Solr 中，你可以使用 API 來管理集群，包括創建和刪除集合 (Collection)、分片 (Shard) 和副本 (Replica)。例如，你可以使用以下命令來創建一個新的集合¹：
+
+```bash
+curl 'http://localhost:8080/solr/admin/collections?action=CREATE&name=mycollection&numShards=3&replicationFactor=4'
+```
+
+你也可以使用類似的命令來刪除集合¹：
+
+```bash
+curl 'http://localhost:8080/solr/admin/collections?action=DELETE&name=collection1&indent=true'
+```
+
+請注意，這些操作都需要在終端中進行，並且 curl 之後的內容需要加單引號或雙引號¹。
+
+在管理文件時，你應該根據你的具體需求來選擇適當的工具和方法。如果需要更詳細的信息，建議你參考相關的專業文檔或者尋求專業人士的幫助¹²³⁴。
+
+來源: 與 Bing 的交談， 2023/11/12
+(1) Solr 13 - 管理SolrCloud集群 (创建集合、添加副本、切割分片、更新配置) - 瘦风 - [博客园](https://www.cnblogs.com/shoufeng/p/10569644.html).
+(2) SolrCloud中的文件与Collection管理_solr的collection的备份-[CSDN博客](https://blog.csdn.net/makang110/article/details/52189002).
+(3) solr创建collection - judy999 - [博客园](https://www.cnblogs.com/judylucky/p/5692230.html).
+(4) Solr集群更新配置的方式 - 小得盈满 - [博客园](https://www.cnblogs.com/freeweb/p/5282823.html).
+(5) [undefined](http://wiki.apache.org/solr/SolrCloud).
+
+## 開放工具
+
+在 Solr 中，你可以使用以下的工具來管理集群，包括創建和刪除集合 (Collection)、分片 (Shard) 和副本 (Replica)：
+
+1. **Solr Admin UI**：Solr 提供了一個內建的管理界面，你可以在瀏覽器中訪問它來管理你的 Solr 集群¹。
+
+2. **命令行工具**：你可以使用 curl 或其他 HTTP 客戶端工具來發送請求到 Solr 的 API。例如，你可以使用以下命令來創建一個新的集合¹：
+```bash
+curl 'http://localhost:8080/solr/admin/collections?action=CREATE&name=mycollection&numShards=3&replicationFactor=4'
+```
+你也可以使用類似的命令來刪除集合¹：
+```bash
+curl 'http://localhost:8080/solr/admin/collections?action=DELETE&name=collection1&indent=true'
+```
+
+3. **ZkCLI 工具**：這是一個命令行工具，可以用來管理存儲在 Zookeeper 中的 Solr 配置。例如，你可以使用以下命令來上傳配置文件到 Zookeeper⁴：
+```bash
+java -classpath.:/usr/solrCloud/conf/lib/* org.apache.solr.cloud.ZkCLI -cmd upconfig -zkhost 192.168.27.18:2181,192.168.27.18:2182,192.168.27.18:2183 -confdir /usr/solrCloud/conf/files -confname myconf
+```
+
+請注意，這些工具主要用於開發和測試，並不適合用於生產環境。在選擇工具時，你應該考慮你的具體需求，例如 [S3](#s3) 的特定功能、性能需求等。¹²³⁴。
+
+來源: 與 Bing 的交談， 2023/11/12
+(1) SolrCloud中的文件与Collection管理-[CSDN博客](https://blog.csdn.net/xiatianba/article/details/84660524).
+(2) SolrCloud中的文件与Collection管理 - 飞扬的薰衣草 - [博客园](https://www.cnblogs.com/flybird2014/p/4093051.html).
+(3) Solr 13 - 管理SolrCloud集群 (创建集合、添加副本、切割分片、更新配置) - 瘦风 - [博客园](https://www.cnblogs.com/shoufeng/p/10569644.html).
+(4) solr创建collection - judy999 - [博客园](https://www.cnblogs.com/judylucky/p/5692230.html).
+(5) [undefined](http://eksliang.iteye.com/blog/2124078).
+(6) [undefined](http://eksliang.iteye.com/).
+(7) [undefined](http://wiki.apache.org/solr/SolrCloud).
+(8) [undefined](http://192.168.27.18:8081/solr/admin/collections?action=RELOAD&name=collection1).
+
+## pdf內容的提取
 
 Solr可以通過以下兩種主要方式對PDF文件進行索引和搜索:
 
@@ -96,6 +177,46 @@ Solr 具有內建的 Tika 提取器，可用於從各種文件格式中提取文
 請注意，具體的配置方式可能會因 Solr 和 Tika 版本而異。 因此，建議查看您正在使用的 Solr 和 Tika 的文檔以獲取詳細資訊。 此外，PDF 文件的結構和內容也可能因文件的具體格式和產生方式而異，可能需要根據具體情況進行調整。
 
 ## 名詞解釋
+
+### Solr CRDs
+
+Custom Resource Definitions (CRDs) 是 [Kubernetes](#kubernetes) 中的一個擴展概念，用於定義自定義資源類型，允許您擴展 Kubernetes 的能力以管理非常規的應用程序或資源。
+
+在 Solr 的情境中，Solr CRDs 是 Kubernetes 中的一種自定義資源，用於管理 Solr 的部署、服務和其他相關資源。Solr 是一個開源的全文搜索平臺，可用於搜索和分析大量的文本數據。使用 Solr CRDs，您可以在 Kubernetes 中定義 Solr 的配置，並使用它來創建和管理 Solr 集群。
+
+以下是 Solr CRDs 的一些示例：
+
+1. **SolrCloud:** SolrCloud CRD 用於定義 SolrCloud 集群的配置，包括節點數、配置文件等。
+
+2. **SolrBackup:** SolrBackup CRD 用於定義 Solr 數據的備份策略和計劃。
+
+3. **SolrCollection:** SolrCollection CRD 用於定義 Solr 集合（collection）的配置，包括分片數、副本數等。
+
+4. **SolrConfigMap:** SolrConfigMap CRD 用於定義 Solr 的配置文件，例如 solrconfig.xml 和 schema.xml。
+
+5. **SolrPrometheusExporter:** SolrPrometheusExporter CRD 用於定義 Solr 監控指標的配置，以便將監控數據收集到 Prometheus 中。
+
+使用 Solr CRDs，您可以更方便地在 Kubernetes 環境中部署和管理 Solr 集群，並為 Solr 提供高可用性、擴展性和自動化。這使得在 Kubernetes 上運行 Solr 變得更容易，並提供了一個標準化的方式來管理 Solr 資源。
+
+### Solr TLS
+
+Solr 支援使用 TLS（Transport Layer Security）來加密通信，以提供更安全的資料傳輸。 透過設定 Solr 來啟用 TLS，您可以確保在 Solr 叢集的各個元件之間進行通訊時，資料在傳輸過程中是加密的，從而提高資料的安全性。
+
+要啟用 Solr 的 TLS 支持，您需要執行以下關鍵步驟：
+
+1. **準備 TLS 憑證和金鑰**：首先，您需要取得有效的 TLS 憑證和私鑰，可以透過自簽章憑證、公用 CA（憑證授權單位）所頒發的憑證等方式來取得。
+
+2. **設定 Solr**：在 Solr 的設定檔中，您需要指定 TLS 憑證和金鑰的位置，以及其他與 TLS 相關的設定。 主要的設定檔是 `solr.in.sh` 或 `solr.in.cmd`（具體檔名可能因 Solr 版本而異）。
+
+3. **重啟 Solr**：設定完成後，需要重新啟動 Solr 以套用新的 TLS 設定。
+
+4. **客戶端設定**：如果您的應用程式是 Solr 的客戶端，也需要確保客戶端能夠正確地使用 TLS 進行連線。 這可能需要您設定客戶端以使用正確的 TLS 設定。
+
+5. **測試**：最後，您應該對 Solr 叢集進行測試，以確保 TLS 正確運作。 您可以使用 `curl`、Solr 的官方用戶端或其他工具來測試連線和查詢。
+
+具體的配置和步驟可能會因 Solr 版本和您的環境而異，因此建議參考 Solr 的官方文件和特定版本的文件來了解詳細的配置細節。
+
+總之，Solr 的 TLS 支援提供了一種加密通訊的方式，可以幫助保護資料在傳輸過程中的安全性。 這在需要對敏感資料進行搜尋和索引的應用程式中特別重要。
 
 ### Kubernetes
 
@@ -193,7 +314,7 @@ Solr Operator 是一種運行在 Kubernetes 上的自定義運算元（Custom Re
 
 總之，Solr Operator 的出現使得在 Kubernetes 環境中部署和管理 Solr 叢集更加簡單和高效，並確保了 Solr 叢集的穩定運行和高可用性。這對於那些使用 Solr 進行全文搜索的應用程序來說是一個有價值的工具。
 
-### s3
+### s3 雲端與地端
 
 S3 Storage 指的是 Amazon Simple Storage Service（簡稱 Amazon S3），它是由亞馬遜網絡服務（Amazon Web Services，AWS）提供的一種雲端儲存服務。Amazon S3 是一個高度可擴展的對象儲存服務，它允許用戶在雲端中存儲和檢索數據，無論是文本、圖像、視頻、應用程序代碼還是其他類型的數據。
 
@@ -334,4 +455,20 @@ Kubernetes 的 Persistent Volume (PV) 的大小是由 PersistentVolumeClaim (PVC
 (3) Day26 了解 K8S 的 Volumes & StorageClass - [iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10224623).
 (4) Persistent Volumes | [Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 (5) PersistentVolumeClaim | [Kubernetes](https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-claim-v1/).
+
+### Kubernetes VS docker
+
+Kubernetes 和 Docker 都是容器技術的相關工具，但它們有不同的作用和用途。
+
+**Docker:**
+1. **容器技術的引擎：** Docker 是一個開源的容器技術引擎，允許您創建、管理和運行容器。
+2. **單一容器管理：** Docker 主要用於創建和管理單個容器。容器是一個輕量級的環境，包括應用程序及其相依性，可以在不同的環境中運行，確保應用程序的一致性。
+3. **開發者導向：** Docker 受到開發人員的喜愛，因為它簡化了應用程序的打包和部署，使開發人員能夠更容易地構建和測試應用程序。
+
+**Kubernetes:**
+1. **容器編排平臺：** Kubernetes 是一個容器編排平臺，用於自動化容器的部署、維護和擴展。它可以管理多個容器，協調它們的運行，並確保高可用性。
+2. **集群管理：** Kubernetes 管理多個容器的集群，可以跨多個主機上運行，並提供自動擴展和負載平衡功能。
+3. **運維導向：** Kubernetes 主要針對運維人員，用於管理大規模的容器應用程序和服務，提供自動化、伸縮性和高可用性。
+
+總結來說，Docker 是容器技術的引擎，專注於容器的創建和管理，適用於開發人員。而 Kubernetes 則是一個容器編排平臺，用於管理大型容器應用程序和服務的部署和運營，適用於運維團隊。通常，它們可以一起使用，Kubernetes 使用 Docker 來運行容器。因此，選擇取決於您的需求，如果您需要自動化管理容器集群，Kubernetes 可能是更好的選擇，而如果您只需要單個容器的管理，Docker 可能足夠。
 
