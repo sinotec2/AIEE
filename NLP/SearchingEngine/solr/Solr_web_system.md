@@ -2,7 +2,7 @@
 layout: default
 title: Solr web system
 parent: solr
-grand_parent: 自然語言處理
+grand_parent: SearchingEngine
 nav_order: 99
 date: 2023-11-01
 last_modified_date: 2023-11-01 09:01:10
