@@ -164,7 +164,7 @@ Flask 提供了路由和視圖,而 Solr 提供了全文搜尋功能。通過將�
         \{% endif %\}
       </div>
 
-      {% if results and results|length > 0 %}
+      \{% if results and results|length > 0 %\}
         <table class="table">
           <thead>
             <tr>
@@ -175,17 +175,17 @@ Flask 提供了路由和視圖,而 Solr 提供了全文搜尋功能。通過將�
             </tr>
           </thead>
           <tbody>
-            {% for document in results %}
+            \{% for document in results %\}
               <tr>
                 <td>{{ document['id'] }}</td>
-                <td>{% if document['name'] %}{{ document['name'][0] }}{% endif %}</td>
-                <td>{% if document['inStock']%}{{ document['inStock'][0] }}{% endif %}</td>
-                <td>{% if document['price']%}${{ document['price'][0] }}{% endif %}</td>
+                <td>\{% if document['name'] %\}{{ document['name'][0] }}{% endif %}</td>
+                <td>\{% if document['inStock']%\}{{ document['inStock'][0] }}{% endif %}</td>
+                <td>\{% if document['price']%\}${{ document['price'][0] }}\{% endif %\}</td>
               </tr>
-            {% endfor %}
+            \{% endfor %\}
           </tbody>
         </table>
-      {% endif %}
+      \{% endif %\}
     </div>
   </body>
 </html>
