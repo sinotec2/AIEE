@@ -158,7 +158,7 @@ Flask 提供了路由和視圖,而 Solr 提供了全文搜尋功能。通過將�
       </form>
 
       <div class="numresults" style="font-weight: bold;">
-        {% if numresults is not none %}
+        \{% if numresults is not none %\}
         Number of Results:
         <span style="margin-left: 12px;">{{ numresults }}</span>
         {% endif %}
@@ -189,7 +189,6 @@ Flask 提供了路由和視圖,而 Solr 提供了全文搜尋功能。通過將�
     </div>
   </body>
 </html>
-
 ```
 
 ### without html
@@ -213,7 +212,7 @@ def search():
 
 2. 使用 Flask-Solr,一個用於整合 Solr 的 Flask 擴展。你可以創建一個 Solr 實例,執行搜尋並返回結果:
 
-```python 
+```python
 from flask_solr import Solr
 
 app.config['SOLR_URL'] = 'http://127.0.0.1:8983/solr'
