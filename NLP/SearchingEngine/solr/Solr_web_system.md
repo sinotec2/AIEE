@@ -178,8 +178,8 @@ Flask 提供了路由和視圖,而 Solr 提供了全文搜尋功能。通過將�
             \{% for document in results %\}
               <tr>
                 <td>{{ document['id'] }}</td>
-                <td>\{% if document['name'] %\}{{ document['name'][0] }}{% endif %}</td>
-                <td>\{% if document['inStock']%\}{{ document['inStock'][0] }}{% endif %}</td>
+                <td>\{% if document['name'] %\}{{ document['name'][0] }}\{% endif %\}</td>
+                <td>\{% if document['inStock']%\}{{ document['inStock'][0] }}\{% endif %\}</td>
                 <td>\{% if document['price']%\}${{ document['price'][0] }}\{% endif %\}</td>
               </tr>
             \{% endfor %\}
