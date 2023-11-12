@@ -161,7 +161,7 @@ Flask 提供了路由和視圖,而 Solr 提供了全文搜尋功能。通過將�
         \{% if numresults is not none %\}
         Number of Results:
         <span style="margin-left: 12px;">{{ numresults }}</span>
-        {% endif %}
+        \{% endif %\}
       </div>
 
       {% if results and results|length > 0 %}
