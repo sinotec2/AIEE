@@ -1,6 +1,6 @@
 ---
 layout: default
-title: manage.py
+title: swirl.py
 parent: swirl搜尋引擎
 grand_parent: 自然語言處理
 nav_order: 99
@@ -10,7 +10,7 @@ has_children: true
 tags: AI chat report
 ---
 
-# manage.py
+# swirl.py
 {: .no_toc }
 
 <details open markdown="block">
@@ -26,13 +26,18 @@ tags: AI chat report
 ## 背景
 
 - 系統之啟動、關閉、再啟動、狀態：`python swirl.py start/stop/restart/status`
-- celery-beats
-- elery-worker
+- celery 部分啟動
+  - celery-beats：`python swirl.py start celery-beats`
+  - elery-worker：`python swirl.py restart celery-worker consumer`
+- help：`python swirl.py help`
+- debug mode：
+  - `python swirl.py --debug start`
+  - 畫面會從`Daphne`切換到一個內設的Django webserver (`runserver`)
 - 程式的使用詳見[using swirl.py](https://sinotec2.github.io/AIEE/NLP/swirl/docs/Admin-Guide/#using-swirlpy)
 
 ## 程式說明
 
-這個 Python 腳本是 Swirl 伺服器的管理工具。以下是對代碼的簡要說明：
+這個 Python 腳本([swirl.py](./swirl.py))是 Swirl 伺服器*執行*管理的工具。以下是對代碼的簡要說明：
 
 1. **導入模組**：包括處理正則表達式、命令行參數、系統操作、子進程、時間等功能的模組。
 
@@ -57,4 +62,4 @@ tags: AI chat report
 
 5. **腳本功能**：這個腳本使得用戶能夠通過命令行管理 Swirl 伺服器，包括啟動、停止、重啟服務，查看狀態和日誌，執行數據庫遷移等。
 
-總的來說，這是一個為管理 Swirl 伺服器提供方便的命令行工具，適用於伺服器的部署和維護。
+總的來說，這是一個為管理 Swirl 伺服器提供方便的命令列工具，適用於*運作*伺服器的部署和維護。
