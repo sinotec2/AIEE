@@ -26,6 +26,10 @@ tags: AI chat report
 
 - *參考網友提供的程式碼及筆記：[Apache Solr for Web Search](https://jekhokie.github.io/solr/docker/flask/docker-compose/2020/06/24/apache-solr-web-search.html)*
 
+- collection文件之管理
+
+### GPT3.5 
+
 在 Solr 中，管理 collection 內的文件通常涉及以下幾個主要操作：
 
 1. **新增文件**：將新文檔新增至 Solr collection 中。 您可以使用 Solr 的 API 或客戶端工具來新增文件。 通常，文件以 JSON、XML 或其他支援的格式傳送至 Solr，並透過 HTTP POST 請求或其他協定進行新增。
@@ -45,6 +49,8 @@ tags: AI chat report
 8. **安全性管理**：確保 Solr collection 的資料得到適當的安全保護，以防止未經授權的存取和潛在的資料外洩。
 
 這些操作通常透過 Solr 的 API 或 Solr 用戶端工具（如 SolrJ、curl 等）來執行。 Solr 提供了豐富的功能和工具，以便於文件的管理和維護，使其成為強大的全文搜尋引擎和文件儲存解決方案。
+
+### bingchat
 
 在 Solr 中，文件的管理主要是通過 Zookeeper 來實現的。Zookeeper 是一種分布式服務，用於維護配置信息、命名、提供分布式同步和提供組服務¹²³⁴。
 
@@ -67,10 +73,15 @@ curl 'http://localhost:8080/solr/admin/collections?action=DELETE&name=collection
 在管理文件時，你應該根據你的具體需求來選擇適當的工具和方法。如果需要更詳細的信息，建議你參考相關的專業文檔或者尋求專業人士的幫助¹²³⁴。
 
 來源: 與 Bing 的交談， 2023/11/12
+
 (1) Solr 13 - 管理SolrCloud集群 (创建集合、添加副本、切割分片、更新配置) - 瘦风 - [博客园](https://www.cnblogs.com/shoufeng/p/10569644.html).
+
 (2) SolrCloud中的文件与Collection管理_solr的collection的备份-[CSDN博客](https://blog.csdn.net/makang110/article/details/52189002).
+
 (3) solr创建collection - judy999 - [博客园](https://www.cnblogs.com/judylucky/p/5692230.html).
+
 (4) Solr集群更新配置的方式 - 小得盈满 - [博客园](https://www.cnblogs.com/freeweb/p/5282823.html).
+
 (5) [undefined](http://wiki.apache.org/solr/SolrCloud).
 
 ## 開放工具
@@ -80,10 +91,13 @@ curl 'http://localhost:8080/solr/admin/collections?action=DELETE&name=collection
 1. **Solr Admin UI**：Solr 提供了一個內建的管理界面，你可以在瀏覽器中訪問它來管理你的 Solr 集群¹。
 
 2. **命令行工具**：你可以使用 curl 或其他 HTTP 客戶端工具來發送請求到 Solr 的 API。例如，你可以使用以下命令來創建一個新的集合¹：
+
 ```bash
 curl 'http://localhost:8080/solr/admin/collections?action=CREATE&name=mycollection&numShards=3&replicationFactor=4'
 ```
+
 你也可以使用類似的命令來刪除集合¹：
+
 ```bash
 curl 'http://localhost:8080/solr/admin/collections?action=DELETE&name=collection1&indent=true'
 ```
@@ -96,20 +110,28 @@ java -classpath.:/usr/solrCloud/conf/lib/* org.apache.solr.cloud.ZkCLI -cmd upco
 請注意，這些工具主要用於開發和測試，並不適合用於生產環境。在選擇工具時，你應該考慮你的具體需求，例如 [S3](#s3) 的特定功能、性能需求等。¹²³⁴。
 
 來源: 與 Bing 的交談， 2023/11/12
+
 (1) SolrCloud中的文件与Collection管理-[CSDN博客](https://blog.csdn.net/xiatianba/article/details/84660524).
+
 (2) SolrCloud中的文件与Collection管理 - 飞扬的薰衣草 - [博客园](https://www.cnblogs.com/flybird2014/p/4093051.html).
+
 (3) Solr 13 - 管理SolrCloud集群 (创建集合、添加副本、切割分片、更新配置) - 瘦风 - [博客园](https://www.cnblogs.com/shoufeng/p/10569644.html).
+
 (4) solr创建collection - judy999 - [博客园](https://www.cnblogs.com/judylucky/p/5692230.html).
+
 (5) [undefined](http://eksliang.iteye.com/blog/2124078).
+
 (6) [undefined](http://eksliang.iteye.com/).
+
 (7) [undefined](http://wiki.apache.org/solr/SolrCloud).
+
 (8) [undefined](http://192.168.27.18:8081/solr/admin/collections?action=RELOAD&name=collection1).
 
 ## pdf內容的提取
 
 Solr可以通過以下兩種主要方式對PDF文件進行索引和搜索:
 
-1. 使用Tika提取器
+1. 使用[Tika提取器](https://solr.apache.org/guide/6_6/uploading-data-with-solr-cell-using-apache-tika.html)
 
 Solr內置了Tika提取器,可以分析和解析PDF文檔的內容和元資料。在Solr的schema.xml文件中配置提取器,Tika就可以自動解析PDF文檔,並抽取出文本內容和元資料以供Solr索引。
 

@@ -24,7 +24,7 @@ tags: AI chat report
 
 ## 背景
 
-![lucent principle](https://img-blog.csdn.net/20160422100220397)
+![lucent principle](2023-11-13-12-01-25.png)
 
 ([source](https://blog.csdn.net/and1kaney/article/details/51214040))
 
