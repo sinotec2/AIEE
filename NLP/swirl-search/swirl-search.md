@@ -6,7 +6,7 @@ nav_order: 99
 date: 2023-11-04
 last_modified_date: 2023-11-04 20:37:49
 has_children: true
-permalink: /NLP/swirl
+permalink: /NLP/swirl-search
 tags: AI chat report
 ---
 
