@@ -6,7 +6,7 @@ nav_order: 99
 date: 2023-10-09
 last_modified_date: 2023-10-09 17:19:54
 has_children: true
-permalink: /NLP/copy.ai
+permalink: /NLP/copy_ai
 tags: AI chat report
 ---
 
