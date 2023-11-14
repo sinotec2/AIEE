@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 使用者介面
-parent: copy.ai
+parent: copy.ai撰寫文案
 grand_parent: 自然語言處理
 nav_order: 99
 date: 2023-11-14
