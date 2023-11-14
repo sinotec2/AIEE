@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 文章之發展
+title: 文章之發展與拼貼
 parent: copy.ai撰寫文案
 grand_parent: 自然語言處理
 nav_order: 99
@@ -9,7 +9,7 @@ last_modified_date: 2023-11-14 11:44:33
 tags: AI chat report
 ---
 
-# 文章之發展
+# 文章之發展與拼貼
 {: .no_toc }
 
 <details open markdown="block">
