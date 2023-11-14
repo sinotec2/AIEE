@@ -58,8 +58,8 @@ tags: AI chat report
 
 ### 自動化專區
 
-- 這部分是新增的功能。免費方案雖然也可以執行，但有credit上限的限制。
-- `Repurpose Blog Cont`：部落格版主常常需要再不同的社群媒體發表同一主題的內容，但因為對向據有差異性，目的也略有不同，改寫是一大工程。這個自動化的流程可以產生LinkedIn、twitter、Facebook、Instagram、與email行銷版本的內容。
+- 這部分是新增的功能。免費方案雖然也可以執行，但有credit的上限。
+- `Repurpose Blog Cont`：部落格版主常常需要在不同的社群媒體發表同一主題的內容，因為對象略有差異，目的也略有不同，因此每次需要改寫，都會是一大工程。這個自動化的流程可以產生LinkedIn、twitter、Facebook、Instagram、與（或）email行銷版本的內容。
 - `Company Research Enrichment`：針對特定公司的技術、新聞、規模、職缺等等，進行公司研究與報告。因為對象公司(競爭對手)如果很多，這也會是一個需要自動化的工作流程。
 - `Write Blog Post`：條列主要的發現或者亮點，AI寫手就自動產生部落格文章並張貼。
 - `Competitor Analysis Report`：這個功能特別針對軟體開發公司的產品部落格進行解讀與報告。為使評估更加客觀，工作流程中還會訪問g2網站，從該網站擷取評論納入報告中。
