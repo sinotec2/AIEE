@@ -26,7 +26,7 @@ tags: AI chat report
 ## 背景
 
 - 用在新增搜尋對象時，會需要將提供者的連結方式、搜尋結果送往AI解讀的傳送設定等等細節，載入系統程式之中。
-- 使用方式詳見[Bulk Loading](https://sinotec2.github.io/AIEE/NLP/swirl/docs/User-Guide/#bulk-loading)
+- 使用方式詳見[Bulk Loading](https://sinotec2.github.io/AIEE/NLP/swirl-search/docs/User-Guide/#bulk-loading)
 1. 先準備好連結設定檔。可以參考模版設定。
    1. 可以直接編輯`SearchProvider/...json`
    2. 也可以使用專用界面` http://localhost:8000/swirl/searchproviders/{id}/`.`id`為`preloaded.json`內的序號。
@@ -34,7 +34,7 @@ tags: AI chat report
 3. 如不重新安裝，就只能新增功能、以新的檔案內容覆蓋舊的設定（關閉或開啟）。
 4. 需要`admin`身分與密碼才能改變設定。
 
-![wirl_sp_instance](https://sinotec2.github.io/AIEE/NLP/swirl/docs/images/swirl_sp_instance.png)
+![wirl_sp_instance](https://sinotec2.github.io/AIEE/NLP/swirl-search/docs/images/swirl_sp_instance.png)
 
 ```bash
 python swirl_load.py SearchProviders/provider-name.json -u admin -p your-admin-password

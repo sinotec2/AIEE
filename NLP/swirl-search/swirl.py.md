@@ -33,7 +33,7 @@ tags: AI chat report
 - debug mode：
   - `python swirl.py --debug start`
   - 畫面會從`Daphne`切換到一個內設的Django webserver (`runserver`)
-- 程式的使用詳見[using swirl.py](https://sinotec2.github.io/AIEE/NLP/swirl/docs/Admin-Guide/#using-swirlpy)
+- 程式的使用詳見[using swirl.py](https://sinotec2.github.io/AIEE/NLP/swirl-search/docs/Admin-Guide/#using-swirlpy)
 
 ## 程式說明
 
