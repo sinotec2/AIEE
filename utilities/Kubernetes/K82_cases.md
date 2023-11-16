@@ -1,11 +1,12 @@
 ---
-title: K82_cases
-tags: AI
 layout: default
+title: K82_cases
 parent: Kubernetes
 grand_parent: utilities
+nav_order: 99
 date:  2023-09-26
 modify_date: 2023-09-26 14:45:42
+tags: AI
 ---
 
 # K82_cases
