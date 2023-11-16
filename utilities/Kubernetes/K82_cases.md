@@ -2,7 +2,8 @@
 title: K82_cases
 tags: AI
 layout: default
-parent: Utilities
+parent: Kubernetes
+grand_parent: utilities
 date:  2023-09-26
 modify_date: 2023-09-26 14:45:42
 ---
