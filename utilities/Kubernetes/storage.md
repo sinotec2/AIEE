@@ -59,5 +59,5 @@ Kubernetes（通常簡稱為K8s）是一個用於自動部署、擴展和管理�
 
 6. **開源和社區支持：** Ceph 是一個開源項目，具有強大的社區支持和活躍的開發者生態系統。這意味著它持續發展，並且有許多支援工具和插件可供使用。
 
-- 一次搞懂Ceph儲存架構與應用形式[(李宗翰 | 2015-09-29發表)](https://www.ithome.com.tw/tech/98860)
-  - 
+- 一次搞懂Ceph儲存架構與應用形式[(李宗翰2015-09-29發表)](https://www.ithome.com.tw/tech/98860)
+- All-In-One Ceph by [Dennis Lee May 29, 2020](https://medium.com/@dennislee22/all-in-one-ceph-2552f336420e)
