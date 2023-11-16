@@ -2,7 +2,7 @@
 layout: default
 title: Kubernetes之執行
 parent: Kubernetes
-grand_parent: utilities
+grand_parent: Utilities
 nav_order: 99
 date: 2023-11-16
 last_modified_date: 2023-11-16 04:50:52

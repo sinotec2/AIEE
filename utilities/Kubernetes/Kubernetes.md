@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Kubernetes
-parent: utilities
+parent: Utilities
 nav_order: 99
 date: 2023-11-16
 last_modified_date: 2023-11-16 04:47:56
