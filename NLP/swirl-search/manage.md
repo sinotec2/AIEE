@@ -26,13 +26,13 @@ tags: AI chat report
 ## 背景
 
 - 以命令列執行swirl的重要管理工作。
-  - [新增使用者名稱](https://sinotec2.github.io/AIEE/NLP/swirl/docs/Admin-Guide/#creating-a-swirl-super-user)
-  - [changepassword](https://sinotec2.github.io/AIEE/NLP/swirl/docs/Admin-Guide/#changing-a-super-user-password)
+  - [新增使用者名稱](https://sinotec2.github.io/AIEE/NLP/swirl-search/docs/Admin-Guide/#creating-a-swirl-super-user)
+  - [changepassword](https://sinotec2.github.io/AIEE/NLP/swirl-search/docs/Admin-Guide/#changing-a-super-user-password)
 - django系統管理
-  - [Setup Django or migrate](https://sinotec2.github.io/AIEE/NLP/swirl/docs/Admin-Guide/#mac-osx-or-linux)
-  - [啟動Django dbshell](https://sinotec2.github.io/AIEE/NLP/swirl/docs/Admin-Guide/#django-dbshell)
-  - [Wiping the Database](https://sinotec2.github.io/AIEE/NLP/swirl/docs/Admin-Guide/#wiping-the-database)
-- [重建Galaxy UI檔案](https://sinotec2.github.io/AIEE/NLP/swirl/docs/Quick-Start/#notes-1)
+  - [Setup Django or migrate](https://sinotec2.github.io/AIEE/NLP/swirl-search/docs/Admin-Guide/#mac-osx-or-linux)
+  - [啟動Django dbshell](https://sinotec2.github.io/AIEE/NLP/swirl-search/docs/Admin-Guide/#django-dbshell)
+  - [Wiping the Database](https://sinotec2.github.io/AIEE/NLP/swirl-search/docs/Admin-Guide/#wiping-the-database)
+- [重建Galaxy UI檔案](https://sinotec2.github.io/AIEE/NLP/swirl-search/docs/Quick-Start/#notes-1)
 
 ## 程式說明
 
