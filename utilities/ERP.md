@@ -35,3 +35,9 @@ ERP 代表企業資源規劃（Enterprise Resource Planning）。這是一種集
 5. **Tryton：** 一個模塊化和高度可定制的開源ERP系統，適用於各種行業。
 
 請注意，選擇ERP系統應基於組織的需求、規模和行業特性。開源ERP解決方案通常提供更靈活的選擇，但實施和維護仍然需要謹慎考慮。
+
+### Odoo 作為學習跳板
+
+[Odoo S.A. 宣佈獲 General Atlantic 投資 1.5 億歐元，持續支持全球增長](https://www.odoo.com/zh_TW/blog/odoo-news-5/odoo-s-a-xuan-bu-huo-general-atlantic-tou-zi-1-5-yi-ou-yuan-chi-xu-zhi-chi-quan-qiu-zeng-chang-1085)
+[](https://www.zhihu.com/question/271524194?utm_id=0)
+
