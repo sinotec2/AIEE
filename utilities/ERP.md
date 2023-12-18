@@ -1,4 +1,24 @@
+---
+title: ERP
+tags: AI
+layout: default
+parent: Utilities
+date:  2023-12-18
+modify_date: 2023-12-18 14:45:42
+---
 
+# ERP 相關訊息
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
 
 ERP 代表企業資源規劃（Enterprise Resource Planning）。這是一種集成的業務管理軟體，通常用於統一管理和自動化企業各個部門的業務流程，包括財務、人力資源、供應鏈、生產等方面。ERP系統的目標是提高企業效率、降低成本、增強決策支援能力。
 
