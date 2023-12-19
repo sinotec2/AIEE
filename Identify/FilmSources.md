@@ -159,7 +159,7 @@ https://airtw.moenv.gov.tw/AirSitePic/20230920/085-202309201000.jpg
 - 蚊港大排二出水口抽水站CH4 即時影像
   - 每次只能下載一個timeframe
 
-![](https://c2.twipcam.com/cam/wra-water-resources/snapshot.php?data=JOAeusq2joZ2Y%2FWtEOan8hKoTpPDP6IeZ%2FWOkHFbuZUqC%2FqmPmDjB%2BUvBCS7rrTT%2Bfaj26%2BOTJvWrZmzo54QEqgjZxBbfrejwh92DYMI9c9PJbLXGtD0bwdld4yJ9AWq&t=0.9854936389504274)
+https://c2.twipcam.com/cam/wra-water-resources/snapshot.php?data=JOAeusq2joZ2Y%2FWtEOan8hKoTpPDP6IeZ%2FWOkHFbuZUqC%2FqmPmDjB%2BUvBCS7rrTT%2Bfaj26%2BOTJvWrZmzo54QEqgjZxBbfrejwh92DYMI9c9PJbLXGtD0bwdld4yJ9AWq&t=0.9854936389504274
 
 ## 台中港與台中電廠
 
@@ -175,7 +175,7 @@ https://airtw.moenv.gov.tw/AirSitePic/20230920/085-202309201000.jpg
 - 水資源 水利行政組 伸港堤防(1K+700) 1 即時影像
 - 120.51 24.18
 
-![](https://c2.twipcam.com/cam/wra-water-resources/snapshot.php?data=JkN8zDnhmruiEA5AIBwoLHi%2FgYkjb6RMLkdD2jlzHIw0tFTgE0BVMwffI4jFv8CG4K7LHiibFG1USV%2FtJH2KsRA1yNophiLBqW6wu%2BursNjD21EXIOT%2F5lqt1q5qEzvj&t=0.30435488027975754)
+https://c2.twipcam.com/cam/wra-water-resources/snapshot.php?data=JkN8zDnhmruiEA5AIBwoLHi%2FgYkjb6RMLkdD2jlzHIw0tFTgE0BVMwffI4jFv8CG4K7LHiibFG1USV%2FtJH2KsRA1yNophiLBqW6wu%2BursNjD21EXIOT%2F5lqt1q5qEzvj&t=0.30435488027975754
 
 ## 桃園煉油廠
 
