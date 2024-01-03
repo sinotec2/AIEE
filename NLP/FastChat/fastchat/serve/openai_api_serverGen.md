@@ -423,5 +423,30 @@ HTTPX 是 Python 3 的功能齊全的 HTTP 用戶端，它提供同步和非同�
 - [official](https://www.python-httpx.org/)
 - refered by [create_chat_completion](#create_chat_completion)、[generate_completion](#generate_completion)、[generate_completion_stream](#generate_completion_stream)、
 
-###
+### 比較beutifulsoup跟httpx的功能、用途與優缺點
 
+`BeautifulSoup` 和 `httpx` 是兩個 Python 中用於不同目的的庫。
+
+1. **BeautifulSoup:**
+   - **功能與用途:**
+     - `BeautifulSoup` 主要用於解析 HTML 和 XML 文件，方便提取和操作其中的數據。它提供了導航樹的方式，可以輕鬆地搜索和修改 HTML 或 XML 的結構。
+   - **優點:**
+     - 易於使用，特別是對於靜態網頁的數據提取。
+     - 支援多種解析器，如 lxml、html5lib 等。
+   - **缺點:**
+     - 適用於靜態內容，對於動態生成的 JavaScript 內容支援較弱。
+     - 不直接處理網絡請求，通常需要搭配 `requests` 或其他 HTTP 函數庫使用。
+
+2. **httpx:**
+   - **功能與用途:**
+     - `httpx` 是一個現代的、異步的 HTTP 客戶端庫，用於發送 HTTP 請求。它支援同步和異步操作，提供了豐富的 API 以處理諸如 GET、POST、WebSocket 等請求。
+   - **優點:**
+     - 支援異步操作，特別適用於高性能、並發的應用。
+     - 提供 WebSocket 支援，不僅僅限於 HTTP。
+     - 較為現代，支援 HTTP/1.1 和 HTTP/2。
+   - **缺點:**
+     - 較為低階，需要額外的庫來解析 HTML 或 XML，通常搭配 `httpx.AsyncClient` 或 `httpx.Client` 使用。
+
+**總結:**
+- 如果你主要的需求是解析 HTML 或 XML，提取其中的數據，那麼 `BeautifulSoup` 是一個簡單而有效的工具。
+- 如果你需要進行 HTTP 請求，特別是在異步環境中，`httpx` 提供了更全面的功能，適用於更廣泛的應用場景，並能夠處理更複雜的網絡任務。
