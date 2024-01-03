@@ -63,11 +63,14 @@ def create_openai_api_server():
 函式名稱|input|output
 -|-|-
 check_api_key (API key 的有效性檢查)|`auth`: 一個由`HTTPAuthorizationCredentials` 決定的選項`Options`，預設值是由 `get_bearer_token` 函式提供的。|
-create_error_response|`code`: 整數，代表錯誤的程式碼或類型。用來指示錯誤的種類。/`message`: 字串，包含有關錯誤的描述性訊息。用來解釋發生了什麼錯誤。| `JSONResponse` 物件，其中包含了一個符合特定格式的 JSON 格式的錯誤回應。/HTTP 狀態碼為 400（Bad Request）請求有誤|建立符合特定格式的 JSON 錯誤回應
+[create_error_response](#create_error_response)|`code`: 整數，代表錯誤的程式碼或類型。用來指示錯誤的種類。/`message`: 字串，包含有關錯誤的描述性訊息。用來解釋發生了什麼錯誤。| `JSONResponse` 物件，其中包含了一個符合特定格式的 JSON 格式的錯誤回應。/HTTP 狀態碼為 400（Bad Request）請求有誤|建立符合特定格式的 JSON 錯誤回應
 validation_exception_handler|`request`: 代表發送請求的相關資 /`exc`: 是捕獲到的 `RequestValidationError` 例外情況的實例|
 check_model(異步路由操作，主要用於檢查模型是否有效)|`request`: 包含模型資訊的請求對象|如果模型無效，返回建立的錯誤回應；否則返回 `None`，表示模型有效|
 check_length(輸入長度 是否符合模型)|request,prompt,max_tokens,worker_addr,client|通過則返回 `None`、否則錯誤訊息|
 check_requests|request、`max_tokens`、`n`、`temperature`、`top_p`、和 `stop`|通過則返回 `None`、否則錯誤訊息|
+create_chat_completion||
+
+## checkings and errors
 
 ### check_api_key
 
@@ -89,27 +92,6 @@ check_requests|request、`max_tokens`、`n`、`temperature`、`top_p`、和 `sto
 
 簡而言之，這個函式的目的是提供一個統一的方式來建立錯誤回應，確保它們符合特定的 JSON 格式，並具有一致的 HTTP 狀態碼。
 
-### create_error_response
-
-這是一個用於建立錯誤回應的輔助函式，主要是為了方便建立符合特定格式的 JSON 錯誤回應。以下是這個函式的中文說明：
-
-#### 輸入：
-
-- `code`: 整數，代表錯誤的程式碼或類型。用來指示錯誤的種類。
-- `message`: 字串，包含有關錯誤的描述性訊息。用來解釋發生了什麼錯誤。
-
-#### 輸出：
-
-- 返回一個 `JSONResponse` 物件，其中包含了一個符合特定格式（可能是定義的 `ErrorResponse` 類型）的 JSON 格式的錯誤回應。
-- HTTP 狀態碼為 400（Bad Request），表示請求有誤。
-
-#### 重要的程式邏輯：
-
-1. 使用 `ErrorResponse` 類型建立一個包含錯誤訊息和程式碼的 JSON 物件。
-2. 使用 `JSONResponse` 類型將 JSON 物件轉換為 HTTP 響應。
-3. 設定 HTTP 狀態碼為 400，表示請求有誤。
-
-簡而言之，這個函式的目的是提供一個統一的方式來建立錯誤回應，確保它們符合特定的 JSON 格式，並具有一致的 HTTP 狀態碼。
 
 ### validation_exception_handler
 
@@ -151,14 +133,118 @@ check_requests|request、`max_tokens`、`n`、`temperature`、`top_p`、和 `sto
 - 如果輸入長度驗證通過，則返回 `None`。
 - 如果輸入長度超過模型限制，則返回一個符合特定格式的 JSON 錯誤回應，提供相應的錯誤訊息。
 
+### check_model
+
+這是一個 FastAPI 應用程式中用來檢查模型的異步函式 `check_model`。以下是這個函式的中文說明：
+
+1. 檢查請求中指定的模型是否符合特定條件。
+2. 使用 `app_settings` 中的 `controller_address` 取得控制器的位址。
+3. 使用 `httpx` 函式庫建立一個異步 HTTP 客戶端 `client`。
+4. 使用 `client` 發送 `POST` 請求至控制器的 `/list_models` 端點，以取得可用模型清單。
+5. 從回應中提取模型清單 `models`。
+6. 檢查請求中指定的模型是否在可用模型清單中。
+   - 如果不在清單中，則呼叫 `create_error_response` [函式](#create_error_response)建立一個符合特定格式的錯誤回應。
+      - 使用 `ErrorCode.INVALID_MODEL` 作為錯誤程式碼，表示這是一個無效的模型錯誤。
+      - 提供錯誤訊息，說明只有清單中列舉的模型是允許的，並指出請求中的模型不符合規定。
+   - 如果模型符合條件，則返回 `None`。
+7. 返回建立的錯誤回應或 `None`。
+
+總的來說，這個異步函式的目的是檢查請求中的模型是否在可用模型清單中，如果不在清單中，則返回一個錯誤回應。
+
 ### check_requests
 
 這是一個用於檢查請求參數的函式，主要用於確保參數的合法性。以下是這個函式的中文說明：
 
 1. `check_requests` 函式接受一個 `request` 參數，代表應用程式的請求。
 2. 函式檢查 `request` 中的各個參數，包括 `max_tokens`、`n`、`temperature`、`top_p`、和 `stop`。
-3. 如果任何一個參數不符合特定的條件，函式將使用 `create_error_response` 函式建立一個錯誤回應，並返回該回應。
+3. 如果任何一個參數不符合特定的條件，函式將使用 `create_error_response` [函式](#create_error_response)建立一個錯誤回應，並返回該回應。
    - 例如，如果 `max_tokens` 小於等於 0，則會建立一個錯誤回應，表示該參數超出了合理範圍。
 4. 如果所有參數都是合法的，函式將返回 `None`，表示沒有錯誤。
 
 簡而言之，這個函式確保請求中的參數都在合法的範圍內，如果有不合法的情況，則返回一個符合特定格式的錯誤回應，以便客戶端能夠理解和處理錯誤。
+
+## getings
+
+### get_gen_params
+
+這是一個使用 FastAPI 和 Python 的異步函式，名為 `get_gen_params`。以下是這個函式的程式碼的中文說明：
+
+#### 輸入：
+- `model_name`（模型名稱）：字串，表示要使用的模型的名稱。
+- `worker_addr`（工作地址）：字串，表示工作者的地址。
+- `messages`（訊息）：字串或包含字典的列表，表示對話中的訊息。字典包含 "role" 和 "content"，分別表示角色和內容。
+- `temperature`（溫度）：浮點數，表示生成文本的多樣性。
+- `top_p`（Top-p 機制）：浮點數，控制生成文本的多樣性。
+- `max_tokens`（最大標記數）：整數，表示生成文本的最大標記數。
+- `echo`（回應）：可選布林，表示是否回應生成的文本。
+- `stream`（串流）：可選布林，表示是否以串流模式生成文本。
+- `stop`（停止）：可選字符串或包含字符串的列表，表示生成文本的停止條件。
+
+#### 輸出：
+- 字典，包含用於生成文本的各種參數，例如模型名稱、提示、溫度、Top-p 機制等。
+
+#### 重要的程式邏輯：
+1. 使用 `await get_conv(model_name, worker_addr)` 獲取對話相關的資訊(see [get_conv](#get_conv))。
+2. 使用獲取的對話資訊初始化 `Conversation` 物件。
+3. 如果 `messages` 是字串，則將其設為提示（prompt）；否則，解析訊息並設定到 `Conversation` 物件中。
+4. 如果 `max_tokens` 為空，則設定為 512。
+5. 創建 `gen_params` 字典，包含模型名稱、提示、溫度、Top-p 機制、最大標記數、回應、串流等參數。
+6. 如果沒有停止條件 (`stop`)，則使用對話的停止條件更新 `gen_params`；否則，使用提供的停止條件。
+7. 返回 `gen_params` 字典。
+
+總的來說，這個函式的目的是構建生成文本的參數字典，使其包含必要的模型和對話相關的資訊，以供後續使用。
+
+### get_worker_address
+
+### get_conv
+
+這是一個使用 FastAPI 框架中的 `httpx` 非同步 HTTP 客戶端的異步函式，用於獲取特定模型和工作地址的**對話（conversation）模板**。called from：
+- get_gen_params, from
+  - create_chat_completion
+
+#### 程式輸入：
+
+- `model_name` (str): 指定的模型名稱。
+- `worker_addr` (str): 工作地址，表示模型所在的工作單位。
+
+#### 程式輸出：
+
+- 對話（conversation）模板。
+
+#### 重要的程式邏輯：
+
+1. 檢查 `conv_template_map` 中是否已經存在指定模型和工作地址的對話模板。如果存在，則直接返回。
+2. 如果 `conv_template_map` 中不存在，則使用 `httpx` 客戶端發送非同步 POST 請求到指定的工作地址 (`worker_addr + "/worker_get_conv_template"`)。
+3. 請求標頭包括預定義的 `headers`，並使用 JSON 格式發送模型名稱 (`{"model": model_name}`)。
+4. 設定請求的逾時時間為預定義的 `WORKER_API_TIMEOUT`。
+5. 從響應中提取對話模板，並將其存儲在 `conv_template_map` 中，以便未來直接使用。
+6. 返回獲取的對話模板。
+
+簡而言之，這個函式的目的是非同步地獲取指定模型和工作地址的對話模板，以提高效能並避免重複請求。
+
+### get_embedding
+
+這是一個 FastAPI 應用程式中的非同步函式，用於獲取嵌入向量（embedding）、call from [create_embeddings](./openai_api_serverGen.md#create_embeddings) 。以下是這個函式的中文說明：
+
+#### 輸入：
+
+- `payload`: 一個字典，包含了從客戶端發送的有關模型和相關資訊的資料。其中應該包含 `model` 鍵，指定要使用的模型。
+
+#### 輸出：
+
+- 非同步函式的輸出型別是 `embedding`，表示模型生成的嵌入向量。
+
+#### 重要的程式邏輯：
+
+1. 從 `app_settings` 中獲取控制器地址和模型名稱。
+2. 使用 `httpx.AsyncClient()` 創建一個異步 HTTP 客戶端。
+3. 呼叫 `get_worker_address` 函式以獲取特定模型的工作器地址。
+4. 使用異步 `client.post` 方法向工作器發送 POST 請求：
+   - URL: `worker_addr + "/worker_get_embeddings"`
+   - Headers: 事先定義的 `headers`，可能在代碼的其他地方定義。
+   - JSON 資料: 從客戶端接收的 `payload`。
+   - 設定了一個 `timeout`，確保在規定的時間內獲取嵌入向量。
+5. 從工作器的回應中提取嵌入向量，並將其解析為 JSON 格式。
+6. 返回獲取的嵌入向量。
+
+簡而言之，這個函式的目的是通過異步方式向工作器發送請求，獲取特定模型的嵌入向量，並將其返回給呼叫者。
