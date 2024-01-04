@@ -33,6 +33,12 @@ tags: AI chat API_server
 - 基本上這個API提供了3種類的LLM服務型態，分別為連續對話(chat completion、屬遠端服務)、以及提示補全(completion)與內嵌(embeddings)等2項批次(或遠端)作業，3項服務之特性與比較詳見[LLM service types](./openai_api_serverGen.md#llm-service-types)。
 - 這3項服務以內嵌較為單純，而連續對話與提示補全較為複雜，至少都有create與stream_generator等2個函式，還共用了一個函式(`generate_complete_stream`)來產生最終結果(串流到網頁上的json檔案)。，此處集中討論`create_*`(新創) `generate_*`(生成)等函式，其他周邊函式請見[另處詳細說明](./openai_api_server.md)
 
+### 程式之執行
+
+```bash
+python3 -m fastchat.serve.openai_api_server --host localhost --port 8000
+```
+
 ### definitions
 
 ```python
