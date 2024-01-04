@@ -10,7 +10,7 @@ tags: AI chat API_server
 ---
 
 
-# openai_api_server程式說明
+# openai_api_server程式之周邊小程式
 {: .no_toc }
 
 <details open markdown="block">
@@ -25,40 +25,11 @@ tags: AI chat API_server
 
 ## 背景
 
-## subroutines
+- 整體程式串流[詳圖](2024-01-04-11-52-11.png)，說明詳見[openai_api_server Create's and Gen's](./openai_api_serverGen.md)，此處說明周邊相關的小函式，用以確認、取得、展示、及錯誤訊息處理。
 
-```python
-kuang@DEVP ~/MyPrograms/FastChat
+![](2024-01-04-11-52-11.png)
 
-$ py=./fastchat/serve/openai_api_server.py
-
-$ grep 'class ' $py
-class AppSettings(BaseSettings):
-
-$ grep 'def ' $py
-async def check_api_key(
-def create_error_response(code: int, message: str) -> JSONResponse:
-async def validation_exception_handler(request, exc):
-async def check_model(request) -> Optional[JSONResponse]:
-async def check_length(
-def check_requests(request) -> Optional[JSONResponse]:
-def process_input(model_name, inp):
-async def get_gen_params(
-async def get_worker_address(model_name: str, client: httpx.AsyncClient) -> str:
-async def get_conv(model_name: str, worker_addr: str):
-async def show_available_models():
-async def create_chat_completion(request: ChatCompletionRequest):
-async def chat_completion_stream_generator(
-async def create_completion(request: CompletionRequest):
-async def generate_completion_stream_generator(
-async def generate_completion_stream(payload: Dict[str, Any], worker_addr: str):
-async def generate_completion(payload: Dict[str, Any], worker_addr: str):
-async def create_embeddings(request: EmbeddingsRequest, model_name: str = None):
-async def get_embedding(payload: Dict[str, Any]):
-async def count_tokens(request: APITokenCheckRequest):
-async def create_chat_completion(request: APIChatCompletionRequest):
-def create_openai_api_server():
-```
+### 表列IO
 
 函式名稱|input|output
 -|-|-
@@ -68,7 +39,7 @@ validation_exception_handler|`request`: 代表發送請求的相關資 /`exc`: �
 check_model(異步路由操作，主要用於檢查模型是否有效)|`request`: 包含模型資訊的請求對象|如果模型無效，返回建立的錯誤回應；否則返回 `None`，表示模型有效|
 check_length(輸入長度 是否符合模型)|request,prompt,max_tokens,worker_addr,client|通過則返回 `None`、否則錯誤訊息|
 check_requests|request、`max_tokens`、`n`、`temperature`、`top_p`、和 `stop`|通過則返回 `None`、否則錯誤訊息|
-create_chat_completion||
+...|...|...
 
 ## checkings and errors
 

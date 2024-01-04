@@ -25,16 +25,70 @@ tags: AI chat API_server
 
 ## 背景
 
-- openai_api_server[整體說明](./openai_api_server.md)
-- 此處將`create_*` `generate_*`等函式，也是主要的程式說明列於此處。
+- 此處將`create_*`(新創) `generate_*`(生成)等函式，也是主要的程式說明列於此處。
+- openAI公開其API伺服器程式，在FastChat系統中，作為批次、或遠端呼叫LLM的介面。整體程式邏輯及軌道如圖。
 
-## main
+![](2024-01-04-11-52-11.png)
+
+- 基本上這個API提供了3種類的LLM服務型態，分別為連續對話(chat completion、屬遠端服務)、以及提示補全(completion)與內嵌(embeddings)等2項批次(或遠端)作業，3項服務之特性與比較詳見[LLM service types](./openai_api_serverGen.md#llm-service-types)。
+- 這3項服務以內嵌較為單純，而連續對話與提示補全較為複雜，至少都有create與stream_generator等2個函式，還共用了一個函式(`generate_complete_stream`)來產生最終結果(串流到網頁上的json檔案)。`create_*`(新創) `generate_*`(生成)等函式，請見[另處詳細說明](./openai_api_serverGen.md)，此處集中討論
+
+### definitions
+
+```python
+kuang@DEVP ~/MyPrograms/FastChat
+
+$ py=./fastchat/serve/openai_api_server.py
+
+$ grep 'class ' $py
+class AppSettings(BaseSettings):
+
+$ grep 'def ' $py
+async def check_api_key(
+def create_error_response(code: int, message: str) -> JSONResponse:
+async def validation_exception_handler(request, exc):
+async def check_model(request) -> Optional[JSONResponse]:
+async def check_length(
+def check_requests(request) -> Optional[JSONResponse]:
+def process_input(model_name, inp):
+async def get_gen_params(
+async def get_worker_address(model_name: str, client: httpx.AsyncClient) -> str:
+async def get_conv(model_name: str, worker_addr: str):
+async def show_available_models():
+async def create_chat_completion(request: ChatCompletionRequest):
+async def chat_completion_stream_generator(
+async def create_completion(request: CompletionRequest):
+async def generate_completion_stream_generator(
+async def generate_completion_stream(payload: Dict[str, Any], worker_addr: str):
+async def generate_completion(payload: Dict[str, Any], worker_addr: str):
+async def create_embeddings(request: EmbeddingsRequest, model_name: str = None):
+async def get_embedding(payload: Dict[str, Any]):
+async def count_tokens(request: APITokenCheckRequest):
+async def create_chat_completion(request: APIChatCompletionRequest):
+def create_openai_api_server():
+```
+
+### 表列IO
+
+函式名稱|input|output
+-|-|-
+[主程式](#openai_api_server)|APP|開啟`/token_check` 的端點，用於檢查 API 金鑰的有效性。提供了 3項服務之相應 API 端點，分別對應到不同目錄
+[openai_api_server](#openai_api_server)|主機、埠、是否允許(密碼、來源字串、http方法及表頭)、`api-key`| `args`
+[create_chat_completion](#create_chat_completion)|`ChatCompletionRequest`|`ChatCompletionResponse`
+[chat_completion_stream_generator](#chat_completion_stream_generator)|模型名稱、參數、SSE數量、工作器位址|[SSE](#sse)
+[create_completion](#create_completion)|`CompletionRequest`|`CompletionResponse`
+[generate_completion_stream_generator](#generate_completion_stream_generator)|`CompletionRequest`|[SSE](#sse)
+[generate_completion_stream](#generate_completion_stream)|`payload`、`worker_addr`|將區塊解碼成為 JSON，然後使用 `yield` 發送這些數據
+[generate_completion](#generate_completion)|`payload`、`worker_addr`|工作器生成完成後的回應(JSON)
+[create_embeddings](#create_embeddings)|接受文本請求|生成文本的嵌入向量
+
+## openai_api_server
 
 這段程式碼是一個使用 FastAPI 框架建立的伺服器，提供了 OpenAI 相容的 RESTful API。以下是程式的主要特點和結構：
 
 ### 主要特點
 
-1. 支援 [Chat Completions](#create_chat_completion)、[Completions](#create_completion) 和 [Embeddings](#create_embeddings) 的 API。
+1. 支援 [Chat Completions](#create_chat_completion)、[Completions](#create_completion) 和 [Embeddings](#create_embeddings) 等3項服務的 API。這3項服務的特性與比較詳述如[下](#llm-service-types)。
 2. 使用 FastAPI 框架，提供了簡單易用的 API 定義和路由管理。
 3. 使用 `httpx` 庫進行非同步的 HTTP 請求(see [httpx](#httpx))，用於與[模型控制器](https://sinotec2.github.io/AIEE/NLP/FastChat/FastChat_setup/#控制埠的啟動)進行通信。
 
@@ -73,11 +127,13 @@ tags: AI chat API_server
 
 ## create's and generate's
 
+這裡介紹有關創建、產生功能的函式。
+
 ### create_openai_api_server
 
-這是一個創建 FastAPI 應用程式的函式 `create_openai_api_server`，用來設定 API 伺服器的參數。以下是這個函式的中文說明：
+這是一個創建 FastAPI 應用程式的函式 `create_openai_api_server`，用來設定 **API 伺服器**的參數。以下是這個函式的中文說明：
 
-### 輸入：
+#### 輸入：
 
 - `--host`：指定主機名稱的命令列參數（預設為 "localhost"）。
 - `--port`：指定連接埠號碼的命令列參數（預設為 8000）。
@@ -88,11 +144,11 @@ tags: AI chat API_server
 - `--allowed-headers`：指定允許的 HTTP 標頭列表的 JSON 字串（預設為 ["*"]）。
 - `--api-keys`：指定 API 金鑰列表的命令列參數，以逗號分隔。
 
-### 輸出：
+#### 輸出：
 
 - 返回包含上述參數的 argparse 命名空間對象 `args`。
 
-### 重要的程式邏輯：
+#### 重要的程式邏輯：
 
 1. 透過 `argparse` 模組創建命令列解析器。
 2. 解析命令列參數，包括主機名稱、連接埠號碼、控制器位址、是否允許憑據、允許的來源、允許的方法、允許的標頭、以及可選的 API 金鑰列表。
@@ -106,7 +162,7 @@ tags: AI chat API_server
 
 ### create_chat_completion
 
-這是一個 FastAPI 應用程式的路由定義，該路由**處理 POST 請求**，用於創建聊天補全（chat completion）。以下是這個路由處理函式的中文說明：
+[chat_completion](#chat_completion)是語言模型的服務功能之一。這個函式基本上是一個 FastAPI 應用程式的路由定義，該路由**處理 POST 請求**，用於創建聊天補全（chat completion）。以下是這個路由處理函式的中文說明：
 
 #### 輸入：
 
@@ -131,6 +187,31 @@ tags: AI chat API_server
 11. 如果生成的過程中有錯誤，將回傳對應的錯誤回應。
 12. 統計使用資訊，填充 `UsageInfo` 物件。
 13. 最終組合生成的 `ChatCompletionResponse` 物件，包含生成的選擇和使用資訊，回傳給客戶端。
+
+### chat_completion_stream_generator
+
+這段程式碼是一個用於生成 **Server-Sent Events**（[SSE](#sse)）的異步生成器。以下是程式碼的中文說明：
+
+#### 輸入
+
+- `chat_completion_stream_generator` 函式是一個異步生成器，用於生成 SSE，提供即時的對話完成結果。
+- 函式接受以下參數：
+  - `model_name`: 模型的名稱。
+  - `gen_params`: 生成參數，是一個字典。
+  - `n`: 生成 SSE 的數量。
+  - `worker_addr`: 工作器的位址。
+- 生成的 SSE 遵循 [Event stream format](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#event_stream_format)。
+
+#### 主要邏輯：
+
+1. 為 SSE 生成一個唯一的 ID。
+2. 進行 `n` 次生成 SSE 的迴圈，每次生成包含 `ChatCompletionStreamResponse` 的 SSE。
+3. 在生成的 SSE 中，使用 `ChatCompletionResponseStreamChoice` 來包裝每次對話完成的選擇。(詳見[openai_api_protocol](../protocol/api_protocol.py))
+4. 在對話完成的選擇中，使用 `DeltaMessage` 來包裝對話的增量部分。
+5. 在每次生成 SSE 時，使用 `yield` 發送 SSE 到客戶端。
+6. 最後，生成一個 [DONE] 的 SSE 表示 SSE 的生成完成。
+
+簡而言之，這段程式碼用於以 SSE 的形式向客戶端提供即時的對話完成結果，並在生成結束後發送一個 [DONE] 的 SSE。
 
 ### create_completion
 
@@ -176,34 +257,9 @@ tags: AI chat API_server
 
 簡而言之，這個路由處理了接收到的生成完成的請求，包括模型檢查、請求檢查、輸入處理、生成完成等步驟，並根據請求的設置回傳結果。
 
-### chat_completion_stream_generator
-
-這段程式碼是一個用於生成 **Server-Sent Events**（[SSE](#sse)）的異步生成器。以下是程式碼的中文說明：
-
-#### 輸入
-
-- `chat_completion_stream_generator` 函式是一個異步生成器，用於生成 SSE，提供即時的對話完成結果。
-- 函式接受以下參數：
-  - `model_name`: 模型的名稱。
-  - `gen_params`: 生成參數，是一個字典。
-  - `n`: 生成 SSE 的數量。
-  - `worker_addr`: 工作器的位址。
-- 生成的 SSE 遵循 [Event stream format](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#event_stream_format)。
-
-#### 主要邏輯：
-
-1. 為 SSE 生成一個唯一的 ID。
-2. 進行 `n` 次生成 SSE 的迴圈，每次生成包含 `ChatCompletionStreamResponse` 的 SSE。
-3. 在生成的 SSE 中，使用 `ChatCompletionResponseStreamChoice` 來包裝每次對話完成的選擇。(詳見[openai_api_protocol](../protocol/api_protocol.py))
-4. 在對話完成的選擇中，使用 `DeltaMessage` 來包裝對話的增量部分。
-5. 在每次生成 SSE 時，使用 `yield` 發送 SSE 到客戶端。
-6. 最後，生成一個 [DONE] 的 SSE 表示 SSE 的生成完成。
-
-簡而言之，這段程式碼用於以 SSE 的形式向客戶端提供即時的對話完成結果，並在生成結束後發送一個 [DONE] 的 SSE。
-
 ### generate_completion_stream_generator
 
-這段程式碼是一個用於生成自動完成結果的 FastAPI 路由操作。以下是這段程式碼的中文說明：
+這段程式碼是一個用於生成自動完成結果的 FastAPI 路由操作(called from [create_completion](#create_completion))。以下是這段程式碼的中文說明：
 
 #### 輸入：
 
@@ -230,11 +286,11 @@ tags: AI chat API_server
 
 ### generate_completion_stream
 
-這是一個使用 `httpx` 庫異步生成器 (`async generator`) 的函數(see [httpx](#httpx))，用於在應用程式中產生來自工作程式的異步資料流。 以下是這個函數的中文說明：
+這是一個使用 `httpx` 庫異步生成器 (`async generator`) 的函數(see [httpx](#httpx))，用於在應用程式中產生來自工作程式的異步資料流(called from [chat_completion_stream_generator](#chat_completion_stream_generator))。 以下是這個函數的中文說明：
 
 #### 輸入：
 1. `payload`: 一個字典，包含要傳遞給工作程序的資料。
-2. `worker_addr`: 工作程序的位址，表示資料流將從哪個工作程序取得。
+2. `worker_addr`|: 工作程序的位址，表示資料流將從哪個工作程序取得。
 
 #### 輸出：
 - 這是一個異步產生器，它透過 `yield` 語句產生來自工作程式的資料。
@@ -253,7 +309,9 @@ tags: AI chat API_server
 
 ### generate_completion
 
-這段程式碼定義了一個名為 `generate_completion` 的異步函式，該函式用於向**工作器**發送生成完成請求。以下是該程式碼的中文說明：
+這段程式碼定義了一個名為 `generate_completion` 的異步函式，該函式用於向**工作器**發送生成完成請求。called from [create_chat_completion](#create_chat_completion) and [create_completion](#create_completion)。
+
+以下是該程式碼的中文說明：
 
 #### 輸入：
 - `payload: Dict[str, Any]`：一個包含請求內容的字典，其中可能包括生成完成所需的相關資訊。
@@ -450,3 +508,39 @@ HTTPX 是 Python 3 的功能齊全的 HTTP 用戶端，它提供同步和非同�
 **總結:**
 - 如果你主要的需求是解析 HTML 或 XML，提取其中的數據，那麼 `BeautifulSoup` 是一個簡單而有效的工具。
 - 如果你需要進行 HTTP 請求，特別是在異步環境中，`httpx` 提供了更全面的功能，適用於更廣泛的應用場景，並能夠處理更複雜的網絡任務。
+
+### LLM service types
+
+在自然語言處理領域，chat completion、Completions 和 Embeddings 代表了不同的服務型態。以下是對這三者的簡要比較：
+
+1. **Chat Completion:**
+   - **特點：**
+     - 這是一種較新的模型，主要用於生成多輪、連續對話中的回應。
+     - 能夠處理上下文並生成相應的文本回應。
+     - 適用於對話型應用，例如聊天機器人。
+     - 提供了一種更結構化的方式來傳遞信息給模型。
+   - **示例：**
+     - GPT（Generative Pre-trained Transformer）模型就是一個具有 chat completion 功能的例子。
+
+2. **Completions:**
+   是一種較舊的模型，如OpenAI的DeVinci。它們接收一個指令並產生輸出3。然而，這種模型不具有對話能力。使用者每次發送一個請求(prompt)，接收一個響應，然後結束交互。
+   - **特點：**
+     - 用於自動完成或生成一段文本。
+     - 可以接受一個提示（prompt）並生成相應的補全。
+     - 常用於生成文章、寫作助手等應用。
+   - **示例：**
+     - OpenAI 的 Codex 是一個 Completions 模型，可以根據編程提示生成程式碼。
+
+3. **Embeddings:**
+   這是語言模型的一種表示方式，通常用於捕捉詞彙、句子或段落的語義信息。Embeddings是將詞彙映射到高維空間的向量，這些向量可以捕捉詞彙之間的**相似性**和**關聯性**。
+   - **特點：**
+     - 提供文本或詞語的嵌入表示，是一種將文字轉換為向量的方法。
+     - 通常用於計算相似性，文本分類，或其他 NLP 任務。
+     - 通常需要使用者自己構建模型來處理嵌入表示。
+   - **示例：**
+     - Word2Vec 和 GloVe 是常見的嵌入模型，它們生成詞向量。
+
+**總結：**
+- Chat completion 適用於需要模擬對話並生成上下文相應回應的應用。
+- Completions 適用於自動完成或生成一段文本，並且能夠根據提示生成相應的補全。
+- Embeddings 是一種通用的 NLP 技術，用於將文本轉換為向量表示，適用於各種 NLP 任務。
