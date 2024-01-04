@@ -1,6 +1,6 @@
 ---
 layout: default
-title: openai_api_server
+title: openai_api_server-2
 parent: FastChat
 grand_parent: 自然語言處理
 nav_order: 99
