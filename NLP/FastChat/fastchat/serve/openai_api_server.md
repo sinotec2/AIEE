@@ -134,6 +134,35 @@ check_requests|request、`max_tokens`、`n`、`temperature`、`top_p`、和 `sto
 
 簡而言之，這個函式確保請求中的參數都在合法的範圍內，如果有不合法的情況，則返回一個符合特定格式的錯誤回應，以便客戶端能夠理解和處理錯誤。
 
+### show_available_models
+
+這是一個 FastAPI 應用程式中的一個路由端點 (endpoint)，用來顯示可用的模型。以下是這個端點的中文說明：
+
+**輸入：**
+
+- HTTP GET 請求 `/v1/models`。
+- 在請求中檢查 API 金鑰的有效性，使用 `check_api_key` [函式](#check_api_key)。
+
+**輸出：**
+
+- 如果 API 金鑰有效，則會執行以下邏輯：
+  1. 從應用程式設定 (`app_settings`) 中獲取控制器的地址 (`controller_address`)。
+  2. 使用非同步的 `httpx.AsyncClient()` 進行異步 HTTP 請求。
+  3. 向控制器發送 `POST` 請求以刷新所有工作程序 (`/refresh_all_workers`)。
+  4. 向控制器發送 `POST` 請求以列出所有模型 (`/list_models`)。
+  5. 獲取回應中的模型列表。
+  6. 按模型名稱對模型進行排序。
+  7. 創建模型卡片 (`ModelCard`) 的列表，每張卡片包含模型的 ID、根目錄和模型權限（此處還未實現真正的模型權限細節）。
+  8. 使用這些模型卡片創建 `ModelList` 實例，其中包含模型卡片的數據。
+- 返回 `ModelList` 實例作為 JSON 回應。
+
+**重要的程式邏輯：**
+
+- 使用 `httpx` 库進行非同步的 HTTP 請求，與控制器進行通信。
+- 使用 `ModelCard` 和 `ModelList` 類型來組織和呈現模型相關的資訊。
+
+總體而言，這個端點的目的是提供一個以 JSON 格式返回可用模型列表的 API，同時使用 API 金鑰進行身份驗證。
+
 ## getings
 
 ### get_gen_params
@@ -166,6 +195,26 @@ check_requests|request、`max_tokens`、`n`、`temperature`、`top_p`、和 `sto
 總的來說，這個函式的目的是構建生成文本的參數字典，使其包含必要的模型和對話相關的資訊，以供後續使用。
 
 ### get_worker_address
+
+這段程式碼是使用 Python 的 async/await 和 httpx 庫編寫的一個函式。這個函式的名稱是 get_worker_address，它是一個協助函式，用來獲取控制器端指定的工作器的地址。
+
+**輸入參數：**
+
+- model_name：要查詢的工作器模型名稱。
+- client：用來發送 HTTP 請求的 httpx 客戶端物件。
+
+**輸出參數：**
+
+- worker_address：獲取的工作器地址。
+
+**主要邏輯：**
+
+- 建立一個名為 controller_address 的變數，其值為應用程式設定中的控制器地址。
+- 使用 client 創建一個 POST 請求，發送到控制器地址 + "/get_worker_address"。
+- 在請求的 JSON 物件中，傳遞要查詢的工作器模型名稱。
+- 等待請求的回應，並從回應中獲取獲取的工作器地址。
+- 如果獲取的工作器地址為空字串，則表示沒有可用的工作器，拋出一個 ValueError 例外。
+- 如果成功獲取到工作器地址，則將工作器地址存儲到變數 worker_addr 中，並在程式碼 logger 中輸出。
 
 ### get_conv
 
