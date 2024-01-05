@@ -29,6 +29,7 @@ tags: AI chat API_server
 - openAI公開其API伺服器程式，在FastChat系統中，作為批次、或遠端呼叫LLM的介面。整體程式邏輯及軌道如圖。
 
 ![](2024-01-04-11-52-11.png)
+(made by [excalidraw](https://sinotec2.github.io/Focus-on-Air-Quality/utilities/Graphics/excalidraw/))
 
 - 基本上這個API提供了3種類的LLM服務型態，分別為連續對話(chat completion、屬遠端服務)、以及提示補全(completion)與內嵌(embeddings)等2項批次(或遠端)作業，3項服務之特性與比較詳見[LLM service types](./openai_api_serverGen.md#llm-service-types)。
 - 這3項服務以內嵌較為單純，而連續對話與提示補全較為複雜，至少都有create與stream_generator等2個函式，還共用了一個函式(`generate_complete_stream`)來產生最終結果(串流到網頁上的json檔案)。，此處集中討論`create_*`(新創) `generate_*`(生成)等函式，其他周邊函式請見[另處詳細說明](./openai_api_server.md)
@@ -190,7 +191,7 @@ def create_openai_api_server():
 
 這是一個創建 FastAPI 應用程式的函式 `create_openai_api_server`，用來設定 **API 伺服器**的參數。以下是這個函式的中文說明：
 
-#### 輸入：
+**輸入**
 
 - `--host`：指定主機名稱的命令列參數（預設為 "localhost"）。
 - `--port`：指定連接埠號碼的命令列參數（預設為 8000）。
@@ -201,11 +202,11 @@ def create_openai_api_server():
 - `--allowed-headers`：指定允許的 HTTP 標頭列表的 JSON 字串（預設為 ["*"]）。
 - `--api-keys`：指定 API 金鑰列表的命令列參數，以逗號分隔。
 
-#### 輸出：
+**輸出**
 
 - 返回包含上述參數的 argparse 命名空間對象 `args`。
 
-#### 重要的程式邏輯：
+**重要的程式邏輯**
 
 1. 透過 `argparse` 模組創建命令列解析器。
 2. 解析命令列參數，包括主機名稱、連接埠號碼、控制器位址、是否允許憑據、允許的來源、允許的方法、允許的標頭、以及可選的 API 金鑰列表。
@@ -221,15 +222,15 @@ def create_openai_api_server():
 
 [chat_completion](#chat_completion)是語言模型的服務功能之一。這個函式基本上是一個 FastAPI 應用程式的路由定義，該路由**處理 POST 請求**，用於創建聊天補全（chat completion）。以下是這個路由處理函式的中文說明：
 
-#### 輸入：
+**輸入**
 
 - **`request: ChatCompletionRequest`**: 一個由 [Pydantic](#pydantic) 模型 `ChatCompletionRequest` 定義的物件，包含了用於聊天補全的相關資訊。
 
-#### 輸出：
+**輸出**
 
 - 這個路由處理函式會回傳一個 `ChatCompletionResponse` 物件，包含了生成的聊天補全的選擇（choices）和相關的使用資訊（usage）。
 
-#### 重要的程式邏輯：
+**重要的程式邏輯**
 
 1. 使用 `check_api_key` [函式](./openai_api_server.md#check_api_key)檢查 API 金鑰，確保請求具有有效的授權。
 2. 調用 `check_model` [函式](./openai_api_server.md#check_model)，檢查模型相關的錯誤，如果有錯誤則回傳錯誤回應。
@@ -249,7 +250,7 @@ def create_openai_api_server():
 
 這段程式碼是一個用於生成 **Server-Sent Events**（[SSE](#sse)）的異步生成器。以下是程式碼的中文說明：
 
-#### 輸入
+**輸入**
 
 - `chat_completion_stream_generator` 函式是一個異步生成器，用於生成 SSE，提供即時的對話完成結果。
 - 函式接受以下參數：
@@ -259,7 +260,7 @@ def create_openai_api_server():
   - `worker_addr`: 工作器的位址。
 - 生成的 SSE 遵循 [Event stream format](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#event_stream_format)。
 
-#### 主要邏輯：
+**主要邏輯**
 
 1. 為 SSE 生成一個唯一的 ID。
 2. 進行 `n` 次生成 SSE 的迴圈，每次生成包含 `ChatCompletionStreamResponse` 的 SSE。
@@ -274,15 +275,15 @@ def create_openai_api_server():
 
 這是一個 FastAPI 應用程式的路由定義，該路由**接受 POST 請求**，路徑為 "/v1/completions"。以下是這個路由的中文說明：
 
-#### 輸入
+**輸入**
 
 - `request: CompletionRequest`：POST 請求的主體，包含用於生成完成的相關資訊，如模型、提示、溫度等。
 
-#### 依賴性
+**依賴性**
 
 - `check_api_key`：一個[依賴性函式](./openai_api_server.md#check_api_key)，用於檢查 API 金鑰。
 
-#### 重要的程式邏輯
+**重要的程式邏輯**
 
 1. **檢查 API 金鑰：**
    - 在路由函式開始執行前，會先呼叫 `check_api_key` [函式](./openai_api_server.md#check_api_key)檢查 API 金鑰的有效性。
@@ -318,18 +319,19 @@ def create_openai_api_server():
 
 這段程式碼是一個用於生成自動完成結果的 FastAPI 路由操作(called from [create_completion](#create_completion))。以下是這段程式碼的中文說明：
 
-#### 輸入：
+**輸入**
 
 1. `request: CompletionRequest`：包含自動完成所需的請求參數，例如模型名稱、提示文本等。
 2. `n: int`：表示生成多少個自動完成的選擇。
 3. `worker_addr: str`：工作者的地址，用於獲取生成句子的相關資訊。
 
-#### 輸出：
+**輸出**
 
 - 使用 `yield` 生成 **Server-Sent Events**（[SSE]）形式的數據流，向客戶端實時推送生成的自動完成選擇。
 - 最後發送一個 `[DONE]` 的事件，表示數據流結束。
 
-#### 重要的程式邏輯：
+**重要的程式邏輯**
+
 1. 使用 `shortuuid.random()` 生成一個唯一的 `id` 來標識這個自動完成操作。
 2. 透過迴圈處理提示文本列表中的每個文本。
 3. 內部迴圈 `for i in range(n):` 用於生成指定數量的自動完成選擇。
@@ -345,15 +347,15 @@ def create_openai_api_server():
 
 這是一個使用 `httpx` 庫異步生成器 (`async generator`) 的函數(see [httpx](#httpx))，用於在應用程式中產生來自工作程式的異步資料流(called from [chat_completion_stream_generator](#chat_completion_stream_generator))。 以下是這個函數的中文說明：
 
-#### 輸入：
+**輸入**
 1. `payload`: 一個字典，包含要傳遞給工作程序的資料。
 2. `worker_addr`|: 工作程序的位址，表示資料流將從哪個工作程序取得。
 
-#### 輸出：
+**輸出**
 - 這是一個異步產生器，它透過 `yield` 語句產生來自工作程式的資料。
 - 這個生成器將被用於異步迭代，以在客戶端和伺服器之間實現異步的資料流傳輸。
 
-#### 重要的程式邏輯：
+**重要的程式邏輯**
 1. 使用 `httpx.AsyncClient()` 建立一個異步的 HTTP 客戶端。(see [httpx](#httpx))
 2. 定義 `delimiter`，它是用來拆分工作程序傳回的原始資料流的分隔符號。
 3. 使用 `client.stream` 發送異步 POST 請求到指定的 `worker_addr + "/worker_generate_stream"` 位址，並等待異步回應。
@@ -370,14 +372,14 @@ def create_openai_api_server():
 
 以下是該程式碼的中文說明：
 
-#### 輸入：
+**輸入**
 - `payload: Dict[str, Any]`：一個包含請求內容的字典，其中可能包括生成完成所需的相關資訊。
 - `worker_addr: str`：表示**工作器**的地址，用於構建生成完成請求的URL。
 
-#### 輸出：
+**輸出**
 - `completion`：包含**工作器**生成完成後的回應的 JSON 物件。
 
-#### 重要的程式邏輯：
+**重要的程式邏輯**
 1. 使用 `httpx.AsyncClient()` 建立一個異步的 HTTP **客戶端**，這是進行非同步請求的工具。(see [httpx](#httpx))
 2. 使用 `client.post` 方法發送一個 POST 請求到指定的 `worker_addr + "/worker_generate"` URL。
    - `headers`: 可能是在其他地方定義的請求標頭。
@@ -411,17 +413,17 @@ def create_openai_api_server():
 
 這是一個用於建立錯誤回應的輔助函式，主要是為了方便建立符合特定格式的 JSON 錯誤回應。以下是這個函式的中文說明：
 
-#### 輸入：
+**輸入**
 
 - `code`: 整數，代表錯誤的程式碼或類型。用來指示錯誤的種類。
 - `message`: 字串，包含有關錯誤的描述性訊息。用來解釋發生了什麼錯誤。
 
-#### 輸出：
+**輸出**
 
 - 返回一個 `JSONResponse` 物件，其中包含了一個符合特定格式（可能是定義的 `ErrorResponse` 類型）的 JSON 格式的錯誤回應。
 - HTTP 狀態碼為 400（Bad Request），表示請求有誤。
 
-#### 重要的程式邏輯：
+**重要的程式邏輯**
 
 1. 使用 `ErrorResponse` 類型建立一個包含錯誤訊息和程式碼的 JSON 物件。
 2. 使用 `JSONResponse` 類型將 JSON 物件轉換為 HTTP 響應。
