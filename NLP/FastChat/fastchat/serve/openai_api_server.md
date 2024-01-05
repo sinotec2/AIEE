@@ -28,6 +28,7 @@ tags: AI chat API_server
 - 整體程式串流[詳圖](2024-01-04-11-52-11.png)，說明詳見[openai_api_server Create's and Gen's](./openai_api_serverGen.md)，此處說明周邊相關的小函式，用以確認、取得、展示、及錯誤訊息處理。
 
 ![](2024-01-04-11-52-11.png)
+(made by [excalidraw](https://sinotec2.github.io/Focus-on-Air-Quality/utilities/Graphics/excalidraw/))
 
 ### 表列IO
 
@@ -47,16 +48,18 @@ check_requests|request、`max_tokens`、`n`、`temperature`、`top_p`、和 `sto
 
 這是一個用於建立錯誤回應的輔助函式，主要是為了方便建立符合特定格式的 JSON 錯誤回應。以下是這個函式的中文說明：
 
-#### 輸入：
+**輸入**
 
 - `code`: 整數，代表錯誤的程式碼或類型。用來指示錯誤的種類。
 - `message`: 字串，包含有關錯誤的描述性訊息。用來解釋發生了什麼錯誤。
 
-#### 輸出：
+**輸出**
+
 - 返回一個 `JSONResponse` 物件，其中包含了一個符合特定格式（可能是定義的 `ErrorResponse` 類型）的 JSON 格式的錯誤回應。
 - HTTP 狀態碼為 400（Bad Request），表示請求有誤。
 
-#### 重要的程式邏輯：
+**重要的程式邏輯**
+
 1. 使用 `ErrorResponse` 類型建立一個包含錯誤訊息和程式碼的 JSON 物件。
 2. 使用 `JSONResponse` 類型將 JSON 物件轉換為 HTTP 響應。
 3. 設定 HTTP 狀態碼為 400，表示請求有誤。
@@ -83,7 +86,7 @@ check_requests|request、`max_tokens`、`n`、`temperature`、`top_p`、和 `sto
 
 這是一個異步的 FastAPI 路由操作，用來。以下是這個函式的中文說明：
 
-#### 輸入：
+**輸入**
 
 1. `request`: 包含請求資訊的對象。
 2. `prompt`: 字串，代表模型的輸入提示。
@@ -91,7 +94,7 @@ check_requests|request、`max_tokens`、`n`、`temperature`、`top_p`、和 `sto
 4. `worker_addr`: 字串，代表模型工作服務器的地址。
 5. `client`: `httpx.AsyncClient` 實例，用於進行異步的 HTTP 請求。
 
-#### 重要的程式邏輯：
+**重要的程式邏輯**
 
 1. 使用 `client` 向模型工作服務器發送 `model_details` 請求，以獲取模型的上下文長度（`context_len`）。
 2. 使用 `client` 向模型工作服務器發送 `count_token` 請求，以獲取給定提示（`prompt`）的令牌數量（`token_num`）。
@@ -99,7 +102,7 @@ check_requests|request、`max_tokens`、`n`、`temperature`、`top_p`、和 `sto
    - 如果超過，則建立一個錯誤回應，指示使用者減少輸入的長度。
    - 如果未超過，則返回 `None`，表示輸入長度驗證通過。
 
-#### 輸出：
+**輸出**
 
 - 如果輸入長度驗證通過，則返回 `None`。
 - 如果輸入長度超過模型限制，則返回一個符合特定格式的 JSON 錯誤回應，提供相應的錯誤訊息。
@@ -169,7 +172,7 @@ check_requests|request、`max_tokens`、`n`、`temperature`、`top_p`、和 `sto
 
 這是一個使用 FastAPI 和 Python 的異步函式，名為 `get_gen_params`。以下是這個函式的程式碼的中文說明：
 
-#### 輸入：
+**輸入**
 - `model_name`（模型名稱）：字串，表示要使用的模型的名稱。
 - `worker_addr`（工作地址）：字串，表示工作者的地址。
 - `messages`（訊息）：字串或包含字典的列表，表示對話中的訊息。字典包含 "role" 和 "content"，分別表示角色和內容。
@@ -180,10 +183,10 @@ check_requests|request、`max_tokens`、`n`、`temperature`、`top_p`、和 `sto
 - `stream`（串流）：可選布林，表示是否以串流模式生成文本。
 - `stop`（停止）：可選字符串或包含字符串的列表，表示生成文本的停止條件。
 
-#### 輸出：
+**輸出**
 - 字典，包含用於生成文本的各種參數，例如模型名稱、提示、溫度、Top-p 機制等。
 
-#### 重要的程式邏輯：
+**重要的程式邏輯**
 1. 使用 `await get_conv(model_name, worker_addr)` 獲取對話相關的資訊(see [get_conv](#get_conv))。
 2. 使用獲取的對話資訊初始化 `Conversation` 物件。
 3. 如果 `messages` 是字串，則將其設為提示（prompt）；否則，解析訊息並設定到 `Conversation` 物件中。
@@ -222,16 +225,16 @@ check_requests|request、`max_tokens`、`n`、`temperature`、`top_p`、和 `sto
 - get_gen_params, from
   - create_chat_completion
 
-#### 程式輸入：
+**輸入**
 
 - `model_name` (str): 指定的模型名稱。
 - `worker_addr` (str): 工作地址，表示模型所在的工作單位。
 
-#### 程式輸出：
+**程式輸出**
 
 - 對話（conversation）模板。
 
-#### 重要的程式邏輯：
+**重要的程式邏輯**
 
 1. 檢查 `conv_template_map` 中是否已經存在指定模型和工作地址的對話模板。如果存在，則直接返回。
 2. 如果 `conv_template_map` 中不存在，則使用 `httpx` 客戶端發送非同步 POST 請求到指定的工作地址 (`worker_addr + "/worker_get_conv_template"`)。
@@ -246,15 +249,15 @@ check_requests|request、`max_tokens`、`n`、`temperature`、`top_p`、和 `sto
 
 這是一個 FastAPI 應用程式中的非同步函式，用於獲取嵌入向量（embedding）、call from [create_embeddings](./openai_api_serverGen.md#create_embeddings) 。以下是這個函式的中文說明：
 
-#### 輸入：
+**輸入**
 
 - `payload`: 一個字典，包含了從客戶端發送的有關模型和相關資訊的資料。其中應該包含 `model` 鍵，指定要使用的模型。
 
-#### 輸出：
+**輸出**
 
 - 非同步函式的輸出型別是 `embedding`，表示模型生成的嵌入向量。
 
-#### 重要的程式邏輯：
+**重要的程式邏輯**
 
 1. 從 `app_settings` 中獲取控制器地址和模型名稱。
 2. 使用 `httpx.AsyncClient()` 創建一個異步 HTTP 客戶端。
