@@ -109,12 +109,7 @@ Text Completions:
 ```bash
 curl http://localhost:8000/v1/completions \
   -H "Content-Type: application/json" \
-  -d '{
-    "model": "vicuna-7b-v1.3",
-    "prompt": "Once upon a time",
-    "max_tokens": 41,
-    "temperature": 0.5
-  }'
+  [[2024-01-05]]
 ```
 
 Embeddings:

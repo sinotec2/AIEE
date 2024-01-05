@@ -35,8 +35,59 @@ tags: AI chat API_server
 
 ### 程式之執行
 
+- 句型
+
 ```bash
 python3 -m fastchat.serve.openai_api_server --host localhost --port 8000
+```
+
+- help(未指定allowed則為通式)
+
+```python
+usage: openai_api_server.py [-h] [--host HOST] [--port PORT] [--controller-address CONTROLLER_ADDRESS] [--allow-credentials] [--allowed-origins ALLOWED_ORIGINS]
+                            [--allowed-methods ALLOWED_METHODS] [--allowed-headers ALLOWED_HEADERS] [--api-keys API_KEYS]
+```
+
+- 實例(kuang@DEVP ~/MyPrograms/FastChat/up_fastchat.cs)
+
+```bash
+$env/bin/python3 -m fastchat.serve.openai_api_server --host $ip --port 55083 --controller-address $addc 
+```
+
+- 用curl從node03呼叫
+
+```bash
+curl http://200.200.32.195:55083/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+     "model": "vicuna-7b-v1.5-16k",
+     "messages": [{"role": "user", "content": "Say this is a test!"}],
+     "temperature": 0.7
+   }'
+```
+
+- 結果：
+
+```bash
+{
+"id":"chatcmpl-3ZG4uSbK6iLmjH9ECAFcYa",
+"object":"chat.completion",
+"created":1704419148,
+"model":"vicuna-7b-v1.5-16k",
+"choices":[{
+   "index":0,"message":{
+      "role":"assistant",
+      "content":"Sure! How can I assist you with the test?"
+      },
+   "finish_reason":"stop"
+   }],
+"usage":{
+   "prompt_tokens":45,
+   "total_tokens":56,
+   "completion_tokens":11
+   }
+}
 ```
 
 ### definitions
