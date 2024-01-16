@@ -25,7 +25,9 @@ tags: AI chat report
 
 ## 背景
 
-## 遠端Linux上的swirl djangle 伺服器如何取得使用者AD訊息。
+## 遠端Linux上的swirl django 伺服器如何取得使用者AD訊息。
+
+### Answer from GPT 3.5
 
   在遠端的 Linux 環境中，如果你的 Django 伺服器需要取得使用者 Active Directory（AD）訊息，你可以使用 LDAP（Lightweight Directory Access Protocol）協議與 AD 進行通信。這裡提供一個簡單的步驟：
 
@@ -92,3 +94,44 @@ tags: AI chat report
    請替換 `"your_username"` 為實際的 AD 使用者名稱。
 
 這樣配置後，Django 將能夠使用 LDAP 協議從 AD 中檢索使用者信息。確保網路連接到 AD 伺服器是正常的，並檢查你的 AD 網域和用戶搜尋基礎等參數是否正確。
+
+### Answer  from  GpT4
+
+您好！要在遠端Linux上的swirl django伺服器中取得使用者AD訊息，您需要使用Python的LDAP模塊。LDAP是一種協議，用於訪問和維護分散式目錄信息。您可以使用LDAP模塊來連接到Active Directory（AD）並檢索用戶信息。以下是一些參考資料，可以幫助您開始：
+
+1. **Python LDAP**：這是一個Python LDAP客戶端庫，可以用於連接到LDAP目錄服務器，包括AD ¹.
+2. **Python LDAP3**：這是另一個Python LDAP客戶端庫，支持Python 2和3，可以用於連接到LDAP目錄服務器，包括AD ².
+3. **Python Active Directory**：這是一個Python庫，可以用於執行各種AD操作，例如驗證用戶，查找用戶，更改密碼等 ³.
+
+希望這些資訊能對您有所幫助！
+
+來源: 與 Bing 的交談， 2024/1/17
+(1) Django 介紹 - 學習該如何開發 Web | MDN - MDN Web Docs. https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/Introduction.
+(2) Visual Studio 中的了解 Django 教學課程步驟 1，Django 基本知識. https://learn.microsoft.com/zh-tw/visualstudio/python/learn-django-in-visual-studio-step-01-project-and-solution?view=vs-2022.
+(3) 架設 Django 開發環境 - 學習該如何開發 Web | MDN. https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/development_environment.
+
+### Answer from Claude2
+
+ 要在遠端Linux上的swirl django伺服器獲取使用者的AD(Active Directory)信息,可以採取以下方法:
+
+1. 在django應用中安裝python-ldap套件,通過該套件與AD進行交互。
+
+2. 配置LDAP認證後端:在settings.py中配置如下內容,指定AD server、基礎DN等信息。
+
+```python
+import ldap
+from django_auth_ldap.config import LDAPSearch
+
+AUTH_LDAP_SERVER_URI = "ldap://ad.example.com"
+AUTH_LDAP_BIND_DN = "cn=django-agent,dc=example,dc=com" 
+AUTH_LDAP_BIND_PASSWORD = "password"
+AUTH_LDAP_USER_SEARCH = LDAPSearch("dc=example,dc=com", ldap.SCOPE_SUBTREE, "(uid=%(user)s)")
+```
+
+3. 在views和模板中通過request.user來取得AD用户信息,如displayName、mail等。可以自定义django user模型來儲存更多属性。
+
+4. 也可以考慮使用django-auth-adfs等專用於AD集成的第三方應用。
+
+這樣django應用就可以方便地與AD集成,通過LDAP協議查詢和驗證用戶信息。
+
+
