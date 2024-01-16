@@ -4,8 +4,8 @@ title: MS Window AD Connection
 parent: swirl搜尋引擎
 grand_parent: 自然語言處理
 nav_order: 99
-date: 2023-11-13
-last_modified_date: 2023-11-13 19:18:56
+date: 2024-01-17
+last_modified_date: 2024-01-17 03:18:56
 has_children: true
 tags: AI chat report
 ---
