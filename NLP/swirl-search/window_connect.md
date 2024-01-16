@@ -1,5 +1,31 @@
+---
+layout: default
+title: MS Window AD Connection
+parent: swirl搜尋引擎
+grand_parent: 自然語言處理
+nav_order: 99
+date: 2023-11-13
+last_modified_date: 2023-11-13 19:18:56
+has_children: true
+tags: AI chat report
+---
 
-# 遠端Linux上的swirl djangle 伺服器如何取得使用者AD訊息。
+# MS Window AD Connection
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+## 背景
+
+## 遠端Linux上的swirl djangle 伺服器如何取得使用者AD訊息。
 
   在遠端的 Linux 環境中，如果你的 Django 伺服器需要取得使用者 Active Directory（AD）訊息，你可以使用 LDAP（Lightweight Directory Access Protocol）協議與 AD 進行通信。這裡提供一個簡單的步驟：
 
