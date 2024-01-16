@@ -1,0 +1,68 @@
+
+# 遠端Linux上的swirl djangle 伺服器如何取得使用者AD訊息。
+
+  在遠端的 Linux 環境中，如果你的 Django 伺服器需要取得使用者 Active Directory（AD）訊息，你可以使用 LDAP（Lightweight Directory Access Protocol）協議與 AD 進行通信。這裡提供一個簡單的步驟：
+
+1. **安裝 LDAP 相關套件：**
+   確保你的 Django 環境中安裝了支援 LDAP 的相關套件，例如 `django-auth-ldap`。你可以使用 pip 安裝：
+
+   ```bash
+   pip install django-auth-ldap
+   ```
+
+2. **設定 Django settings：**
+   在 Django 專案的 settings.py 中，加入 LDAP 相關的配置。請根據你的 AD 設定調整以下範例：
+
+   ```python
+   import ldap
+   from django_auth_ldap.config import LDAPSearch, NestedActiveDirectoryGroupType
+
+   AUTH_LDAP_SERVER_URI = "ldap://your-ad-server"
+   AUTH_LDAP_BIND_DN = "CN=bind_user,CN=Users,DC=example,DC=com"
+   AUTH_LDAP_BIND_PASSWORD = "your_bind_password"
+
+   AUTH_LDAP_USER_SEARCH = LDAPSearch(
+       "CN=Users,DC=example,DC=com",
+       ldap.SCOPE_SUBTREE,
+       "(sAMAccountName=%(user)s)"
+   )
+
+   AUTH_LDAP_GROUP_SEARCH = LDAPSearch(
+       "CN=Users,DC=example,DC=com",
+       ldap.SCOPE_SUBTREE,
+       "(objectClass=group)"
+   )
+
+   AUTH_LDAP_GROUP_TYPE = NestedActiveDirectoryGroupType(name_attr="cn")
+
+   AUTH_LDAP_MIRROR_GROUPS = True
+   ```
+
+   注意：請替換示例中的 AD 伺服器 URI、綁定用戶 DN、綁定用戶密碼和搜索基礎等參數，以符合你的 AD 環境。
+
+3. **同步資料庫：**
+   在設定完 LDAP 相關配置後，執行 Django 的資料庫遷移命令以同步資料庫：
+
+   ```bash
+   python manage.py migrate
+   ```
+
+4. **測試連接：**
+   使用 Django 的 shell 來測試 LDAP 連接是否正常：
+
+   ```bash
+   python manage.py shell
+   ```
+
+   在 shell 中執行以下命令：
+
+   ```python
+   from django_auth_ldap.backend import LDAPBackend
+   ldap = LDAPBackend()
+   user = ldap.populate_user("your_username")
+   print(user)
+   ```
+
+   請替換 `"your_username"` 為實際的 AD 使用者名稱。
+
+這樣配置後，Django 將能夠使用 LDAP 協議從 AD 中檢索使用者信息。確保網路連接到 AD 伺服器是正常的，並檢查你的 AD 網域和用戶搜尋基礎等參數是否正確。
