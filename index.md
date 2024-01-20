@@ -13,7 +13,7 @@ last_modified_date: 2023-09-17 15:00:15
 這裡分享有關環境工程方面AI的應用及學習成果
 {: .fs-6 .fw-300 }
 
-[News at 2023-09-17](){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [sinotec2.github.io](https://sinotec2.github.io/){: .btn .fs-5 .mb-4 .mb-md-0 } [Dr. Kuang's Utilities](https://sinotec2.github.io/FAQ/){: .btn .fs-5 .mb-4 .mb-md-0 }
+[News at 2024-01-15][util]{: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [每日空品預報和其他](https://sinotec2.github.io/){: .btn .fs-5 .mb-4 .mb-md-0 } [blogs](https://sinotec2.github.io/FAQ/){: .btn .fs-5 .mb-4 .mb-md-0 } [OpenKM][okm]{: .btn .fs-5 .mb-4 .mb-md-0 } [AIEE][aiee]{: .btn .fs-5 .mb-4 .mb-md-0 }[Utilities][util]{: .btn .fs-5 .mb-4 .mb-md-0 }
 
 ---
 
@@ -57,3 +57,6 @@ email, or any other method with the owners of this repository before making a ch
 </ul>
 
 [JTD]: <https://just-the-docs.github.io/just-the-docs> "Focus on writing good documentation. Just the Docs gives your documentation a jumpstart with a responsive Jekyll theme that is easily customizable and hosted on GitHub Pages."
+[util]: <https://sinotec2.github.io/Utilities/> "這裡分享有關環境工程方面AI的應用及學習成果"
+[okm]: <https://sinotec2.github.io/OpenKM/> "OpenKM是一個免費/自由的文檔管理系統，提供用於管理任意文件的Web界面。"
+[aiee]: <https://sinotec2.github.io/AIEE/> "這裡分享有關環境工程方面AI的應用及學習成果"
