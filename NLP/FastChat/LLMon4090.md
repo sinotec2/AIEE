@@ -1,4 +1,29 @@
+---
+layout: default
+title: Nvidia RTX 4090
+parent: FastChat
+grand_parent: 自然語言處理
+nav_order: 99
+date: 2023-09-05
+last_modified_date: 2023-09-05 13:44:37
+tags: AI chat
+---
 
+
+# RTX 4090 上執行LLM推論
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+## 背景
 
 ### Modules and Accelerators
 
@@ -19,3 +44,5 @@
 (8) undefined. https://developer.nvidia.com/cuda-toolkit-archive.
 (9) undefined. https://pypi.tuna.tsinghua.edu.cn/simple.
 (10) undefined. https://developer.nvidia.com/cuda-11-8-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=22.04&target_type=deb_local.
+
+
