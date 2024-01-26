@@ -60,7 +60,8 @@ First, install openai-python:
 pip install --upgrade openai
 ```
 
-Then, interact with model vicuna:
+- Then, interact with model vicuna:
+
 ```python
 import openai
 # to get proper authentication, make sure to use a valid key that's listed in
@@ -88,14 +89,17 @@ print(completion.choices[0].message.content)
 Streaming is also supported. See [test_openai_api.py](../tests/test_openai_api.py).
 
 ### cURL
+
 cURL is another good tool for observing the output of the api.
 
-List Models:
+- List Models:
+
 ```bash
 curl http://localhost:8000/v1/models
 ```
 
-Chat Completions:
+- Chat Completions:
+
 ```bash
 curl http://localhost:8000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -105,14 +109,16 @@ curl http://localhost:8000/v1/chat/completions \
   }'
 ```
 
-Text Completions:
+- Text Completions:
+
 ```bash
 curl http://localhost:8000/v1/completions \
   -H "Content-Type: application/json" \
   [[2024-01-05]]
 ```
 
-Embeddings:
+- Embeddings:
+
 ```bash
 curl http://localhost:8000/v1/embeddings \
   -H "Content-Type: application/json" \
