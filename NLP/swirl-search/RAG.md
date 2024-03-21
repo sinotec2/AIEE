@@ -1,6 +1,6 @@
 ---
 layout: default
-title: RAG
+title: 檢索強化生成RAG
 parent: swirl搜尋引擎
 grand_parent: 自然語言處理
 nav_order: 99
@@ -10,7 +10,7 @@ has_children: true
 tags: AI chat report
 ---
 
-# RAG
+# RAG檢索強化生成
 {: .no_toc }
 
 <details open markdown="block">
