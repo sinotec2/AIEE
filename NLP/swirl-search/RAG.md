@@ -42,3 +42,4 @@ tags: AI chat report
 總之，RAG 方法通常用於搜索引擎、問答系統和其他需要生成自然語言文本的應用中。它結合了檢索的速度和生成的靈活性，以提供更好的用戶體驗。
 
 [一文搞懂大模型RAG应用（附实践案例）](https://zhuanlan.zhihu.com/p/668082024?ssp=1&setlang=zh-hant&cc=TW&safesearch=moderate&utm_id=0)
+[.  ](https://zhuanlan.zhihu.com/p/673465732?utm_id=0$
