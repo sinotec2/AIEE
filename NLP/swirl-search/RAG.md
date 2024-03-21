@@ -1,4 +1,29 @@
+---
+layout: default
+title: RAG
+parent: swirl搜尋引擎
+grand_parent: 自然語言處理
+nav_order: 99
+date: 2023-11-13
+last_modified_date: 2023-11-13 19:18:56
+has_children: true
+tags: AI chat report
+---
 
+# RAG
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+## 背景
 
 **Retrieved Augmented Generation (RAG)** 是一種結合檢索和生成的自然語言處理方法。讓我們來深入了解一下：
 
