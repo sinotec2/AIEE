@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: NoRight
 title: Embeddings and templates
 parent: 生成式AI協助報告撰寫
 grand_parent: 自然語言處理
