@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: NoRight
 title: LLM Judge
 parent: FastChat
 grand_parent: 自然語言處理

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: NoRight
 title: Machine Learning with Embeddings
 parent: FastChat
 grand_parent: 自然語言處理
