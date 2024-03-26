@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: NoRight
 title:  vLLM Integration
 parent:  docs
 grand_parent: FastChat

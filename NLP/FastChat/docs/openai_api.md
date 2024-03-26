@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: NoRight
 title:  OpenAI-Compatible RESTful APIs & SDK
 parent:  docs
 grand_parent: FastChat

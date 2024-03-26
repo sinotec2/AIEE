@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: NoRight
 title:  FastChat Server Architecture
 parent:  docs
 grand_parent: FastChat
