@@ -1,4 +1,30 @@
-# Wednesday, September 6, 2023
+---
+layout: default
+title: Heroku 
+parent:  Platform As A Service
+grand_parent: 自然語言處理
+nav_order: 99
+date: 2023-09-06
+last_modified_date: 2023-09-06 16:02:26
+tags: AI chat report
+---
+
+# Heroku 
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+## 背景
+
+- 這類的實作看似很多範例可以參考，但第一個就踩雷。伺服器不提供免費方案了。
 
 ## database and chatbot
 

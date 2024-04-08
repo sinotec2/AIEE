@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: NoRight
 title: docs
 parent: FastChat
 grand_parent: 自然語言處理

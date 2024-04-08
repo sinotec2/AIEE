@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: NoRight
 title:  Local LangChain with FastChat
 parent:  docs
 grand_parent: FastChat

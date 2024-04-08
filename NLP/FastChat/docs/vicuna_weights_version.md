@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: NoRight
 title:  GPTQ 4bit Inference
 parent:  docs
 grand_parent: FastChat

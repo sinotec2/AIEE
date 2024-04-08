@@ -1,4 +1,28 @@
+---
+layout: NoRight
+title: fastchat Nginx Gateway
+parent: FastChat
+grand_parent: 自然語言處理
+nav_order: 99
+date: 2023-09-13
+last_modified_date: 2023-09-15 16:02:26
+tags: AI chat report
+---
+
 # fastchat Nginx Gateway
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+## 背景
 
 ## Purpose of the Gateway
 

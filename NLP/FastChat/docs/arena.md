@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: NoRight
 title:  Chatbot Arena
 parent:  docs
 grand_parent: FastChat

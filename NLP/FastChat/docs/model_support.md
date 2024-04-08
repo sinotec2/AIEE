@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: NoRight
 title:  Model Support
 parent:  docs
 grand_parent: FastChat

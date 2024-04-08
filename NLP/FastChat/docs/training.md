@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: NoRight
 title:  Fine-tuning FastChat-T5
 parent:  docs
 grand_parent: FastChat
