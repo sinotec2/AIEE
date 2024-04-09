@@ -1,4 +1,4 @@
----
+
 layout: default
 title: GPT4 with csv inputs
 parent: openAI
@@ -7,7 +7,7 @@ nav_order: 99
 date: 2024-04-09
 last_modified_date: 2024-04-09 08:29:24
 tags: AI chat
----
+
 
 
 # GPT4 with csv inputs
