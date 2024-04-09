@@ -1,4 +1,4 @@
-
+---
 layout: default
 title: GPT4 with csv inputs
 parent: openAI
@@ -7,7 +7,7 @@ nav_order: 99
 date: 2024-04-09
 last_modified_date: 2024-04-09 08:29:24
 tags: AI chat
-
+---
 
 
 # GPT4 with csv inputs
@@ -47,7 +47,7 @@ tags: AI chat
 
 ### 表頭欄位名稱
 
-- GPT4會產生python code來分析所提供的csv檔案，如過出錯，會自行修正，直到成功。
+- GPT4會產生python code來分析所提供的csv檔案，如果出錯，會自行修正，直到成功。
 
 ![](2024-04-09-08-38-17.png)
 
