@@ -78,22 +78,33 @@ LLM的輸出已經與人類所寫的文本幾乎無法區分95。 例如，偵�
 
 ### 內容真實性與來源
 
-隨著人工智慧生成的文字變得無所不在，完全由人類編寫的文字可能會變得更有價值。 針對視訊和圖像內容的內容真實性和來源的技術和標準已經存在101。 這些標準描述了一種對內容進行加密簽署的方法，以便可以證明其創建的元資料沒有被更改。 我們可以對文字內容使用類似的方法來證明它們不是人工智慧生成的。 由於人工智慧產生的內容在社群媒體上傳播時可能會造成傷害，因此可以在虛假內容傳播到許多人之前施加來源證明來限制虛假內容的傳播28。
+- 隨著人工智慧生成的文字變得無所不在，完全由人類編寫的文字可能會變得更有價值。 
+- 針對視訊和圖像內容的內容真實性和來源的技術和標準已經存在[^101]。 這些標準描述了一種對內容進行加密簽署的方法，以便可以證明其創建的元資料沒有被更改。 我們可以對文字內容使用類似的方法來證明它們不是人工智慧生成的。 
+- 由於人工智慧產生的內容在社群媒體上傳播時可能會造成傷害，因此在虛假內容傳播到許多人之前、需要對文本施加來源證明來限制虛假內容的傳播[^28]。
 
 ### 監管
 
-鑑於新興技術的顛覆性影響，出現了各種監管措施。 中國的一項新規定要求人工智慧產生的內容帶有浮水印，而 ChatGPT 在義大利因 GDPR 合規問題而被暫時禁止，但在適當遵守透明度後最終被允許102。 歐盟的人工智慧法案可能是第一個監管跨多個部門的高風險人工智慧應用的法案94。 在美國，聯邦貿易委員會已對創建誤導性工具發出警告，強調現有法規禁止此類工具，並暗示這些規則可能適用於 GenAI103。 類似地，加拿大自動決策指令規定了廣泛的指導方針，促進數據驅動的實踐和聯邦合規性、透明度和減少負面演算法結果104。 人工智慧監管有效性面臨的挑戰之一源自於科技的快速進步。 一方面，控制LLM及其使用者可能與處理參與網路釣魚和錯誤訊息的個人一樣具有挑戰性。 另一方面，使用開源模型的不良行為者將不受監管約束。 
+- 鑑於新興技術的顛覆性影響，出現了各種監管措施。
+  - 中國的一項新規定要求人工智慧產生的內容帶有浮水印，
+  - 而 ChatGPT 在義大利因 [GDPR](https://zh.wikipedia.org/zh-tw/歐盟一般資料保護規範) 合規問題而被暫時禁止，但在適當遵守透明度後最終被允許102。 
+- 歐盟的人工智慧法案可能是第一個監管跨多個部門的高風險人工智慧應用的法案[^94]。
+- 在美國，聯邦貿易委員會已對創建誤導性工具發出警告，強調現有法規禁止此類工具，並暗示這些規則可能適用於 GenAI[^103]。 
+- 類似地，加拿大自動決策指令規定了廣泛的指導方針，促進數據驅動的實踐和聯邦合規性、透明度和減少負面演算法結果104。 
+- 人工智慧監管有效性面臨的挑戰之一源自於科技的快速進步。 一方面，控制LLM及其使用者可能與處理參與網路釣魚和錯誤訊息的個人一樣具有挑戰性。 另一方面，使用開源模型的不良行為者將不受監管約束。 
 
 ### 公眾教育
 
 大眾對欺騙性「華而不實」內容的認識至關重要，就像我們對透過 Photoshop 篡改的圖像持懷疑態度一樣。 這種意識延伸到了深度偽造視覺技術。 專家為此類教育做出貢獻的一種建設性方式是透過教學影片和程式碼等資源來解釋 ChatGPT 背後的基本技術。 然而，提高對基於 LLM 的聊天機器人的認識具有挑戰性，因為它們帶來的風險需要立即關注，這與過去幾年發展的對視覺內容深度偽造的逐漸理解不同。 另一個警告是，懷疑的公民可能會失去對可信、權威資訊來源的信任，更容易受到陰謀論的影響。
 
 [^1]: Augenstein, I., Baldwin, T., Cha, M., Chakraborty, T., Ciampaglia, G.L., Corney, D., DiResta, R., Ferrara, E., Hale, S., Halevy, A., Hovy, E., Ji, H., Menczer, F., Miguez, R., Nakov, P., Scheufele, D., Sharma, S., Zagni, G. (2023). Factuality Challenges in the Era of Large Language Models. https://doi.org/10.48550/arXiv.2310.05189
+[^28]: Menczer, F., Crandall, D., Ahn, Y.-Y. & Kapadia, A. Addressing the harms of AI-generated inauthentic content. Nat. Mach. Intell. 5, 678–680, [DOI: 10.1038/s42256-023-00690-w](https://www.nature.com/articles/s42256-023-00690-w) (2023).
 [^74]: Wang, Y., Li, H., Han, X., Nakov, P. & Baldwin, T. Do-not-answer: A dataset for evaluating safeguards in llms. arXiv preprint 2308.13387 (2023). 2308.13387.
 [^75]: Reddy, R. G. et al. Smartbook: AI-assisted situation report generation (2023). [2303.14337](https://arxiv.org/abs/2303.14337).
 [^76]: Yu, W. et al. A survey of knowledge-enhanced text generation. ACM Comput. Surv. 54, DOI: [10.1145/3512467 (2022)](https://dl.acm.org/doi/10.1145/3512467).
 [^77]: Guu, K., Lee, K., Tung, Z., Pasupat, P. & Chang, M.-W. Realm: retrieval-augmented language model pre-training. [ArXiv (2020)](https://arxiv.org/abs/2002.08909).
-[^78]: Filippova, K. Controlled hallucinations: learning to generate faithfully from noisy data. In Findings of the Association for Computational Linguistics: EMNLP 2020, 864–870, DOI: 10.18653/v1/2020.findings-emnlp.76 (Association for Computational Linguistics, Online, 2020). 
-
+[^78]: Filippova, K. Controlled hallucinations: learning to generate faithfully from noisy data. In Findings of the Association for Computational Linguistics: EMNLP 2020, 864–870, DOI: 10.18653/v1/2020.findings-emnlp.76 (Association for Computational Linguistics, Online, 2020).
+[^94]: [EUR-Lex - 52021PC0206 - EN - EUR-Lex — eur-lex.europa.eu](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52021PC0).
+[^101]: Content Authenticity Initiative — [contentauthenticity.org](https://contentauthenticity.org/). [Accessed 08-09-2023].
+[^103]: Chatbots, deepfakes, and voice clones: AI deception for sale — [ftc.gov](https://www.ftc.gov/business-guidance/blog/2023/03/chatbots-deepfakes-voice-clones-ai-deception-sale). [Accessed 08-09-2023].
 
 [(Augenstein et al., 2023)]:  https://doi.org/10.48550/arXiv.2310.05189 "Augenstein, I., Baldwin, T., Cha, M., Chakraborty, T., Ciampaglia, G.L., Corney, D., DiResta, R., Ferrara, E., Hale, S., Halevy, A., Hovy, E., Ji, H., Menczer, F., Miguez, R., Nakov, P., Scheufele, D., Sharma, S., Zagni, G. (2023). Factuality Challenges in the Era of Large Language Models."
