@@ -5,7 +5,7 @@ parent: LLM 之微調
 grand_parent: 自然語言處理
 nav_order: 99
 date: 2024-04-08
-last_modified_date: 2024-04-08 05:37:25
+last_modified_date: 2024-04-20 21:59:59
 tags: AI chat
 ---
 
@@ -25,28 +25,44 @@ tags: AI chat
 
 ## 背景
 
+### source
 
 - Factuality Challenges in the Era of Large Language Models.[(Augenstein et al., 2023)][(Augenstein et al., 2023)] [^1]
 
-解決LLM中與現實相關的挑戰需要一個全面的策略，因為沒有任何單一的解決方案可以完全減輕不利後果。 在這裡，我們概述了各種策略維度，這些維度結合起來可能會帶來更負責任和建設性的技術利用。 有些解決方案是技術性的，需要建立一個全新的LLM。 從頭開始訓練一個數十億參數的 LLM 需要幾個月的時間和數百個 GPU，這超出了大多數學者的能力範圍。 然而，較小的模型，例如 LLaMA、Falcon 或 Jais，在學術界是可行的。 例如，執行 7B 模型需要單一 GPU，而 13B 模型則需要兩個 GPU。 
+### 前言
+
+- 我們需要一個全面的策略來解決LLM中與現實相關的挑戰，因為看來不存在單一解決方案可以完全減輕不利的後果。 
+- 本文概述了各種策略的向度，這些向度結合起來可能會帶來更負責任和建設性的技術利用。 
+- 有些解決方案是技術性的，需要建立一個全新的LLM。
+- 雖然從頭開始訓練一個數十億參數的 LLM 需要幾個月的時間和數百個 GPU，這超出了大多數學者的能力範圍。 然而，較小的模型，例如 LLaMA、Falcon 或 Jais，在學術界是可行的。 例如，執行 7B 模型需要單一 GPU，而 13B 模型則需要兩個 GPU。 
+
+## 面對威脅的策略方案
 
 ### 一致性和安全性
 
 - 安全性、乃至調整LLM與人類價值和意圖一致的努力， 是ChatGPT、LLaMA 2 和 Jais 等最新模型的主要關注點。 
-- 事實上，聊天機器人開發的各個階段都越來越多地考慮這些安全措施，包括訓練基本模型之前的資料清理、安全指令調整74、聊天機器人隱藏提示的安全性，以及透過關鍵字和機器學習部署的聊天機器人的安全性。
+- 事實上，聊天機器人開發的各個階段都越來越多地考慮這些安全措施，包括
+  - 訓練基本模型之前的資料清理、安全指令調整[^74]、
+  - 聊天機器人隱藏提示的安全性，以及
+  - 透過關鍵字和機器學習部署的聊天機器人的安全性。
 - 開源LLM的可用性表明，協調工作以及其他對策（例如大型人工智慧公司的標竿管理）的有效性，可能會嚴重限制減輕潛在迫在眉睫的威脅。 儘管如此，盡一切努力抑制LLM的負面效應仍然至關重要。 
 
 ### 模組化知識基礎架構
 
-當前LLM嚴重不足的一個領域是及時、全面和組織良好地展示事實密集的信息，例如態勢報告和戰略報告。 在預先訓練的LLM背景下，改善這一缺點的一種方法是採用多步驟自動化框架來收集和組織即時事件資訊。 這種模組化設計可以創造事實上準確的內容，可以使用LLM進一步完善內容，如 SmartBook75 所示。 SmartBook 最初是為了在俄羅斯-烏克蘭衝突期間進行高效的地面報告而開發的，它使用LLM透過簡化基於事件的時間表、結構化摘要和綜合參考來產生初步態勢報告。 
+- 當前LLM嚴重缺乏及時、全面和組織良好地展示事實密集的信息，例如態勢報告和戰略報告。
+-  在預先訓練的LLM背景下，改善這一缺點的一種方法是採用**多步驟自動化框架來**(multi-step automated framework)收集和組織即時事件資訊。
+-  這種模組化設計可以創造事實上準確的內容，可以使用LLM進一步完善內容，如 SmartBook[^75] 所示。 SmartBook 最初是為了在俄羅斯-烏克蘭衝突期間進行高效的地面報告而開發的，它使用LLM透過
+   -  簡化基於事件的時間表、
+   -  結構化摘要和
+   -  綜合參考來產生初步態勢報告。 
 
 ### 檢索增強產生
 
-檢索增強產生 (RAG)76,77 將外部來源的上下文資訊合併到文字產生中。 RAG 透過增強LLM利用外部數據的能力，緩解了LLM產生不準確內容的挑戰。 然而，它需要大規模有效檢索接地文字和穩健的評估。 
+檢索增強產生 (RAG)[^76],[^77] 將外部來源的上下文資訊合併到文字產生中。 RAG 透過增強LLM利用外部數據的能力，緩解了LLM產生不準確內容的挑戰。 然而，它需要大規模有效檢索接地文字和穩健的評估。 
 
 ### 幻覺控制與知識編輯
 
-LLM幻覺有兩種78：(i) 忠實性，即生成的文本不忠於輸入脈絡； (ii) 事實性，當生成的文本在世界知識方面實際上不正確時。 最近的嘗試著重於基於LLM的自我一致性檢查79、跨模型驗證80,81或對照相關知識82來解決推理階段的幻覺問題。 假設LLM了解給定的概念，並且抽樣的回答可能相似並包含一致的事實。 另一個有前景的研究方向是為知識編輯開設LLM。 然後可以透過將事實更新註入模型83-87來定位和修復事實錯誤。 現有方法著重於透過精確編輯對三元組進行事實更新。 這可以擴展到更複雜的知識表示，例如未來的邏輯規則。 另一個挑戰是評估語言模型中知識編輯的「連鎖反應」。 目前的知識編輯基準檢查原始事實的一些釋義是否已更新，以及一些不相關的事實是否未受影響。 更多的研究必須探討從編輯中邏輯推導出來的其他事實是否也隨之改變。 減輕暴露偏差：暴露偏差，即傾向於預先存在的歸納偏差而不是新的偏差，仍然是自然語言生成中的一個挑戰，影響在固定資料集上訓練的LLM的輸出品質88。 諸如選擇性升級之類的解決方案可以動態派生相關的指令-響應對，旨在透過提高LLM有效泛化其訓練資料之外的能力來解決這一問題89。
+- LLM幻覺有兩種[^78]：(i) 忠實性，即生成的文本不忠於輸入脈絡； (ii) 事實性，當生成的文本在世界知識方面實際上不正確時。 最近的嘗試著重於基於LLM的自我一致性檢查79、跨模型驗證80,81或對照相關知識82來解決推理階段的幻覺問題。 假設LLM了解給定的概念，並且抽樣的回答可能相似並包含一致的事實。 另一個有前景的研究方向是為知識編輯開設LLM。 然後可以透過將事實更新註入模型83-87來定位和修復事實錯誤。 現有方法著重於透過精確編輯對三元組進行事實更新。 這可以擴展到更複雜的知識表示，例如未來的邏輯規則。 另一個挑戰是評估語言模型中知識編輯的「連鎖反應」。 目前的知識編輯基準檢查原始事實的一些釋義是否已更新，以及一些不相關的事實是否未受影響。 更多的研究必須探討從編輯中邏輯推導出來的其他事實是否也隨之改變。 減輕暴露偏差：暴露偏差，即傾向於預先存在的歸納偏差而不是新的偏差，仍然是自然語言生成中的一個挑戰，影響在固定資料集上訓練的LLM的輸出品質88。 諸如選擇性升級之類的解決方案可以動態派生相關的指令-響應對，旨在透過提高LLM有效泛化其訓練資料之外的能力來解決這一問題89。
 
 ### 更好的評估
 
@@ -73,5 +89,11 @@ LLM的輸出已經與人類所寫的文本幾乎無法區分95。 例如，偵�
 大眾對欺騙性「華而不實」內容的認識至關重要，就像我們對透過 Photoshop 篡改的圖像持懷疑態度一樣。 這種意識延伸到了深度偽造視覺技術。 專家為此類教育做出貢獻的一種建設性方式是透過教學影片和程式碼等資源來解釋 ChatGPT 背後的基本技術。 然而，提高對基於 LLM 的聊天機器人的認識具有挑戰性，因為它們帶來的風險需要立即關注，這與過去幾年發展的對視覺內容深度偽造的逐漸理解不同。 另一個警告是，懷疑的公民可能會失去對可信、權威資訊來源的信任，更容易受到陰謀論的影響。
 
 [^1]: Augenstein, I., Baldwin, T., Cha, M., Chakraborty, T., Ciampaglia, G.L., Corney, D., DiResta, R., Ferrara, E., Hale, S., Halevy, A., Hovy, E., Ji, H., Menczer, F., Miguez, R., Nakov, P., Scheufele, D., Sharma, S., Zagni, G. (2023). Factuality Challenges in the Era of Large Language Models. https://doi.org/10.48550/arXiv.2310.05189
+[^74]: Wang, Y., Li, H., Han, X., Nakov, P. & Baldwin, T. Do-not-answer: A dataset for evaluating safeguards in llms. arXiv preprint 2308.13387 (2023). 2308.13387.
+[^75]: Reddy, R. G. et al. Smartbook: AI-assisted situation report generation (2023). [2303.14337](https://arxiv.org/abs/2303.14337).
+[^76]: Yu, W. et al. A survey of knowledge-enhanced text generation. ACM Comput. Surv. 54, DOI: [10.1145/3512467 (2022)](https://dl.acm.org/doi/10.1145/3512467).
+[^77]: Guu, K., Lee, K., Tung, Z., Pasupat, P. & Chang, M.-W. Realm: retrieval-augmented language model pre-training. [ArXiv (2020)](https://arxiv.org/abs/2002.08909).
+[^78]: Filippova, K. Controlled hallucinations: learning to generate faithfully from noisy data. In Findings of the Association for Computational Linguistics: EMNLP 2020, 864–870, DOI: 10.18653/v1/2020.findings-emnlp.76 (Association for Computational Linguistics, Online, 2020). 
+
 
 [(Augenstein et al., 2023)]:  https://doi.org/10.48550/arXiv.2310.05189 "Augenstein, I., Baldwin, T., Cha, M., Chakraborty, T., Ciampaglia, G.L., Corney, D., DiResta, R., Ferrara, E., Hale, S., Halevy, A., Hovy, E., Ji, H., Menczer, F., Miguez, R., Nakov, P., Scheufele, D., Sharma, S., Zagni, G. (2023). Factuality Challenges in the Era of Large Language Models."
