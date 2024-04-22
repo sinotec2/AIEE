@@ -65,3 +65,25 @@ Dell首度推出可搭配8個Nvidia H100或A100 GPU的伺服器，搶攻亟需�
 
 【註：規格與價格由廠商提供，因時有異動，正確資訊請洽廠商】
 
+## NVIDIA GPU Drivers
+
+- [NVIDIA Driver Downloads](https://www.nvidia.com/download/index.aspx)
+- L40
+  - version: 535.129.03(2024/3),  550.54.15(2024/4/17)
+  ```bash
+  Product Type:	Data Center / Tesla
+  Product Series:	L-Series
+  Product:	L40
+  OSystem:	Linux 64-bit
+  CUDA Toolkit:	Any
+  Language:	Chinese (Traditional)
+  ```
+- RTX 4090
+  ```bash
+  Product Type:	GeForce
+  Product Series:	GeForce RTX 40 Series
+  Product:	NVIDIA GeForce RTX 4090
+  O System:	Linux 64-bit
+  Download Type:	Production Branch
+  Language:	Chinese (Traditional)
+  ```

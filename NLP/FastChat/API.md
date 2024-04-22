@@ -25,7 +25,7 @@ tags: AI chat
 
 ## 背景
 
-## 安裝
+## gradio_client
 
 要透過API進行查詢，需使用`gradio_client Python`庫或`@gradio/client Javascript`包。
 
@@ -55,5 +55,26 @@ print(result)
 # str representing output in 'value_14' Button component,
 # str representing output in 'value_15' Button component,
 )
+```
+
+## cURL
+
+```bash
+api=http://L40.sinotech-eng.com:55083/v1
+curl $api/chat/completions   -H "Content-Type: application/json"   -d '{
+    "model": "vicuna-7b-v1.5-16k",
+    "messages": [{"role": "user", "content": "Hello! What is your name?"}]
+  }'
+## ans  
+{"id":"chatcmpl-utvSw5XEAgmGAUR73kLwRg","object":"chat.completion","created":1713405660,"model":"vicuna-7b-v1.5-16k","choices":[{"index":0,"message":{"role":"assistant","content":"Hello! My name is Vicuna."},"finish_reason":"stop"}],"usage":{"prompt_tokens":45,"total_tokens":53,"completion_tokens":8}}
+
+## again
+curl $api/chat/completions   -H "Content-Type: application/json"   -d '{
+    "model": "vicuna-7b-v1.5-16k",
+    "messages": [{"role": "user", "content": "Hello! What is your name?"}]
+  }'
+## ans
+
+{"id":"chatcmpl-fjkmAKmuGXnHdSa52otNrP","object":"chat.completion","created":1713405669,"model":"vicuna-7b-v1.5-16k","choices":[{"index":0,"message":{"role":"assistant","content":"Hello! My name is Vicuna, and I'm a language model developed by Large Model Systems Organization (LMSYS)."},"finish_reason":"stop"}],"usage":{"prompt_tokens":45,"total_tokens":73,"completion_tokens":28}}
 ```
 
