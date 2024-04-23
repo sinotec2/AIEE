@@ -26,3 +26,8 @@ tags: AI chat
 ## 背景
 
 
+- 盘点用ChatGPT建立的私有知识库的开源项目[AiBard123(2023)@知乎](https://zhuanlan.zhihu.com/p/637733426)
+
+系統名稱|發展者/好評者|功能性質|來源|
+:-:|:-:|:-:|:-:|
+Quivr|quivers(100persons/23kStars)|RAG+txt/pdf/csv/|[GitHub](https://github.com/QuivrHQ/quivr)|

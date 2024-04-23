@@ -59,7 +59,8 @@ tags: AI chat
 - 實作範例：旅遊補助網頁@[devp](http://devp.sinotech-eng.com/emb.html)
 1. 網址：http://devp.sinotech-eng.com/emb.html
 1. 啟動：按下右下角的 +
-![](emb_pngs/2024-04-23-14-32-47.png)
+
+![](emb_pngs/2024-04-24-05-27-08.png)
 
 - 小幫手對話窗
 1. 輸入訊息後，按下enter或者是右側紙飛機符號，即可輸入訊息。
@@ -163,3 +164,29 @@ src="http://eng06.sinotech-eng.com:3001/embed/anythingllm-chat-widget.min.js">
 - SENT AT：訊息發出的時間。目前為GMT。
 
 ![](emb_pngs/2024-04-23-16-32-08.png)
+
+## TODOs
+
+### 資源管理
+
+- 因為AI小幫手是對所有人開放的，AnythingLLM雖然提供了詢答上限的管制方式，但是內部資源總是會有洩漏、遭濫用的可能。
+  - 加強教育宣導、
+  - 分析IP的訪問紀錄、定期統計各部門同仁使用情形、
+  - 使用LDAP登入https網頁，按照部門分群管理，視部門需要開放其指定的語言模型，並由其計畫或管總來付費。
+
+### NLP語言模型發展
+
+- word2vec等可否以API型式呼叫?
+- db型態如何開啟?
+
+### 鑲嵌相容性
+
+- 公司規章網頁(php?)如何嵌入程式嗎?
+- 網誌系統可能整併嗎?
+- 開啟pdf的viewer，可否連到小幫手?
+
+### 主題開展
+
+- 環保法規
+- 內部訓練教材
+- 新進同仁訓練教材
