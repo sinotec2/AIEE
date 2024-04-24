@@ -190,3 +190,4 @@ src="http://eng06.sinotech-eng.com:3001/embed/anythingllm-chat-widget.min.js">
 - 環保法規
 - 內部訓練教材
 - 新進同仁訓練教材
+- 特定議題內部GPTs
