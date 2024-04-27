@@ -4,7 +4,7 @@ tags: AI
 layout: default
 parent: Utilities
 date:  2023-09-26
-modify_date: 2023-09-26 14:45:42
+modify_date: 2024-04-27 14:45:42
 ---
 
 # 環境部測站逐時照片之下載
@@ -95,7 +95,7 @@ for si in {0..7};do
   fls="$root/$stn/$LASTY/*/*"
   LASTHR=$(ls  $fls |tail -n1|rev|cut -d'/' -f1|rev|cut -d'-' -f2|cut -c-10)
   LAST=$(echo $LASTHR|cut -c-8)
-  h=$(echo $LASTHR|cut -c9-10)
+  h=10#$(echo $LASTHR|cut -c9-10)
   while true;do
     y=$(date -d "$LAST +${h}hour" +%Y)
     ymd=$(date -d "$LAST +${h}hour" +%Y%m%d)
@@ -108,6 +108,9 @@ for si in {0..7};do
         wget -T 10 -q $http/$ymd/$fn;fi;done
     if [[ $ymdh -ge $crnt ]];then
       break;fi
-    h=$(( $h + 1 ));done;done
+    h=$(( 10#$h + 1 ));done;done
 ```
 
+- note:
+  - `$h`必須是以10為基底的整數，才能進行四則運算。
+  - 2024-04-27：停下crontab的作用，因計畫停止運作很久了。
