@@ -98,4 +98,8 @@ for g in grpsvr:
         os.system(a)
         eg.update({int(e):g})
     print(g)
-``` 
+```
+
+## 程式碼下載
+
+{% include download.html content="將使用者分配到對應的群組伺服器[add_user.py](./add_user.py)" %}
