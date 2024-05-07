@@ -17,7 +17,7 @@ with open('grpsvr.json','r') as f:
 cmd="curl -X 'POST' \
    'http://eng06.sinotech-eng.com:PORT/api/v1/admin/users/new' \
    -H 'accept: application/json' \
-   -H 'Authorization: Bearer 89GQ4GY-Q7JMYQT-NPA87MX-56HF5KZ' \
+   -H 'Authorization: Bearer ***' \
    -H 'Content-Type: application/json' \
    -d '{  \"username\":\"NAME\",\"password\":\"PASSWORD\",\"role\":\"manager\" }'"
 

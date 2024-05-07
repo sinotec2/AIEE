@@ -6,7 +6,7 @@ parent: Anything LLM
 grand_parent: 自然語言處理
 nav_order: 99
 date: 2024-05-03
-last_modified_date: 2024-05-03 16:08:58
+last_modified_date: 2024-05-07 11:58:34
 tags: AI chat
 ---
 
@@ -42,21 +42,23 @@ tags: AI chat
   - 密碼：至少為8碼，此處以員編重複2次作為初設值
 - 部門、技術組與伺服器的對應關係
 
-|部門|技術組|伺服器
--|-|-
-環境規劃一部|環評組|[3001](http://eng06.sinotech-eng.com:3001)
-環境規劃一部|風機組|[3002](http://eng06.sinotech-eng.com:3002)
-環境規劃一部|空品組|[3003](http://eng06.sinotech-eng.com:3003)
-環境規劃一部|減碳組|[3004](http://eng06.sinotech-eng.com:3004)
-水務工程部|管線組|[3005](http://eng06.sinotech-eng.com:3005)
-水務工程部|廠站組|[3006](http://eng06.sinotech-eng.com:3006)
-環境規劃二部|廢棄物組|[3007](http://eng06.sinotech-eng.com:3007)
-環境規劃二部|土水組|[3008](http://eng06.sinotech-eng.com:3008)
-能資源設施部|興建組|[3009](http://eng06.sinotech-eng.com:3009)
-能資源設施部|營管組|[3010](http://eng06.sinotech-eng.com:3010)
-能資源設施部|產業輔導組|[3011](http://eng06.sinotech-eng.com:3011)
-研發及資訊部|研資部|[3012](http://eng06.sinotech-eng.com:3012)
-行政及支援部|行政部|[3013](http://eng06.sinotech-eng.com:3013)
+### 對應關係表
+
+|部門|技術組|英文簡稱|伺服器
+-|-|-|-
+環境規劃一部|環評組|EIA|[3001](http://eng06.sinotech-eng.com:3001)
+環境規劃一部|風機組|Wind|[3002](http://eng06.sinotech-eng.com:3002)
+環境規劃一部|空品組|Air|[3003](http://eng06.sinotech-eng.com:3003)
+環境規劃一部|減碳組|Carbon|[3004](http://eng06.sinotech-eng.com:3004)
+水務工程部|管線組|Pipeline|[3005](http://eng06.sinotech-eng.com:3005)
+水務工程部|廠站組|Water|[3006](http://eng06.sinotech-eng.com:3006)
+環境規劃二部|廢棄物組|Waste|[3007](http://eng06.sinotech-eng.com:3007)
+環境規劃二部|土水組|Soil|[3008](http://eng06.sinotech-eng.com:3008)
+能資源設施部|興建組|Construction|[3009](http://eng06.sinotech-eng.com:3009)
+能資源設施部|營管組|Operation|[3010](http://eng06.sinotech-eng.com:3010)
+能資源設施部|產業輔導組|Counseling|[3011](http://eng06.sinotech-eng.com:3011)
+研發及資訊部|研資部|ICT|[3012](http://eng06.sinotech-eng.com:3012)
+行政及支援部|行政部|Admin|[3013](http://eng06.sinotech-eng.com:3013)
 
 ## 程式說明
 
@@ -87,6 +89,32 @@ tags: AI chat
 - 使用 curl 命令向 http://eng06.sinotech-eng.com:PORT/api/v1/admin/users/new 發送 POST 請求,建立新的使用者帳號。其中 PORT 會被替換為對應群組的伺服器 Port 號。
 - 程式會將每個員工所屬的群組(grp)和群組伺服器(svr)資訊更新到 df 資料框中。
 - 最後,程式會將包含員工編號(EmpNo)、員工名稱(EmpName)、部門名稱(DeptName)、電子郵件(Email)、所屬群組(grp)和群組伺服器(svr)的資訊,輸出到 grp_svr.csv 檔案中。
+
+### cURL指令
+
+- 指令
+  - `POST`：因為是新增使用者，所有指令將會送到(`/admin/users/new`)，不必指定使用者id，系統會按照次序自行給定id值。
+  - `-H`檔頭：需指定格式及金鑰
+  - API金鑰：由管理者產生，詳見[API Keys](./AnyChat_adm.md#api-keys)。為使程式設計方便，所有端口的API金鑰均保持一致。(先在某伺服器環境中產生，再複製到其他伺服器。)
+- 網址
+  - 固定部分：主機、網域及路徑，
+  - 變數部分：各技術組分配之伺服器端口，由`3001`~`3013`(見[上表](#對應關係表))。
+- 使用者設定json內容
+  - 固定部分：角色(`role`)全設定為經理。
+  - 變數部分：名稱設為email名稱、密碼初設為員編2遍共8碼。
+  
+```bash
+cmd="curl -X 'POST' \
+   'http://eng06.sinotech-eng.com:PORT/api/v1/admin/users/new' \
+   -H 'accept: application/json' \
+   -H 'Authorization: Bearer ***' \
+   -H 'Content-Type: application/json' \
+   -d '{  \"username\":\"NAME\",\"password\":\"PASSWORD\",\"role\":\"manager\" }'"
+```
+
+- 注意
+  - 指令中的雙引號需特別指定，不可忽略。
+  - 變數部分：以字串之替代方式，在迴圈中進行疊代(`cmd.replace(...)`)。
 
 ### 迴圈
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Embedded Chat
+title: 嵌入式聊天機器人
 parent: Anything LLM
 grand_parent: 自然語言處理
 nav_order: 99
@@ -25,7 +25,7 @@ tags: AI chat
 
 ## 背景
 
-- 嵌入式聊天(Embedded Chat)，就是我們一般講的「網頁AI小幫手」，可以是簡單的NLP語言模型，也可以是大型語言模型，端看後台連接到甚麼對象(工作區的設定)。
+- 嵌入式聊天(Embedded Chat)機器人，就是我們一般講的「網頁AI小幫手」，可以是簡單的NLP語言模型，也可以是大型語言模型，端看後台連接到甚麼對象(工作區的設定)。
 - 此處介紹AnythingLLM的設定方式，以及對前台表現的影響。
 
 ### 預先準備
