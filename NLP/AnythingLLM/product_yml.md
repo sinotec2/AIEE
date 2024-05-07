@@ -82,4 +82,30 @@ services:
 
 ### 模板及替換策略
 
+- 這個方案以docker-compose.yml_template方式，將其中的$PORT抽換，這樣就可以啟動不同的docker，使用不同的端口，
 
+### 目錄區隔方案
+
+- 將各個影像分別在不同目錄下平行運作，如此彼此的設定與紀錄將不會互相干擾，可以有最穩定的執行效果。
+- `for`指令必須行在環境中啟動`bash`，才會辨識`{01..14}`的意義，因此在腳本前必須有前綴`#!/bin/bash`，否則crontab無法執行批次檔。
+
+```bash
+#jiachi@eng06 ~
+#$ cat up_anything
+#!/usr/bin/bash
+
+for i in {01..14};do
+export STORAGE_LOCATION=$HOME/anythingllm$i && mkdir -p $STORAGE_LOCATION && touch "$STORAGE_LOCATION/.env" && docker run -d -p 30$i:3001 --cap-add SYS_ADMIN -v ${STORAGE_LOCATION}:/app/server/storage -v ${STORAGE_LOCATION}/.env:/app/server/.env -e STORAGE_DIR="/app/server/storage" --ip eng06.sinotech-eng.com mintplexlabs/anythingllm
+done
+```
+
+### 批次停止所有的影像
+
+```bash
+#jiachi@eng06 ~
+#$ cat docker_stop
+#!/bin/bash
+for n in $(docker ps|grep anything|awk '{print $1}');do
+docker stop $n
+done
+```
