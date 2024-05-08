@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Manager tasks
+title: 經理的權責
 parent: Anything LLM
 grand_parent: 自然語言處理
 nav_order: 99
