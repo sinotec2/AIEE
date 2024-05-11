@@ -49,8 +49,8 @@ tags: AI chat
 - 注意：對於txt檔案中同一段落的內容，不允許存在跳行指令(`\n`)。anythingLLM會認為`\n`前後是2個段落。
 
 - 小幫手設定界面
-  - 必須是**管理者**才能設定、檢視。
-  - 由左側邊版點選板手進入，點選"Embedded Chat"
+  - 必須是[管理者](AnyChat_adm.md)才能設定、檢視。([經理](AnyChat_mng.md)還不能設定)
+  - 由左側邊版(sidebar)點選板手進入，點選"Embedded Chat"
 
 ![](emb_pngs/2024-04-23-13-41-03.png)
 
@@ -70,7 +70,13 @@ tags: AI chat
 
 ![](emb_pngs/2024-04-23-14-29-57.png)
 
+- 多人同時使用時
+  - 系統可能會出現遲滯現象。重新整理即可。
+  - 系統還是會記錄使用者的IP與對話內容，並不會發生錯亂。
+
 ## 工作區的設定
+
+- [經理](AnyChat_mng.md)及[管理者](AnyChat_adm.md)皆可設定
 
 ### 語言模型
 
@@ -120,6 +126,7 @@ tags: AI chat
 
 ### 程式碼
 
+- 小幫手需附掛在網頁上、才能開放使用。
 - 系統會提供連結的ID與執行程式，以供html程式編寫
   - 放在body之內即可
   - 會需要呼叫chatSettings
@@ -183,6 +190,7 @@ src="http://eng06.sinotech-eng.com:3001/embed/anythingllm-chat-widget.min.js">
 
 - 公司規章網頁(php?)如何嵌入程式嗎?
 - 網誌系統可能整併嗎?
+  - 可在front matter中加在`footer: ...`項下。
 - 開啟pdf的viewer，可否連到小幫手?
 
 ### 主題開展
