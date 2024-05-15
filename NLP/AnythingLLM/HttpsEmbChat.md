@@ -38,6 +38,11 @@ tags: AI chat
 - 生產階段node會啟動其內定的HTTPS服務，不能與工作站apache2 https有相同的key.pem、cert.pem。
 - anythingLLM的公開網頁(server/public)內容，其根目錄必須是`http://host.domain_name:port`，不能是某個https的目錄。用apache 目錄設定、alias、反向代理等方式，也都不能作用。
 - Embedded Chat所用的LLM，必須是anythingLLM的preferencd LLM(eg. `LLM_PROVIDER='openai'`)，不能是工作區專用LLM。
+- 使用者本地瀏覽器對SSL CERT許可的設定方式，也會影響鑲嵌的效果，因為會同時使用2組CERT。
+  - 可行的隱私權設定：Chrome的標準
+  - Edge可以分別登入vuepress及anythingLLM的https網頁，無法接受鑲嵌整合。但`http://devp.sinotech-eng.com/emb.html`中可以接受鑲嵌`https`的服務。
+
+
 ![](emb_pngs/2024-05-15-17-37-52.png)
 
 ![](emb_pngs/2024-05-15-17-07-18.png)
