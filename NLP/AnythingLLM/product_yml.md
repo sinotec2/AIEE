@@ -34,6 +34,58 @@ tags: AI chat
   - 有的分組人數雖多，但非屬設計人員，
   - 有的資料量很大，但多半是圖檔、簡報檔，不是資訊量足夠的文本。
 
+## node生產方案
+
+### 作業程序
+
+1. 下載原始碼：`git clone https://github.com/Mintplex-Labs/anything-llm.git`
+2. 修改server/.env
+
+```bash
+SERVER_PORT=eng06.sinotech-eng.com:3014
+
+LLM_PROVIDER='openai'
+OPEN_AI_KEY=sk-***
+OPEN_MODEL_PREF='gpt-3.5-turbo'
+
+LLM_PROVIDER='anthropic'
+ANTHROPIC_API_KEY=sk-***
+ANTHROPIC_MODEL_PREF='claude-3-haiku-20240307'
+
+LLM_PROVIDER='localai'
+LOCAL_AI_BASE_PATH='http://eng06.sinotech-eng.com:55083/v1'
+LOCAL_AI_MODEL_PREF='vicuna-7b-v1.5-16k'
+LOCAL_AI_MODEL_TOKEN_LIMIT=4096
+
+STORAGE_DIR=.../server/storage
+```
+
+3. 安裝、編譯、執行服務
+
+```bash
+nvm use v18.20.2
+export NODE_ENV=
+cd anything-llm
+pnpm install
+{ cd frontend && pnpm install && pnpm build && cp -r dist ../server/public } &
+export NODE_ENV=production
+{ cd server && pnpm install &&
+    npx prisma generate --schema=./prisma/schema.prisma &&
+    npx prisma migrate deploy --schema=./prisma/schema.prisma &&
+    node ./index.js } &
+{ cd collector && pnpm install && node index.js } &
+```
+
+### 注意事項
+
+- chat embed：
+  - docker作用OK，但node方案無法作用，原因未明。
+  - 有關生產階段的作法，官網並不推薦node方案，且desktop方案也不提供embeded chat
+
+## 伺服器導引到https目錄
+
+- 伺服器都是在http上執行，embedded chat無法鑲嵌到https靜態網頁
+- 是否可以將
 
 ## 迴圈設計
 
