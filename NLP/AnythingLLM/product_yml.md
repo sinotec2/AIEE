@@ -42,7 +42,7 @@ tags: AI chat
 2. 修改server/.env
 
 ```bash
-SERVER_PORT=eng06.sinotech-eng.com:3014
+SERVER_PORT='https://eng06.sinotech-eng.com:3014'
 
 LLM_PROVIDER='openai'
 OPEN_AI_KEY=sk-***
@@ -58,9 +58,15 @@ LOCAL_AI_MODEL_PREF='vicuna-7b-v1.5-16k'
 LOCAL_AI_MODEL_TOKEN_LIMIT=4096
 
 STORAGE_DIR=.../server/storage
+ENABLE_HTTPS='true'
+HTTPS_CERT_PATH='/etc/apache2/openssl_pem/eng06.cert.pem'
+HTTPS_KEY_PATH='/etc/apache2/openssl_pem/eng06.key.pem'
 ```
 
-3. 安裝、編譯、執行服務
+- 注意
+  - `SERVER_PORT`內容會被伺服器修改掉，每次要重新給定，否則抓不到`host.domain_name:port`，也抓不到前綴`https`
+
+1. 安裝、編譯、執行服務
 
 ```bash
 nvm use v18.20.2
