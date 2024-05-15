@@ -41,6 +41,8 @@ tags: AI chat
 1. 下載原始碼：`git clone https://github.com/Mintplex-Labs/anything-llm.git`
 2. 修改server/.env
 
+### .env檔案設定
+
 ```bash
 SERVER_PORT='https://eng06.sinotech-eng.com:3014'
 
@@ -66,7 +68,9 @@ HTTPS_KEY_PATH='/etc/apache2/openssl_pem/eng06.key.pem'
 - 注意
   - `SERVER_PORT`內容會被伺服器修改掉，每次要重新給定，否則抓不到`host.domain_name:port`，也抓不到前綴`https`
 
-1. 安裝、編譯、執行服務
+### 執行批次腳本
+
+3. 安裝、編譯（只需執行一次）、執行服務
 
 ```bash
 nvm use v18.20.2
@@ -91,7 +95,7 @@ export NODE_ENV=production
 ## 伺服器導引到https目錄
 
 - 伺服器都是在http上執行，embedded chat無法鑲嵌到https靜態網頁
-- 是否可以將
+
 
 ## 迴圈設計
 
