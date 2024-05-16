@@ -4,8 +4,8 @@ title: 在https靜態網頁中嵌入AI聊天
 parent: Anything LLM
 grand_parent: 自然語言處理
 nav_order: 99
-date: 2024-04-23
-last_modified_date: 2024-04-23 13:33:53
+date: 2024-05-16
+last_modified_date: 2024-05-16 20:45:29
 tags: AI chat
 ---
 
@@ -111,13 +111,117 @@ http方案雖然直接、有效整合，但問題缺點還不少
 - Edge
   - 似乎不接受node.js的金鑰與憑證。
 
+## CORS跨域服務
+
+CORS 是 "Cross-Origin Resource Sharing" 的縮寫,即跨源資源共享。
+
+跨源資源共享是一個 Web 標準,它定義了瀏覽器和服務器如何以安全的方式處理跨源 HTTP 請求。這是為了解決瀏覽器的同源政策限制,該政策禁止一個源(origin)的網頁訪問另一個源的資源。
+
+CORS 透過在 HTTP 響應頭中加入特定的標頭,允許瀏覽器和服務器進行安全的跨源交互。這些標頭包括:
+
+- `Access-Control-Allow-Origin`: 指定允許訪問該資源的**來源**域。
+- `Access-Control-Allow-Methods`: 指定允許的 HTTP 請求方法。
+- `Access-Control-Allow-Headers`: 指定允許的自定義請求頭。
+- `Access-Control-Expose-Headers`: 指定允許瀏覽器訪問的響應頭。
+
+通過設置這些 CORS 標頭,服務器可以控制哪些來源、哪些方法和哪些請求頭可以安全地訪問該資源。這是一種跨源訪問的機制,可以增強 Web 應用程式的安全性。
+
+###  Apache2 設定
+
+在 Apache2 中啟用 CORS 跨域訪問,可以在conf檔案中使用 `mod_headers` 模組來配置。以下是一個示例配置:
+
+1. 首先確保 `mod_headers` 模組已經啟用。在 Ubuntu/Debian 系統上,可以使用以下命令啟用:
+
+   ```
+   sudo a2enmod headers
+   ```
+
+2. 在 Apache 的配置文件中(通常位於 `/etc/apache2/apache2.conf` 或 `/etc/apache2/sites-available/default.conf`)添加以下 CORS 配置:
+
+   ```apache
+   
+       Header set Access-Control-Allow-Origin "*"
+       Header set Access-Control-Allow-Methods "GET,POST,OPTIONS,DELETE,PUT"
+       Header set Access-Control-Allow-Headers "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range"
+       Header set Access-Control-Expose-Headers "Content-Length,Content-Range"
+   
+   ```
+
+   這個配置允許所有來源(`"*"`)訪問您的 Apache 服務,並允許 GET、POST、OPTIONS、DELETE 和 PUT 等 HTTP 方法。您也可以根據需要調整 `Access-Control-Allow-Methods` 和 `Access-Control-Allow-Headers` 的值。
+
+3. 保存配置文件並重啟 Apache 服務:
+
+   ```
+   sudo systemctl restart apache2
+   ```
+
+這樣就完成了 Apache2 的 CORS 跨域訪問配置。您可以使用瀏覽器開發者工具或其他測試工具來驗證跨域請求是否成功。
+
+需要注意的是,在生產環境中,您可能需要根據具體的安全需求來調整 CORS 策略,例如限制允許的來源域名,而不是使用通配符`"*"`。
+
+### 發展階段的作法
+
+- embed chat採用`http://localhost:3014`的方式來服務，即使是`https`的靜態網頁，也不會發生跨域限制的問題。
+
+```bash
+這是因為當你在本地環境(http://localhost)上運行服務時,瀏覽器會自動放寬跨域限制,允許同源的HTTPS網頁(https://...)訪問http://localhost上的服務。這是為了方便開發者在本地調試和測試時使用。
+
+但是,一旦你將應用部署到正式環境(非localhost),就必須嚴格遵守CORS規則,因為瀏覽器會阻止跨域訪問,除非服務器端配置了正確的CORS策略。所以在正式環境中,你需要確保服務器端開啟了適當的CORS設置,以允許跨域訪問。
+```
+
+### node.js修改
+
+如果你的服務是透過Docker 容器部署的，並且你需要在Docker 容器內設定CORS 規則以允許跨域請求，你可以在你的Node.js 服務中設定CORS 規則，然後在Dockerfile 中將該服務打包到 Docker 映像中。
+
+以下是在 Node.js 中設定 CORS 規則的簡單方法：
+
+```javascript
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+// 允許所有網域的跨域請求訪問
+app.use(cors());
+
+// 其他路由或中介軟體設定
+app.get('/', (req, res) => {
+   res.send('Hello World!');
+});
+
+app.listen(3000, () => {
+   console.log('Server is running on port 3000');
+});
+```
+
+確保在你的 Node.js 服務中正確設定了 CORS 規則。 然後，在你的 Dockerfile 中，建置映像時將這個服務打包進去。
+
+以下是一個簡單的 Dockerfile 範例：
+
+```Dockerfile
+# 使用官方 Node.js 14 鏡像作為基礎鏡像
+FROM node:14
+
+# 建立工作目錄並將應用程式程式碼複製到工作目錄
+WORKDIR /app
+COPY . .
+
+# 安裝依賴
+RUN npm install
+
+# 暴露端口
+EXPOSE 3000
+
+# 啟動服務
+CMD ["node", "app.js"]
+```
+
 ## 成果畫面
 
-- 小幫手icon + 
+### 小幫手icon + 
 
 ![](emb_pngs/2024-05-15-17-37-52.png)
 
-- 打開、對話成果
+### 打開、對話成果
 
 ![](emb_pngs/2024-05-15-17-07-18.png)
 
@@ -128,50 +232,6 @@ http方案雖然直接、有效整合，但問題缺點還不少
   - `anythingllm-chat-widget.min.js`是放在vuepress的頁尾，所產生的物件無法遮蔽vuepress的`此頁內容`
   - 小幫手不受縮放影響。
 - 瀏覽器選擇性SSL的問題
-
-如果你的服务是通过 Docker 容器部署的，并且你需要在 Docker 容器内设置 CORS 规则以允许跨域请求，你可以在你的 Node.js 服务中设置 CORS 规则，然后在 Dockerfile 中将该服务打包到 Docker 镜像中。
-
-以下是一种在 Node.js 中设置 CORS 规则的简单方法：
-
-```javascript
-const express = require('express');
-const cors = require('cors');
-const app = express();
-
-// 允许所有域名的跨域请求访问
-app.use(cors());
-
-// 其他路由或中间件设置
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
-```
-
-确保在你的 Node.js 服务中正确设置了 CORS 规则。然后，在你的 Dockerfile 中，构建镜像时将这个服务打包进去。
-
-以下是一个简单的 Dockerfile 示例：
-
-```Dockerfile
-# 使用官方 Node.js 14 镜像作为基础镜像
-FROM node:14
-
-# 创建工作目录并将应用程序代码复制到工作目录
-WORKDIR /app
-COPY . .
-
-# 安装依赖
-RUN npm install
-
-# 暴露端口
-EXPOSE 3000
-
-# 启动服务
-CMD ["node", "app.js"]
-```
 
 
 
