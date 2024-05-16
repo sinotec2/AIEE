@@ -128,4 +128,21 @@ http方案雖然直接、有效整合，但問題缺點還不少
   - `anythingllm-chat-widget.min.js`是放在vuepress的頁尾，所產生的物件無法遮蔽vuepress的`此頁內容`
   - 小幫手不受縮放影響。
 - 瀏覽器選擇性SSL的問題
-  
+```bash
+# 使用官方 Node.js 14 镜像作为基础镜像
+FROM node:14
+
+# 创建工作目录并将应用程序代码复制到工作目录
+WORKDIR /app
+COPY . .
+
+# 安装依赖
+RUN npm install
+
+# 暴露端口
+EXPOSE 3000
+
+# 启动服务
+CMD ["node", "app.js"]
+```
+
