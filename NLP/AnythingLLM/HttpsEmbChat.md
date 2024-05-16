@@ -128,7 +128,34 @@ http方案雖然直接、有效整合，但問題缺點還不少
   - `anythingllm-chat-widget.min.js`是放在vuepress的頁尾，所產生的物件無法遮蔽vuepress的`此頁內容`
   - 小幫手不受縮放影響。
 - 瀏覽器選擇性SSL的問題
-```bash
+
+如果你的服务是通过 Docker 容器部署的，并且你需要在 Docker 容器内设置 CORS 规则以允许跨域请求，你可以在你的 Node.js 服务中设置 CORS 规则，然后在 Dockerfile 中将该服务打包到 Docker 镜像中。
+
+以下是一种在 Node.js 中设置 CORS 规则的简单方法：
+
+```javascript
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+// 允许所有域名的跨域请求访问
+app.use(cors());
+
+// 其他路由或中间件设置
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+```
+
+确保在你的 Node.js 服务中正确设置了 CORS 规则。然后，在你的 Dockerfile 中，构建镜像时将这个服务打包进去。
+
+以下是一个简单的 Dockerfile 示例：
+
+```Dockerfile
 # 使用官方 Node.js 14 镜像作为基础镜像
 FROM node:14
 
@@ -145,4 +172,6 @@ EXPOSE 3000
 # 启动服务
 CMD ["node", "app.js"]
 ```
+
+
 
