@@ -22,17 +22,16 @@ tags: AI chat
 </details>
 ---
 
-
 ## 背景
 
 - 掌握anythingLLM各組應用情形，其目的在於：
   - 了解對話數量的情形，各組系統的利用率
-  - 了解參與人員數，是否都參與能孰悉系統操作，教育訓練需求對象。
-  - 掌握文件詞組的總數，是否孰悉上載的程序、詞組的花費與分配等等。
-- 相關的anythingLLM API urls
+  - 了解參與人員數，是否都能孰悉系統操作，分析宣導與教育訓練需求對象。
+  - 掌握文件詞組的總數，是否孰悉上載的程序、以及詞組的花費與分配等等。
+- 應用到anythingLLM API的url's與特性
 
-|分類|url|GET/POST|取值方式
-|-|-|-|-|
+|主題|url|GET/POST|取值方式
+|:-:|-|:-:|:-:|
 |聊天|`'api/v1/admin/workspace-chats'`|POST|dict|
 |名稱|`'api/v1/admin/workspace-chats'`|POST|dict tree|
 |文件|`api/v1/documents`|GET|dict tree|
@@ -41,14 +40,14 @@ tags: AI chat
 
 ## msg.py程式說明
 
-這個程式主要用於從一個 API 端點獲取數據,並將其整理成一個 pandas DataFrame。以下是對程式碼的詳細說明:
+這個程式主要用於從AnythingLLM API 端點獲取數據,並將其整理成一個 pandas DataFrame。以下是對程式碼的詳細說明:
 
 ### 模組及函式
 
 - 引入所需的模組: json、os、sys、numpy、pandas。
-- 定義一個函數 get_total_token_count(data) ,用於計算 `data["localFiles"]["items"]` 中所有項目的 `token_count_estimate` 的總和。
+- 定義 get_total_token_count(data)函數 ,用於計算 `data["localFiles"]["items"]` 中所有項目的 `token_count_estimate` 的總和。
 - 設定 API 金鑰 `APIK="..."`。
-- 定義一個 cmd 字串,其中包含用於向 API 端點發送 HTTP 請求的 cURL 命令。此命令使用 POST 方法從 `http://eng06.sinotech-eng.com:PORT/PATH` 端點獲取數據,並將響應存儲在 `msg.txt` 文件中。
+- 定義命令字串cmd,其中包含用於向 API 端點發送 HTTP 請求的 `cURL` 命令。此命令使用 POST 方法向 `http://eng06.sinotech-eng.com:PORT/PATH` 端點貼上頁數，獲取該頁的對話數據紀錄,並將響應存儲在 `msg.txt` 文件中。
 - 定義一個包含列標題的 DataFrame df。
 
 ### 端口迭代
@@ -197,8 +196,19 @@ function updateCurrentTime() {
 ### apache配合修改
 
 - 根目錄修正成`DocumentRoot "/nas2/VuePressDist"`，讓所有目錄下的檔案都可讀取
+- 將url設定成符合權責限定的使用者才能訪問
 
-
+```bash
+<Directory "/nas2/VuePressDist/AnythingLLM">
+    AuthType Basic
+    AuthName "LDAP Protected Area"
+    AuthBasicProvider ldap
+    AuthLDAPURL "ldap://ldap.example.com/ou=users,dc=example,dc=com?uid"
+    AuthLDAPBindDN "cn=admin,dc=example,dc=com"
+    AuthLDAPBindPassword "secret"
+    Require ldap-group cn=allowed_group,ou=groups,dc=example,dc=com
+</Directory>
+```
 
 ## 自動執行
 
