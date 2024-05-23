@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSV Table with Sorting</title>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+<style> #footer { text-align: right; } </style>
+<style> #csvTable tr:nth-child(even) { background-color: #f2f2f2; } </style>
+<style> #csvTable tr:nth-child(odd) { background-color: #ffffff; } </style>
+<style> #csvTable th { background-color: #f2f2f2; } </style>
+</head>
+<body>
+<table id="csvTable">
+    <!-- CSV data will be inserted here -->
+</table>
+<div id="footer"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.11/jquery.csv.min.js"></script>
+<script>
+$(document).ready(function() {
+    $.ajax({
+        url: 'file.csv',
+        dataType: 'text',
+        success: function(data) {
+            var csvData = $.csv.toArrays(data);
+            var headers = csvData[0];
+            var tableData = csvData.slice(1);
+
+            var table = $('#csvTable').DataTable({
+                data: tableData,
+                columns: headers.map(function(header) {
+                    return { title: header, className: "dt-body-center" };
+                }),
+                columnDefs: [
+                { "targets": 1, "render": $.fn.dataTable.render.number(',', '.', 0) }
+                ],
+                responsive: true,
+                paging: false,
+                lengthChange: false,
+                searching: false,
+                info: false,
+            });
+        }
+    });
+});
+</script>
+<script>
+// Your table initialization code here
+
+// Update current time when the page loads or refreshes
+$(document).ready(function() {
+    updateCurrentTime();
+});
+
+function updateCurrentTime() {
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = ('0' + (now.getMonth() + 1)).slice(-2); // 月份從 0 開始，因此要加 1
+    var day = ('0' + now.getDate()).slice(-2);
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    var formattedMinutes = Math.floor(minutes / 10) * 10;
+    var formattedMinutesString = (formattedMinutes === 0 ? '00' : formattedMinutes);
+    var formattedTime = year + '/' + month + '/' + day + ' ' + hours + ':' + formattedMinutesString;
+    $('#footer').text('數據更新時間: ' + formattedTime);
+}
+</script>
+</body>
+</html>
