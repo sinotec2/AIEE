@@ -24,38 +24,33 @@ tags: AI chat
 
 ## 背景
 
-## 開始
+### 什麼是 AnythingLLM?
 
-什麼是 AnythingLLM?
-
-AnythingLLM 是最易於使用的一體式 AI 應用程序，可執行 [RAG](#rag)、AI 代理等操作，且無需任何代碼或基礎設施難題。
-
-AnythingLLM 由 Mintplex Labs, Inc. 構建
-- 由 Timothy Carambat 創立，並參加了 2022 年 YCombinator 夏季賽
-
-。
-
-AnythingLLM 不是一個人的專案。 Mintplex 實驗室團隊還包括：
+- AnythingLLM 是最易於使用的一體式 AI 應用程序，可執行 [RAG](#rag)、AI 代理等操作，且無需任何代碼或基礎設施難題。
+- AnythingLLM 由 Mintplex Labs, Inc. 構建
+- 由 Timothy Carambat 創立，並參加了 2022 年 YCombinator 夏季賽。
+- AnythingLLM 不是一個人的專案。 Mintplex 實驗室團隊還包括：
 
      肖恩·哈特菲爾德（工程師）
      唐蒂芙 (設計師)
      我們的志工貢獻者社區
      你？
 
+### 為什麼要使用 AnythingLLM？
 
-為什麼要使用 AnythingLLM？
+- 您希望在一個地方為本地 LLM、RAG 和 AI 代理提供零設定、私有且一體化的 AI 應用程序，而無需開發人員進行痛苦的設定。
 
-您希望在一個地方為本地 LLM、RAG 和 AI 代理提供零設定、私有且一體化的 AI 應用程序，而無需開發人員進行痛苦的設定。
+### AnythingLLM 桌面
 
-了解更多關於 AnythingLLM 桌面的資訊 →
+- 了解更多關於 AnythingLLM 桌面的資訊
 
 或者
 
-您需要為您的企業或組織提供一款完全可自訂、私有且一體化的 AI 應用程序，該應用程式基本上是一個具有許可的完整 ChatGPT，但具有任何 LLM、嵌入模型或向量資料庫。
+### AnythingLLM企業或組織
 
-了解有關 Docker 的 AnythingLLM 的更多資訊 →
-
-[介紹影片](https://youtu.be/-Rs8-M-xBFI?si=tEYcB1MKhF0igZeh)
+- 您需要為您的企業或組織提供一款完全可自訂、私有且一體化的 AI 應用程序，該應用程式基本上是一個具有許可的完整 ChatGPT，但具有任何 LLM、嵌入模型或向量資料庫。
+- 了解有關 Docker 的 AnythingLLM 的更多資訊 →
+- [介紹影片](https://youtu.be/-Rs8-M-xBFI?si=tEYcB1MKhF0igZeh)
 
 ## FAQ
 
