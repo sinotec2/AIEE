@@ -1,4 +1,31 @@
+---
+layout: default
+title: NLP code生成執行
+parent: openAI
+grand_parent: 自然語言處理
+nav_order: 99
+date: 2024-01-20
+last_modified_date: 2024-01-20 13:12:57
+tags: AI chat
+---
 
+
+# NLP code生成執行
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+## 背景
+
+## 步驟
 
 要使用 NLP（自然语言处理） API 并编写代码进行解释，以下是一个示例流程。假设我们使用 OpenAI 的 API 来进行一些 NLP 任务，并在 Python 中编写代码解释这些任务的结果。
 
