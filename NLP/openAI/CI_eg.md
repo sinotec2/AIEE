@@ -86,7 +86,7 @@ assistant = client.beta.assistants.create(
 
 - 串流的內容需要綁定**主題**(`thread_id`)與前述**助理**(`assistant_id`)
 - 構成**主題**(`thread`)
-  - 每個NLP指令(`cmd`)需搭配角色(`role`)、附件(`attachments`)、並包括在內容(content`)之內，以形成主題的訊息(`messages`)
+  - 每個NLP指令(`cmd`)需搭配角色(`role`)、附件(`attachments`)、並包括在內容(`content`)之內，以形成主題的訊息(`messages`)
 - 定義完`stream`，隨即提交執行(讀取即執行)。
 - 後處理：`event`的內容非常龐雜，由其中萃取我們需要的訊息即可。
   - 名稱篩選：`event`名稱為`'thread.message.completed'`
@@ -99,7 +99,7 @@ def run_cmd(cmd):
     messages=[
     {
       "role": "user",
-      "content": "I need to solve the equation \`"+cmd+"\`. Can you help me?",
+      "content": "I need to solve the problem \`"+cmd+"\`. Can you help me?",
       "attachments": [
         {
           "file_id": file.id,
@@ -133,7 +133,7 @@ In [69]: run_cmd("哪個分組有最高的「參與人數」，注意欄位的�
 
 ```python
 In [69]: run_cmd("哪個分組有最高的「參與人數」，注意欄位的值有可能有加號(「+」)的干擾，且分組名稱不等於「合計」?")
-Sure, let's start by inspecting the contents of the uploaded file to understand its structure. This will help us to solve the equation by identifying the group with the highest "participant count."
+Sure, let's start by inspecting the contents of the uploaded file to understand its structure. This will help us to solve the problem by identifying the group with the highest "participant count."
 
 We will load and display the first few rows of the file to get an idea of its format.
 It seems the file format is not recognized as CSV or Excel. Let's check the exact name and extension of the file to identify its type.
