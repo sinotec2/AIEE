@@ -248,4 +248,8 @@ plt.show()
 ![](pngs/2024-05-30-13-17-30.png)
 ![](pngs/2024-05-30-13-18-34.png)
 
+### 檔案位置
+
+- `/nas2/kuang/MyPrograms/query_anything/CI_query.ipynb`
+
 [Simon Liu(2023)]: https://blog.infuseai.io/chatgpt-code-interpreter-data-profiling-application-2a6cfced574a "ChatGPT Code Interpreter: 用自然語言進行數據分 by Simon Liu(2023)"
