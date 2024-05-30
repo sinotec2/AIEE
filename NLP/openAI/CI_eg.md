@@ -86,7 +86,7 @@ assistant = client.beta.assistants.create(
 
 - 串流的內容需要綁定**主題**(`thread_id`)與前述**助理**(`assistant_id`)
 - 構成**主題**(`thread`)
-  - 每個NLP指令(`cmd`)需搭配角色(`role`)、附件(`attachments`)、並包括在內容(content`)之內，以形成主題的訊息(`messages`)
+  - 每個NLP指令(`cmd`)需搭配角色(`role`)、附件(`attachments`)、並包括在內容(`content`)之內，以形成主題的訊息(`messages`)
 - 定義完`stream`，隨即提交執行(讀取即執行)。
 - 後處理：`event`的內容非常龐雜，由其中萃取我們需要的訊息即可。
   - 名稱篩選：`event`名稱為`'thread.message.completed'`
