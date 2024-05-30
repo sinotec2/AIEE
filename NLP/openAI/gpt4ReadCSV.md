@@ -49,7 +49,7 @@ tags: AI chat
 
 - GPT4會產生python code來分析所提供的csv檔案，如果出錯，會自行修正，直到成功。
 
-![](2024-04-09-08-38-17.png)
+![](pngs/2024-04-09-08-38-17.png)
 
 ### string findings
 
@@ -60,9 +60,9 @@ tags: AI chat
     - 阿拉伯數字+條$ \rightarrow $ csv檔案的row number
     - 國字+條$ \rightarrow $ 法律條文的序號
 
- ![](2024-04-09-08-51-13.png)
+ ![](pngs/2024-04-09-08-51-13.png)
 
-![](2024-04-09-08-52-11.png)
+![](pngs/2024-04-09-08-52-11.png)
 
 ```python
 # Check for entries related to "研究與開發" in the 'question' and 'answer' columns
@@ -73,7 +73,7 @@ research_development_entries.index += 1  # Adjusting index to be 1-based for use
 research_development_entries
 ```
 
-![](2024-04-09-08-54-30.png)
+![](pngs/2024-04-09-08-54-30.png)
 
 ### 技術經理
 
@@ -116,7 +116,7 @@ tech_manager_data
 - 如果沒有指定，GPT4傾向摘要內容(消化後之記憶)回答，而不是回答原文
 - 指定原文，GPT4才會重新分析，並陳報結果。
 
-![](2024-04-09-09-48-16.png)
+![](pngs/2024-04-09-09-48-16.png)
 
 ## 結語
 
