@@ -68,6 +68,7 @@ file = client.files.create(
   file=open(fname, "rb"),
   purpose='assistants'
 )
+
 ```
 
 ### 啟動助理
@@ -253,3 +254,80 @@ plt.show()
 - `/nas2/kuang/MyPrograms/query_anything/CI_query.ipynb`
 
 [Simon Liu(2023)]: https://blog.infuseai.io/chatgpt-code-interpreter-data-profiling-application-2a6cfced574a "ChatGPT Code Interpreter: 用自然語言進行數據分 by Simon Liu(2023)"
+
+## js版本
+
+我們可以使用 JavaScript 實現程式碼解釋器。
+
+### 程式碼
+
+程式碼如下：
+
+```javascript
+
+const openai = require('openai');
+const client = new openai.OpenAIClient();
+
+async function runCmd(cmd) {
+  const thread = await client.beta.threads.create({
+    messages: [
+      {
+        role: 'user',
+        content: `I need to solve the problem \`${cmd}\`. Can you help me?`,
+        attachments: [
+          {
+            file_id: file.id,
+            tools: [{ type: 'code_interpreter' }]
+          }
+        ]
+      }
+    ]
+  });
+
+  const stream = await client.beta.threads.runs.create({
+    thread_id: thread.id,
+    assistant_id: assistant.id,
+    stream: true
+  });
+
+  for await (const event of stream) {
+    if (event.event === 'thread.message.completed') {
+      console.log(event.data.content[0].text.value);
+    }
+  }
+}
+
+const file = await client.files.create({
+  file: fs.createReadStream('any20240529.csv'),
+  purpose: 'assistants'
+});
+
+const assistant = await client.beta.assistants.create({
+  instructions: 'You are a personal python tutor. When asked a coding question, write and run code to answer the question.',
+  model: 'gpt-4o',
+  tools: [{ type: 'code_interpreter' }],
+  tool_resources: {
+    code_interpreter: {
+      file_ids: [file.id]
+    }
+  }
+});
+
+await runCmd("哪個分組有最高的「參與人數」，注意欄位的值有可能有加號(「+」)的干擾，且分組名稱不等於「合計」?");
+```
+
+### 步驟說明
+
+這個 JavaScript 程式碼使用了 OpenAI 的 API 來實現類似的功能。主要步驟如下:
+
+1. 初始化 OpenAI 客戶端。
+2. 定義 runCmd 函數,用於執行命令並獲取結果。在 runCmd 函數中：
+   - 創建一個新的對話線程。
+   - 在線程中發送用戶請求。
+   - 創建一個新的對話運行,並以流的方式獲取結果。
+   - 在結果流中,輸出每個完成的消息。
+3. 創建一個 CSV 文件作為工具資源。
+4. 創建一個新的助手,並使用之前創建的文件資源。
+5. 調用 runCmd 函數,執行指定的命令。
+
+請注意,這只是一個基本實現,您可能需要根據實際需求進一步完善和優化這個程式碼。同時,您還需要安裝和設置 OpenAI 的 JavaScript 客戶端庫,並提供適當的 API 密鑰。
