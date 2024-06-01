@@ -189,7 +189,7 @@ for event in stream:
 ### 生成繪圖程式碼
 
 ```python
-In [71]: run_cmd("產生此數據集的各個欄位變數的統計圖形檔案，使用streamlit套件，生成程式碼。")
+In [71]: run_cmd("產生此數據集的各個欄位變數的統計圖形檔案")
 ```
 
 - 結果如下。輸入檔名為上載至docker上的檔名，需要修改成本地檔案名稱(前述`fname`)。
@@ -254,6 +254,86 @@ plt.show()
 - `/nas2/kuang/MyPrograms/query_anything/CI_query.ipynb`
 
 [Simon Liu(2023)]: https://blog.infuseai.io/chatgpt-code-interpreter-data-profiling-application-2a6cfced574a "ChatGPT Code Interpreter: 用自然語言進行數據分 by Simon Liu(2023)"
+
+### streamlit
+
+- 將生成的程式碼另存成`streamlit_app.py`檔案，並且執行`os.system('streamlit run streamlit_app.py')`程式，將其以網頁型態展示
+
+```python
+In [72]: run_cmd("產生此數據集的各個欄位變數的統計圖形檔案，使用streamlit套件，生成程式碼。")
+```
+
+- 中文字形，詳見[matplotlib輸出中文字形](https://sinotec2.github.io/Utilities/Graphics/matplotlib/chinese_text/)
+
+```python
+kuang@eng06 /nas2/kuang/MyPrograms/query_anything
+$ cat plot4.py
+import pandas as pd
+import os
+
+# Load the uploaded file
+file_path = 'any20240529.csv'
+data = pd.read_csv(file_path)
+
+# Display the first few rows and summary information of the dataset
+data_info = data.info()
+data_head = data.head()
+
+data_info, data_head
+# Define the Streamlit script content
+streamlit_script = """
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 設置中文字體為SimHei
+plt.rcParams['axes.unicode_minus'] = False  # 解決負數標籤顯示為方塊的問題
+
+# Load the data
+uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
+if uploaded_file is not None:
+    data = pd.read_csv(uploaded_file)
+
+    # Preprocess the data
+    data['對話次數'] = data['對話次數'].apply(lambda x: x.replace('+', '')).astype(float)
+    data['參與人數'] = data['參與人數'].apply(lambda x: x.replace('+', '')).astype(float)
+    data['文件詞組'] = data['文件詞組'].apply(lambda x: x.replace('+', ''))
+    data['文件詞組'] = data['文件詞組'].apply(lambda x: x.replace(',', '')).astype(float)
+
+    # Handling missing values
+    data = data.fillna(0)  # Filling missing values with 0 for simplicity
+
+    st.write("Data Preview:", data.head())
+
+    # Generate plots for each column
+    st.write("### Statistical Plots")
+
+    for column in data.columns:
+        if column not in ['Unnamed: 0', '分組']:
+            st.write(f"#### {column}")
+            fig, ax = plt.subplots()
+            sns.histplot(data[column], kde=True, ax=ax)
+            st.pyplot(fig)
+"""
+script_path = './streamlit_app.py'
+with open(script_path, 'w') as file:
+    file.write(streamlit_script)
+
+os.system('streamlit run '+ script_path + '&')
+```
+
+- 重要streamlit指令
+  - [Streamlit documentation](https://docs.streamlit.io/)
+
+|功能|指令|說明
+|-|-|-
+|標題|st.header()|
+|文字|st.write("### Statistical Plots")|接受markdown之各級標題與內文
+|繪圖|st.pyplot(fig)|以伺服器型態、使用者如更改設定，將會重新更新圖面
+|日期選擇器|st.date_input(...)|[Display a date input widget.](https://docs.streamlit.io/develop/api-reference/widgets/st.date_input)|
+|檔案選擇器|st.file_uploader()|[選擇並上傳檔案](https://docs.streamlit.io/develop/api-reference/widgets/st.file_uploader)
+|更新|st.rerun|定期更新、
 
 ## js版本
 
