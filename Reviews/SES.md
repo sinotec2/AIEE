@@ -1,7 +1,26 @@
+---
+layout: default
+title: 參與AIOT的計畫形態及領域
+parent: 回顧與綜覽
+nav_order: 99
+date: 2024-08-06 
+last_modified_date: 2024-08-06 08:26:30
+tags: AI
+---
 
+{: .no_toc }
 
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
 
-# 環興參與AIOT的計畫形態及領域
+# 參與AIOT的計畫形態及領域
 
 ## 業主專業顧問工作
 
@@ -29,7 +48,7 @@
   - 環境資訊服務流量之廣告價值
 - 環境資訊來源龐雜、品質不一、難以整合
   - 業主投資不穩定
-  - 機關之間缺乏整合
+  - 機關、承商之間缺乏整合
 - 
 
 

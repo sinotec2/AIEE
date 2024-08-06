@@ -8,6 +8,8 @@ last_modified_date: 2023-08-22 10:42:27
 tags: AI
 ---
 
+# AI在水廠及管線工程領域之應用
+
 {: .no_toc }
 
 <details open markdown="block">
@@ -20,7 +22,6 @@ tags: AI
 </details>
 ---
 
-# AI在水廠及管線工程領域之應用
 ## 歐美目前進度
 
 ### 工研院產發所報導
@@ -97,7 +98,7 @@ tags: AI
 |:-:|
 |雷達影像漏水檢測熱區圖 from Warner, B. (2021), “Water tech that’s out of this world". [Atlas of the Future](https://atlasofthefuture.org/project/utilis/)|
 
-## 工業用水、節水、
+## 工業用水、節水
 
 ### 冷卻水精準加藥
 
@@ -116,6 +117,19 @@ tags: AI
 |![](https://github.com/sinotec2/FAQ/raw/main//attachments/2023-08-15-15-19-07.png)|
 |:-:|
 |染整廠廢水於化學混凝系統AI 精準加藥實際案例與成效。導電度由 7,500降低至 3,000 µs/cm，目前精準加藥應用包含化學混凝系統、冷卻水塔系統、管末水處理與回收、UF/RO 薄膜系統，MBR，A2O，活性污泥等加藥系統。[謝等(2021)][pdf1]|
+
+## 中水系統
+
+- 臺中市政府研究發展成果網[台中市水資源回收中心水回收再利用之潛勢探討](https://rdnet.taichung.gov.tw/media/428208/2122514262486.pdf)
+  - 工業用水標的：需監測設備150套
+  - 冷卻用水標的：約需53套
+  - 為澆灌/學校沖廁用水：亦為53套
+  - 灌溉用水：約1套
+- 臺中市水利局2017[臺中市福田水資源回收中心放流水回收再利用統包工程(含營運及維護) 招商說明](http://www.hydraulic.org.tw/new/upfile/file/20170802/2017080210520876876.pdf)
+  - 水質水量即時監測系統：配合營運管理提出輸水管即時監測系統之配置需求
+- 桃園市政府2021[桃園北區再生水BTO計畫先期暨建設及財務計畫(定稿本)](https://ws.tycg.gov.tw/Download.ashx)
+  - 文中有即時監測系統之規劃與經費
+- 再生水多元運用─產業園區應用實例[林志墩等2017](https://www.ceci.org.tw/Upload/Download/6FE352A4-F8BA-4CBB-A3D1-FBF8A4EAB771.pdf)
 
 ## 廢水處理
 
