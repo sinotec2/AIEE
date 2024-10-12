@@ -1,4 +1,30 @@
+---
+layout: default
+title: PFAS reporting
+parent: word2vec
+grand_parent: 自然語言處理
+nav_order: 99
+date: 2024-04-06
+last_modified_date: 2024-04-06 05:18:23
+tags: AI chat
+---
 
+
+# PFAS reporting
+
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+## 背景
 
 ### reporting
 
