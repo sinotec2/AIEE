@@ -1,9 +1,10 @@
 ---
 layout: default
-title: Prompting
+title: PRISM
 nav_order: 99
 has_children: true
-parent: Marking Languages
+parent: 生成式AI協助報告撰寫
+grand_parent: 自然語言處理
 last_modified_date: 2024-08-25 11:24:36
 tags: md
 ---
