@@ -30,6 +30,7 @@ tags: AI chat report
 
 本文討論了 OpenAI 如何擴展其 Kubernetes 基礎設施以支援 7,500 個節點，重點是優化資源調度、網路管理和 API 伺服器。解決的主要挑戰包括 GPU 資源分配、並行作業的群組調度、高效檢查點、網路效能和 API 伺服器負載管理。他們使用 Azure 的 VMSS 等工具進行擴展，使用 Kubernetes 1.16 的 EndpointSlices 來提高效能，並解決了 Prometheus 監控問題。總的來說，Kubernetes 被證明是一個可擴展且靈活的平台，用於管理 GPT-3 和 DALL·E 等大型 AI 模型。
 
+![](https://openai.com/index/scaling-kubernetes-to-7500-nodes/#unsolvedproblems%E3%80%82)
 ## 可服務人數
 
 在 Kubernetes (K8S) 中部署 GPU 推理服務時，每個節點能夠服務的使用者數量取決於多個因素，包括 GPU 的規格、模型的複雜性、推理的時間要求以及使用者的並發需求。以下是影響 GPU 推理服務能力的幾個關鍵因素：
