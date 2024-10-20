@@ -29,6 +29,7 @@ tags: AI chat report
 - 整合搭配起來就如下圖所示。
 
 ![Redis and MySQL join service](https://hackmd.io/@cynote/BkobMykLw)
+source: [hackmd](https://hackmd.io/@cynote/BkobMykLw)
 
 ## Redis 的鍵與值
 
