@@ -32,8 +32,7 @@ tags: AI chat report
 
 ## Redis 的鍵與值
 
-> 作為RAG系統中的Redis緩存資料庫，其鍵與值會是什麼內容？
-
+{% include question.html content="作為RAG系統中的Redis緩存資料庫，其鍵與值會是什麼內容？" %}
 - 在 Retrieval-Augmented Generation (RAG) 系統中，Redis 通常作為快取資料庫，用來加速向量檢索和減少對後端資料庫的查詢頻率。在這樣的場景下，Redis 的 鍵（key）和 值（value）會包含以下內容：
 
 ### 鍵（Key）
