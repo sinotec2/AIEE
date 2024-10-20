@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Redis 的應用
-parent: RAGflow
+parent: RAG Methodologies
 grand_parent: SearchingEngine
-nav_order: 1
+nav_order: 99
 date: 2024-10-12 
 last_modified_date: 2024-10-12 20:32:31
 tags: AI chat report
@@ -24,10 +24,15 @@ tags: AI chat report
 
 ## 背景
 
+- 雖然內存資料庫有快速的強項、RAG對語言的精度倒是不如金融資料庫，但如果能夠同時有個關聯資料庫作為跨session 的資料背景也是很重要。
+- 這2類資料庫，前者方案以最簡單的Redis、而後者的方案則以最常見的MySQL作為長期管理。
+- 整合搭配起來就如下圖所示。
 
-> 作為RAG系統中的Redis緩存資料庫，其鍵與值會是什麼內容？
+![Redis and MySQL join service](https://hackmd.io/@cynote/BkobMykLw)
 
 ## Redis 的鍵與值
+
+> 作為RAG系統中的Redis緩存資料庫，其鍵與值會是什麼內容？
 
 - 在 Retrieval-Augmented Generation (RAG) 系統中，Redis 通常作為快取資料庫，用來加速向量檢索和減少對後端資料庫的查詢頻率。在這樣的場景下，Redis 的 鍵（key）和 值（value）會包含以下內容：
 
