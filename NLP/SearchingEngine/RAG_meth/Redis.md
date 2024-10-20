@@ -126,6 +126,20 @@ Redis 提供了強大的即時數據管理平台，能夠支持向量的存儲�
 
 總結來說，Redis 提供了一個強大且高效的平台來實現 RAG。其向量管理能力、高效能和與 AI 框架的無縫整合，使其成為增強生成式 AI 應用並實現實時數據檢索的理想選擇。
 
+## Redis的擴展
+
+Redis的Kubernetes相容性如何？
+
+Redis 與 Kubernetes 具有良好的相容性，尤其是在分佈式環境下進行高效的數據處理時，這種整合被廣泛應用。Redis 可以輕鬆地在 Kubernetes 上部署和管理，幫助應用程序在多個容器中運行，並能充分利用 Kubernetes 的自動擴展、恢復能力和資源管理。以下是 Redis 與 Kubernetes 相容性的一些關鍵點：
+
+	1.	[Redis Operator](https://operatorhub.io/operator/redis-operator):為了簡化 Redis 在 Kubernetes 中的部署與管理，Redis Operator 提供了自動化工具，能夠輕鬆地安裝、擴展、升級和管理 Redis 集群。這些 Operators 可處理 Redis 的高可用性配置，包括主從模式、自動故障轉移等。
+	2.	可擴展性：Redis 在 Kubernetes 上具備水平擴展能力，尤其適合處理大規模資料流。Kubernetes 的自動擴展功能允許 Redis 隨著負載的增加或減少動態調整資源分配。
+	3.	高可用性與持久性：透過 Kubernetes 的持久性卷（Persistent Volume，PV）和持久性卷聲明（Persistent Volume Claims，PVC），Redis 的數據即使在 Pod 崩潰或重新部署時也能得到保存。這確保了 Redis 的資料持久性，並可以在多個容器間共享數據。
+	4.	自動恢復：Kubernetes 提供的自動重啟和重新調度功能，使得 Redis 的部署更具彈性。在容器失敗或意外關閉時，Kubernetes 可以自動恢復 Redis，確保服務不中斷。
+	5.	資源隔離和管理：Kubernetes 可以很好地管理 Redis 的 CPU、內存和其他資源，確保每個 Redis 實例能夠獲得足夠的資源，同時避免資源浪費。
+
+這些特性使得 Redis 非常適合在 Kubernetes 環境中運行，無論是高效處理即時數據還是作為快取和數據存儲服務，Redis 都可以在 Kubernetes 上穩定、靈活地運行。
+
 ## Terminology
 
 ### Spring AI 工程應用框架
