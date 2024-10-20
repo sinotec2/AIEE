@@ -1,4 +1,28 @@
+---
+layout: default
+title: K8s 的應用
+parent: RAG Methodologies
+grand_parent: SearchingEngine
+nav_order: 99
+date: 2024-10-12 
+last_modified_date: 2024-10-12 20:32:31
+tags: AI chat report
+---
 
+# K8s 的應用
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+## 背景
 
 ## 7500個節點
 
