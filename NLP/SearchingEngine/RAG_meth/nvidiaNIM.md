@@ -29,6 +29,10 @@ tags: AI chat report
   - 該網址介紹了如何使用 Haystack 和 NVIDIA NGC 設置 RAG（Retrieval-Augmented Generation）服務。步驟包括在 Kubernetes 上運行 Haystack，並整合 NVIDIA NGC 的模型和資源來進行高效的推理與檢索。
   - 重點涵蓋了如何將向量資料庫（如 FAISS 或 Elasticsearch）與語言模型整合，實現實時數據檢索和生成。
   - 該指南還展示了如何優化 GPU 資源和配置 Kubernetes 節點來支持大規模的 RAG 應用。
+
+## 費用
+
+- [IThome](https://www.ithome.com.tw/news/164187)
 - 
 [ngc]: "NGC 是 NVIDIA GPU Cloud 的縮寫，它是 NVIDIA 提供的一個專門針對 AI、機器學習、數據分析和高性能計算的雲端平台。NGC 提供了一個容器化的環境，內含各種經過優化的深度學習框架、預訓練模型、應用程式和工具，能夠快速部署在各種環境中，如本地伺服器、雲端或超級計算機。"
 使用者可以透過 NGC 來訪問 NVIDIA 認證的軟體堆疊，並在其雲端平台上進行訓練、推理及分析工作，提升開發效率並確保軟體的穩定性和性能。"
