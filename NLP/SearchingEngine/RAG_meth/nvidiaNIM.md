@@ -9,7 +9,7 @@ last_modified_date: 2024-10-12 20:32:31
 tags: AI chat report
 ---
 
-# Redis 的應用
+# NIM 的應用
 {: .no_toc }
 
 <details open markdown="block">
