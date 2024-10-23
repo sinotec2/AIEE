@@ -29,14 +29,13 @@ tags: AI chat report
 
 1. gereral: 一般性的文檔 
 2. Q&A：一對一的段落關係
-  {% include question.html content="
-   "Q&A" 分塊方法說明
-    此塊方法支持 excel 和 csv/txt 文件格式。
+  {% include question.html content="Q&A 分塊方法說明"%}
 
+    此塊方法支持 excel 和 csv/txt 文件格式。
     如果文件以 excel 格式，則應由兩個行組成 沒有標題：一個提出問題，另一個用於答案， 答案列之前的問題列。多工作表狀況，只要行列正確結構，就可以接受。
     如果文件以 csv/txt 格式為 用作分開問題和答案的定界符。
     未能遵循上述規則的文本行將被忽略，並且 每個問答對將被認為是一個獨特的部分。
-  "%}
+  
 3. Resume：有必要的段落
 4. Manual：
 5. Table：
