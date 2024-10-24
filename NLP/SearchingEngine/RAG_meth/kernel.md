@@ -41,3 +41,6 @@ tags: AI chat report
   - [官網](https://llmware.ai/)
   - [中文推薦](https://codelove.tw/@tony/post/gqvJ2q)
 
+LLMWare.ai 是一個專門為 LLM（大型語言模型）構建的開源平台，提供 RAG 服務。該平台專注於將語言模型與各類資料來源整合，支持企業用來構建可擴展且高效的生成應用。它提供向量數據庫整合、API 架構、內建快取等功能，並能夠支援多種部署環境如 Kubernetes。這使其成為 RAG 領域中的一個重要玩家，適合需要大規模語言模型應用的企業。
+
+你可以查看 LLMWare.ai 了解更多。
