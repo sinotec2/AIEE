@@ -35,4 +35,9 @@ tags: AI chat report
 精準的 prompt 連同 system instruction
 沒做 rerank 的效果都差到不行，但 rerank 要懂繁體中文
 
+## llmware
+
+-［Github](https://llmware-ai.github.io/llmware/)
+  - [官網](https://llmware.ai/)
+  - [中文推薦](https://codelove.tw/@tony/post/gqvJ2q)
 
