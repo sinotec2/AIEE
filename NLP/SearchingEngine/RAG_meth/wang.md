@@ -1,4 +1,30 @@
+---
+layout: default
+title: Wang's Paper
+parent: RAG Methodologies
+grand_parent: SearchingEngine
+nav_order: 99
+date: 2024-11-02 
+last_modified_date: 2024-11-02 20:32:31
+tags: AI chat report
+---
 
+# Wang's Paper
+
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+
+## 
 
 > 這篇轉載應該是個演講的轉錄、演講的主題是篇RAG的論文，因為簡體中文網站有太多廣告無法點入，在此轉錄。
 
