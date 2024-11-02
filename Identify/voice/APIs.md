@@ -1,7 +1,34 @@
+---
+layout: default
+title: 辨識講者的會議轉錄
+parent: 語音辨識
+nav_order: 99
+grand_parent: 型態與辨識
+date: 2024-11-02
+last_modified_date: 2024-11-02 13:13:04
+tags: EE AI
+---
+
+# 辨識講者的會議轉錄
+
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+## 背景
 
 ## 開源方案
 
 - [github:Haschtl/transcripy](https://github.com/Haschtl/transcripy/tree/main)
+
 ## 商業方案
 
 - 再也不用輪流寫會議記錄！3 個即時記錄、產出摘要的 AI 小工具，讓你專心開會[經理人2024/5](https://www.managertoday.com.tw/articles/view/68542)
