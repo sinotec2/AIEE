@@ -27,6 +27,8 @@ tags: EE AI
 
 - 會議中使用語音辨識技術能提高效率，減少手動紀錄時間，並且在辨識多講者的環境中，提供自動轉錄服務。
 - 隨著 AI 進步，不同 ASR 模型與整合方案逐漸應運而生，為使用者提供更多選擇。
+- 2020年方法論的中文說明，可以參考[清大Behavioral Informatics & Interaction Computation Lab](https://biic.ee.nthu.edu.tw/blog-detail.php?id=6)
+- Speaker Diarization: An Introductory Overview，[La Javaness R&D 2023/7@medium](https://lajavaness.medium.com/speaker-diarization-an-introductory-overview-c070a3bfea70)除了概念介紹之外，也提供了pyannote與Nemo 2個開源方案。
 
 這篇筆記建議從各項方案的特點與應用情境著手，依照會議需求選擇適合的 ASR 模型或整合方案。
 希望這些資訊能幫助您在進行會議轉錄時找到最佳解決方案。
@@ -34,6 +36,7 @@ tags: EE AI
 ## 開源方案
 
 ### Transcripy 與 pyannote-speaker-diarization
+
 - source：[github:Haschtl/transcripy](https://github.com/Haschtl/transcripy/tree/main)
   - 使用[pyannote speaker dairiation 2020 技術](https://github.com/Haschtl/transcripy/tree/main)
   - Transcripy 利用 pyannote 技術辨識講者，能有效分辨會議中不同講者的語音訊息，適用於開源環境下對多講者辨識需求的情境。
