@@ -1,7 +1,7 @@
 
 ## 開源方案
 
-- [transcripy](
+- [github:Haschtl/transcripy](https://github.com/Haschtl/transcripy/tree/main)
 ## 商業方案
 
 - 再也不用輪流寫會議記錄！3 個即時記錄、產出摘要的 AI 小工具，讓你專心開會[經理人2024/5](https://www.managertoday.com.tw/articles/view/68542)
