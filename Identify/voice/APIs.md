@@ -28,6 +28,7 @@ tags: EE AI
 ## 開源方案
 
 - [github:Haschtl/transcripy](https://github.com/Haschtl/transcripy/tree/main)
+  - 使用[pyannote speaker dairiation 2020 技術](https://github.com/Haschtl/transcripy/tree/main)
 - Whisper, DeepSpeech, Kaldi, Wav2vec, or SpeechBrain: key factors to consider when choosing an open-source ASR model for your apps and projects. [gladia 2024/9](https://search.app/3qeTmo6sdr7fT3rT7)
 
 ## 雲端ASR模型
