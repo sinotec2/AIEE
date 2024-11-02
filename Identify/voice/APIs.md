@@ -64,6 +64,7 @@ Whisper、DeepSpeech、Kaldi、Wav2vec、SpeechBrain。每款 ASR 模型各有�
 
 - 再也不用輪流寫會議記錄！3 個即時記錄、產出摘要的 AI 小工具，讓你專心開會[經理人2024/5](https://www.managertoday.com.tw/articles/view/68542)
   - 經理人網站所提及的多款工具如 Flags、Vocol.ai 和 Goodtape，專注於即時會議紀錄與摘要生成，讓用戶能專注於會議本身而無需分心紀錄。
+  - sources：
     - 會議夥伴[creative.ai Flags by 4149](https://creati.ai/tw/ai-tools/flags-by-4149/)
     - [vocal.ai 犀動智能@內湖](https://www.vocol.ai/tw/home)
     - [goodtape](https://blog.goodtape.io/zh/?gad_source=1&gclid=CjwKCAjw-JG5BhBZEiwAt7JR6zNorIOpIWK3-MHYqILElNbMruvSf6KIiXrNoWqG-hpSCDOjkMbl5xoC9zIQAvD_BwE)
