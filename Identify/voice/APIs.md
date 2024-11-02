@@ -1,4 +1,9 @@
 
+## 開源方案
+
+- [transcripy](
+## 商業方案
+
 - 再也不用輪流寫會議記錄！3 個即時記錄、產出摘要的 AI 小工具，讓你專心開會[經理人2024/5](https://www.managertoday.com.tw/articles/view/68542)
     - 會議夥伴[creative.ai Flags by 4149](https://creati.ai/tw/ai-tools/flags-by-4149/)
     - [vocal.ai 犀動智能@內湖](https://www.vocol.ai/tw/home)
