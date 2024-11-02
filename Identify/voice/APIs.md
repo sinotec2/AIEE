@@ -7,3 +7,4 @@
 - AI多人語音辨識會議紀錄​[Qmeeting@板橋](https://qmeeting.qshop.net.tw/qmeeting_ai/)
     - line好友156人
 - cyberlink [MyEdit](https://tw.cyberlink.com/blog/audio-editing/3248/ai-meeting-minutes)
+- METAMatch 會議記錄AI助手 (企業雲端版)[@內湖](https://www.metamatch.market/products/detail/METAMatch-MeetingAI)
