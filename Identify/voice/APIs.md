@@ -29,7 +29,13 @@ tags: EE AI
 
 - [github:Haschtl/transcripy](https://github.com/Haschtl/transcripy/tree/main)
 - Whisper, DeepSpeech, Kaldi, Wav2vec, or SpeechBrain: key factors to consider when choosing an open-source ASR model for your apps and projects. [gladia 2024/9](https://search.app/3qeTmo6sdr7fT3rT7)
-## 商業方案
+
+## 雲端ASR模型
+
+- [Amazon Transcribe 2023/11](https://aws.amazon.com/tw/blogs/machine-learning/amazon-transcribe-announces-a-new-speech-foundation-model-powered-asr-system-that-expands-support-to-over-100-languages/)
+- [google speech-to-text of multiple persons](https://cloud.google.com/speech-to-text/docs/multiple-voices)
+
+## 商業整合方案
 
 - 再也不用輪流寫會議記錄！3 個即時記錄、產出摘要的 AI 小工具，讓你專心開會[經理人2024/5](https://www.managertoday.com.tw/articles/view/68542)
     - 會議夥伴[creative.ai Flags by 4149](https://creati.ai/tw/ai-tools/flags-by-4149/)
