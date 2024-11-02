@@ -28,7 +28,7 @@ tags: EE AI
 ## 開源方案
 
 - [github:Haschtl/transcripy](https://github.com/Haschtl/transcripy/tree/main)
-- Whisper, DeepSpeech, Kaldi, Wav2vec, or SpeechBrain: key factors to consider when choosing an open-source ASR model for your apps and projects.[gladia](https://search.app/3qeTmo6sdr7fT3rT7)
+- Whisper, DeepSpeech, Kaldi, Wav2vec, or SpeechBrain: key factors to consider when choosing an open-source ASR model for your apps and projects. [gladia 2024/9](https://search.app/3qeTmo6sdr7fT3rT7)
 ## 商業方案
 
 - 再也不用輪流寫會議記錄！3 個即時記錄、產出摘要的 AI 小工具，讓你專心開會[經理人2024/5](https://www.managertoday.com.tw/articles/view/68542)
