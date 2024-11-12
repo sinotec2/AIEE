@@ -57,6 +57,11 @@ tags: AI chat report
   - 作者詳細說明了基本的輸入輸出框架設置，並介紹了透過 st.session_state 來保留對話歷史的方法。
   - 文章以實際程式碼範例展示，對於希望透過 Streamlit 開發互動性聊天機器人的開發者來說很實用。
   - 完整內容可參閱原文。
+- StreamLit官網
+  - Streamlit 文件提到的 GPT-like 介面構建過程包含了對話框的佈局設置與用戶互動。
+  - 核心步驟是使用 st.chat_message 模擬對話氣泡，並將 st.session_state 應用於存儲與管理對話歷史，以維持連貫的對話體驗。
+  - 這使得應用能模仿 GPT 的聊天界面，實現用戶請求和模型回應的交換，並提升應用的交互性。
+  - 詳情可參考Streamlit 官方文件。
 
 ## TODO's
 
