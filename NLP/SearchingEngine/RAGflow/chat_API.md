@@ -50,6 +50,14 @@ tags: AI chat report
 
 - API對話機器人雖無詳細的對話紀錄，但仍然有用量的總量統計，可供成效檢討。
 
+## Streamlit
+
+- [owo](https://blog.o-w-o.cc/archives/streamlit-chatelements)
+  - 這篇文章探討如何使用 Streamlit 的 st.chat_message 和 st.chat_input 來建立簡單的聊天機器人介面。
+  - 作者詳細說明了基本的輸入輸出框架設置，並介紹了透過 st.session_state 來保留對話歷史的方法。
+  - 文章以實際程式碼範例展示，對於希望透過 Streamlit 開發互動性聊天機器人的開發者來說很實用。
+  - 完整內容可參閱原文。
+
 ## TODO's
 
 - 因無紀錄，如果約定好簡稱，系統將不會有記憶，需每次提醒。
