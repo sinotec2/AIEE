@@ -2,6 +2,7 @@
 > RAPTOR （Recursive Abstractive Processing for Tree-Organized Retrieval）
 
 - [RAPTOR 一种基于树的RAG方法，RAG的准确率提高 20%](https://www.cnblogs.com/xiaoqi/p/18060281/RAPTOR)
+- [arxiv](https://arxiv.org/abs/2401.18059)
 
 > 為了便於查詢法規、契約等文件的資料庫，設計時需要考慮文件的結構、查詢需求、版本控制、全文檢索等功能。以下是一個基本的設計思路：
 
