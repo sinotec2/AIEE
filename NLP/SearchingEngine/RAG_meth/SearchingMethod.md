@@ -1,4 +1,28 @@
+---
+layout: default
+title: 向量與傳統搜尋
+parent: RAG Methodologies
+grand_parent: SearchingEngine
+nav_order: 99
+date: 2024-11-16
+last_modified_date: 2024-11-16 20:32:31
+tags: AI chat report
+---
 
+# 向量與傳統搜尋
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+## 背景
 
 
 
