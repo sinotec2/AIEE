@@ -1,3 +1,29 @@
+---
+layout: default
+title: Elastic Cloud on Kubernetes
+parent: SearchingEngine
+grand_parent: 自然語言處理
+nav_order: 99
+date: 2023-11-09
+last_modified_date: 2023-11-09 08:43:27
+has_children: true
+tags: AI chat report
+---
+
+# Elastic Cloud on Kubernetes
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+## 背景
 
 ECK 是 Elastic Cloud on Kubernetes 的縮寫，由 Elastic 公司開發，是一套工具和運行時環境，用於在 Kubernetes 平台上部署和管理 Elastic Stack（包括 Elasticsearch、Kibana 和其他 Elastic 工具）。以下是 ECK 的主要功能和特點：
 
