@@ -117,21 +117,28 @@ tags: AI chat report
 |醫療諮詢|醫療諮詢助理，可以提供您一些專業的諮詢建議供您參考。請注意，醫療助理提供的內容僅供參考，可能不真實或無法使用。知識庫內容參考：醫學知識庫參考|O/I/KW/(專業API)/KB(既有的QnA)
 |智能投資顧問|智慧投資顧問，即時解答您的財務問題|O/I/KW/(專業API)
 
-O：Open開始
-I：Interface對話框
-C：Classifier問題分類
-A：AnalysesCondition條件
-R：RefineQuestion問題最佳化
-KW：GetKeyWords關鍵字
-KB：SearchKnownledgeBase知識檢索
-W：WikiPedia維基百科
-D：DuckDuckGo
-LLM：生成回答
-B：百度搜尋
-M：Messager靜態訊息
-E：ExeSQL執行SQL
+- 通用元件
 
-### 無代碼程式之撰寫
+	O：Open開始；
+	I：Interface對話框；
+	C：Classifier問題分類；
+	A：AnalysesCondition條件；
+	R：RefineQuestion問題最佳化；
+	KW：GetKeyWords關鍵字；
+	KB：SearchKnownledgeBase知識檢索；
+	LLM：生成回答；
+	M：Messager靜態訊息；
+
+- 特殊元件(專業API)
+
+	G：Google Search
+	W：WikiPedia維基百科；
+	D：DuckDuckGo；
+	B：百度搜尋；
+	E：ExeSQL執行SQL；
+	...
+
+### 無代碼代理程式之撰寫
 
 ![左側欄及工作區](pngs/2024-11-17-13-43-48.png)
 
