@@ -4,8 +4,8 @@ title: Elastic Cloud on Kubernetes
 parent: SearchingEngine
 grand_parent: 自然語言處理
 nav_order: 99
-date: 2023-11-09
-last_modified_date: 2023-11-09 08:43:27
+date: 2024-11-17
+last_modified_date: 2024-11-17 08:43:27
 has_children: true
 tags: AI chat report
 ---
