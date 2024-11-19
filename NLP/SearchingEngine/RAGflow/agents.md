@@ -30,7 +30,7 @@ tags: AI chat report
 
 ### 代理與聊天機器人的差異
 
-![](2024-11-17-14-16-13.png)
+![pngs/2024-11-17-14-16-13.png](pngs/2024-11-17-14-16-13.png)
 [source:RAG聊天机器人 VS AI Agent：哪个更高效？PyTorch研习社(2024-08-20)	](https://www.53ai.com/news/RAG/2024082060423.html)
 
 代理（Agent）和聊天機器人（Chatbot）雖然都可能是一種網路服務的人工智慧形式，但在功能和應用上還是有一些明顯的差異：
