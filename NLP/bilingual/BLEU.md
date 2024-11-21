@@ -25,6 +25,17 @@ tags: AI chat
 
 ## 背景
 
+- [prefix finetuning](https://aclanthology.org/2021.acl-long.353.pdf)
+  - 《Prefix-Tuning: Optimizing Continuous Prompts for Generation》
+  - 是一篇探討如何有效利用大型預訓練語言模型（如GPT-2和BART）執行下游生成任務的研究文章。
+  - 傳統上，微調（fine-tuning）是常見的方式，但此方法需調整模型所有參數，並為每個任務儲存完整模型，成本較高。
+  - 為了解決這些問題，作者提出了「Prefix-Tuning」，這是一種輕量級替代方案。
+  - 該方法固定模型參數，僅優化一組連續的任務特定向量，稱為「Prefix」，這些向量像虛擬標記一樣參與語言生成過程。
+  - 實驗顯示：
+	1.	性能表現：Prefix-Tuning 在大數據環境中與完整微調相當，但在低數據環境中表現更好。
+	2.	數據外推：對於未見過的主題，Prefix-Tuning 的外推能力更佳。
+	3.	效率：該方法僅需學習約 0.1% 的參數，大幅減少資源需求。
+  - 作者將這一技術應用於 GPT-2 的表格到文本生成和 BART 的摘要生成，證明了其在自然語言生成領域的實用性 ￼ ￼。
 - [python模組](https://search.app/y6ZP3Fa4gBNSfvxK6)
 	- 用 Python 計算文本 BLEU 分數和 ROUGE 值
 	- Python 的 NLTK 和 Rouge 库可以用來計算文本生成任務中的 BLEU 分數與 ROUGE 值，以評估生成文本與參考文本的差異程度。
