@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 反AI撰文
-parent: NLP
+parent: 自然語言處理
 nav_order: 2
 date: 2024-12-11
 last_modified_date: 2024-12-11 11:47:40
@@ -37,7 +37,7 @@ tags: AI chat report DMS
 > slogan: GPTKit: Detect AI Generated Text
 - [GPTZero](https://gptzero.me/)：GPTZero使用與ChatGPT相同的技術，但旨在識別AI生成的內容。 該工具正在不斷開發中，該團隊目前正在為教育工作者開發專門的解決方案。
 > slogan: More than an AI detector. Preserve what's human.
-- [AI Detector Pro]()：AI Detector Pro的演算法在GPT-3，GPT-4和Bard上進行訓練，使其能夠提供準確而詳細的報告，指示AI生成內容的概率。 最好的部分是，該工具還包括源URL，使教育工作者可以毫不費力地識別抄襲的來源。
+- [AI Detector Pro](https://www.bypassgpt.ai)：AI Detector Pro的演算法在GPT-3，GPT-4和Bard上進行訓練，使其能夠提供準確而詳細的報告，指示AI生成內容的概率。 最好的部分是，該工具還包括源URL，使教育工作者可以毫不費力地識別抄襲的來源。
 > Convert AI Text to Undetectable | Plagiarism-free | Authentic | Human-like Content
 - [溫斯頓AI](https://gowinston.ai/)：溫斯頓AI是為出版和教育量身定製的AI內容檢測解決方案。 它聲稱 ，與使用大型數據集和大型語言模型的訓練模型相比，其演算法在避免誤報方面提供了更好的結果。
 > The most trusted AI detector
