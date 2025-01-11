@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 研究報告之資料庫化
+title: 系統程式開發文件
 parent: 生成式AI協助報告撰寫
 grand_parent: 自然語言處理
 nav_order: 99
@@ -9,7 +9,7 @@ last_modified_date: 2023-10-05 16:02:26
 tags: AI chat report
 ---
 
-# 研究報告之資料庫化
+# 系統程式開發文件
 {: .no_toc }
 
 <details open markdown="block">
