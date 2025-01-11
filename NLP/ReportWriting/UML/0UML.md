@@ -34,4 +34,4 @@ tags: AI chat report
 {: .fs-6 .fw-300 }
 
 - [generate UML using GPT](https://medium.com/@Empanado/generating-plantuml-diagrams-with-chatgpt-7905a34b6c14)
-
+- [FlowGPT](https://flowgpt.com/p/plantuml-diagram-generator)
