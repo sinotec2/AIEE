@@ -1,4 +1,26 @@
+---
+layout: default
+title: LLM-aid System update and modification 
+parent: UML
+grand_parent: 生成式AI協助報告撰寫
+nav_order: 99
+date: 2023-09-13
+last_modified_date: 2023-09-15 16:02:26
+tags: AI chat report
+---
 
+# LLM-aid System update and modification 
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
 
 承接文件化程度低的系統是一項挑戰，但結合語言模型和自動化工具，可以協助快速理解系統架構、找出版本差異，並精確修改特定部分。以下是步驟及具體建議：
 
