@@ -1,3 +1,26 @@
+---
+layout: default
+title: C4 模型
+parent: UML
+grand_parent: 生成式AI協助報告撰寫
+nav_order: 99
+date: 2023-09-13
+last_modified_date: 2023-09-15 16:02:26
+tags: AI chat report
+---
+
+# Embeddings and templates
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
 
 ## 什麼是 C4 model 
 
