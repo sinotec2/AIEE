@@ -9,7 +9,7 @@ last_modified_date: 2023-09-15 16:02:26
 tags: AI chat report
 ---
 
-# Embeddings and templates
+# C4 模型
 {: .no_toc }
 
 <details open markdown="block">
@@ -23,6 +23,10 @@ tags: AI chat report
 ---
 
 ## 什麼是 C4 model 
+
+- [c4model.com](https://c4model.com/)
+
+## 為什麼不用 C4 模型？
 
 C4 模型在系統軟體業中並不是每個開發者或團隊都熟悉的工具，但它逐漸在一些專業團隊中獲得了普及，特別是在重視架構設計和清晰文檔的團隊中。
 
