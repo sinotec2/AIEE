@@ -33,26 +33,35 @@ tags: AI chat report
 ### 1. 提供整個 IDE 上的 Project 檔案
 
 如果您提供完整專案檔案（例如 Java、Python、Node.js 等程式碼庫），我可以：
+
 	•	分析程式碼結構：例如類別、模組、服務之間的關聯。
 	•	生成自動化架構：提取控制器、資料庫、API 等模組的互動並轉化為 UML。
 	•	可視化部署環境：識別容器、虛擬機、雲服務等基礎架構。
 
 建議：
-	•	確保專案檔案中包含**主要的設定檔（如 Docker Compose、Kubernetes YAML、Spring 配置等）**和程式碼，這樣可以更準確地推導架構。
+
+	•	確保專案檔案中包含**主要的設定檔**、如 
+    - Docker Compose、
+    - Kubernetes YAML、
+    - Spring 配置
+  - 和程式碼，這樣可以更準確地推導架構。
 
 ### 2. 提供簡化資訊（不含程式碼）
 
-如果無法或不願分享完整專案，可以以架構文檔或系統規劃資料形式提供以下資訊：
+如果無法或不願分享完整專案，也能以架構文檔或系統規劃資料形式提供以下資訊：
 
 (1) 系統上下文（C1 層級）
+
 	•	系統的整體用途、目標用戶群。
 	•	外部系統的互動方式（如 API、資料交換等）。
 	•	高層次的架構視圖（如 Web 前端、後端服務、資料庫等）。
 
 範例：
+
 	•	本系統是一個線上購物平臺，包含前端（React）、後端（Node.js），資料庫使用 MySQL，並與支付閘道（如 Stripe）整合。
 
 (2) 容器層（C2 層級）
+
 	•	系統中運行的「容器」或「主要組件」，例如：
 	•	前端：React、Vue.js。
 	•	後端：Spring Boot、Express.js、FastAPI。
@@ -61,22 +70,27 @@ tags: AI chat report
 	•	容器之間的互動方式（如 API 調用、資料流動）。
 
 範例：
+
 	•	React 應用通過 REST API 與 Express.js 服務溝通，Express.js 使用 Sequelize ORM 連接到 MySQL 資料庫，Nginx 作為反向代理。
 
 (3) 元件層（C3 層級）
+
 	•	每個主要容器內的詳細組件或模組。
 	•	如控制器、服務層、儲存層的功能劃分。
 	•	模組之間的資料或訊息流。
 
 範例：
+
 	•	Express.js 中有三個控制器：UserController、ProductController 和 OrderController，每個控制器負責處理不同的 REST API 路由。
 
 (4) 程式碼層（C4 層級）
+
 	•	若需要詳細描述某些部分的程式碼結構，可提供：
 	•	主要類別、方法和資料結構。
 	•	具體邏輯的程式碼片段。
 
 範例：
+
 	•	OrderController 有一個方法 createOrder，負責驗證請求、計算價格，並存儲到 MySQL。
 
 ### 3. 額外建議
