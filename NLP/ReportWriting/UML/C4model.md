@@ -25,7 +25,7 @@ tags: AI chat report
 ## 什麼是 C4 model 
 
 - [c4model.com](https://c4model.com/)
-
+- [How to create a project’s C4 model in just a few steps using an AI tool](https://www.stackspot.com/en/blog/c4-model)
 ## 為什麼不用 C4 模型？
 
 C4 模型在系統軟體業中並不是每個開發者或團隊都熟悉的工具，但它逐漸在一些專業團隊中獲得了普及，特別是在重視架構設計和清晰文檔的團隊中。
