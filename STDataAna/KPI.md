@@ -8,7 +8,7 @@ last_modified_date: 2025-03-22 15:11:27
 tags: ML DL EE CMAQ WRF
 ---
 
-# GCN+LSTM
+# 環境數據管理與企業KPI
 
 {: .no_toc }
 
