@@ -1,4 +1,28 @@
+---
+layout: default
+title: 環境數據管理與企業KPI
+parent: 時空數據之解析及訓練
+nav_order: 99
+date: 2025-03-22
+last_modified_date: 2025-03-22 15:11:27
+tags: ML DL EE CMAQ WRF
+---
 
+# GCN+LSTM
+
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+## 背景
 
 要為 環境工程技術顧問機構 訂定數位管理方面的 KPI（關鍵績效指標），應該根據企業的 數位轉型目標 和 業務核心價值 來設計，涵蓋 數據管理、資訊安全、業務效率、客戶滿意度 等關鍵領域。
 
