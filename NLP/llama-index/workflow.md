@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 製作AI代理的工作流程
-parent: Developing Agents
+parent: llama-index
 grand_parent: 自然語言處理
 nav_order: 99
 date: 2024-05-03
