@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 階層節點解析器
-parent:  Embedding
+parent:  文檔之內嵌
 grand_parent: 自然語言處理
 nav_order: 99
 date: 2024-01-25
