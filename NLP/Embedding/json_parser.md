@@ -391,4 +391,171 @@ else:
 
 > 暫時還不需要實作。請將我們討論的內容整理成「環保法律政策萬事通」的服務流程圖，讓使用者一站購足，可以查詢、提問、比較、諮詢，提供引述條文的原文。
 
+## 儲存
+
+> llama index如何儲存json檔案的meta data?
+
+在 LlamaIndex 中，每筆文件的 metadata 是附加在 Document 或 Node 上的欄位，可以用來儲存 JSON 結構的欄位內容。這對於後續做 filter 查詢、上下文描述、RAG 回應來源引述 非常重要。
+
+⸻
+
+基本做法：在載入 JSON 時保留 metadata
+
+假設你有這樣一筆 JSON：
+
+{
+  "條號": "第3條",
+  "主題": "申報時間",
+  "內容": "企業應於每年3月前完成申報。",
+  "法源": "環保法第12條"
+}
+
+
+
+⸻
+
+在 LlamaIndex 中這樣轉換：
+
+from llama_index.schema import Document
+
+doc = Document(
+    text="條號：第3條\n主題：申報時間\n內容：企業應於每年3月前完成申報。",
+    metadata={
+        "條號": "第3條",
+        "主題": "申報時間",
+        "法源": "環保法第12條"
+    }
+)
+
+
+
+⸻
+
+進階做法：從整個 JSON 檔讀入一批資料
+
+import json
+from llama_index.schema import Document
+
+with open("policies.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+docs = []
+for item in data:
+    text = f"條號：{item['條號']}\n主題：{item['主題']}\n內容：{item['內容']}"
+    docs.append(Document(text=text, metadata={
+        "條號": item["條號"],
+        "主題": item["主題"],
+        "法源": item["法源"]
+    }))
+
+這樣建立出來的向量索引就會內建 metadata，後續可以用來：
+	•	查詢時做 metadata filter
+	•	回應時顯示來源法條（原文引述）
+
+⸻
+
+查詢時使用 metadata filter：
+
+query_engine = index.as_query_engine(filters={"主題": "申報時間"})
+response = query_engine.query("什麼時候要申報？")
+
+
+
+⸻
+
+補充：儲存向量索引時 metadata 會被保留嗎？
+
+會的。當你用以下方式儲存與載入 index：
+
+index.storage_context.persist(persist_dir="./index_data")
+
+之後用：
+
+from llama_index import load_index_from_storage
+index = load_index_from_storage(StorageContext.from_defaults(persist_dir="./index_data"))
+
+所有 metadata 都會被完整保留。
+
+⸻
+
+如需更多：我也可以幫你寫一段 JSON to LlamaIndex documents 的轉換模組，搭配你自己的資料格式，方便後續查詢或建 RAG。要嗎？
+
+太好了！以下是一段可以把 JSON 檔案轉換成 LlamaIndex 的 Document 物件的 Python 模組程式碼，你只要根據你的欄位名稱微調一下，就可以直接用來建立向量索引與儲存 metadata。
+
+⸻
+
+模組名稱：json_to_llamaindex.py
+
+import json
+from typing import List
+from llama_index.schema import Document
+
+
+def load_json_as_documents(json_path: str) -> List[Document]:
+    """
+    將 JSON 檔案轉為 LlamaIndex 的 Document 物件列表，包含 metadata。
+    
+    每筆 JSON 應包含：條號、主題、內容、法源 等欄位（可自行調整）。
+    """
+
+    with open(json_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    documents = []
+
+    for entry in data:
+        # 組裝文本內容（也可以只用 entry["內容"]）
+        text = f"條號：{entry.get('條號', '')}\n主題：{entry.get('主題', '')}\n內容：{entry.get('內容', '')}"
+
+        # 建立 Document，附加 metadata
+        doc = Document(
+            text=text,
+            metadata={
+                "條號": entry.get("條號", ""),
+                "主題": entry.get("主題", ""),
+                "法源": entry.get("法源", ""),
+                # 如有其他欄位也可加進來
+            }
+        )
+        documents.append(doc)
+
+    return documents
+
+
+
+⸻
+
+範例用法：建立向量索引
+
+from llama_index import VectorStoreIndex
+
+from json_to_llamaindex import load_json_as_documents
+
+# 載入你的 JSON 文件
+documents = load_json_as_documents("my_law_data.json")
+
+# 建立向量索引
+index = VectorStoreIndex.from_documents(documents)
+
+# 可選：儲存起來供下次使用
+index.storage_context.persist(persist_dir="./index_data")
+
+
+
+⸻
+
+後續查詢時可以這樣查：
+
+query_engine = index.as_query_engine(filters={"主題": "排放標準"})
+response = query_engine.query("請問排放標準的要求是什麼？")
+
+print(response.response)
+
+
+
+⸻
+
+如果你手上有範例的 JSON 結構（或部分範例），我可以幫你客製化這個轉換模組，也可以加上自動 chunk、分 index by 類別 等功能。你想不想給我一筆 JSON 來一起做這個模組完整化？
+
+
 
