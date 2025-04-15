@@ -30,28 +30,29 @@ tags: AI chat
 很棒的問題！
 
 是的，LLaMA 3（尤其是 Meta 官方的 LLaMA 3 8B / 70B 模型），在設計上就已經對 JSON 結構具備一定的理解能力，雖然不像 GPT-4 Turbo 那樣專門針對 JSON 做強化，但它：
-	•	可以 解析嵌套 JSON 資料。
-	•	能夠理解 key-value 關係的語意，如 "條文": "..."。
-	•	支援結構化 prompt，例如你問：「請根據下面 JSON 中的 ‘第2條’ 給我說明內容。」
+
+- 可以 解析嵌套 JSON 資料。
+- 能夠理解 key-value 關係的語意，如 "條文": "..."。
+- 支援結構化 prompt，例如你問：「請根據下面 JSON 中的 ‘第2條’ 給我說明內容。」
 
 ⸻
 
 LLaMA 3 處理 JSON 的能力特點如下：
 
-能力	支援程度	備註
-基本 JSON 結構理解	支援良好	可當作資料格式或查詢知識
-嵌套 JSON 查詢	支援中等	需要你設計明確 prompt
-自動生成 JSON 回應	支援良好	可控制格式與 key 名稱
-JSON 與自然語言的來回轉換	中等偏好	有時需微調提示詞以避免混亂
-
-
+能力|支援程度|備註
+-|-|-
+基本 JSON 結構理解|支援良好|可當作資料格式或查詢知識
+嵌套 JSON 查詢|支援中等|需要你設計明確 prompt
+自動生成 JSON 回應|支援良好|可控制格式與 key 名稱
+JSON 與自然語言的來回轉換|中等偏好|有時需微調提示詞以避免混亂
 
 ⸻
 
-如何善用 LLaMA 3 處理 JSON 查詢？
+### 如何善用 LLaMA 3 處理 JSON 查詢？
 
 範例 1：查詢嵌入的條文資料
 
+```json
 [
   {
     "條號": "第1條",
@@ -65,26 +66,32 @@ JSON 與自然語言的來回轉換	中等偏好	有時需微調提示詞以避�
   }
 ]
 
+```
+
 你可以這樣問：
 
-請找出上述 JSON 中第2條的內容，以及它的備註說明。
+`請找出上述 JSON 中第2條的內容，以及它的備註說明。`
 
 或設計更正式的提示：
 
-你是一位了解政策規定的 AI。請依據下方 JSON，回答第2條的主要內容是什麼？若有備註，請一併說明。
-
-
+`你是一位了解政策規定的 AI。請依據下方 JSON，回答第2條的主要內容是什麼？若有備註，請一併說明。`
 
 ⸻
 
 實務建議（如果你用的是 LlamaIndex + LLaMA 3）
-	1.	將表格轉為一筆筆 JSON 丟入 chunk 中
-	•	每個 chunk 約可塞 1~3 條規則（依 token 數）
-	•	也可以使用 metadata 欄位存「條號」等索引資訊
-	2.	查詢時使用自然語言與條號、關鍵詞查詢結合
-	•	LLaMA 3 的 contextual matching 表現已經不錯，會根據嵌入內容與查詢語意給出精準內容
-	3.	進一步結合 reranker 可強化效果
-	•	若你在用如 ColBERT / Cohere Rerank 模型，可在初步檢索後做語意強化排序
+
+1. 將表格轉為一筆筆 JSON 丟入 chunk 中
+
+   - 每個 chunk 約可塞 1~3 條規則（依 token 數）
+   - 也可以使用 metadata 欄位存「條號」等索引資訊
+
+2. 查詢時使用自然語言與條號、關鍵詞查詢結合
+
+   - LLaMA 3 的 contextual matching 表現已經不錯，會根據嵌入內容與查詢語意給出精準內容
+
+3. 進一步結合 reranker 可強化效果
+
+   - 若你在用如 ColBERT / Cohere Rerank 模型，可在初步檢索後做語意強化排序
 
 ⸻
 
@@ -107,13 +114,15 @@ JSON 與自然語言的來回轉換	中等偏好	有時需微調提示詞以避�
 
 模型能力面（以 LLaMA 3 為例）
 
-項目	表現
-二～三層巢狀 JSON	表現良好
-四～五層巢狀	開始混淆，需非常清晰 prompt
-大量陣列 + 多層結構	容易失焦、token 快速爆量
+項目|表現
+-|-
+二～三層巢狀 JSON|表現良好
+四～五層巢狀|開始混淆，需非常清晰 prompt
+大量陣列 + 多層結構|容易失焦、token 快速爆量
 
 例子：
 
+```json
 {
   "法規": {
     "第1條": {
@@ -125,6 +134,7 @@ JSON 與自然語言的來回轉換	中等偏好	有時需微調提示詞以避�
     }
   }
 }
+```
 
 這種結構，LLaMA 3 可以處理，但超過 2,000~3,000 tokens 時，理解效果會下降，尤其若你問：「哪一條包含條件 a 且附註中有說明 xxx？」這種複合條件查詢時。
 
@@ -142,6 +152,7 @@ JSON 與自然語言的來回轉換	中等偏好	有時需微調提示詞以避�
 
 例如原本是：
 
+```json
 {
   "政策條文": [
     {
@@ -153,21 +164,24 @@ JSON 與自然語言的來回轉換	中等偏好	有時需微調提示詞以避�
     ...
   ]
 }
+```
 
 轉為多個 chunk，每筆變成一段文字，例如：
 
+```json
 條號：第1條
 主題：總則
 內容：本辦法依據...
 備註：法源：XX法第5條；版本：2023修正
+```
 
 丟給 LlamaIndex 做 embedding，建立向量索引。
 
 ⸻
 
 (2) 查詢時：用自然語言查詢或條號查詢
-	•	例如：「請問第3條與保險期限有關的內容是什麼？」
-	•	查詢會從 embedding 找出語意最接近的幾筆條文，再交給 LLaMA 模型處理語言生成。
+- 例如：「請問第3條與保險期限有關的內容是什麼？」
+- 查詢會從 embedding 找出語意最接近的幾筆條文，再交給 LLaMA 模型處理語言生成。
 
 ⸻
 
@@ -175,7 +189,9 @@ JSON 與自然語言的來回轉換	中等偏好	有時需微調提示詞以避�
 
 你可以加上 metadata，例如：
 
+```python
 Document(text="...", metadata={"條號": "第3條", "主題": "保險期限"})
+```
 
 查詢時搭配 metadata filter，可提升準確度。
 
@@ -183,13 +199,12 @@ Document(text="...", metadata={"條號": "第3條", "主題": "保險期限"})
 
 3. 小結：何時該用嵌入？何時可原始查詢？
 
-條件	建議方式
-JSON 不超過 2 層，總 token < 1500	可直接查詢整份 JSON（for one-shot、demo）
-JSON 結構複雜、有條文、大量陣列	必須切段 + 嵌入
-須支持關鍵字查詢、快速回應	用 LlamaIndex 建索引
-需要關聯查詢（如「含有 X 的所有條文」）	建議搭配 metadata / RAG flow
-
-
+條件|建議方式
+-|-
+JSON 不超過 2 層，總 token < 1500|可直接查詢整份 JSON（for one-shot、demo）
+JSON 結構複雜、有條文、大量陣列|必須切段 + 嵌入
+須支持關鍵字查詢、快速回應|用 LlamaIndex 建索引
+需要關聯查詢（如「含有 X 的所有條文」）|建議搭配 metadata / RAG flow
 
 ⸻
 
@@ -216,13 +231,12 @@ JSON 結構複雜、有條文、大量陣列	必須切段 + 嵌入
 
 重點：做「結構化內嵌」與「向量索引建構」
 
-步驟	說明
-1.1	將原始資料（JSON / 表格 / 條文）轉為具語意與結構的片段
-1.2	每個片段建立 Document(text=..., metadata=...)，保留條號、章節、分類等
-1.3	將這些文件丟進 LlamaIndex 建立向量索引 VectorStoreIndex
-1.4	（可選）為各類別建立多個 Index，分開儲存（可加快查詢效率）
-
-
+步驟|說明
+-|-
+1.1|將原始資料（JSON / 表格 / 條文）轉為具語意與結構的片段
+1.2|每個片段建立 Document(text=..., metadata=...)，保留條號、章節、分類等
+1.3|將這些文件丟進 LlamaIndex 建立向量索引 VectorStoreIndex
+1.4|（可選）為各類別建立多個 Index，分開儲存（可加快查詢效率）
 
 ⸻
 
@@ -230,51 +244,44 @@ JSON 結構複雜、有條文、大量陣列	必須切段 + 嵌入
 
 重點：動態查詢、整併內容、再交給 LLM 回答
 
-步驟	說明
-2.1	使用者輸入指令，可能為自然語言：「第3條有什麼規定？」
-2.2	從向量索引中選出相關片段（通常是 top-k）
-2.3	將這些片段組裝成 Prompt（RAG Context）
-2.4	丟給 chat_engine = index.as_chat_engine() 或自定 LLM API，產生回應
-
-
+步驟|說明
+-|-
+2.1|使用者輸入指令，可能為自然語言：「第3條有什麼規定？」
+2.2|從向量索引中選出相關片段（通常是 top-k）
+2.3|將這些片段組裝成 Prompt（RAG Context）
+2.4|丟給 chat_engine = index.as_chat_engine() 或自定 LLM API，產生回應
 
 ⸻
 
 重要觀念整理：
 
-題目	答案
-是否需要整份 JSON 丟給 LLM？	否，會超過 token 限制且失焦。應用向量 + 切割
-結構是否要保留？	是，應以 metadata 或格式保留條號/分類等語意
-是否每次提問都重建 chat_engine？	不需要重建 index，但可以針對查出的 nodes 建立暫時性 chat_engine 或 context
-是否支援多 index（如政策 vs 合約）？	是，可分別建不同 VectorStoreIndex，依照使用場景組合
-
-
+題目|答案
+-|-
+是否需要整份 JSON 丟給 LLM？|否，會超過 token 限制且失焦。應用向量 + 切割
+結構是否要保留？|是，應以 metadata 或格式保留條號/分類等語意
+是否每次提問都重建 chat_engine？|不需要重建 index，但可以針對查出的 nodes 建立暫時性 chat_engine 或 context
+是否支援多 index（如政策 vs 合約）？|是，可分別建不同 VectorStoreIndex，依照使用場景組合
 
 ⸻
 
 進階技巧：可延伸做法
-	1.	Metadata Filtering：
-	•	針對查詢條號、類別快速精準過濾資料。
 
-query_engine = index.as_query_engine(filters={"條號": "第3條"})
-
-
-	2.	自訂 ChatEngine（可上下文記憶）：
-	•	若需多人對話、反覆查詢，可將 context + memory + retrieval 做封裝。
-	3.	多 Index 整合（Composability）：
-	•	利用 ComposableGraph 將多個 index 串聯為一個邏輯架構。
+項次|做法|說明
+-|-|-
+|1.|Metadata Filtering|針對查詢條號、類別快速精準過濾資料。`query_engine = index.as_query_engine(filters={"條號": "第3條"})`
+|2.|自訂 ChatEngine（可上下文記憶）|若需多人對話、反覆查詢，可將 context + memory + retrieval 做封裝。
+|3.|多 Index 整合（Composability）|利用 ComposableGraph 將多個 index 串聯為一個邏輯架構。
 
 ⸻
 
 總結你的策略邏輯是否正確？
 
-項目	是否正確	說明
-預先向量化資料	正確	資料大時唯一可行策略
-資料結構需保留	正確	用 metadata 最佳
-使用者下指令後，再去查詢並送入 LLM	正確	精準、節省 token、提升品質
-查詢時臨時組裝 chat_engine	正確但可優化	可直接用 query_engine.query(...)，不用每次都建立完整 chat_engine
-
-
+項目|是否正確|說明
+-|-|-
+預先向量化資料|正確|資料大時唯一可行策略
+資料結構需保留|正確|用 metadata 最佳
+使用者下指令後，再去查詢並送入 LLM|正確|精準、節省 token、提升品質
+查詢時臨時組裝 chat_engine|正確但可優化|可直接用 query_engine.query(...)，不用每次都建立完整 chat_engine
 
 ⸻
 
@@ -295,11 +302,10 @@ query_engine = index.as_query_engine(filters={"條號": "第3條"})
 
 一、基本定義差異：Chat vs. Query
 
-模式	適用情境	特點
-Query Engine	單次查詢、直接問答、沒上下文	精準、快、不耗記憶
-Chat Engine	多輪對話、上下文延續、反覆追問	有「記憶」、可根據前文延伸理解
-
-
+模式|適用情境|特點
+-|-|-
+Query Engine|單次查詢、直接問答、沒上下文|精準、快、不耗記憶
+Chat Engine|多輪對話、上下文延續、反覆追問|有「記憶」、可根據前文延伸理解
 
 ⸻
 
@@ -309,30 +315,34 @@ Chat Engine	多輪對話、上下文延續、反覆追問	有「記憶」、可�
 
 1. 規則判斷（Rule-based） — 快速上手版本
 
+```python
 def is_chat_query(user_input: str) -> bool:
     chat_keywords = ["接著", "那他呢", "所以意思是", "你剛說", "再幫我查"]
     return any(kw in user_input.lower() for kw in chat_keywords)
+```
 
 適用於：
-	•	明顯有前後語境連貫性的問句
-	•	使用「接續」、「延伸」、「再問」語氣
+
+- 明顯有前後語境連貫性的問句
+- 使用「接續」、「延伸」、「再問」語氣
 
 ⸻
 
 2. 對話上下文判斷（Conversation state）
-	•	若之前有提過問題，使用者這次沒說明完整上下文，推測就是「Chat」
-	•	若第一次提問、或是內容明確完整，傾向當作「Query」
+
+- 若之前有提過問題，使用者這次沒說明完整上下文，推測就是「Chat」
+- 若第一次提問、或是內容明確完整，傾向當作「Query」
 
 範例邏輯：
 
+```python
 if len(conversation_history) == 0:
     mode = "query"
 elif is_chat_query(user_input):
     mode = "chat"
 else:
     mode = "query"
-
-
+```
 
 ⸻
 
@@ -340,12 +350,12 @@ else:
 
 你可以讓 LLM 幫你分類，例如：
 
+```python
 def classify_mode(prompt: str) -> str:
     system = "你是系統的協助者，請判斷輸入是 '單次問答' 還是 '對話延續'"
     query = f"使用者輸入：{prompt}\n請只回答 'query' 或 'chat'"
     return call_llm(system=system, prompt=query)
-
-
+```
 
 ⸻
 
@@ -353,6 +363,7 @@ def classify_mode(prompt: str) -> str:
 
 你可以這樣設計系統：
 
+```python
 # 使用者輸入
 user_input = "那第3條有提到申報時間嗎？"
 
@@ -364,24 +375,25 @@ if mode == "query":
     response = query_engine.query(user_input)
 else:
     response = chat_engine.chat(user_input)
-
-
+```
 
 ⸻
 
 補充：使用者可選模式
 
 在某些系統中，你可以允許使用者主動切換模式：
-	•	使用 /chat 或 /query 開頭
-	•	或在介面上選「我要對話」vs「我要問一題」
+
+- 使用 /chat 或 /query 開頭
+- 或在介面上選「我要對話」vs「我要問一題」
 
 ⸻
 
 結論：你的系統設計策略應該是：
-	1.	預設使用 Query Engine，因為快速且輕量
-	2.	若偵測有上下文需求，或使用者明示切換，才進入 Chat Engine
-	3.	Query 引擎應該支援 Top-k 檢索 + 精準回答
-	4.	Chat 引擎應該支援 記憶 / 上下文累積
+
+1. 預設使用 Query Engine，因為快速且輕量
+2. 若偵測有上下文需求，或使用者明示切換，才進入 Chat Engine
+3. Query 引擎應該支援 Top-k 檢索 + 精準回答
+4. Chat 引擎應該支援 記憶 / 上下文累積
 
 ⸻
 
@@ -403,19 +415,21 @@ else:
 
 假設你有這樣一筆 JSON：
 
+```python
 {
   "條號": "第3條",
   "主題": "申報時間",
   "內容": "企業應於每年3月前完成申報。",
   "法源": "環保法第12條"
 }
-
+```
 
 
 ⸻
 
 在 LlamaIndex 中這樣轉換：
 
+```python
 from llama_index.schema import Document
 
 doc = Document(
@@ -426,13 +440,14 @@ doc = Document(
         "法源": "環保法第12條"
     }
 )
-
+```
 
 
 ⸻
 
 進階做法：從整個 JSON 檔讀入一批資料
 
+```python
 import json
 from llama_index.schema import Document
 
@@ -447,19 +462,20 @@ for item in data:
         "主題": item["主題"],
         "法源": item["法源"]
     }))
+```
 
 這樣建立出來的向量索引就會內建 metadata，後續可以用來：
-	•	查詢時做 metadata filter
-	•	回應時顯示來源法條（原文引述）
+- 查詢時做 metadata filter
+- 回應時顯示來源法條（原文引述）
 
 ⸻
 
 查詢時使用 metadata filter：
 
+```python
 query_engine = index.as_query_engine(filters={"主題": "申報時間"})
 response = query_engine.query("什麼時候要申報？")
-
-
+```
 
 ⸻
 
@@ -467,12 +483,16 @@ response = query_engine.query("什麼時候要申報？")
 
 會的。當你用以下方式儲存與載入 index：
 
+```python
 index.storage_context.persist(persist_dir="./index_data")
+```
 
 之後用：
 
+```python
 from llama_index import load_index_from_storage
 index = load_index_from_storage(StorageContext.from_defaults(persist_dir="./index_data"))
+```
 
 所有 metadata 都會被完整保留。
 
