@@ -6,7 +6,7 @@ nav_order: 99
 date: 2023-10-09
 last_modified_date: 2024-01-30 05:24:49
 has_children: true
-permalink: /NLP/SecretData filtering 
+permalink: /NLP/SecretData Filtering 
 tags: AI chat report
 ---
 
