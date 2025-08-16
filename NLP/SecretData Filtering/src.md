@@ -1,7 +1,7 @@
 ---
 layout: default
 title: GPT consulting 
-parent: Bilingual AI Processing
+parent: Secret Data Upload filters 
 grand_parent: 自然語言處理
 nav_order: 99
 date: 2025-08-16
