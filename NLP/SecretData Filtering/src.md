@@ -1,4 +1,29 @@
+---
+layout: default
+title: GPT consulting 
+parent: Bilingual AI Processing
+grand_parent: 自然語言處理
+nav_order: 99
+date: 2025-08-16
+last_modified_date: 2025-08-16 05:28:34
+tags: AI chat
+---
 
+
+# BBM notes
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+## 背景
 
 
 以下是我搜尋後，找到幾個開源且具有「敏感內容 / 機敏訊息過濾」功能的瀏覽器延伸插件（Browser Extension），適合用於保護使用者在網頁或與 AI 對話時避免洩漏機密資料：
