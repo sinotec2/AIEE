@@ -1,4 +1,4 @@
-﻿---
+---
 title: Q and A
 tags: AI
 layout: default
