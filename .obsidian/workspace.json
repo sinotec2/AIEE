@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "50c748d632fd4d0d",
+        "id": "45fa6b70e0bdcb0b",
         "type": "tabs",
         "children": [
           {
-            "id": "5db40e251e37ba88",
+            "id": "ccd10a866f1d009d",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -182,8 +182,12 @@
   },
   "active": "d1f8a08178b620e0",
   "lastOpenFiles": [
+    "utilities/OpsChatUI/ollama-monitor.service",
+    "utilities/OpsChatUI/monitor.py",
+    "utilities/OpsChatUI/pngs/Pasted image 20251024184105.png",
+    "utilities/OpsChatUI/pngs/Pasted image 20251024182110.png",
+    "utilities/OpsChatUI/pngs",
     "utilities/OpsChatUI/vLLm.md",
-    "utilities/OpsChatUI/ollama_monitoring.md",
     "utilities/OpsChatUI/ollama_monitoring.md",
     "utilities/OpsChatUI/QnA.md"
   ]

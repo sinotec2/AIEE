@@ -7,452 +7,242 @@ grand_parent: Utilities
 date: 2025-10-15
 modify_date: 2025-10-21T08:37:00
 ---
-## 概覽
 
-> **目標**：寫一個能自動監控 *Ollama* Docker 容器的程式  
-> 
->  - 檢查容器是否在執行  
->  - 讀取容器內部的 HTTP health‑check (default: `http://localhost:11434/health`)  
->  - 監控 CPU / memory / IO，並在異常時自動重啟容器  
->  - 將關鍵事件記錄到本地檔案（或發送到 Slack、Telegram 等）
+## 背景
 
-下面先說明整套流程，再給出完整 Python 範例（使用 `docker` SDK + `requests`）。
+ollama的容器似乎很容易發生記憶體失控(out of memory)，容器雖然沒有失敗，但是附載全由CPU負擔，GPU記憶體失敗。需要人工重啟。
 
----
+為改善這個情況，雖然有swarm的系統規劃，但單一容器仍然有崩壞的可能，最終還是需要重啟服務。這方面並不存在開源程式，需要另外按語言模型的特性特別撰寫監視器、與自動重啟程序。
 
-## 1. 先決條件
+[**monitor.py** ](monitory.py)不是簡單目標的腳本，而是一個「Ollama‑Stack 監視器與自動重啟裝置」。  
 
-| 驗證     | 需求                                         | 建議安裝方式                                         |
-| ------ | ------------------------------------------ | ---------------------------------------------- |
-| Docker | 已安裝並允許非 root 用戶使用 `docker` CLI             | `sudo usermod -aG docker <your_user>`，**重新登入** |
-| Python | 3.10+                                      | `sudo apt install python3-pip`                 |
-| 必要套件   | `docker`, `requests`, `python-dotenv` (可選) | `pip install docker requests python-dotenv`    |
-
-> **把腳本設成 systemd 服務** 可以自動開機、重啟，保證持續運行。
+它存在於一個已有 **Docker Compose / Stack**（通常放在 `/nas2/kuang/MyPrograms/ollama`）目錄下，並透過 **systemd** （或 **Docker**、你可以自行選擇）啟動。下面是它所承擔的角色、工作流程以及設計背後的動機。
 
 ---
 
-## 2. 設計與要點
+### 1️⃣ 為什麼要寫這個監視器？
 
-| 功能 | 如何實現 | 需注意的地方 |
-|------|----------|--------------|
-| **容器狀態檢查** | `docker_client.containers.get(name).status` | 需要容器名稱或 ID，若不存在直接處理 |
-| **健康端點** | `requests.get('http://127.0.0.1:11434/health')` | 若容器暴露端口 `11434`，則可直接 ping；若需 NAT 代理則要改為 Docker 的 IP |
-| **資源監控** | `container.stats(stream=False)` | 回傳 JSON，提取 `cpu_stats`, `memory_stats` 等 |
-| **自動重啟** | `container.restart()` | 循環檢測後手動重啟，或使用 Docker 的 health‑check 失敗自動重啟 |
-| **日誌記錄** | 標準 `logging` 模組 | 選擇日誌輪轉策略（FileHandler + TimedRotatingFileHandler） |
-| **通知機制** | (✓) 可選：Slack / Telegram、Email、Discord | 需額外 API Keys，投稿於 `.env` |
+| 需求              | 產生的痛點                                                        | 監視器的解決方式                                                              |
+| --------------- | ------------------------------------------------------------ | --------------------------------------------------------------------- |
+| **GPU 簡易無回應**   | Ollama 進程偶爾被系統主動 kill 或掛起，GPU 變得空閒（但 stack 仍在跑）              | 監測 `nvidia-smi` 的 `memory.used` 或 `utilization.memory`，若持續為 0 → 嘗試重啟  |
+| **服務失衡或長時間無回應** | Docker Compose 堆疊有多個 service（haproxy、ollama、…），其中一個失效但系統會繼續跑 | 用 `docker services` / `docker stack deploy` 重新建構整個 stack              |
+| **預防重複進程**      | 已有在 GPU 的進程被壞掉或崩潰，留下殘留 PID 佔用記憶體                             | 取得 GPU 進程 PID 清單，若無任何進程或占用 0 → 重新部署                                   |
+| **自動化、無人介入**    | 本地機器是伺服器，需要長時跑且不想人工倒車                                        | systemd 的 `Restart=on-failure` 或 Docker 的 `restart=always` 讓容器/服務自動重啟 |
+
+> **核心目標**：讓「Ollama 服務 + GPU」永遠處於「熱」狀態；若長時間無回應或失效，立刻喚醒並重啟，避免人員手動操作。
 
 ---
 
-## 3. Python 範例代碼
+### 2️⃣ 主要組成
 
-### get docker_names
+| 模組 | 主要職責 |
+|------|----------|
+| **config / env** | 讀取 `CHECK_INTERVAL`、`MAX_UNHEALTHY` 等設定；同時決定 target URL、model 名稱、GPU index、compose 檔路徑等 |
+| **GPU 工具** (`gpu_usage_check`, `check_pids`, `kill_pids`) | 透過 `nvidia-smi` / `subprocess` 監測 GPU 使用情況，判斷是否需要 kill / 重新部署 |
+| **Docker 工具** (`remove_service`, `deploy_stack`) | 直接對 docker‑py 或容器 host 之 Docker socket 進行 `service` 刪除 / `stack deploy` |
+| **舉動 / 事件** (`run_dummy`, `dummy_inference`) | 在偵測到 GPU 空閒時，先送 *dummy* 推論請求，讓 Ollama 重新載入並使用 GPU |
+| **主循環** (`main`) | 以 `CHECK_INTERVAL` 週期檢查 GPU / 進程；若發現問題則執行 `run_dummy`、`reset_services` 以恢復服務 |
 
-```python
-import os, sys, subprocess
-cmd="docker ps|awk '{print $12}'|grep ollama_"
-docker_names=[i for i in subprocess.check_output(cmd,shell=True).decode('utf8').split('\n') if len(i)>0]
+---
+
+### 3️⃣ 工作流程（概念流程圖）
+
+1. **啟動腳本** → `systemd` 或 `Docker` 以 `--restart` 或 `Restart=on-failure` 監護
+2. **等待** `CHECK_INTERVAL`（預設 60 秒）
+3. **檢查 GPU**  
+   * `check_pids` → 取得 GPU 當前佔用的進程 PID  
+   * `gpu_usage_check` → 讀取 memory 使用量
+4. **判斷狀態**  
+   * **無進程或 memory 0**  
+     * 執行 `run_dummy`（送 dummy 推論）  
+     * 檢查是否成功載入  
+     * 若失敗 → `reset_services()`（刪除舊服務，重新 deploy stack）
+   * **已佔用** → 檢查是否為舊進程（殘留） → `kill_pids()` 清除
+5. **循環** → 繼續下一個檢查週期
+
+---
+
+### 4️⃣ 為「兩種部署方式」留的設計空間
+
+| 方式 | 主要需求 | 選擇關鍵點 |
+|------|----------|------------|
+| **systemd 在宿主機執行** | 需要直接操作 Docker socket 及 GPU；已安裝 python / conda 環境 | `User=` 需 root / 並確實存在；把 `/opt/anaconda3/.../python` 路徑寫進 `ExecStart` |
+| **Docker 容器內執行** | 想要隔離、可跨境部署；部署需要掛載 `docker.sock`、`nvidia` 以及相同的 python 環境 | 需 `--privileged` 或 `--cap-add=SYS_ADMIN`；必須把 `docker.sock` 及 GPU 硬體掛進容器 |
+
+---
+
+### 5️⃣ 小結
+
+[**monitor.py** ](monitory.py)是 **一個完整的自動化監視腳本**，負責確保 Ollama 服務永遠保持「熱」且可用。  
+- 透過 GPU 監測 + docker‑py 何時需要重啟。  
+- 支援 **systemd** 或 **Docker** 兩種部署方式。  
+- 設計上保留了可擴充性（可加入更多檢測指標、更多服務名稱、更多 GPU 等）。
+
+這個背景說明可以幫你快速理解為何要這樣寫、它是如何運作，以及在實際部署時該怎麼調整。
+## `monitor.py` (Python 監控腳本)
+
+檔案路徑：`/nas2/kuang/MyPrograms/ollama/ollama_restart/monitor.py`
+
+### 1️⃣總體說明
+
+此 Python 腳本用於監控 Ollama Docker 服務的 GPU 使用情況，並在 GPU 無使用或出現長期卡頓時自動重新部署 Docker stack。
+
+- **功能說明**
+    - 定期檢查 GPU 是否被 Ollama 服務佔用。
+    - 若 GPU 無使用或出現長期卡頓，則自動重新部署指定的 Docker stack。
+- **使用方式**
+    1. 在宿主機安裝 Docker、`nvidia-smi`、Python 3 以及 `pip`。
+    2. 本機執行 `bash -c "python monitor.py"`。
+    3. 若欲在容器內執行，請參考下方提供的 Dockerfile 及執行指令。
+- **環境變數**
+    - `CHECK_INTERVAL`: 監測間隔（秒），預設 120 秒。
+    - `MAX_UNHEALTHY`: 未回應次數斷線門檻，預設 3 次。
+    - `MAX_CPU_PERCENT`: CPU utilization 上限（%），預設 80.0%。
+    - `MAX_MEMORY_PERCENT`: Memory utilization 上限（%），預設 80.0%。
+    - `MAX_IO_BYTES`: IO throughput 上限（B/s），預設 100000000。
+### 2️⃣基本設定
+
+- **主要模組導入**
+    - 導入所需的 Python 模組，包括 `datetime`、`logging`、`os`、`sys`、`subprocess`、`time`、`threading`、`docker`、`requests` 等。
+- **日誌設定**
+    - 設定日誌記錄，包括日誌檔案路徑、檔案大小、備份數量等。
+    - 日誌訊息會同時輸出到檔案和控制台。
+- **程式組態**
+    - 透過環境變數設定程式的各項參數，若未設定則使用預設值。
+
+### 3️⃣**內部工具函式**
+
+- `dummy_inference`: 送出一個[dummy]推論請求，藉此觸發 Ollama 服務的 GPU 負載。
+- `run_dummy`: 在獨立執行緒中啟動 dummy 推論，避免阻塞主監控迴圈。
+- `_run_cmd`: 執行 shell 命令，並回傳標準輸出。
+- `gpu_usage_check`: 讀取指定 GPU 的 memory 利用率（%）。
+- `get_compute_pids`: 取得目前在特定 GPU 上運行的 PCIe 油執行 PID。
+- `kill_pids`: 給定欲殺掉的 PID 清單，逐一呼叫 `kill`。
+###  4️⃣ **Docker 相關工具**
+
+- `remove_service`: 通過 docker‑py 移除指定服務。
+- `remove_services`: 移除多個服務。
+- `deploy_stack`: 以容器宿主機的 docker CLI 方式部署 stack。
+- `reset_services`: 先刪除舊服務，再重新部署 stack。
+
+### 5️⃣**主邏輯**
+
+- 程式入口：逐一監控設定好的 swarm stack。
+- 監控 GPU 記憶體占用比例。
+- 若沒有user相應的進程、系統處於閒置狀態，等候`CHECK_INTERVAL`: 監測間隔之後，隨即觸發 dummy 推論以產生 GPU 測試負載。
+- 長期無 GPU 使用、或GPU呈現卡頓，隨即重啟該stack的服務。
+
+## 使用方式
+
+1. 確保已安裝 Docker、`nvidia-smi`、Python 3 以及 `pip`。
+    
+2. 安裝所需的 Python 模組：
+    
+    ```bash
+    pip install docker requests  
+    ```
+    
+3. 設定環境變數（可選）。
+    
+4. 執行腳本：
+
+```bash
+    python monitor.py  
+```
+    
+::: warning
+
+因為會刪除docker 內的ollama程序，需要`root`的權限
+
+:::
+
+## 監控效果
+
+### 短期監測
+
+- 觀察`vhtop`的線形對程式開發測試，有其必要與充分性。觀察重點：
+	- 啟動條件、終止與清空記憶是否確實
+	- 訂定系統記憶體重載所需的秒數閥值
+	- 制定重啟邏輯：時間還是記憶體使用率、還是二者同時考量
+
+![](pngs/Pasted%20image%2020251024184105.png)
+
+### 中長期
+
+- 一段時間(10~20分鐘)之後，ollama似乎會進入休眠，`gpt-oss:20b`重啟的時間超過15秒，以致容器服務系統進入重啟的邏輯。
+- 相對而言，`llama3.1`似乎還可以在15秒內重新載入記憶體，重啟的機會較小。
+
+```bash
+kuang@eng06 /nas2/kuang/MyPrograms/ollama/ollama_restart
+$ lst
+total 28K
+-rw-r--r-- 1 kuang SESAir  323  十  21 15:34 Dockerfile
+-rw-r--r-- 1 kuang SESAir  13K  十  24 17:27 monitor.py
+-rw-r--r-- 1 kuang SESAir  487  十  24 17:29 ollama-monitor.service
+-rw-r--r-- 1 root  root   3.3K  十  24 18:10 ollama_monitor_20251024_172817.log
+
+kuang@eng06 /nas2/kuang/MyPrograms/ollama/ollama_restart
+$ grep 重啟 ollama_monitor_20251024_172817.log
+2025-10-24 17:34:47,599 |     INFO | Ollama PID gpt-oss:20b GPU 未占用，將重啟服務
+2025-10-24 17:43:28,534 |     INFO | Ollama PID gpt-oss:20b GPU 未占用，將重啟服務
+2025-10-24 18:08:53,306 |     INFO | Ollama PID gpt-oss:20b GPU 未占用，將重啟服務
+2025-10-24 18:17:29,066 |     INFO | Ollama PID gpt-oss:20b GPU 未占用，將重啟服務
 ```
 
-### main
+![](pngs/Pasted%20image%2020251024182110.png)
+
+## TODOs
+
+[] 夜間或假日方案
+	- `systemd`似乎沒有辦法像 `crontab` 一樣做到更細粒度的監控，這點還需要改進，也許用 `crontab`做`systemctl stop/start `控制
+[] 沒有user的使用pids，該不該、該如何清空記憶體?
 
 
-```python
+## 學習心得
 
+這個 “ollama‑monitor” 專案可以學到哪些實用且具體的技術／概念？
 
-### 代碼說明
-
-| 模塊 | 作用 |
-|------|------|
-| `docker_client.containers.get()` | 取得容器對象 |
-| `container.stats(stream=False)` | 單次統計（非流式） |
-| `container.restart()` | 重新啟動容器 |
-| `requests.get('/health')` | 取 Ollama 健康資訊（建議 Ollama 啟動時已加 `--health-check`） |
-| Flag 變數 (`CONTAINER_NAME`, `HEALTH_ENDPOINT`, `CHECK_INTERVAL`…) | 透過環境變數/`.env` 方便改動 |
-| `logging.FileHandler` + `StreamHandler` | 本地日誌 + 標準輸出（方便 syslog 或乾格） |
-
----
-
-## 4. 進階：整合到 systemd
-
-### `/etc/systemd/system/ollama-monitor.service`
-
-```ini
-[Unit]
-Description=Ollama Docker Monitor
-After=network.target docker.service
-
-[Service]
-Type=simple
-User=your_user
-Group=your_user
-WorkingDirectory=/home/your_user/ollama_monitor
-EnvironmentFile=/home/your_user/ollama_monitor/.env   # 若需要環境變數
-ExecStart=/usr/bin/python3 /home/your_user/ollama_monitor/monitor.py
-Restart=on-failure
-RestartSec=5
-StandardOutput=journal
-
-[Install]
-WantedBy=multi-user.target
-```
-
-> **啟動**  
-> ```bash
-> sudo systemctl daemon-reload
-> sudo systemctl enable --now ollama-monitor
-> ```
+| 類別 | 具體學習項目 | 為什麼重要 | 典型實作／操作範例 |
+|------|--------------|------------|-------------------|
+| **Python 程式設計** | *型別註解 (typing) / docstring*<br>*異步／threading 造`run_dummy`*<br>*Robust error handling (requests, subprocess, docker.errors)* | 讓程式碼在群組開發、持續整合時更易閱讀、維護。 | `def dummy_inference(url: str, model: str) -> bool: …` |
+| **日誌管理** | *logging.FileHandler + RotatingFileHandler*<br>*把 timestamp 加到 log 檔名* | 日誌可追溯、分檔、避免磁碟溢位。 | `logging.handlers.RotatingFileHandler(..., maxBytes=2*1024*1024)` |
+| **GPU 監控** | *nvidia‑smi 直接取得記憶體佔用與 utilisation*<br>*解析輸出、判斷空閒* | 在 AI 服務中 GPU 維持『熱』對延遲/可靠性至關重要。 | `subprocess.check_output(cmd).decode()` |
+| **Docker API** | *docker‑py 輕量級刪除/部署 stack*<br>*升級 `docker stack deploy -c …` 呼叫子命令* | 從 Python 直接操縱容器，省去 shell & 失誤。 | `client.services.get(name).remove()` |
+| **Systemd 服務化** | *編寫 unit 檔、設定 `User=`、`Restart=`*<br>*確定 `WorkingDirectory=` 與 `ExecStart=` 路徑* | 讓腳本在作業系統級別自動啟動、重啟、並簡化管理。 | `ExecStart=/opt/anaconda3/envs/ollama/bin/python monitor.py` |
+| **權限與安全** | *PID namespace / host PID*<br>*`cap-add=SYS_ADMIN` 或 `--privileged` 需要確認*<br>*`docker.sock` 掛載與權限設定* | 評估何時必須用 `root`、何時用 `privileged` 以避免安全風險。 | `docker run --privileged -v /var/run/docker.sock:/var/run/docker.sock …` |
+| **錯誤診斷** | *systemd `journalctl`, `systemctl status`, `systemctl show` 等命令*<br>*理解 217/USER 等錯誤碼* | 快速定位「\*失敗在 User／Group 設定」與「找不到可執行文件」。 | `sudo journalctl -u ollama-monitor -f` |
+| **持續健康檢查** | *健康檢查 `apt` 內置 healthcheck 與容器重啟策略*<br>*自建的「dummy 推論」保持輪詢* | 讓整個 stack 在 GPU 離線時自動修復。 | `logging.info("resetting OLlama stack …")` |
+| **配置管理** | *環境變數、`docker-compose.yml` 路徑、GPU 參數*<br>*簡易 CLI / Argparse 功能* | 版本控制、不同環境（dev/stage/production）共用同一程式碼。 | `CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", "60"))` |
+| **容器化最佳實踐** | *最小化 Docker image*<br>*使用 `python:slim`, 安裝必須套件*<br>*保持 entrypoint 擴展可測試* | 碼量最小、重啟腳本置於容器入口、易於 CI/CD。 | `HEALTHCHECK --interval=30s --timeout=5s --retries=5 CMD curl -f http://localhost:12000/health` |
 
 ---
 
-```python
-#$ cat /nas2/kuang/MyPrograms/ollama/ollama_restart/monitor.py
-#!/opt/anaconda3/envs/ollama/bin/python
-# -*- coding: utf-8 -*-
+### 從這個專案開始學到哪三件事？
 
-"""
-Ollama Docker 監控腳本
+1. **如何把「感知 GPU 與 Docker** 轉成「**自動化腳本** 」 
+   先寫一個普通腳本嘗試監控 GPU，再將其逐步移植到 `systemd` 及 Docker 裡面，體驗「環境隔離 + 監控 + 自動修復」的完整流程。
 
-Author      : yckuang
-Version     : 1.1.0
-License     : MIT
+2. **在調試與部署時避免「107/USER、No such process」類錯誤**  
+   了解 `systemd unit` 的執行階段 (USER、PREREQUISITE、READP、EXEC)、如何使用 `Journalctl`、`systemctl reveal` 等命令快速定位權限/路徑問題。
 
-功能說明
----------
-此腳本會定期檢查 GPU 是否被 Ollama 服務佔用，
-若 GPU 無使用或出現長期卡頓，則自動重新部署
-指定的 Docker stack。
-
-使用方式
---------
-1. 在宿主機安裝 Docker、nvidia‑smi、python3 以及 pip。
-2. 本機執行 `bash -c "python monitor.py"`
-3. 若欲在容器內執行，請參考下方提供的 Dockerfile 及執行指令。
-
-環境變數
----------
-* CHECK_INTERVAL      : 監測間隔（秒）          (預設 60)
-* MAX_UNHEALTHY       : 未回應次數斷線門檻      (預設 3)
-* MAX_CPU_PERCENT     : CPU utilisation 上限（%）   (預設 80.0)
-* MAX_MEMORY_PERCENT  : Memory utilisation 上限（%）(預設 80.0)
-* MAX_IO_BYTES        : IO throughput 上限（B/s）   (預設 100000000)
-"""
-
-# ─────────────────────────────────────────────────────────────────────────────
-# 1️⃣ 主要模組導入
-# ─────────────────────────────────────────────────────────────────────────────
-from datetime import datetime
-import logging
-import logging.handlers
-import os
-import sys
-import subprocess
-import time
-import threading
-from datetime import datetime
-from typing import List, Tuple, Any, Dict, Optional
-
-import docker
-import requests
-from docker.errors import DockerException, NotFound
-
-# ─────────────────────────────────────────────────────────────────────────────
-# 2️⃣ 日誌設定
-# ─────────────────────────────────────────────────────────────────────────────
-# 建立啟動時刻 (ISO 8601 但更適合檔名)
-# 例: 20241023_125959.log
-START_TS  = datetime.now().strftime("%Y%m%d_%H%M%S")
-LOG_FILE  = f"ollama_monitor_{START_TS}.log"
-LOG_HOME = f"/nas2/kuang/MyPrograms/ollama/ollama_restart"
-LOG_PATH  = os.path.join(LOG_HOME, LOG_FILE)
-MAX_BYTES    = 2 * 1024 * 1024            # 2 MB
-BACKUP_COUNT = 5                          # 例如 .log, .log.1 … .log.5
-
-# 先建立 handler
-file_handler = logging.handlers.RotatingFileHandler(
-    LOG_PATH,
-    mode="a",
-    maxBytes=MAX_BYTES,
-    backupCount=BACKUP_COUNT,
-    encoding="utf-8",
-    delay=False
-)
-file_handler.setLevel(logging.INFO)
-# 控制台（stdout）handler
-console_handler = logging.StreamHandler(sys.stdout)
-console_handler.setLevel(logging.INFO)
-
-# Formatter
-formatter = logging.Formatter("%(asctime)s | %(levelname)8s | %(message)s")
-file_handler.setFormatter(formatter)
-console_handler.setFormatter(formatter)
-
-# 減少傳遞多個 handler 的複雜度：直接取得 __name__ 的 logger
-log = logging.getLogger(__name__)
-log.setLevel(logging.INFO)
-log.addHandler(file_handler)
-log.addHandler(console_handler)
-
-# ─────────────────────────────────────────────────────────────────────────────
-# 3️⃣ 程式組態（可透過環境變數覆寫）
-# ─────────────────────────────────────────────────────────────────────────────
-CHECK_INTERVAL: int = int(os.getenv("CHECK_INTERVAL", "60"))
-MAX_UNHEALTHY: int = int(os.getenv("MAX_UNHEALTHY", "3"))
-MAX_CPU_PERCENT: float = float(os.getenv("MAX_CPU_PERCENT", "80.0"))
-MAX_MEMORY_PERCENT: float = float(os.getenv("MAX_MEMORY_PERCENT", "80.0"))
-MAX_IO_BYTES: int = int(os.getenv("MAX_IO_BYTES", "100000000"))
-
-# ─────────────────────────────────────────────────────────────────────────────
-# 4️⃣ 內部工具函式
-# ─────────────────────────────────────────────────────────────────────────────
-def dummy_inference(url: str, model: str, task: str = "寫一篇博士等級的論文，評論聊齋誌異，至少1000字。") -> bool:
-    """
-    送出一個「dummy」推論請求，藉此觸發 Ollama 服務的 GPU 負載。
-
-    Args:
-        url:   呼叫的 Ollama API 接點（例：http://localhost:55080）
-        model: 需呼叫的模型名稱（例：`llama3.1:8b`）
-        task:  要推論的文字，預設值為中文測試句
-
-    Returns:
-        bool: 若請求成功 (HTTP 200)，回傳 True；否則回傳 False
-    """
-    try:
-        resp = requests.post(
-            f"{url}/api/chat",
-            json={"model": model, "messages": [{"role": "user", "content": task}]},
-            timeout=30,
-        )
-        return resp.status_code == 200
-    except Exception as exc:   # pragma: no cover - 例外時即失敗
-        log.debug("dummy_inference 失敗: %s", exc)
-        return False
-
-
-def run_dummy(url: str, model: str) -> None:
-    """
-    在獨立執行緒中啟動 dummy 推論，避免阻塞主監控迴圈。
-    """
-    if dummy_inference(url, model):
-        log.debug("Dummy 推論已送出")
-    else:
-        log.debug("Dummy 推論送出失敗／超時")
-
-
-def _run_cmd(cmd: List[str], capture_output: bool = True) -> str:
-    """執行 shell 命令，並回傳標準輸出。任何非 0 exit code 皆會拋例外。"""
-    result = subprocess.run(
-        cmd,
-        capture_output=capture_output,
-        text=True,
-        check=True,
-    )
-    return result.stdout.strip()
-
-
-def gpu_usage_check(gpu_index: int = 0) -> Optional[int]:
-    """
-    讀取指定 GPU 的 memory 利用率（MB）
-    若無 GPU 或無法讀取，回傳 None。
-
-    Args:
-        gpu_index: GPU 在系統中的索引值 (default 0)
-
-    Returns:
-        Optional[int]: memory utilisation (MB)  或 None
-    """
-    try:
-        cmd = [
-            "nvidia-smi",
-            f"-i", str(gpu_index),
-            "--query-gpu=memory.used",
-            "--format=csv,noheader,nounits",
-        ]
-        out = _run_cmd(cmd)
-        return int(out)
-    except Exception as exc:  # pragma: no cover
-        log.debug("gpu_usage_check 執行失敗: %s", exc)
-        return None
-
-
-def get_compute_pids(gpu_index: int = 0) -> List[int]:
-    """
-    取得目前在特定 GPU 上運行的 PCIe 油執行 PID
-    """
-    try:
-        cmd = [
-            "nvidia-smi",
-            f"-i", str(gpu_index),
-            "--query-compute-apps=pid",
-            "--format=csv,noheader,nounits",
-        ]
-        raw = _run_cmd(cmd)
-        return [int(pid) for pid in raw.splitlines() if pid.strip()]
-    except Exception as exc:  # pragma: no cover
-        log.debug("get_compute_pids 執行失敗: %s", exc)
-        return []
-
-
-def kill_pids(pids: List[int]) -> None:
-    """
-    給定欲殺掉的 PID 清單，逐一呼叫 `kill`。
-    """
-    for pid in pids:
-        try:
-            os.kill(pid, 15)  # SIGTERM
-            log.info("Killed process %d on GPU", pid)
-        except ProcessLookupError:
-            log.debug("Process %d already dead", pid)
-        except Exception as exc:
-            log.warning("殺掉 %d 失敗: %s", pid, exc)
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# 5️⃣ Docker 相關工具
-# ─────────────────────────────────────────────────────────────────────────────
-def remove_service(name: str) -> None:
-    """
-    通過 docker‑py 移除指定服務。若不存在則忽略。
-
-    Args:
-        name: 服務名稱
-    """
-    try:
-        client = docker.from_env()
-        svc = client.services.get(name)
-        svc.remove()
-        log.info("✔︎ Service '%s' removed.", name)
-    except NotFound:
-        log.info("⚠︎ Service '%s' not found – nothing to remove.", name)
-
-
-def remove_services(names: List[str]) -> None:
-    for svc_name in names:
-        remove_service(svc_name)
-
-
-def deploy_stack(compose_file: str, stack_name: str) -> None:
-    """
-    以容器宿主機的 docker CLI 方式部署 stack。
-
-    Args:
-        compose_file : 目錄內 docker‑compose.yml 路徑
-        stack_name   : Docker stack 名稱
-    """
-    cmd = ["docker", "stack", "deploy", "-c", compose_file, stack_name]
-    log.info("🔄 Deploying stack '%s' from %s …", stack_name, compose_file)
-    try:
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        log.info("stdout:\n%s", result.stdout.strip())
-        log.info("stderr:\n%s", result.stderr.strip())
-        log.info("✔︎ Stack deployed successfully.")
-    except subprocess.CalledProcessError as exc:   # pragma: no cover
-        log.error("Stack deploy failed: %s", exc)
-        raise
-
-
-def reset_services(yml: str, stack: str = "ollama") -> None:
-    """
-    先刪除舊服務，再重新部署 stack。
-
-    Args:
-        yml   : docker‑compose.yml 檔案絕對路徑
-        stack : stack 名稱，預設為 'ollama'
-    """
-    # 1️⃣ 刪除舊服務
-    svc_names = [f"{stack}_{i}" for i in ["haproxy", "ollama"]]
-    remove_services(svc_names)
-
-    # 2️⃣ 重新部署
-    deploy_stack(yml, stack)
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# 6️⃣ 主邏輯
-# ─────────────────────────────────────────────────────────────────────────────
-# 下面的列表是環境的硬編碼變量，您可以自行調整為從配置檔或 env 讀取。
-stacks: List[str] = ["ollama", "ollama0"]
-root_path: str = "/nas2/kuang/MyPrograms/ollama"
-compose_files: List[str] = [
-    f"{root_path}/docker-compose.yml",
-    f"{root_path}/docker-compose.yml_llama3",
-]
-models: List[str] = ["gpt-oss:20b", "llama3.1:8b"]
-ports: List[str] = ["55083", "55080"]
-secs: List[int] = [3, 0]
-base_url: str = "http://l40.sinotech-eng.com"
-gpu_index: int = 0
-
-
-def main() -> None:
-    """
-    程式入口：逐一監控設定好的 stack。
-
-    - 監控 GPU 記憶體占用
-    - 若沒有相應的進程，觸發 dummy 推論以產生 GPU 負載
-    - 長期無 GPU 使用或卡頓即重啟服務
-    """
-	while True:
-		for stack_id, stack_name in enumerate(stacks):
-	        url = f"{base_url}:{ports[stack_id]}"
-	        model = models[stack_id]
-	        compose_file = compose_files[stack_id]
-
-            time.sleep(CHECK_INTERVAL)
-
-            pids = get_compute_pids(gpu_index)
-            gpu_mem = gpu_usage_check(gpu_index)
-
-            # ① 沒有任何進程或 GPU 無使用
-            if not pids or gpu_mem is None or gpu_mem <= 0:
-                # ➊ 送 dummy 推論（背景執行）
-                threading.Thread(
-	                target=run_dummy, 
-	                args=(url, model), 
-	                daemon=True
-					).start()
-
-                # ➋ 觀察 GPU 變化
-                time.sleep(secs[stack_id])
-                gpu_mem = gpu_usage_check(gpu_index)
-
-                if gpu_mem is None or gpu_mem <= 0:
-                    log.info("Ollama PID %s GPU 未占用，將重啟服務", model)
-                    reset_services(compose_file, stack_name)
-                else:
-                    # 如果 GPU 已經恢復使用，清理原先可能殘留的進程
-                    kill_pids(pids)
-                break
-
-
-if __name__ == "__main__":
-    main()
-
-```
-## 5. 可擴充的通知
-
-如果你想收到 Slack / Telegram / Email：
-
-| 平台 | 提示代碼（示例） |
-|------|------------------|
-| Slack | `requests.post(slack_webhook, json={"text": msg})` |
-| Telegram | `requests.post(f"https://api.telegram.org/bot{token}/sendMessage", data={"chat_id": chat_id, "text": msg})` |
-| Email | `smtplib` 或 `mailjet` 等 |
-
-把通知邏輯包裝成函式，放在 `_handle_unhealthy()` 內即可。
+3. **設計一個既可運行又易閱讀的監控腳本**  
+   認識日誌寫往檔案、旋轉、截斷的最佳實踐；如何用 `logging.handlers.RotatingFileHandler` 限制檔案 2 MB 占用；如何在主程式裡以 `threading.Thread` 不阻塞。
 
 ---
 
-## 6. 小結
+### 進一步上手的小路徑
 
-1. **安裝**：Docker + Python + 库  
-2. **撰寫**：上述腳本可直接跑或作為 systemd 服務  
-3. **運行**：設定 `.env`，啟動 hệ thống  
-4. **維護**：觀察日誌，按需調整 Threshold
+| 目標       | 下一步                                                                                                                                                 |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **本地實驗** | 1️⃣ 在宿主機直接執行 `python monitor.py` 看是否能正常監測 GPU。<br>2️⃣ 再跑一次 `systemd` 單元檔測試。                                                                         |
+| **容器化**  | 1️⃣ 建立簡易 `Dockerfile` 只安裝 `python`、`pip install docker requests`。<br>2️⃣ 將 `docker.sock` 掛載進容器並執行 `systemctl` (需要 `systemd` 內部) 或直接使用 `docker run`。 |
+| **測試重啟** | 1️⃣ 在監控腳本內注入 `time.sleep(180)` 套組讓 GPU 立即空閒。<br>2️⃣ 驗證重啟流程成功。                                                                                       |
+| **安全測試** | 1️⃣ 避免使用 `--privileged`；嘗試 `--cap-add=SYS_ADMIN` 只開啟必要權限。<br>2️⃣ 授權正確的 `User=` 、`Group=` 以檢測最小化權限。                                                  |
 
-> **備註**  
-> – 如果你多個 Ollama 容器，只需把 `CONTAINER_NAME` 把你想監控的容器名稱列在腳本或 `.env`。  
-> – 在高硬體佈署環境（GPU/CPU）下，請根據實際壓力調整 `CHECK_INTERVAL`、`MAX_*` 值。
+---
 
-祝你監控順利，如有任何疑問，隨時再聊！
+## 結語
+
+- 這個「ollama‑monitor」不僅能讓你運行 Ollama 並自動重啟，更提供了一整套 **Python** + **Docker** + **systemd** 的實作範例。  
+- 你可以把它當成一個 **完整的觀測‑自動修復** 案例，從代碼、配置、容器、安全、排錯全方位練習。  
+- 接下來，挑選你最感興趣的方向（例如調優 GPU 監控、探究 systemd `User=` 的安全性，或者把監控腳本打包成 CI/CD 流程），即可深入學習並把知識應用到實際專案。
