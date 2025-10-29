@@ -70,6 +70,7 @@ Dell首度推出可搭配8個Nvidia H100或A100 GPU的伺服器，搶攻亟需�
 - [NVIDIA Driver Downloads](https://www.nvidia.com/download/index.aspx)
 - L40
   - version: 535.129.03(2024/3),  550.54.15(2024/4/17)
+  - 下載550的安裝檔在`L40:/home/kuang/MyPrograms`
   ```bash
   Product Type:	Data Center / Tesla
   Product Series:	L-Series
@@ -87,3 +88,45 @@ Dell首度推出可搭配8個Nvidia H100或A100 GPU的伺服器，搶攻亟需�
   Download Type:	Production Branch
   Language:	Chinese (Traditional)
   ```
+
+### 550之重啟
+
+- 550無法由`apt-get install`，原因不明，必須由`.run`重新安裝驅動程式，重啟電腦(還有可能需要關電源重開)
+```bash
+ 1997  sudo sh NVIDIA-Linux-x86_64-550.54.15.run
+ 1998  sudo reboot
+```
+
+- 重啟後重新安裝`nvidia-container-toolkit`，`docker` 才能抓得到 `nvidia` 的 `runtime`
+- 先登記`key`
+- 下載指定版本的安裝檔
+	- 注意複製`$..$..`時，因為是markdown約定的格式(斜體)，要記得還原成bash的變數約定。
+- `apt-get`安裝
+
+``` bash
+ 2016  sudo nvidia-ctk runtime configure --runtime=docker
+ 2019  sudo mkdir -p /usr/share/keyrings
+ 2020  curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
+ 2028  curl -fsSL https://nvidia.github.io/libnvidia-container/$(. /etc/os-release; echo $ID$VERSION_ID)/libnvidia-container.list | sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#' | sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+ 2029  sudo apt-get update
+ 2030  sudo apt-get install -y nvidia-container-toolkit
+```
+
+- 啟動`docker`的`runtime`
+- 重啟`docker`
+
+```bash
+ 2031  sudo nvidia-ctk runtime configure --runtime=docker
+ 2032  sudo systemctl restart docker
+```
+
+- docker指令 `docker run --runtime nvidia`
+
+```bash
+docker run --runtime nvidia -d \
+    --gpus "device=${g}" \
+    -v /data/llm:/root/.cache/huggingface \
+    --env "HUGGING_FACE_HUB_TOKEN=$secret" \
+    -p 800${i}:8000 \
+    ...
+``

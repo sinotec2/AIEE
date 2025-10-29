@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "utilities/OpsChatUI/ollama_monitoring.md",
+                "file": "utilities/hardware.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ollama_monitoring"
+              "title": "hardware"
             }
           }
         ]
@@ -180,15 +180,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d1f8a08178b620e0",
+  "active": "ccd10a866f1d009d",
   "lastOpenFiles": [
+    "utilities/OpsChatUI/ollama_monitoring.md",
     "utilities/OpsChatUI/ollama-monitor.service",
     "utilities/OpsChatUI/monitor.py",
     "utilities/OpsChatUI/pngs/Pasted image 20251024184105.png",
     "utilities/OpsChatUI/pngs/Pasted image 20251024182110.png",
     "utilities/OpsChatUI/pngs",
     "utilities/OpsChatUI/vLLm.md",
-    "utilities/OpsChatUI/ollama_monitoring.md",
     "utilities/OpsChatUI/QnA.md"
   ]
 }
