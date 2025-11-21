@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "utilities/hardware.md",
+                "file": "Reviews/SES_workshop1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "hardware"
+              "title": "SES_workshop1"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 455.5
   },
   "right": {
     "id": "4fa9d3816064d712",
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "utilities/OpsChatUI/ollama_monitoring.md",
+                "file": "Reviews/SES_workshop1.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "ollama_monitoring 的大綱"
+              "title": "SES_workshop1 的大綱"
             }
           },
           {
@@ -180,8 +180,16 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ccd10a866f1d009d",
+  "active": "d1f8a08178b620e0",
   "lastOpenFiles": [
+    "Reviews/pngs/Pasted image 20251121102417.png",
+    "Reviews/pngs/Pasted image 20251121102022.png",
+    "Reviews/SES_workshop1.md",
+    "pngs/Pasted.md",
+    "pngs",
+    "Reviews/pngs",
+    "Reviews/SES.md",
+    "utilities/hardware.md",
     "utilities/OpsChatUI/ollama_monitoring.md",
     "utilities/OpsChatUI/ollama-monitor.service",
     "utilities/OpsChatUI/monitor.py",
