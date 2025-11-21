@@ -70,7 +70,7 @@ tags: AI
 ![](pngs/PastedImage20251121102417.png)
 ### 系統手冊
 
-- [eng06.sinotech-eng.com/GiteaTeam.shared/zh/](https://172.20.31.6/GiteaTeam.shared/zh/)
+- 💊[eng06.sinotech-eng.com/GiteaTeam.shared/zh/](https://172.20.31.6/GiteaTeam.shared/zh/)
 	- 免登入
 	- 須接受連線風險
 
@@ -81,7 +81,7 @@ tags: AI
 	- [https://eng06.sinotech-eng.com:3001~3013](https://eng06.sinotech-eng.com:3001
 
 - [LibreChat](https://www.librechat.ai/) 是一個開源應用程式，旨在提供一個用於 AI 對話的統一平台。它支援多種 AI 供應商，例如 OpenAI 和 Azure OpenAI，並提供文本轉語音和語音轉文本功能。使用者可以透過 Docker 進行本地設定和部署。LibreChat 允許使用者自定義並享受 AI 互動體驗。
-	- [使用說明](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/faq/LibreChat/LibreChat.html)
+	- 💊[使用說明](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/faq/LibreChat/LibreChat.html)
 	- 服務：
 		- 🗽[https://librechat.sinotech-eng.com/](https://librechat.sinotech-eng.com/)
 		- 📅[LDAP+日曆查詢](https://node02.sinotech-eng.com/)
@@ -92,16 +92,16 @@ tags: AI
 
 ### 智慧檢索 
 
-- 🔍[環評書件及環保專案模糊檢索](http://iiseng2023.sinotech-eng.com/FTS)
-- 🔍[企業全文檢索OES](http://oes.sinotech-eng.com:7651/cgi-bin/search/qpage.cgi?act=simple)
-- 🔍[AI內外搜尋SearXNG](https://l40.sinotech-eng.com/searxng/)
+- 🔍[環評書件及環保專案模糊檢索](http://iiseng2023.sinotech-eng.com/FTS)、💊[環保文件搜尋引擎](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/search.html)
+- 🔍[企業全文檢索OES](http://oes.sinotech-eng.com:7651/cgi-bin/search/qpage.cgi?act=simple)、
+- 🔍[AI內外搜尋SearXNG](https://l40.sinotech-eng.com/searxng/)、💊[地端智慧搜尋引擎](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/faq/ai_searxng/)
 
 ### 生成平台
 
 - 🔊[環評噪音空氣章節](https://jph.sinotech-eng.com/user/kuang/lab/workspaces/auto-V/tree/ver20241206/run.ipynb)
 - 🐍python 執行資源
 	- 位置：[https://jph.sinotech-eng.com](https://jph.sinotech-eng.com/)
-	- 手冊：[ JupyterHub介面](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/jupyterhub/jph_guide.html)、[JupyterNB的執行](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/jupyterhub/run_ipynb.html)
+	- 手冊：💊[ JupyterHub介面](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/jupyterhub/jph_guide.html)、💊[JupyterNB的執行](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/jupyterhub/run_ipynb.html)
 
 ### 精靈系列
 
