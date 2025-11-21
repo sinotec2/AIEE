@@ -3,8 +3,8 @@ layout: default
 title: 2025主管AI工作坊
 parent: 回顧與綜覽
 nav_order: 99
-date: 2025-11-23
-last_modified_date: 2025-11-20 08:26:30
+date: 2025-11-21
+last_modified_date: 2025-11-21 11:26:30
 tags: AI
 ---
 
@@ -24,6 +24,9 @@ tags: AI
 
 ## 主題：AI Factory對我們產業可能造成的衝擊
 
+![](https://applealmond.com/wp-content/uploads/2025/03/1742354997-a017e0caf9119cc47e6729799c0161ba.jpg)
+
+
 ## 行程表
 
 |     時間      |      內容      | 負責(講員) |           型態            |
@@ -40,7 +43,7 @@ tags: AI
 
 ### AI Factory演講內容
 
-- [2025 NVIDIA 年度技術大會 GTC華盛頓](https://www.youtube.com/watch?v=VFVzGkkQRew)
+- 2025 NVIDIA 年度技術大會 GTC華盛頓[(txt)](https://applealmond.com/posts/270455)、[yt](https://www.youtube.com/watch?v=VFVzGkkQRew)
 - [2025台北Computex](https://hackmd.io/@tsaicm/BJhCSXu-ex)
 ### Canva
 
