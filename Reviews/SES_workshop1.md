@@ -45,13 +45,16 @@ tags: AI
 
 - 2025 NVIDIA 年度技術大會 GTC華盛頓[(txt)](https://applealmond.com/posts/270455)、[yt](https://www.youtube.com/watch?v=VFVzGkkQRew)
 - [2025台北Computex](https://hackmd.io/@tsaicm/BJhCSXu-ex)
+
 ### Canva
 
 - Canva 是一個免費的線上設計工具，讓您輕鬆創建各種視覺內容，包括社群媒體貼文、簡報、海報、影片和標誌等。它提供照片編輯、標誌製作、拼貼製作和影片編輯等多種功能，即使沒有設計經驗也能快速上手。Canva的優勢在於它的易用性和多樣化的設計範本，使其成為一個功能強大的設計平台，適合各種使用需求。
 - [official site](https://www.canva.com/zh_tw/)
+
 ### Gamma
 
 [Gamma](https://skywork.ai) 是一個 AI 驅動的設計工具，可以幫助使用者快速製作簡報、網站等，無需編碼或設計經驗。它提供一鍵生成幻燈片的功能，使用者只需輸入主題，AI 即可在幾分鐘內完成演示文稿。Gamma 還提供超過 1000 個 PPT 模板，讓使用者可以靈活地定制內容。總體而言，Gamma 旨在簡化設計流程，讓使用者更輕鬆地創建視覺內容。
+
 ### Napkin
 
 [Napkin](https://www.napkin.ai/) 是一個 AI 驅動的工具，主要功能包括將文字轉換成視覺化圖表，例如流程圖和心智圖，亦可用於知識管理，幫助使用者整理想法、建立知識連結。它特別適合用於簡報製作、個人知識管理、學術研究等應用。Napkin 旨在提升學習、創作效率，並讓溝通更有效率。
@@ -75,11 +78,13 @@ tags: AI
 - 瀏覽器插件系列
 	- 🧠[Sider](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/faq/plugins/Sider.html)
 	- 👩‍💼[PageAssist](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/faq/plugins/PageAssist.html)
+
 ### 智慧檢索 
 
 - 🔍[環評書件及環保專案模糊檢索](http://iiseng2023.sinotech-eng.com/FTS)
 - 🔍[企業全文檢索OES](http://oes.sinotech-eng.com:7651/cgi-bin/search/qpage.cgi?act=simple)
 - 🔍[AI內外搜尋SearXNG](https://l40.sinotech-eng.com/searxng/)
+
 ### 生成平台
 
 - 🔊[環評噪音空氣章節](https://jph.sinotech-eng.com/user/kuang/lab/workspaces/auto-V/tree/ver20241206/run.ipynb)
