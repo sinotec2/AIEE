@@ -78,12 +78,14 @@ tags: AI
 
 - [AnythingLLM](https://anythingllm.com/) 是一個強大的 AI 應用程式，使您能夠使用任何大型語言模型 (LLM) 與您的文件聊天，提高生產力，並建立私人的 AI 知識庫。它支援商業 LLM 和開源 LLM，並提供向量資料庫解決方案。AnythingLLM 易於使用，允許您離線使用 AI，並可以利用 Agent 功能執行更多任務。
 	- 公司首頁&rightarrow;資訊服務&rightarrow;[GTP統一入口](http://iiseng.sinotech-eng.com/sipEng/Files/AnythingLLM.pdf?v=20250208)
-	- [https://eng06.sinotech-eng.com:3001~3013](https://eng06.sinotech-eng.com:3001)
+	- [https://eng06.sinotech-eng.com:3001~3013](https://eng06.sinotech-eng.com:3001
+
 - [LibreChat](https://www.librechat.ai/) 是一個開源應用程式，旨在提供一個用於 AI 對話的統一平台。它支援多種 AI 供應商，例如 OpenAI 和 Azure OpenAI，並提供文本轉語音和語音轉文本功能。使用者可以透過 Docker 進行本地設定和部署。LibreChat 允許使用者自定義並享受 AI 互動體驗。
 	- [使用說明](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/faq/LibreChat/LibreChat.html)
 	- 服務：
 		- 🗽[https://librechat.sinotech-eng.com/](https://librechat.sinotech-eng.com/)
 		- 📅[LDAP+日曆查詢](https://node02.sinotech-eng.com/)
+
 - 瀏覽器插件系列
 	- 🧠[Sider](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/faq/plugins/Sider.html)
 	- 👩‍💼[PageAssist](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/faq/plugins/PageAssist.html)
@@ -97,7 +99,9 @@ tags: AI
 ### 生成平台
 
 - 🔊[環評噪音空氣章節](https://jph.sinotech-eng.com/user/kuang/lab/workspaces/auto-V/tree/ver20241206/run.ipynb)
-- 🐍python執行資源[https://jph.sinotech-eng.com](https://jph.sinotech-eng.com/)
+- 🐍python 執行資源
+	- 位置：[https://jph.sinotech-eng.com](https://jph.sinotech-eng.com/)
+	- 手冊：[ JupyterHub介面](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/jupyterhub/jph_guide.html)、[JupyterNB的執行](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/jupyterhub/run_ipynb.html)
 
 ### 精靈系列
 
