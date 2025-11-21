@@ -63,7 +63,7 @@ tags: AI
 
 ### 整體架構
 
-![](PastedImage20251121102417.png)
+![](pngs/PastedImage20251121102417.png)
 
 ### 統一入口
 
