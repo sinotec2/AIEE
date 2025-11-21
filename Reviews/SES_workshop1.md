@@ -94,9 +94,13 @@ tags: AI
 
 - ✍️[翻譯小精靈](http://172.20.31.7:8507/login)
 - 👄[轉錄小精靈](http://172.20.31.7:8503/login)
+
 - ⚖️[環保法規小助手](https://eng06.sinotech-eng.com/law_query/)
-- ✂️[契約條文比較精靈](http://node01.sinotech-eng.com:8503/)
 - 📚[環保法規解釋AI小助手](http://node01.sinotech-eng.com:8504/)
+
+- 📣[契約審查與法規查詢小助手](http://node01.sinotech-eng.com:8502/)
+- ✂️[契約條文比較精靈](http://node01.sinotech-eng.com:8503/)
+
 - 🏃‍♂️GPU Monitoring
 	- 🏃‍♀️[ttyd](https://eng06.sinotech-eng.com/ttyd/)
 	- 💡[ganglia](http://master.sinotech-eng.com/graph_all_periods.php?title=gpu_utils&vl=%25&x=&n=&hreg%5B%5D=%5Beng06%2Cl40%5D&mreg%5B%5D=%5Bgpu%5B0%2C1%5D_util&gtype=stack&glegend=show&aggregate=1)
