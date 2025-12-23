@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "af1d3654afb81220",
+        "id": "1b1c59d40ca22087",
         "type": "tabs",
         "children": [
           {
-            "id": "1c07fd956e3d2e7a",
+            "id": "4acd1d886786633b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "NLP/plugins/wisebase.md",
+                "file": "utilities/LibreChat/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "wisebase"
+              "title": "README"
             }
           }
         ]
@@ -180,8 +180,27 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1c07fd956e3d2e7a",
+  "active": "7c675729b280f4c2",
   "lastOpenFiles": [
+    "utilities/LibreChat/LibreChat.md",
+    "utilities/LibreChat/README.md",
+    "utilities/LibreChat/LibreChatMCP.md",
+    "NLP/plugins/wisebase.md",
+    "utilities/LibreChat/pngs/Pasted image 20251210133634.png",
+    "utilities/LibreChat/pngs/Pasted image 20251123211049.png",
+    "utilities/LibreChat/pngs/Pasted image 20251123210512.png",
+    "utilities/LibreChat/pngs/Pasted image 20251123172453.png",
+    "utilities/LibreChat/pngs/Pasted image 20251123170725.png",
+    "utilities/LibreChat/pngs/Pasted image 20251123170531.png",
+    "utilities/LibreChat/pngs/Pasted image 20251123165933.png",
+    "utilities/LibreChat/pngs/Pasted image 20251123165556.png",
+    "utilities/LibreChat/pngs/Pasted image 20251123165432.png",
+    "utilities/LibreChat/pngs/Pasted image 20251123164904.png",
+    "utilities/LibreChat/pngs",
+    "utilities/LibreChat/mcp-python-interpreter.md",
+    "utilities/LibreChat/mcp-filesystem.md",
+    "utilities/LibreChat/LibreChatWebSearch.md",
+    "utilities/LibreChat",
     "NLP/plugins/Sider.md",
     "NLP/plugins/README.md",
     "NLP/plugins/PageAssist_vLLM.md",
@@ -190,8 +209,6 @@
     "NLP/plugins/intro.md",
     "NLP/plugins/deepresearch.md",
     "NLP/anti_AI.md",
-    "NLP/plugins/wisebase.md",
-    "NLP/plugins/image.png",
     "NLP/ReportWriting/report2db.md",
     "README.md",
     "NLP/MCP/excel.md",
@@ -201,23 +218,12 @@
     "utilities/K82_cases.md",
     "Reviews/AIEE.md",
     "Reviews/SES_workshop1.md",
-    "Reviews/pngs/Pastedimage20251121161200.png",
-    "Reviews/pngs/20251121155811f08115d3d94adf9b9fc8cce51b6a9a30-33p.png",
-    "Reviews/pngs/20251121155811f08115d3d94adf9b9fc8cce51b6a9a30.png",
-    "Reviews/pngs/PastedImage20251121102417.png",
-    "Reviews/pngs/Pasted image 20251121102022.png",
     "pngs/Pasted.md",
     "pngs",
     "Reviews/pngs",
     "Reviews/SES.md",
-    "utilities/hardware.md",
-    "utilities/OpsChatUI/ollama_monitoring.md",
     "utilities/OpsChatUI/ollama-monitor.service",
     "utilities/OpsChatUI/monitor.py",
-    "utilities/OpsChatUI/pngs/Pasted image 20251024184105.png",
-    "utilities/OpsChatUI/pngs/Pasted image 20251024182110.png",
-    "utilities/OpsChatUI/pngs",
-    "utilities/OpsChatUI/vLLm.md",
-    "utilities/OpsChatUI/QnA.md"
+    "utilities/OpsChatUI/pngs"
   ]
 }
