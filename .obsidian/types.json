@@ -3,6 +3,9 @@
     "aliases": "aliases",
     "cssclasses": "multitext",
     "tags": "tags",
-    "modify_date": "datetime"
+    "modify_date": "datetime",
+    "last_modified_date": "datetime",
+    "dir": "number",
+    "nav_order": "number"
   }
 }

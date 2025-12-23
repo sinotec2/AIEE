@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "NLP/plugins/wisebase.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "wisebase"
             }
           }
         ]
@@ -182,9 +182,23 @@
   },
   "active": "1c07fd956e3d2e7a",
   "lastOpenFiles": [
+    "NLP/plugins/Sider.md",
+    "NLP/plugins/README.md",
+    "NLP/plugins/PageAssist_vLLM.md",
+    "NLP/plugins/PageAssist_acc.md",
+    "NLP/plugins/PageAssist.md",
+    "NLP/plugins/intro.md",
+    "NLP/plugins/deepresearch.md",
+    "NLP/anti_AI.md",
+    "NLP/plugins/wisebase.md",
+    "NLP/plugins/image.png",
+    "NLP/ReportWriting/report2db.md",
+    "README.md",
+    "NLP/MCP/excel.md",
+    "NLP/MCP/0.MCP.md",
+    "NLP/MCP",
     "utilities/Kubernetes/K82_cases.md",
     "utilities/K82_cases.md",
-    "README.md",
     "Reviews/AIEE.md",
     "Reviews/SES_workshop1.md",
     "Reviews/pngs/Pastedimage20251121161200.png",
