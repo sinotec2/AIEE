@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "index.md",
+                "file": "utilities/LibreChat/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "README"
             }
           }
         ]
@@ -182,15 +182,18 @@
   },
   "active": "4acd1d886786633b",
   "lastOpenFiles": [
-    "README.md",
+    "utilities/LibreChat/mcp-python-interpreter.md",
+    "utilities/LibreChat/mcp-filesystem.md",
+    "utilities/LibreChat/LibreChatWebSearch.md",
+    "utilities/LibreChat/LibreChatMCP.md",
     "index.md",
+    "README.md",
     "utilities/LibreChat/LibreChat.md",
     "utilities/LibreChat/README.md",
     "utilities/OpsChatUI/0.OpsChatUI.md",
     "utilities/OpsChatUI/ollama_monitoring.md",
     "utilities/OpsChatUI/vLLm.md",
     "utilities/OpsChatUI/QnA.md",
-    "utilities/LibreChat/LibreChatMCP.md",
     "NLP/plugins/wisebase.md",
     "utilities/LibreChat/pngs/Pasted image 20251210133634.png",
     "utilities/LibreChat/pngs/Pasted image 20251123211049.png",
@@ -203,9 +206,6 @@
     "utilities/LibreChat/pngs/Pasted image 20251123165432.png",
     "utilities/LibreChat/pngs/Pasted image 20251123164904.png",
     "utilities/LibreChat/pngs",
-    "utilities/LibreChat/mcp-python-interpreter.md",
-    "utilities/LibreChat/mcp-filesystem.md",
-    "utilities/LibreChat/LibreChatWebSearch.md",
     "utilities/LibreChat",
     "NLP/plugins/Sider.md",
     "NLP/plugins/README.md",
