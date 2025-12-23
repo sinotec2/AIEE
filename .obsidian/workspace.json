@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "utilities/OpsChatUI/QnA.md",
+                "file": "utilities/LibreChat/LibreChat.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "QnA"
+              "title": "LibreChat"
             }
           }
         ]
@@ -182,10 +182,11 @@
   },
   "active": "4acd1d886786633b",
   "lastOpenFiles": [
-    "utilities/OpsChatUI/vLLm.md",
-    "utilities/OpsChatUI/ollama_monitoring.md",
-    "utilities/OpsChatUI/0.OpsChatUI.md",
     "utilities/LibreChat/README.md",
+    "utilities/OpsChatUI/0.OpsChatUI.md",
+    "utilities/OpsChatUI/ollama_monitoring.md",
+    "utilities/OpsChatUI/vLLm.md",
+    "utilities/OpsChatUI/QnA.md",
     "utilities/LibreChat/LibreChat.md",
     "utilities/LibreChat/LibreChatMCP.md",
     "NLP/plugins/wisebase.md",
@@ -220,7 +221,6 @@
     "utilities/Kubernetes/K82_cases.md",
     "utilities/K82_cases.md",
     "Reviews/AIEE.md",
-    "Reviews/SES_workshop1.md",
     "pngs",
     "Reviews/pngs",
     "utilities/OpsChatUI/ollama-monitor.service",

@@ -1,10 +1,15 @@
 ---
 title: LibreChat使用手冊
-icon: dove
-lastUpdated: 2025-11-01T13:08:00
-contributors: '[{"name":"kuang"}]'
-order: 1
+tags: AI
+layout: default
+parent: LibreChat
+grand_parent: Utilities
+nav_odrer: 1
+date: 2025-11-01
+modify_date: 2025-11-01T13:08:00
 ---
+
+
 ::: note
 這一份以「==LibreChat== [官方文件](https://www.librechat.ai/docs)」為基礎的使用手冊範例，專門針對本公司同仁使用。  <br>
 ==LibreChat==服務位址✨✨[https://librechat.sinotech-eng.com/](https://librechat.sinotech-eng.com/)✨✨
