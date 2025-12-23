@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "utilities/OpsChatUI/ollama_monitoring.md",
+                "file": "utilities/OpsChatUI/QnA.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ollama_monitoring"
+              "title": "QnA"
             }
           }
         ]
@@ -180,8 +180,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7c675729b280f4c2",
+  "active": "4acd1d886786633b",
   "lastOpenFiles": [
+    "utilities/OpsChatUI/vLLm.md",
+    "utilities/OpsChatUI/ollama_monitoring.md",
     "utilities/OpsChatUI/0.OpsChatUI.md",
     "utilities/LibreChat/README.md",
     "utilities/LibreChat/LibreChat.md",
@@ -219,10 +221,8 @@
     "utilities/K82_cases.md",
     "Reviews/AIEE.md",
     "Reviews/SES_workshop1.md",
-    "pngs/Pasted.md",
     "pngs",
     "Reviews/pngs",
-    "Reviews/SES.md",
     "utilities/OpsChatUI/ollama-monitor.service",
     "utilities/OpsChatUI/monitor.py",
     "utilities/OpsChatUI/pngs"

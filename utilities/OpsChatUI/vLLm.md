@@ -1,3 +1,25 @@
+---
+title: vLLM
+tags: AI
+layout: default
+parent: OpsChatUI
+grand_parent: Utilities
+date:  2025-10-15 
+modify_date: 2025-10-15 08:37
+---
+
+# vLLM
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
 
 
 vLLM 是一個開源的大型語言模型（LLM）推理和服務庫，旨在提高效能並簡化LLM 的部署。 
