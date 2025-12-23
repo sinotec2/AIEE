@@ -9,7 +9,6 @@ date: 2025-11-01
 modify_date: 2025-12-10T13:08:00
 ---
 
-
 # LibreChat+日曆綜整
 
 {: .no_toc }
@@ -26,7 +25,7 @@ modify_date: 2025-12-10T13:08:00
 
 ::: info
 這個chat的特色是用LDAP登入、能夠智慧查詢責任中心一(大環一、外賓勿入)的行事曆，
-==LibreChat2==服務位址✨✨[https://node02.sinotech-eng.com/](https://node02.sinotech-eng.com/)✨✨
+✨✨LibreChat2服務位址✨✨
 使用的技術符合[MCP](#MCP)(模型上下文協定、模型語境協定)，具有強大的擴充性。
 :::
 
@@ -36,16 +35,16 @@ modify_date: 2025-12-10T13:08:00
 
 ### 1.1 進入 LibreChat
 
-1. 打開瀏覽器，輸入 ==LibreChat2== 服務的公司內部網址(✨✨[https://node02.sinotech-eng.com/](https://node02.sinotech-eng.com/)✨✨)。
+1. 打開瀏覽器，輸入 LibreChat2 服務的公司內部網址()。
 2. 只允許LDAP帳密，無法增減**註冊**：
-	- **使用者名稱**：請使用LDAP登記之email名稱==不含@伺服器位址==(eg. yckuang@mail.sinotech-eng.com → yckuang)作為帳號登入。
+	- **使用者名稱**：請使用LDAP登記之email名稱不含@伺服器位址(eg. yckuang@mail.sinotech-eng.com → yckuang)作為帳號登入。
 	- **密碼**：LDAP密碼(內設為2次員工編號)、至少需8碼英數。🎱
-		- 修改密碼：請至[FreeIPA](https://node03.sinotech-eng.com/ipa/ui/)
-	- 忘記密碼(請洽**08855蕭詠鍵**重建、點`忘記密碼?`連結無效)
+		- 修改密碼：請至[FreeIPA]()
+	- 忘記密碼(請洽研資部重建、點`忘記密碼?`連結無效)
 
 | ![](pngs/Pasted%20image%2020251120092423.png) |
 | --------------------------------------------- |
-| 請用公司電子郵件==名稱==(不含@...)。密碼至少8碼。🎱              |
+| 請用公司電子郵件名稱(不含@...)。密碼至少8碼。🎱              |
 
 ### 1.2 建立個人設定
 
@@ -59,7 +58,7 @@ modify_date: 2025-12-10T13:08:00
 
 | ![](pngs/Pasted%20image%2020251030123842.png) | ![](pngs/Pasted%20image%2020251030123909.png) |
 | --------------------------------------------- | --------------------------------------------- |
-| 設定語言、開始新對話、選擇模型、輸入問題、提交                       | 選擇：地端語言模型==gpt-oss==。推!!!👍                   |
+| 設定語言、開始新對話、選擇模型、輸入問題、提交                       | 選擇：地端語言模型gpt-oss。推!!!👍                   |
 
 ### 1.4 連線Google Calendar之MCP
 
@@ -139,7 +138,7 @@ MCP還有很多能力，如繪圖
 
 
 ::: info
- 若上述方式仍無法解決，請撥打內線電話 **08503**，聯絡 **謝天霖**（系統技術支援）以取得即時協助。
+ 若上述方式仍無法解決，請撥打內線電話（系統技術支援）以取得即時協助。
 :::
 
 ---
@@ -160,12 +159,12 @@ Smithery.ai 是一個為開發人員提供的平台，主要功能是協助尋�
 
 ## 5. 聯絡方式
 
-- 📞**API Key**與**技術支援**：08503（**謝天霖**）  、新增模型或MCP：04139(**曠永銓**)
+- 📞**API Key**與**技術支援**、新增模型或MCP
 - 🌏**文件與說明**：<https://www.librechat.ai/docs>  
-- 🔧**IT 部門**：內部 IT 報修專線(  09025 **王子齊**) 
-- 🔑**LDAP帳密**：08855**蕭詠鍵**
+- 🔧**IT 部門**：內部 IT 報修專線
+- 🔑**LDAP帳密**：
 - 🤝**社群交流**：LibreChat 官方 GitHub 頁面（<https://github.com/LibreChat-AI/librechat.ai>）
-- 📚**手冊位址**：[https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/faq/LibreChat](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/faq/LibreChat/)(陸續發展中🚧)
+- 📚**手冊位址**：(陸續發展中🚧)
 
 
 ---

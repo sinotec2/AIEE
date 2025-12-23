@@ -9,14 +9,7 @@ date: 2025-11-01
 modify_date: 2025-11-01T13:08:00
 ---
 
-
-::: note
-這一份以「==LibreChat== [官方文件](https://www.librechat.ai/docs)」為基礎的使用手冊範例，專門針對本公司同仁使用。  <br>
-==LibreChat==服務位址✨✨[https://librechat.sinotech-eng.com/](https://librechat.sinotech-eng.com/)✨✨
-:::
----
-
-## LibreChat 使用手冊（內部版）
+## LibreChat 使用手冊（外部版）
 
 ### 目錄
 1. 什麼是 LibreChat？
@@ -40,7 +33,7 @@ modify_date: 2025-11-01T13:08:00
 > 參考官方文件首頁的「Quick Start Guides」區塊，以下為常見的快速啟動步驟概覽。
 
 #### 2.1 進入 LibreChat
-1. 打開瀏覽器，輸入 ==LibreChat== 服務的公司內部網址(✨✨[https://librechat.sinotech-eng.com/](https://librechat.sinotech-eng.com/)✨✨)。
+1. 打開瀏覽器，輸入 ==LibreChat== 服務的公司內部網址。
 2. 若為首次使用，請自行**註冊**：
 	- 請使用公司email作為帳號登入，便於管理。
 	- 密碼：至少需8碼英數。🎱
@@ -94,13 +87,8 @@ modify_date: 2025-11-01T13:08:00
 ### 5. 故障排除（Troubleshooting）
 
 想知道公司GPU的運轉情況🏃‍♂️🏃‍♀️：
-- 每5秒鐘更新 ~ 全年運轉紀錄 &rightarrow; [ganglia](http://master.sinotech-eng.com/graph_all_periods.php?title=gpu_utils&vl=%25&x=&n=&hreg%5B%5D=%5Beng06%2Cl40%5D&mreg%5B%5D=%5Bgpu%5B0%2C1%5D_util&gtype=stack&glegend=show&aggregate=1)
-- 每1秒更新之即時狀況(L40) &rightarrow; [nvtop](http://l40.sinotech-eng.com:7681/)
-<iframe
-src="https://eng06.sinotech-eng.com/ttyd/"
-style="width: 100%; min-height: 300px"
-frameborder="0">
-</iframe>
+- 每5秒鐘更新 ~ 全年運轉紀錄 &rightarrow; [ganglia]()
+- 每1秒更新之即時狀況(L40) &rightarrow; [nvtop]()
 
 | 問題       | 可能原因                   | 解決方式                  | 備註  |
 | -------- | ---------------------- | --------------------- | --- |
@@ -111,18 +99,18 @@ frameborder="0">
 
 
 ::: info
- 若上述方式仍無法解決，請撥打內線電話 **08503**，聯絡 **謝天霖**（系統技術支援）以取得即時協助。
+ 若上述方式仍無法解決，請撥打內線電話（系統技術支援）以取得即時協助。
 :::
 
 ---
 
 ### 6. 聯絡方式
 
-- 📞**API Key**與**技術支援**：08503（**謝天霖**）  、新增模型：04139(**曠永銓**)
+- 📞**API Key**與**技術支援**、新增模型
 - 🌏**文件與說明**：<https://www.librechat.ai/docs>  
-- 🔧**IT 部門**：內部 IT 報修專線(  09025 **王子齊**) 
+- 🔧**IT 部門**：內部 IT 報修專線
 - 🤝**社群交流**：LibreChat 官方 GitHub 頁面（<https://github.com/LibreChat-AI/librechat.ai>）
-- 📚**手冊位址**：[https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/faq/LibreChat](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/faq/LibreChat/)(陸續發展中🚧)
+- 📚**手冊位址**：[./GiteaTeam.shared/zh/faq/LibreChat]()(陸續發展中🚧)
 
 ---
 

@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "1b1c59d40ca22087",
+        "id": "198d8f3acd723b58",
         "type": "tabs",
         "children": [
           {
-            "id": "4acd1d886786633b",
+            "id": "afb905442c0e2a8b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "NLP/SearchingEngine/ai_searxng/ai_oes.md",
+                "file": "utilities/LibreChat/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ai_oes"
+              "title": "README"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reviews/SES_workshop1.md",
+                "file": "utilities/LibreChat/README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "SES_workshop1 的大綱"
+              "title": "README 的大綱"
             }
           },
           {
@@ -180,20 +180,24 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4acd1d886786633b",
+  "active": "d1f8a08178b620e0",
   "lastOpenFiles": [
-    "NLP/SearchingEngine/ai_searxng/searxng_UG.md",
+    "utilities/LibreChat/mcp-python-interpreter.md",
+    "utilities/LibreChat/mcp-filesystem.md",
+    "utilities/LibreChat/pngs/Pasted image 20251123210512.png.~tmp",
+    "utilities/LibreChat/LibreChatWebSearch.md",
+    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251212134711.png",
+    "utilities/LibreChat/LibreChatMCP.md",
+    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251212134648.png",
+    "utilities/LibreChat/LibreChat.md",
+    "NLP/MCP/0.MCP.md",
     "NLP/SearchingEngine/ai_searxng/ai_oes.md",
+    "NLP/SearchingEngine/ai_searxng/searxng_UG.md",
     "NLP/SearchingEngine/ai_searxng/README.md",
     "NLP/SearchingEngine/ai_searxng/sino_oes.md",
     "NLP/SearchingEngine/SearchingEngine.md",
     "NLP/SearchingEngine/ai_searxng/mediawiki.py.md",
     "NLP/SearchingEngine/ai_searxng/md自動上傳地端wiki.md",
-    "utilities/LibreChat/LibreChat.md",
-    "utilities/LibreChat/LibreChatMCP.md",
-    "utilities/LibreChat/LibreChatWebSearch.md",
-    "utilities/LibreChat/mcp-python-interpreter.md",
-    "utilities/LibreChat/mcp-filesystem.md",
     "utilities/LibreChat/README.md",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111203533.png",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111202818.png",
@@ -203,8 +207,6 @@
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111200553.png",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111195519.png",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111195445.png",
-    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111195052.png",
-    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111191711.png",
     "NLP/SearchingEngine/ai_searxng/pngs",
     "NLP/SearchingEngine/ai_searxng/sino_oes.py",
     "NLP/SearchingEngine/ai_searxng/ai_oes.py",
@@ -222,11 +224,8 @@
     "NLP/plugins/README.md",
     "NLP/plugins/PageAssist_vLLM.md",
     "NLP/plugins/PageAssist_acc.md",
-    "NLP/plugins/PageAssist.md",
-    "NLP/plugins/intro.md",
     "NLP/MCP",
     "pngs",
-    "Reviews/pngs",
-    "utilities/OpsChatUI/ollama-monitor.service"
+    "Reviews/pngs"
   ]
 }

@@ -87,12 +87,12 @@ modify_date: 2025-11-23T16:08:00
 
 > 我會給你一個部門報名午餐的名單，請寫一個python程式，按照各種便當的類別，給我各類便當的訂餐同仁資料表，共4個csv檔案。儲存在/app/logs/目錄下。
 
-- 如果需要直接執行python，請改在[jph.sinotech-eng.com](https://jph.sinotech-eng.com/hub/login)上作業。🧐
+- 如果需要直接執行python，請改在jph上作業。🧐
 	- 🐍python 執行資源
-		- 位置：[https://jph.sinotech-eng.com](https://jph.sinotech-eng.com/)
+		- 位置：jph
 	- 手冊：
-		- 💊[ JupyterHub介面](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/jupyterhub/jph_guide.html)
-		- 💊[JupyterNB的執行](https://eng06.sinotech-eng.com/GiteaTeam.shared/zh/jupyterhub/run_ipynb.html)
+		- 💊[ JupyterHub介面]()
+		- 💊[JupyterNB的執行](l)
 
 | ![](pngs/Pasted%20image%2020251123172453.png) |
 | :-------------------------------------------: |
@@ -100,7 +100,7 @@ modify_date: 2025-11-23T16:08:00
 
 ## 步驟6️⃣LibreChat工作站檔案管理
 
-- LibreChat的開放路徑`/app/logs`，可以在[filebrowser](http://172.20.31.6:8080/files/)中出現，目前採開放管理、每日清理政策。
+- LibreChat的開放路徑`/app/logs`，可以在[filebrowser]()中出現，目前採開放管理、每日清理政策。
 
 | ![](pngs/Pasted%20image%2020251123210512.png) |
 | :-------------------------------------------: |

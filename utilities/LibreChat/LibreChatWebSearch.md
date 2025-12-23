@@ -161,16 +161,16 @@ def pre_search(self, request, search):
 重點說明：
 
 - **前綴判斷**：只對 `OES::`（大小寫不分）開頭的查詢生效
-- **去掉前綴**：實際搜尋關鍵字是 `OES::` 後面的內容（例如「曠永銓」）
+- **去掉前綴**：實際搜尋關鍵字是 `OES::` 後面的內容（例如「曠**」）
 - **EngineRef 處理**：
     - 若 `engineref_list` 已有 `sino oes`，只保留它
     - 若沒有，就用 `engineref_list[0]` 當樣板 `template`，  
         建一個 `type(template)("sino oes", category)` 的新 `EngineRef` 放進去
     - 避免直接 import `EngineRef`，保持對 searXNG 版本的相容性
 
-如此一來，當 `query = "OES:: 曠永銓"` 時：
+如此一來，當 `query = "OES:: 曠**"` 時：
 
-- plugin 會把 query 改成 `"曠永銓"`
+- plugin 會把 query 改成 `"曠**"`
 - 並把 `engineref_list` 改為只剩 `[EngineRef('sino oes', 'general')]`
 - 後續只有 OES engine 會被呼叫 ✅
 
@@ -183,13 +183,13 @@ def pre_search(self, request, search):
 遇到的問題是：LibreChat／LLM 在看到使用者輸入：
 
 ```text
-"oes:: 曠永銓"
+"oes:: 曠**"
 ```
 
 時，模型(GPT-OSS)自己推理：
 
-> "The user says: `oes:: 曠永銓`. It looks like someone is requesting info about the Chinese name 曠永銓...  
-> We need to search the web. Let's search for 曠永銓."
+> "The user says: `oes:: 曠**`. It looks like someone is requesting info about the Chinese name 曠**...  
+> We need to search the web. Let's search for 曠**."
 
 等於：
 
@@ -258,7 +258,7 @@ def pre_search(self, request, search):
 # searXNG base URL（依你的實際 host / port 調整）
 SEARCH_SEARXNG_ENABLED=true
 SEARXNG_ENABLED=true
-SEARXNG_INSTANCE_URL=http://172.20.31.7:8081/searxng
+SEARXNG_INSTANCE_URL=http://***/searxng
 JINA_API_KEY=***
 # 如果 LibreChat 有多個 search provider，這裡可以指定 searXNG 為預設
 SEARCH_PROVIDER=searxng
@@ -355,10 +355,10 @@ search:
     - `plugins:` 有 `oes_route`，`enabled: true`
 3. **實際查詢**
     
-    - 在 LibreChat 輸入：`OES:: 曠永銓`
+    - 在 LibreChat 輸入：`OES:: 曠**`
     - 檢查 searXNG log：
         - 有 `OES_ROUTE` plugin 的 debug：  
-            [OES_ROUTE] OES mode on. query='曠永銓', engineref_list after=[EngineRef('sino oes', 'general')]
+            [OES_ROUTE] OES mode on. query='曠', engineref_list after=[EngineRef('sino oes', 'general')]
         - 只有 `searx.engines.sino oes` 的 log
         - 沒有 google / duckduckgo / brave 等外網 engine
 
@@ -439,9 +439,9 @@ When the user input starts with `OES::` or `oes::`:
 
 如此一來，路線就非常乾淨：
 
-- 使用者：`OES:: 曠永銓`
-- LibreChat：遵守 prompt → 用 `oes_search` 工具，傳 `"曠永銓"`
-- 後端：`q="OES:: 曠永銓"` → searXNG
+- 使用者：`OES:: 曠**`
+- LibreChat：遵守 prompt → 用 `oes_search` 工具，傳 `"曠**"`
+- 後端：`q="OES:: 曠**"` → searXNG
 - searXNG：`oes_route` plugin 啟動，**只跑 `sino_oes`**
 
 ---
@@ -450,12 +450,12 @@ When the user input starts with `OES::` or `oes::`:
 
 你可以透過 searXNG log 來確認整條路是否正確：
 
-1. 在 LibreChat 輸入：`OES:: 曠永銓`
+1. 在 LibreChat 輸入：`OES:: 曠**`
 2. 檢查 searXNG log 會看到：
     - `OES_ROUTE` plugin 啟動：
         
         ```text
-        [OES_ROUTE] OES mode on. query='曠永銓', engineref_list after=[EngineRef('sino oes', 'general')]
+        [OES_ROUTE] OES mode on. query='曠**', engineref_list after=[EngineRef('sino oes', 'general')]
         ```
         
     - 只有 OES engine：
