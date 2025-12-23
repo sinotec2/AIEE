@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "NLP/SearchingEngine/ai_searxng/sino_oes.md",
+                "file": "NLP/SearchingEngine/ai_searxng/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "sino_oes"
+              "title": "README"
             }
           }
         ]
@@ -182,8 +182,10 @@
   },
   "active": "4acd1d886786633b",
   "lastOpenFiles": [
-    "NLP/SearchingEngine/ai_searxng/searxng_UG.md",
+    "NLP/SearchingEngine/ai_searxng/sino_oes.md",
+    "NLP/SearchingEngine/SearchingEngine.md",
     "NLP/SearchingEngine/ai_searxng/README.md",
+    "NLP/SearchingEngine/ai_searxng/searxng_UG.md",
     "NLP/SearchingEngine/ai_searxng/mediawiki.py.md",
     "NLP/SearchingEngine/ai_searxng/md自動上傳地端wiki.md",
     "NLP/SearchingEngine/ai_searxng/ai_oes.md",
@@ -205,7 +207,6 @@
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111191711.png",
     "NLP/SearchingEngine/ai_searxng/pngs",
     "NLP/SearchingEngine/ai_searxng/sino_oes.py",
-    "NLP/SearchingEngine/ai_searxng/sino_oes.md",
     "NLP/SearchingEngine/ai_searxng/ai_oes.py",
     "NLP/SearchingEngine/ai_searxng",
     "index.md",

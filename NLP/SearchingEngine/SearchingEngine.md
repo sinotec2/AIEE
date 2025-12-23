@@ -7,7 +7,9 @@ date: 2023-09-05
 last_modified_date: 2023-09-05 13:44:37
 has_children: true
 permalink: /NLP/SearchingEngine
-tags: AI chat report
+tags:
+  - AI
+  - searching
 ---
 
 # SearchingEngine
