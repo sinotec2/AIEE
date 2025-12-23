@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "utilities/LibreChat/LibreChat.md",
+                "file": "index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LibreChat"
+              "title": "index"
             }
           }
         ]
@@ -182,12 +182,14 @@
   },
   "active": "4acd1d886786633b",
   "lastOpenFiles": [
+    "README.md",
+    "index.md",
+    "utilities/LibreChat/LibreChat.md",
     "utilities/LibreChat/README.md",
     "utilities/OpsChatUI/0.OpsChatUI.md",
     "utilities/OpsChatUI/ollama_monitoring.md",
     "utilities/OpsChatUI/vLLm.md",
     "utilities/OpsChatUI/QnA.md",
-    "utilities/LibreChat/LibreChat.md",
     "utilities/LibreChat/LibreChatMCP.md",
     "NLP/plugins/wisebase.md",
     "utilities/LibreChat/pngs/Pasted image 20251210133634.png",
@@ -214,13 +216,11 @@
     "NLP/plugins/deepresearch.md",
     "NLP/anti_AI.md",
     "NLP/ReportWriting/report2db.md",
-    "README.md",
     "NLP/MCP/excel.md",
     "NLP/MCP/0.MCP.md",
     "NLP/MCP",
     "utilities/Kubernetes/K82_cases.md",
     "utilities/K82_cases.md",
-    "Reviews/AIEE.md",
     "pngs",
     "Reviews/pngs",
     "utilities/OpsChatUI/ollama-monitor.service",
