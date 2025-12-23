@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "utilities/LibreChat/README.md",
+                "file": "utilities/OpsChatUI/ollama_monitoring.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "ollama_monitoring"
             }
           }
         ]
@@ -182,8 +182,9 @@
   },
   "active": "7c675729b280f4c2",
   "lastOpenFiles": [
-    "utilities/LibreChat/LibreChat.md",
+    "utilities/OpsChatUI/0.OpsChatUI.md",
     "utilities/LibreChat/README.md",
+    "utilities/LibreChat/LibreChat.md",
     "utilities/LibreChat/LibreChatMCP.md",
     "NLP/plugins/wisebase.md",
     "utilities/LibreChat/pngs/Pasted image 20251210133634.png",
