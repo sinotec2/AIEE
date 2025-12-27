@@ -1,3 +1,32 @@
+---
+layout: default
+title:  MIS現代化與智慧化
+parent: 自然語言處理
+nav_order: 99
+date: 2025-12-27
+last_modified_date: 2025-12-27 23:11:00
+has_children: true
+permalink: /NLP/MIS
+tags:
+  - AI
+  - MCP
+---
+
+# MCP
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+## 背景
+
 
 
 當然可以，我幫你把原本的 QnA 總結補上「垂直切割示範與說服集團 IT」的步驟，整合成完整版本，方便你直接分享。
