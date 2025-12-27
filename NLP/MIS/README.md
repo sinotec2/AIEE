@@ -9,7 +9,7 @@ has_children: true
 permalink: /NLP/MIS
 tags:
   - AI
-  - MCP
+  - MIS
 ---
 
 # MCP
