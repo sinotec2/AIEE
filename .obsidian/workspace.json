@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "utilities/LibreChat/README.md",
+                "file": "STDataAna/STDataAna.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "STDataAna"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "utilities/LibreChat/README.md",
+                "file": "STDataAna/STDataAna.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "README 的大綱"
+              "title": "STDataAna 的大綱"
             }
           },
           {
@@ -182,6 +182,13 @@
   },
   "active": "d1f8a08178b620e0",
   "lastOpenFiles": [
+    "STDataAna/Methodology.md",
+    "STDataAna/ST24-25.md",
+    "STDataAna/STDataAna.md",
+    "STDataAna/AQM_AIs.md",
+    "STDataAna/satellite.md",
+    "STDataAna/GCN_LSTM.md",
+    "utilities/LibreChat/README.md",
     "utilities/LibreChat/mcp-python-interpreter.md",
     "utilities/LibreChat/mcp-filesystem.md",
     "utilities/LibreChat/pngs/Pasted image 20251123210512.png.~tmp",
@@ -198,7 +205,6 @@
     "NLP/SearchingEngine/SearchingEngine.md",
     "NLP/SearchingEngine/ai_searxng/mediawiki.py.md",
     "NLP/SearchingEngine/ai_searxng/md自動上傳地端wiki.md",
-    "utilities/LibreChat/README.md",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111203533.png",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111202818.png",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111202417.png",
@@ -217,13 +223,8 @@
     "utilities/OpsChatUI/ollama_monitoring.md",
     "utilities/OpsChatUI/vLLm.md",
     "utilities/OpsChatUI/QnA.md",
-    "NLP/plugins/wisebase.md",
     "utilities/LibreChat/pngs",
     "utilities/LibreChat",
-    "NLP/plugins/Sider.md",
-    "NLP/plugins/README.md",
-    "NLP/plugins/PageAssist_vLLM.md",
-    "NLP/plugins/PageAssist_acc.md",
     "NLP/MCP",
     "pngs",
     "Reviews/pngs"
