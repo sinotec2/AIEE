@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STDataAna/STDataAna.md",
+                "file": "STDataAna/ST24-25 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "STDataAna"
+              "title": "ST24-25 1"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "STDataAna/STDataAna.md",
+                "file": "STDataAna/ST24-25 1.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "STDataAna 的大綱"
+              "title": "ST24-25 1 的大綱"
             }
           },
           {
@@ -182,12 +182,16 @@
   },
   "active": "d1f8a08178b620e0",
   "lastOpenFiles": [
-    "STDataAna/Methodology.md",
     "STDataAna/ST24-25.md",
-    "STDataAna/STDataAna.md",
+    "STDataAna/ST24-25 1.md",
+    "STDataAna/KPI.md",
     "STDataAna/AQM_AIs.md",
-    "STDataAna/satellite.md",
     "STDataAna/GCN_LSTM.md",
+    "STDataAna/Methodology.md",
+    "STDataAna/satellite.md",
+    "STDataAna/STDataAna.md",
+    "NLP/MIS/README.md",
+    "NLP/MIS",
     "utilities/LibreChat/README.md",
     "utilities/LibreChat/mcp-python-interpreter.md",
     "utilities/LibreChat/mcp-filesystem.md",
@@ -220,13 +224,9 @@
     "index.md",
     "README.md",
     "utilities/OpsChatUI/0.OpsChatUI.md",
-    "utilities/OpsChatUI/ollama_monitoring.md",
-    "utilities/OpsChatUI/vLLm.md",
-    "utilities/OpsChatUI/QnA.md",
     "utilities/LibreChat/pngs",
     "utilities/LibreChat",
     "NLP/MCP",
-    "pngs",
-    "Reviews/pngs"
+    "pngs"
   ]
 }
