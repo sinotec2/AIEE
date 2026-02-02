@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "STDataAna/ST24-25.md",
+                "file": "NLP/LiteratualReviewing/DeepResearches.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ST24-25"
+              "title": "DeepResearches"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 455.5
+    "width": 455.5,
+    "collapsed": true
   },
   "right": {
     "id": "4fa9d3816064d712",
@@ -182,8 +183,16 @@
   },
   "active": "afb905442c0e2a8b",
   "lastOpenFiles": [
-    "STDataAna/ST24-25 1.md",
+    "NLP/LiteratualReviewing/SciSpace.md",
+    "NLP/LiteratualReviewing/DeepResearches.md",
+    "NLP/LiteratualReviewing/pngs/Pasted image 20260202132026.png",
+    "NLP/LiteratualReviewing/pngs",
+    "NLP/LiteratualReviewing/0.LiteraturalReviewing.md",
+    "NLP/llama-index/workflow.md",
+    "NLP/llama-index/0.llama-index.md",
     "STDataAna/ST24-25.md",
+    "NLP/LiteratualReviewing",
+    "STDataAna/ST24-25 1.md",
     "STDataAna/KPI.md",
     "STDataAna/AQM_AIs.md",
     "STDataAna/GCN_LSTM.md",
@@ -207,8 +216,6 @@
     "NLP/SearchingEngine/ai_searxng/README.md",
     "NLP/SearchingEngine/ai_searxng/sino_oes.md",
     "NLP/SearchingEngine/SearchingEngine.md",
-    "NLP/SearchingEngine/ai_searxng/mediawiki.py.md",
-    "NLP/SearchingEngine/ai_searxng/md自動上傳地端wiki.md",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111203533.png",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111202818.png",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111202417.png",
@@ -216,17 +223,11 @@
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111201717.png",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111200553.png",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111195519.png",
-    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111195445.png",
     "NLP/SearchingEngine/ai_searxng/pngs",
     "NLP/SearchingEngine/ai_searxng/sino_oes.py",
     "NLP/SearchingEngine/ai_searxng/ai_oes.py",
     "NLP/SearchingEngine/ai_searxng",
-    "index.md",
-    "README.md",
-    "utilities/OpsChatUI/0.OpsChatUI.md",
     "utilities/LibreChat/pngs",
-    "utilities/LibreChat",
-    "NLP/MCP",
-    "pngs"
+    "utilities/LibreChat"
   ]
 }
