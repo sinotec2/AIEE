@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "NLP/LiteratualReviewing/DeepResearches.md",
+                "file": "NLP/LiteratureReviewers/SciSpace.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DeepResearches"
+              "title": "SciSpace"
             }
           }
         ]
@@ -182,15 +182,15 @@
   },
   "active": "afb905442c0e2a8b",
   "lastOpenFiles": [
-    "NLP/LiteratualReviewing/SciSpace.md",
-    "NLP/LiteratualReviewing/DeepResearches.md",
-    "NLP/LiteratualReviewing/pngs/Pasted image 20260202132026.png",
-    "NLP/LiteratualReviewing/pngs",
-    "NLP/LiteratualReviewing/0.LiteraturalReviewing.md",
+    "NLP/LiteratureReviewers/DeepResearches.md",
+    "NLP/LiteratureReviewers/0.LiteratureReviewers.md",
+    "NLP/LiteratureReviewers/SciSpace.md",
+    "NLP/LiteratureReviewers/pngs/Pasted image 20260202132026.png",
+    "NLP/LiteratureReviewers/pngs",
     "NLP/llama-index/workflow.md",
     "NLP/llama-index/0.llama-index.md",
     "STDataAna/ST24-25.md",
-    "NLP/LiteratualReviewing",
+    "NLP/LiteratureReviewers",
     "STDataAna/ST24-25 1.md",
     "STDataAna/KPI.md",
     "STDataAna/AQM_AIs.md",

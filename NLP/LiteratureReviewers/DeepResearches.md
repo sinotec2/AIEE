@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Deep Researches
-parent: Literatural Reviewing
+parent: Literature Reviewers
 grand_parent: 自然語言處理
 nav_order: 99
 date: 2026-02-02
