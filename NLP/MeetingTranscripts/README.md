@@ -13,17 +13,12 @@ tags:
 ---
 
 # 會議記錄小幫手
+
+
 {: .no_toc }
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
----
+{: .fs-6 .fw-300 }
+
 
 ## 背景
 

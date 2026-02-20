@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "NLP/LiteratureReviewers/SciSpace.md",
+                "file": "NLP/MeetingTranscripts/meeting-minutes-etl.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SciSpace"
+              "title": "meeting-minutes-etl"
             }
           }
         ]
@@ -182,9 +182,13 @@
   },
   "active": "afb905442c0e2a8b",
   "lastOpenFiles": [
+    "NLP/MeetingTranscripts/README.md",
+    "NLP/MeetingTranscripts/meeting-minutes-etl.md",
+    "NLP/DMS/0.DMS.md",
+    "NLP/DMS/0.DMS_links.md",
+    "NLP/LiteratureReviewers/SciSpace.md",
     "NLP/LiteratureReviewers/DeepResearches.md",
     "NLP/LiteratureReviewers/0.LiteratureReviewers.md",
-    "NLP/LiteratureReviewers/SciSpace.md",
     "NLP/LiteratureReviewers/pngs/Pasted image 20260202132026.png",
     "NLP/LiteratureReviewers/pngs",
     "NLP/llama-index/workflow.md",
@@ -211,10 +215,6 @@
     "utilities/LibreChat/LibreChat.md",
     "NLP/MCP/0.MCP.md",
     "NLP/SearchingEngine/ai_searxng/ai_oes.md",
-    "NLP/SearchingEngine/ai_searxng/searxng_UG.md",
-    "NLP/SearchingEngine/ai_searxng/README.md",
-    "NLP/SearchingEngine/ai_searxng/sino_oes.md",
-    "NLP/SearchingEngine/SearchingEngine.md",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111203533.png",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111202818.png",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111202417.png",

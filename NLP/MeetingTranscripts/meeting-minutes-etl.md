@@ -1,12 +1,12 @@
 ---
 layout: default
-title:  會議紀錄 ETL 指南
+title: 會議紀錄 ETL 指南
 parent: 會議記錄小幫手
 grandparent: 自然語言處理
 nav_order: 99
 date: 2026-02-20
 last_modified_date: 2026-02-20 23:11:00
-has_children: true
+has_children: false
 tags:
   - AI
   - meetings
