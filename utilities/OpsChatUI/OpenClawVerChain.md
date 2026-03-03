@@ -1,4 +1,25 @@
+---
+title: OpenClaw Authentication Flow
+tags: AI
+layout: default
+parent: OpsChatUI
+grand_parent: Utilities
+date:  2026-03-03 
+modify_date: 2026-03-03 08:37
+---
+
 # 因應 OpenClaw 的認證串流（Authentication Flow）技術筆記（討論稿）
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
 
 > 目標：在「暴露性高、桌機跑容器、網路常重整」的環境下，讓 **身分驗證可反覆、可稽核、可撤銷**，並把 **token/secrets 不落地、短效化**，降低被植入程式後的爆炸半徑。  
 > 核心選擇：**不自寫 broker**；改用 **Keycloak 當身分入口（含 MFA）**，**Vault 當 secrets/憑證與授權中心**。
@@ -145,5 +166,6 @@
 用 **Keycloak + MFA** 統一「人」的身分入口，再用 **Vault** 統一管理所有系統 token/secrets（短效、可稽核、最小權限），讓 OpenClaw 在桌機容器上也能做到「不存檔、不長效、可重登」的安全串流。
 
 ---
-
-如果你願意，我可以把上面 Flow A 具體化成「序列圖 + 權限對照表」（Keycloak claims → Vault role/policy → KV 路徑），你只要回覆：你們預計的環境分層（dev/stg/prod 有沒有）以及大概有哪些系統（MIS/檔案/專案/第三方）要接。
+## TODO
+- 把上面 Flow A 具體化成「序列圖 + 權限對照表」（Keycloak claims → Vault role/policy → KV 路徑），
+- 規劃預計環境分層（dev/stg/prod 有沒有）以及大概有哪些系統（MIS/檔案/專案/第三方）要接。
