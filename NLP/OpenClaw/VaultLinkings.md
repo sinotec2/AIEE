@@ -259,3 +259,4 @@ preflight 成功判準：
 - 增加一條 preflight parser 指令，部署前先列出 `openclaw.json` 所需 `${VAR}`。
 - 對 AppRole 與短效 client token 加上自動續租/輪替流程。
 - 加入 `workspace/`、`agents/main/sessions/` 與憑證保留邊界的稽核清單。
+
