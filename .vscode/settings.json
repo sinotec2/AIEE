@@ -1,3 +1,4 @@
 {
-  "todo-tree.tree.showCountsInTree": true
+  "todo-tree.tree.showCountsInTree": true,
+  "git.blame.editorDecoration.enabled": true
 }

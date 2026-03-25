@@ -1,0 +1,21 @@
+# /etc/systemd/system/ollama-monitor.service
+[Unit]
+Description=Ollama Docker Stack Monitor
+After=network.target docker.service
+
+[Service]
+# ?‡åˆ°å°ˆæ??®é?ï¼Œé¿?è·¯å¾‘éŒ¯èª?
+User=root
+Group=root
+WorkingDirectory=/nas2/kuang/MyPrograms/ollama/ollama_restart
+ExecStart=/opt/anaconda3/envs/ollama/bin/python3.11 monitor.py
+Type=simple
+
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ollama-monitor
+
+[Install]
+WantedBy=multi-user.target
