@@ -79,11 +79,11 @@ tags: AI chat
   ```
 
 - 打印 `df` DataFrame,並計算各列的總和。將總和添加到 df 的最後一行。
-- 將 `df` DataFrame 保存為 `/nas2/VuePressDist/ICT/file.csv` 文件，串接`any_now.html`當中的ajax.js程式([程式碼](./any_now.html))。
+- 將 `df` DataFrame 保存為 `/nas2/VuePressDist/ICT/file.csv` 文件，串接`any_now.html`當中的ajax.js程式([程式碼](any_now.html))。
 
 總的來說,這個程式從多個 API 端點獲取數據,並將其整理成一個 DataFrame。它計算了三項統計數據,並將結果保存到 CSV 文件中。
 
-[msg.py source code](./msg.py)
+[msg.py source code](msg.py)
 
 
 ```python
