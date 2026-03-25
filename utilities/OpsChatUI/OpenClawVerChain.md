@@ -26,6 +26,8 @@ modify_date: 2026-03-03 08:37
 
 ---
 
+
+
 ## 1. 背景與威脅模型（對齊共識用）
 ### 現況假設
 - OpenClaw 在同仁桌機上以容器方式運行（單機、非 K8s 為主）。
@@ -164,6 +166,34 @@ modify_date: 2026-03-03 08:37
 
 ## 9. 一句話總結（方便會議開場）
 用 **Keycloak + MFA** 統一「人」的身分入口，再用 **Vault** 統一管理所有系統 token/secrets（短效、可稽核、最小權限），讓 OpenClaw 在桌機容器上也能做到「不存檔、不長效、可重登」的安全串流。
+
+
+Mermaid 流程圖
+```mermaid
+flowchart TD
+  U[使用者（桌機／同仁）] --> 1[1.啟動登入（browser）]
+  1 --2.導向Keycloak（AuthCode＋PKCE）--> KB[[Keycloak（IdP、AD／LDAP ＋ MFA）]]
+  KB --> 34[3.完成驗證並回傳OIDC_tokens<br>4.用OIDC_token呼叫Vault_OIDC_auth] 
+  34 --> V[[Vault Server<br>（Auth ＆ Secrets）]]
+  V --5.驗證token與claims→<br>發放短效VaultToken<br>(啟動後消失)--> 6[6 用 Vault token 取得<br>a. KV secrets<br>b.短效 PKI／證書<br>c.做簽章／加解密<br>將密鑰載入使用者記憶體]
+  6 -- 7.使用secrets／憑證 呼叫內部系統 --> S[內部系統／第三方（MIS、Files、Gateway）]
+  6 --> OC[[使用者身分啟動<br>OpenClaw／local agent]]
+  OC --> 6
+  S --> OC
+  V -->|寫入 audit logs| AL[SIEM ／ 集中日誌]
+  AL --> OC
+  V -- token被撤銷或TTL到期 --> KB
+  KB -- groups／claims映射→Vault_role／policy-->V
+```
+
+簡要說明（對應圖中步驟）
+- 1：使用者啟動 OpenClaw（或 local agent），觸發瀏覽器登入流程。  
+- 2–3：Keycloak（連 AD／LDAP 並強制 MFA）完成 OIDC Authorization Code ＋ PKCE，回傳短效 OIDC token（含 groups/claims）。  
+- 4–5：OpenClaw 用 OIDC token 向 Vault 的 OIDC auth 端點換取短效、可撤銷的 Vault token（Vault 驗證簽章、audience、claims）。  
+- 6：OpenClaw 使用 Vault token 取需要的資源：KV（API key 等）、PKI（短效憑證）、Transit（簽章／加解密）。  
+- 7：OpenClaw 用取到的 secrets／憑證去呼叫內部系統或第三方服務，全程避免長效 secrets 寫到磁碟。  
+- 補充：Vault 的所有存取會寫入 audit logs（送 SIEM），若 token 被撤銷或 TTL 到期，OpenClaw 要 renew（若允許）或重新走 Keycloak 流程。
+
 
 ---
 ## TODO
