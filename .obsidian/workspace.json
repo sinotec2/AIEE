@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "NLP/AntiGravity/1.AG_Ext.md",
+                "file": "copilot/copilot-conversations/Repo新增文章發展方向@20260325_204148.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1.AG_Ext"
+              "title": "Repo新增文章發展方向@20260325_204148"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 364.50543212890625
+    "width": 200
   },
   "right": {
     "id": "4fa9d3816064d712",
@@ -162,21 +162,21 @@
             }
           },
           {
-            "id": "0dcafdb2d4dec475",
+            "id": "f6761d151683686d",
             "type": "leaf",
             "state": {
               "type": "copilot-chat-view",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "copilot-chat-view"
+              "icon": "message-square",
+              "title": "Copilot"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 436.5
+    "width": 597.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -187,13 +187,18 @@
       "templates:插入模板": false,
       "command-palette:開啟命令面板": false,
       "bases:建立新的 base": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "copilot:Open Copilot Chat": false
     }
   },
-  "active": "afb905442c0e2a8b",
+  "active": "f6761d151683686d",
   "lastOpenFiles": [
-    "NLP/AnythingLLM/mng_png/0.AnythingLLM 1.md",
+    "copilot/copilot-conversations/新增文章發展方向摘要@20260325_204529.md",
+    "README.md",
+    "copilot/copilot-conversations/Repo新增文章發展方向@20260325_204148.md",
+    "index.md",
     "NLP/AntiGravity/1.AG_Ext.md",
+    "NLP/AnythingLLM/mng_png/0.AnythingLLM 1.md",
     "NLP/AntiGravity/pngs/Pasted image 20260325201554.png",
     "NLP/AntiGravity/pngs/Pasted image 20260325201515.png",
     "NLP/AntiGravity/pngs",
@@ -222,9 +227,6 @@
     "copilot/copilot-custom-prompts/Fix grammar and spelling.md",
     "copilot/copilot-custom-prompts",
     "copilot",
-    "NLP/LiteratureReviewers/SciSpace.md",
-    "NLP/OpenClaw/VaultLinkings.md",
-    "NLP/OpenClaw/0.openclaw.md",
     "NLP/OpenClaw",
     "NLP/MeetingTranscripts",
     "NLP/MCP/tmp.txt",
