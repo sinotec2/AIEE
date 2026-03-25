@@ -54,7 +54,7 @@ macOS `launchd` + 嚴格 `preflight` 啟動流程。
 
 ```mermaid
 flowchart TD
-  A[啟動 Vault 或取得既有 Vault 連線] --> B[建立/確認 openclaw policy 與 AppRole]
+  A[啟動 Vault 或取得既有 Vault 連線] --> B[建立/確認<br> openclaw policy 與 AppRole]
   B --> C[以 AppRole 登入並取得<br> client token]
   C --> D[寫入<br> /etc/openclaw/vault_token]
   D --> E[寫入 <br>/etc/openclaw/_.env <br>必要變數]
@@ -259,3 +259,4 @@ preflight 成功判準：
 - 增加一條 preflight parser 指令，部署前先列出 `openclaw.json` 所需 `${VAR}`。
 - 對 AppRole 與短效 client token 加上自動續租/輪替流程。
 - 加入 `workspace/`、`agents/main/sessions/` 與憑證保留邊界的稽核清單。
+
