@@ -1,5 +1,5 @@
 /.vscode/*
-/.obsidian
+/.obsidian/*
 /json/*
 **.pyc
 .smt*
