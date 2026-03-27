@@ -33,8 +33,8 @@ tags: AI chat
 ### 工作流程
 
 - 啟動anythingLLM生產服務
-- AnythingLLM[新增工作區](./AnyChat_mng.md#新增工作區)、[載入網頁內容文字檔](./AnyChat.md#檔案網頁與資料的連結)、[設定語言模型](./AnyChat_mng.md#設定工作區)、新增[Embedded Chat](./AnyChat_adm.md#嵌入對話)
-- [複製程式碼](./EmbChat.md#程式碼)到靜態網頁的frontmatter。
+- AnythingLLM[新增工作區](AnyChat_mng.md#新增工作區)、[載入網頁內容文字檔](AnyChat.md#檔案網頁與資料的連結)、[設定語言模型](AnyChat_mng.md#設定工作區)、新增[Embedded Chat](AnyChat_adm.md#嵌入對話)
+- [複製程式碼](EmbChat.md#程式碼)到靜態網頁的frontmatter。
 - 重新編譯靜態網頁、發表網頁、測試效果
 - 調整anythingLLM的設定，只要不更改工作區名稱、程式碼不會更動、就不需要重新編譯。
 
@@ -46,7 +46,7 @@ tags: AI chat
 - 生產階段anythingLLM的作法
   - 官網建議以docker方式營運、開關較為單純、避免直接使用node、會更改使用者的環境(`nvm`與其他環境變數)。
   - docker啟動的anythingLLM服務，必須接到一個本地http端口，不能接到https端口。主機上端口如果設定被apache https監聽，就不能作為docker的出口，反之亦然。
-  - 官網沒有[啟動node服務](./product_yml.md#node生產方案)的相關說明
+  - 官網沒有[啟動node服務](product_yml.md#node生產方案)的相關說明
 - apache2網頁伺服器的限制
   - http和https對端口的綁定有很大的出入，後者必須有`Listen {port} https`指令，否則即時使用`<VirtualHost *：{port}>`指令，也不能開啟https://端口。
   - anythingLLM的公開網頁(server/public)內容，其根目錄必須是`http(s)://host.domain_name:port`，不能是某個https的目錄。用apache 目錄設定、alias、反向代理等方式，也都不能作用。
@@ -70,15 +70,15 @@ http方案雖然直接、有效整合，但問題缺點還不少
 
 - docker最大的困難在於必須使用主機的網路伺服器來管理端口。docker映像內部一個端口、外部主機搭配一個端口，不單是重複設定，而且docker與apache2的https還不相容，二者對端口都有強烈的佔有權，這使得docker方案變得不可行。
 - 絕大多數的服務可以維持使用官網建議的docker方案，不需要整合、也不需要https。只需要留一個端口，專門服務網頁小幫手即可。
-- 官網雖然沒有[啟動node服務](./product_yml.md#node生產方案)的相關說明，但提供了`Dockerfile`、`docker-compose.yml`，以及`docker-entrypoint.sh`等腳本，可以從其中找到啟動的方式。
-- [執行批次腳本](./product_yml.md#執行批次腳本)
+- 官網雖然沒有[啟動node服務](product_yml.md#node生產方案)的相關說明，但提供了`Dockerfile`、`docker-compose.yml`，以及`docker-entrypoint.sh`等腳本，可以從其中找到啟動的方式。
+- [執行批次腳本](product_yml.md#執行批次腳本)
   - 安裝、編譯、產生schema（只需執行一次）、
   - 啟動服務要注意
     - 環境變數`NODE_ENV=production`
     - 從備份檔案複製`.env`檔案
     - 記得部署schema
     - 依序啟動`server/index.js`與`collector/index.js`等2個伺服器。
-- 啟用node.js的HTTPS相關程式，需設定`server/.env`檔案，如[.env檔案設定](./product_yml.md#env檔案設定)
+- 啟用node.js的HTTPS相關程式，需設定`server/.env`檔案，如[.env檔案設定](product_yml.md#env檔案設定)
   - `SERVER_PORT='https://eng06.sinotech-eng.com:3014'` ，這個設定似乎不太經典，但系統沒有報錯，如果不設https前綴，仍然會回到http前綴、或`localhost`，有其必要性。然此設定會被系統覆蓋，記得每次從備份檔再複製一份。
   - `ENABLE_HTTPS='true'`:這個設定會讓`index.js`啟動相應的HTTPS服務，dockerfile內也沒有下載啟用apache2的痕跡，足見其HTTPS服務是有別於apache2的。
   - `HTTPS_CERT_PATH`、`HTTPS_KEY_PATH`:SSL的認證檔，必須**不同**於apache2的證書與金鑰。
@@ -219,11 +219,11 @@ CMD ["node", "app.js"]
 
 ### 小幫手icon + 
 
-![](emb_pngs/2024-05-15-17-37-52.png)
+![](2024-05-15-17-37-52.png)
 
 ### 打開、對話成果
 
-![](emb_pngs/2024-05-15-17-07-18.png)
+![](2024-05-15-17-07-18.png)
 
 ## ToDo‘s
 

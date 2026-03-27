@@ -94,7 +94,7 @@ tags: AI chat
 - 指令
   - `POST`：因為是新增使用者，所有指令將會送到(`/admin/users/new`)，不必指定使用者id，系統會按照次序自行給定id值。
   - `-H`檔頭：需指定格式及金鑰
-  - API金鑰：由[管理者](AnyChat_adm.md)產生，詳見[API Keys](./AnyChat_adm.md#api-keys)。為使程式設計方便，所有端口的API金鑰均保持一致。(先在某伺服器環境中產生，再複製到其他伺服器。)
+  - API金鑰：由[管理者](AnyChat_adm.md)產生，詳見[API Keys](AnyChat_adm.md#api-keys)。為使程式設計方便，所有端口的API金鑰均保持一致。(先在某伺服器環境中產生，再複製到其他伺服器。)
 - 網址
   - 固定部分：主機、網域及路徑，
   - 變數部分：各技術組分配之伺服器端口，由`3001`~`3013`(見[上表](#對應關係表))。
@@ -137,4 +137,4 @@ for g in grpsvr:
 
 ## 程式碼下載
 
-{% include download.html content="將使用者分配到對應的群組伺服器` [add_user.py](./add_user.py)" %}
+{% include download.html content="將使用者分配到對應的群組伺服器` [add_user.py](add_user.py)" %}
