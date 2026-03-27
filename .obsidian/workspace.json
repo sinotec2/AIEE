@@ -167,8 +167,8 @@
             "state": {
               "type": "copilot-chat-view",
               "state": {},
-              "icon": "message-square",
-              "title": "Copilot"
+              "icon": "lucide-ghost",
+              "title": "copilot-chat-view"
             }
           }
         ],
@@ -176,7 +176,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 821.5
+    "width": 444.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -187,12 +187,13 @@
       "templates:插入模板": false,
       "command-palette:開啟命令面板": false,
       "bases:建立新的 base": false,
-      "obsidian-git:Open Git source control": false,
-      "copilot:Open Copilot Chat": false
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d1f8a08178b620e0",
+  "active": "afb905442c0e2a8b",
   "lastOpenFiles": [
+    "NLP/OpenClaw/pngs/Pasted image 20260327123606.png",
+    "NLP/OpenClaw/pngs/Pasted image 20260327122920.png",
     "NLP/OpenClaw/pngs/Pasted image 20260327113603.png",
     "copilot/copilot-conversations/FOMO=fear_of_...@20260327_094201.md",
     "NLP/OpenClaw/pngs",
@@ -236,8 +237,6 @@
     "NLP/LiteratureReviewers/pngs/Pasted image 20260202132026.png",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251212134711.png",
     "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251212134648.png",
-    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111203533.png",
-    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111202818.png",
-    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111202417.png"
+    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111203533.png"
   ]
 }
