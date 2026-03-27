@@ -74,3 +74,12 @@ tags:
 
 你想用在什麼語境？（例如：筆記標題、心理描述、學術寫作、社群貼文）說明一下我可以幫你選最合適的詞，或幫你產生標籤/筆記模板。
 [Timestamp: 2026/03/27 09:44:43]
+
+**user**: hello
+[Context: Notes: NLP/OpenClaw/GroupLecture.md]
+[Timestamp: 2026/03/27 11:49:57]
+
+**ai**: 
+<errorChunk>Rate limited - please wait before retrying: Sorry, you've exceeded your rate limits. Please review our [Terms of Service](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).
+</errorChunk>
+[Timestamp: 2026/03/27 11:49:58]
