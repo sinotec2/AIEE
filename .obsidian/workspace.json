@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "NLP/OpenClaw/GroupLecture.md",
+                "file": "NLP/OpenClaw/CfAmongIDEs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "GroupLecture"
+              "title": "CfAmongIDEs"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 333.5
   },
   "right": {
     "id": "4fa9d3816064d712",
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "NLP/OpenClaw/GroupLecture.md",
+                "file": "NLP/OpenClaw/CfAmongIDEs.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "GroupLecture 的大綱"
+              "title": "CfAmongIDEs 的大綱"
             }
           },
           {
@@ -172,11 +172,11 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 821.5
+    "width": 737.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -191,13 +191,20 @@
       "copilot:Open Copilot Chat": false
     }
   },
-  "active": "d1f8a08178b620e0",
+  "active": "afb905442c0e2a8b",
   "lastOpenFiles": [
+    "NLP/AnythingLLM/0.AnythingLLM.md",
+    "NLP/OpenClaw/CfAmongIDEs.md",
+    "NLP/OpenClaw/pngs/Pasted image 20260330125330.png",
+    "NLP/OpenClaw/pngs/Pasted image 20260330124505.png",
+    "copilot/copilot-conversations/從這個repository可否找出怎麼安裝anythingLLM的方法@20260330_093205.md",
+    "NLP/OpenClaw/pngs/Pasted image 20260330124126.png",
+    "NLP/OpenClaw/pngs/Pasted image 20260330123923.png",
+    "NLP/OpenClaw/GroupLecture.md",
+    "NLP/OpenClaw/VaultLinkings.md",
     "NLP/OpenClaw/pngs/Pasted image 20260327113603.png",
     "copilot/copilot-conversations/FOMO=fear_of_...@20260327_094201.md",
     "NLP/OpenClaw/pngs",
-    "NLP/OpenClaw/VaultLinkings.md",
-    "NLP/OpenClaw/GroupLecture.md",
     "NLP/code_interpreter/copilot_2026.md",
     "conflict-files-obsidian-git.md",
     "copilot/copilot-conversations/新增文章發展方向摘要@20260325_204529.md",
@@ -225,19 +232,11 @@
     "copilot/copilot-custom-prompts/Generate table of contents.md",
     "copilot/copilot-custom-prompts/Make longer.md",
     "copilot/copilot-custom-prompts/Make shorter.md",
-    "copilot/copilot-custom-prompts/Emojify.md",
-    "copilot/copilot-custom-prompts/Explain like I am 5.md",
-    "copilot/copilot-custom-prompts/Simplify.md",
     "copilot/copilot-custom-prompts",
     "copilot",
     "NLP/OpenClaw",
     "NLP/MeetingTranscripts",
     "NLP/MCP/tmp.txt",
-    "NLP/LiteratureReviewers/pngs/Pasted image 20260202132026.png",
-    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251212134711.png",
-    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251212134648.png",
-    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111203533.png",
-    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111202818.png",
-    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111202417.png"
+    "NLP/LiteratureReviewers/pngs/Pasted image 20260202132026.png"
   ]
 }
