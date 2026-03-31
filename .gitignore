@@ -2,4 +2,4 @@
 /.obsidian/*
 /json/*
 **.pyc
-.smt*
+.smt*.obsidian/
