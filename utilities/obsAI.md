@@ -1,4 +1,26 @@
+---
+title: obsidian AI Plan
+tags: AI
+layout: default
+parent: Utilities
+date:  2023-09-26
+modify_date: 2023-09-26 14:45:42
+---
 
+# Obsidian 之AI化
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+## 背景
 
 
 
