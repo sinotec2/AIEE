@@ -1,4 +1,30 @@
-# 1) Repo 中與 agent/plugin/skill 相關檔案清單
+---
+layout: default
+title: skill 相關檔案清單
+parent: SKILL相關筆記
+grand_parent: 自然語言處理
+nav_order: 1
+date: 2026-04-21
+last_modified_date: 2026-04-21T16:02:26
+tags:
+  - AI
+  - SKILL
+---
+
+# skill 相關檔案清單
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+
 
 說明：此檔列出 /Users/kuang/GitHub/AIEE/NLP 中我找到、且與 agent/plugin/skill 生態相關的檔案或子目錄，含一句話摘要與路徑，方便後續檢視或引用。
 

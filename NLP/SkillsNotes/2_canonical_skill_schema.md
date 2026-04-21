@@ -1,4 +1,29 @@
-# 2) Canonical Skill Schema（草案）
+---
+layout: default
+title: 標準技能描述（草案）
+parent: SKILL相關筆記
+grand_parent: 自然語言處理
+nav_order: 2
+date: 2026-04-21
+last_modified_date: 2026-04-21T16:02:26
+tags:
+  - AI
+  - SKILL
+---
+
+# 標準技能描述（草案）
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
 
 目的：提供一個輕量且可擴充的 canonical schema，讓內部技能（skill）能被不同 agent（Copilot, Claude Code, Antigravity, Cursor 等）以 adapter 方式相容並安裝。核心要求：可驗證、可簽章、包含 capability 與權限、及 provenance metadata。
 
@@ -6,6 +31,8 @@
 
 ---
 # skill manifest (YAML)
+
+```yaml
 id: "urn:skill:org:myteam:pr-summarizer:1.0.0"
 name: "PR Summarizer"
 description: "產生 Pull Request 摘要並標註關鍵變更、風險與測試狀態。"
@@ -56,6 +83,7 @@ policy:
 metadata:
   tags: ["pr","summarize","developer-productivity"]
   estimated_risks: ["exposes_file_paths"]
+```
 
 ---
 

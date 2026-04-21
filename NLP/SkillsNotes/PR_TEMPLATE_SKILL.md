@@ -1,5 +1,32 @@
-PR TEMPLATE — Skill 提交範本
+---
+layout: default
+title: " Skill 提交範本"
+parent: SKILL相關筆記
+grand_parent: 自然語言處理
+nav_order: 5
+date: 2026-04-21
+last_modified_date: 2026-04-21T16:02:26
+tags:
+  - AI
+  - SKILL
+---
 
+#  PR TEMPLATE — Skill 提交範本
+
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+---
+
+
+```markdown
 Title: [skill] <name> v<semver> — short description
 
 ## Changes
@@ -35,3 +62,4 @@ Confirm fields present: id, entrypoint, permissions, visibility
 
 ## Notes
 - Any other notes for reviewers
+```
