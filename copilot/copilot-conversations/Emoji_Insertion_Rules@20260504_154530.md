@@ -1,4 +1,24 @@
 ---
+epoch: 1777880730272
+modelKey: "gpt-5-mini|github-copilot"
+topic: "Emoji Insertion Rules"
+
+
+
+tags:
+  - copilot-conversation
+---
+
+**user**: Add relevant emojis to enhance {}. Follow these rules:
+    1. Insert emojis at natural breaks in the text
+    2. Never place two emojis next to each other
+    3. Keep all original text unchanged
+    4. Choose emojis that match the context and tone
+    Return only the emojified text.
+[Context: Notes: NLP/bilingual/DEEPL.md]
+[Timestamp: 2026/05/04 15:45:30]
+
+**ai**: ---
 layout: default
 title: DEEPL
 parent: Bilingual AI Processing
@@ -147,3 +167,4 @@ Claude Code 現在每次會議都能使用 DeepL 翻譯工具。 🤖
 - **自己打造：**請關注[MCP 伺服器手冊](https://developers.deepl.com/docs/learning-how-tos/examples-and-guides/deepl-mcp-server-how-to-build-and-use-translation-in-llm-applications)從零開始建立自訂的 MCP 伺服器 🛠️
 - **設定認證：**了解[DeepL API 認證](https://developers.deepl.com/docs/getting-started/auth)以及金鑰管理 🔐
 - **使用用戶端函式庫：**探索[官方 SDK](https://developers.deepl.com/docs/getting-started/client-libraries)適用於 Python、Node.js 等 📚
+[Timestamp: 2026/05/04 15:46:47]

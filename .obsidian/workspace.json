@@ -167,8 +167,8 @@
             "state": {
               "type": "copilot-chat-view",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "copilot-chat-view"
+              "icon": "message-square",
+              "title": "Copilot"
             }
           }
         ],
@@ -176,7 +176,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 309.5
+    "width": 362.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -187,11 +187,13 @@
       "templates:插入模板": false,
       "command-palette:開啟命令面板": false,
       "bases:建立新的 base": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "copilot:Open Copilot Chat": false
     }
   },
-  "active": "afb905442c0e2a8b",
+  "active": "d1f8a08178b620e0",
   "lastOpenFiles": [
+    "copilot/copilot-conversations/Emoji_Insertion_Rules@20260504_154530.md",
     "conflict-files-obsidian-git.md",
     "NLP/bilingual/DEEPL.md",
     "utilities/obsAI.md",
@@ -232,7 +234,6 @@
     "NLP/AntiGravity/1.AG_Ext.md",
     "NLP/AntiGravity/0.AntiGravity.md",
     "NLP/AntiGravity",
-    "copilot/copilot-conversations/小問一下：這一篇沒有提到antigravity，你覺得跟gemini_code_assist@20260325_131401.md",
     "NLP/code_interpreter/pngs",
     "copilot/copilot-conversations",
     "copilot/copilot-custom-prompts",
