@@ -142,12 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "NLP/bilingual/DEEPL.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大綱"
+              "title": "DEEPL 的大綱"
             }
           },
           {
@@ -189,9 +190,26 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d1f8a08178b620e0",
+  "active": "afb905442c0e2a8b",
   "lastOpenFiles": [
+    "conflict-files-obsidian-git.md",
     "NLP/bilingual/DEEPL.md",
+    "utilities/obsAI.md",
+    "copilot/copilot-conversations/從這個repository可否找出怎麼安裝anythingLLM的方法@20260330_093205.md",
+    "copilot/copilot-conversations/canonical_=@20260421_160903.md",
+    "NLP/SkillsNotes/PR_TEMPLATE_SKILL.md",
+    "NLP/SkillsNotes/CONTRIBUTING_SKILLS.md",
+    "NLP/SkillsNotes/3_community_skill_registries_comparison.md",
+    "NLP/SkillsNotes/2_canonical_skill_schema.md",
+    "NLP/SkillsNotes/1_repo_agent_files_list.md",
+    "NLP/SkillsNotes/0.SkillNotes.md",
+    "NLP/SkillsNotes",
+    "NLP/OpenClaw/pngs/Pasted image 20260330125330.png",
+    "NLP/OpenClaw/pngs/Pasted image 20260330124505.png",
+    "NLP/OpenClaw/pngs/Pasted image 20260330124126.png",
+    "NLP/OpenClaw/pngs/Pasted image 20260330123923.png",
+    "NLP/OpenClaw/openclaw_setup_and_webhook_ngrok.md",
+    "NLP/OpenClaw/CfAmongIDEs.md",
     "NLP/bilingual/pngs/Pasted image 20260504144212.png",
     "NLP/bilingual/pngs/Pasted image 20260504143904.png",
     "NLP/bilingual/pngs/Pasted image 20260504143718.png",
@@ -208,33 +226,17 @@
     "NLP/OpenClaw/pngs",
     "NLP/OpenClaw/VaultLinkings.md",
     "NLP/code_interpreter/copilot_2026.md",
-    "conflict-files-obsidian-git.md",
     "copilot/copilot-conversations/新增文章發展方向摘要@20260325_204529.md",
     "copilot/copilot-conversations/Repo新增文章發展方向@20260325_204148.md",
-    "NLP/AntiGravity/pngs/Pasted image 20260325201554.png",
-    "NLP/AntiGravity/pngs/Pasted image 20260325201515.png",
     "NLP/AntiGravity/pngs",
     "NLP/AntiGravity/1.AG_Ext.md",
     "NLP/AntiGravity/0.AntiGravity.md",
     "NLP/AntiGravity",
     "copilot/copilot-conversations/小問一下：這一篇沒有提到antigravity，你覺得跟gemini_code_assist@20260325_131401.md",
-    "NLP/code_interpreter/pngs/Pasted image 20260325131054.png",
-    "NLP/code_interpreter/pngs/Pasted image 20260325130539.png",
     "NLP/code_interpreter/pngs",
-    "NLP/slides_generate/0.SlidesGenerate.md",
-    "utilities/OpsChatUI/OpenClawVerChain.md",
-    "copilot/copilot-conversations/從資訊流的角度給這篇一個流程圖，說明vault、keycloak以及openc@20260316_130451.md",
     "copilot/copilot-conversations",
-    "copilot/copilot-custom-prompts/Clip Web Page.md",
-    "copilot/copilot-custom-prompts/Clip YouTube Transcript.md",
-    "copilot/copilot-custom-prompts/Rewrite as tweet thread.md",
-    "copilot/copilot-custom-prompts/Rewrite as tweet.md",
-    "copilot/copilot-custom-prompts/Remove URLs.md",
-    "copilot/copilot-custom-prompts/Generate glossary.md",
-    "copilot/copilot-custom-prompts/Generate table of contents.md",
     "copilot/copilot-custom-prompts",
     "copilot",
-    "NLP/OpenClaw",
-    "NLP/MeetingTranscripts"
+    "NLP/OpenClaw"
   ]
 }

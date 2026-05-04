@@ -2,4 +2,5 @@
 /.obsidian/*
 /json/*
 **.pyc
-.smt*
+.smt*.obsidian/
+.obsidian/workspace.json
