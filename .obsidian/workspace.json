@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "NLP/OpenClaw/GroupLecture.md",
+                "file": "NLP/bilingual/DEEPL.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "GroupLecture"
+              "title": "DEEPL"
             }
           }
         ]
@@ -142,13 +142,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "NLP/OpenClaw/GroupLecture.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "GroupLecture 的大綱"
+              "title": "大綱"
             }
           },
           {
@@ -176,7 +175,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 444.5
+    "width": 309.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -190,15 +189,24 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "afb905442c0e2a8b",
+  "active": "d1f8a08178b620e0",
   "lastOpenFiles": [
+    "NLP/bilingual/DEEPL.md",
+    "NLP/bilingual/pngs/Pasted image 20260504144212.png",
+    "NLP/bilingual/pngs/Pasted image 20260504143904.png",
+    "NLP/bilingual/pngs/Pasted image 20260504143718.png",
+    "NLP/bilingual/pngs",
+    "NLP/bilingual/BLEU.md",
+    "NLP/bilingual/BLEU - 複製.md",
+    "utilities/obsidianAI.md",
+    "utilities/hardware.md",
+    "NLP/OpenClaw/GroupLecture.md",
     "NLP/OpenClaw/pngs/Pasted image 20260327123606.png",
     "NLP/OpenClaw/pngs/Pasted image 20260327122920.png",
     "NLP/OpenClaw/pngs/Pasted image 20260327113603.png",
     "copilot/copilot-conversations/FOMO=fear_of_...@20260327_094201.md",
     "NLP/OpenClaw/pngs",
     "NLP/OpenClaw/VaultLinkings.md",
-    "NLP/OpenClaw/GroupLecture.md",
     "NLP/code_interpreter/copilot_2026.md",
     "conflict-files-obsidian-git.md",
     "copilot/copilot-conversations/新增文章發展方向摘要@20260325_204529.md",
@@ -224,19 +232,9 @@
     "copilot/copilot-custom-prompts/Remove URLs.md",
     "copilot/copilot-custom-prompts/Generate glossary.md",
     "copilot/copilot-custom-prompts/Generate table of contents.md",
-    "copilot/copilot-custom-prompts/Make longer.md",
-    "copilot/copilot-custom-prompts/Make shorter.md",
-    "copilot/copilot-custom-prompts/Emojify.md",
-    "copilot/copilot-custom-prompts/Explain like I am 5.md",
-    "copilot/copilot-custom-prompts/Simplify.md",
     "copilot/copilot-custom-prompts",
     "copilot",
     "NLP/OpenClaw",
-    "NLP/MeetingTranscripts",
-    "NLP/MCP/tmp.txt",
-    "NLP/LiteratureReviewers/pngs/Pasted image 20260202132026.png",
-    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251212134711.png",
-    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251212134648.png",
-    "NLP/SearchingEngine/ai_searxng/pngs/Pasted image 20251111203533.png"
+    "NLP/MeetingTranscripts"
   ]
 }
