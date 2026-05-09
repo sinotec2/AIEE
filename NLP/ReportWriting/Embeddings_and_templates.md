@@ -90,14 +90,14 @@ playground 範例
   - Translation:Translate natural language text.
   - Natural language to SQL:Convert natural language into SQL queries
 
-In/Out\ Field|一般學生|專業文書|聊天、對話|電腦專業
--|-|-|-|-
-Extract/Summarize|2nd grader/Parse unstructured/Mood to color|Keywords/Meeting/Review classifier|-|Explain code/Tweet/
-Generate|rap|Product name/Lesson plan|Marv/Interview/Socratic/Emoji/Pro and con|Spreadsheet/VR/Function/website/SQL
-Transform|Turn|Grammar/Airport/Memo|Emoji Translation|Calculate time/Python/Improve code/Translation
-code*||||Python/SQL/website/Improve/time/Explain/Function
-NatureLanguage*|Turn|||translation/SQL
-StructureData*|Parse|||Spreadsheet
+|In/Out\ Field|一般學生|專業文書|聊天、對話|電腦專業|
+|-|-|-|-|-|
+|Extract/Summarize|2nd grader/Parse unstructured/Mood to color|Keywords/Meeting/Review classifier|-|Explain code/Tweet/|
+|Generate|rap|Product name/Lesson plan|Marv/Interview/Socratic/Emoji/Pro and con|Spreadsheet/VR/Function/website/SQL|
+|Transform|Turn|Grammar/Airport/Memo|Emoji Translation|Calculate time/Python/Improve code/Translation
+|code*||||Python/SQL/website/Improve/time/Explain/Function|
+|NatureLanguage*|Turn|||translation/SQL|
+|StructureData*|Parse|||Spreadsheet|
 
 ## 文件模板
 
