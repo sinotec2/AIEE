@@ -4,8 +4,8 @@ title: consensus_GPT
 parent: Literature Reviewers
 grand_parent: 自然語言處理
 nav_order: 99
-date: 2026-02-02
-last_modified_date: 2026-02-02T11:58:34
+date: 2026-05-21
+last_modified_date: 2026-05-21T11:58:34
 tags:
 ---
 # consensus at OpenAI GPTs

@@ -4,8 +4,8 @@ title: consensus
 parent: Literature Reviewers
 grand_parent: 自然語言處理
 nav_order: 99
-date: 2026-02-02
-last_modified_date: 2026-02-02T11:58:34
+date: 2026-05-21
+last_modified_date: 2026-05-21T11:58:34
 tags:
 ---
 
@@ -22,7 +22,7 @@ tags:
 </details>
 ---
 
-![](pngs/Pasted%20image%2020260521175604.png)
+![](./pngs/Pasted%20image%2020260521175604.png)
 ## 背景
 
 Consensus AI 是一個學術研究的 AI 搜尋引擎[bentley](https://www.bentley.edu/library/in-the-know/what-is-consensus-ai)、[marshallgjones](https://marshallgjones.substack.com/p/an-ai-tool-for-reviewing-research)。它旨在加速研究過程，幫助使用者更快地找到重要的資訊([effortlessacademic](https://effortlessacademic.com/consensus-ai-review-for-literature-reviews/))。
@@ -58,23 +58,23 @@ Consensus AI 是一個學術研究的 AI 搜尋引擎[bentley](https://www.bentl
 
 ### 結果
 
-![](pngs/Pasted%20image%2020260521165824.png)
+![](./pngs/Pasted%20image%2020260521165824.png)
 
 ## 分析
-![](pngs/Pasted%20image%2020260521170312.png)
+![](./pngs/Pasted%20image%2020260521170312.png)
 
 
 ### 參考
 
-![](pngs/Pasted%20image%2020260521171655.png)
+![](./pngs/Pasted%20image%2020260521171655.png)
 
 ### 串聯**Zotero**
 
 - 檔案 → 匯入 → 檔案(...RIS...) → 開啟
 
-![](pngs/Pasted%20image%2020260521173443.png)
+![](./pngs/Pasted%20image%2020260521173443.png)
 
-![](pngs/Pasted%20image%2020260521173557.png)
+![](./pngs/Pasted%20image%2020260521173557.png)
 
 - 選取`ctrl-shift-C`
 - 貼上 `ctrl-V` 
@@ -84,11 +84,13 @@ Consensus AI 是一個學術研究的 AI 搜尋引擎[bentley](https://www.bentl
 
 - 如果有2個以上同仁愛讀書的，以團隊企業方案就會划算
 
-| ![](pngs/Pasted%20image%2020260521165249.png) |
+| ![](./pngs/Pasted%20image%2020260521165249.png) |
 | :-------------------------------------------: |
 |                     個人方案                      |
-| ![](pngs/Pasted%20image%2020260521171328.png) |
+| ![](./pngs/Pasted%20image%2020260521171328.png) |
 |                    企業共用席位                     |
+| ![](./pngs/Pasted%20image%2020260521181903.png) |
+|                     API費用                     |
 
 
 
