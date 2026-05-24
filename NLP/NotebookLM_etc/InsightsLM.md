@@ -2,7 +2,7 @@
 layout: default
 title: InsightsLM
 grand_parent: 自然語言處理
-nav_order: 1
+nav_order: 2
 date: 2026-05-24
 last_modified_date: 2026-05-24T13:11:00
 tags:
