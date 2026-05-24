@@ -124,3 +124,9 @@ Open Notebook 的核心構想與一般單一聊天軟體（如 ChatGPT 網頁版
 
 ![](pngs/Pasted%20image%2020260524173416.png)
 
+## TODO's
+
+[] devices連線，用API_KEY並不合理
+[] text to image/image to text功能尚待開發
+[] 個人desktop執行APP的編譯尚未完成(自動掃描並把 `.venv\Lib\site-packages` 中的 `*__mypyc*.pyd` 加入 `open_notebook_api.spec`，然後重新執行一次完整的 PyInstaller build)。
+[] 播客功能尚未測試成功(tts模型未勾選在API功能項目中)
