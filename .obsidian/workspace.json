@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "198d8f3acd723b58",
+        "id": "31b27615237b300e",
         "type": "tabs",
         "children": [
           {
-            "id": "afb905442c0e2a8b",
+            "id": "50cc209fefd45ebf",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "NLP/bilingual/DEEPL.md",
+                "file": "NLP/NotebookLM_etc/InsightsLM.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DEEPL"
+              "title": "InsightsLM"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "n8n",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -142,13 +142,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "NLP/bilingual/DEEPL.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "DEEPL 的大綱"
+              "title": "大綱"
             }
           },
           {
@@ -176,7 +175,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 362.5
+    "width": 617.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -193,51 +192,51 @@
   },
   "active": "d1f8a08178b620e0",
   "lastOpenFiles": [
+    "NLP/NotebookLM_etc/0.notebookLM.md",
+    "NLP/NotebookLM_etc/InsightsLM.md",
+    "NLP/MCP/excel.md",
+    "NLP/MCP/0.MCP.md",
+    "utilities/Scheduler/n8n.md",
+    "NLP/NotebookLM_etc",
+    "utilities/Scheduler/Celery.md",
+    "utilities/obsAI.md",
+    "NLP/LiteratureReviewers/sider_scholar.md",
+    "NLP/LiteratureReviewers/Scholar_GPT copy.md",
+    "NLP/LiteratureReviewers/Scholar_GPT.md",
+    "NLP/LiteratureReviewers/consensus_GPT.md",
+    "NLP/LiteratureReviewers/pngs/Pasted image 20260521182435.png",
+    "NLP/LiteratureReviewers/consensus.md",
+    "NLP/LiteratureReviewers/DeepResearches.md",
+    "NLP/LiteratureReviewers/pngs/Pasted image 20260521181903.png",
+    "NLP/LiteratureReviewers/SciSpace.md",
+    "NLP/LiteratureReviewers/pngs/Pasted image 20260521175604.png",
+    "NLP/LiteratureReviewers/pngs/Pasted image 20260521173557.png",
+    "NLP/LiteratureReviewers/pngs/Pasted image 20260521173443.png",
+    "NLP/LiteratureReviewers/pngs/Pasted image 20260521173203.png",
+    "NLP/LiteratureReviewers/pngs/Pasted image 20260521171655.png",
+    "NLP/LiteratureReviewers/pngs/Pasted image 20260521171328.png",
+    "NLP/LiteratureReviewers/pngs/Pasted image 20260521170312.png",
+    "NLP/LiteratureReviewers/pngs/Pasted image 20260521165824.png",
+    "copilot/copilot-conversations/Deep_Research_Articles@20260521_154252.md",
+    "NLP/AgenticAI/3_地端CODEX.md",
+    "NLP/AgenticAI/2_notebookLM.md",
+    "NLP/AgenticAI/pngs",
+    "NLP/AgenticAI/0.AgenticAI.md",
+    "NLP/AgenticAI/1_Gemini.md",
+    "copilot/copilot-conversations/摘要這段話：這句話中的「卷」是近年流行的職場與科技用語@20260513_094325.md",
+    "NLP/SkillsNotes/1_repo_agent_files_list.md",
+    "NLP/slides_generate/0.SlidesGenerate.md",
+    "NLP/bilingual/DEEPL.md",
+    "NLP/AgenticAI",
     "copilot/copilot-conversations/Emoji_Insertion_Rules@20260504_154530.md",
     "conflict-files-obsidian-git.md",
-    "NLP/bilingual/DEEPL.md",
-    "utilities/obsAI.md",
     "copilot/copilot-conversations/從這個repository可否找出怎麼安裝anythingLLM的方法@20260330_093205.md",
-    "copilot/copilot-conversations/canonical_=@20260421_160903.md",
-    "NLP/SkillsNotes/PR_TEMPLATE_SKILL.md",
-    "NLP/SkillsNotes/CONTRIBUTING_SKILLS.md",
-    "NLP/SkillsNotes/3_community_skill_registries_comparison.md",
-    "NLP/SkillsNotes/2_canonical_skill_schema.md",
-    "NLP/SkillsNotes/1_repo_agent_files_list.md",
-    "NLP/SkillsNotes/0.SkillNotes.md",
     "NLP/SkillsNotes",
-    "NLP/OpenClaw/pngs/Pasted image 20260330125330.png",
-    "NLP/OpenClaw/pngs/Pasted image 20260330124505.png",
-    "NLP/OpenClaw/pngs/Pasted image 20260330124126.png",
-    "NLP/OpenClaw/pngs/Pasted image 20260330123923.png",
-    "NLP/OpenClaw/openclaw_setup_and_webhook_ngrok.md",
-    "NLP/OpenClaw/CfAmongIDEs.md",
-    "NLP/bilingual/pngs/Pasted image 20260504144212.png",
-    "NLP/bilingual/pngs/Pasted image 20260504143904.png",
-    "NLP/bilingual/pngs/Pasted image 20260504143718.png",
     "NLP/bilingual/pngs",
-    "NLP/bilingual/BLEU.md",
-    "NLP/bilingual/BLEU - 複製.md",
-    "utilities/obsidianAI.md",
-    "utilities/hardware.md",
-    "NLP/OpenClaw/GroupLecture.md",
-    "NLP/OpenClaw/pngs/Pasted image 20260327123606.png",
-    "NLP/OpenClaw/pngs/Pasted image 20260327122920.png",
-    "NLP/OpenClaw/pngs/Pasted image 20260327113603.png",
-    "copilot/copilot-conversations/FOMO=fear_of_...@20260327_094201.md",
     "NLP/OpenClaw/pngs",
-    "NLP/OpenClaw/VaultLinkings.md",
-    "NLP/code_interpreter/copilot_2026.md",
-    "copilot/copilot-conversations/新增文章發展方向摘要@20260325_204529.md",
-    "copilot/copilot-conversations/Repo新增文章發展方向@20260325_204148.md",
     "NLP/AntiGravity/pngs",
-    "NLP/AntiGravity/1.AG_Ext.md",
-    "NLP/AntiGravity/0.AntiGravity.md",
     "NLP/AntiGravity",
     "NLP/code_interpreter/pngs",
-    "copilot/copilot-conversations",
-    "copilot/copilot-custom-prompts",
-    "copilot",
-    "NLP/OpenClaw"
+    "copilot/copilot-conversations"
   ]
 }
