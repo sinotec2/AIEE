@@ -3,7 +3,7 @@ layout: default
 title: notebookLM建議
 parent: AgenticAI
 grand_parent: 自然語言處理
-nav_order: 2
+nav_order: 3
 date: 2026-05-13
 last_modified_date: 2026-05-13T16:02:26
 tags:

@@ -27,7 +27,7 @@ tags:
 
 ## 小龍蝦
 
-![](pngs/Pasted%20image%2020260327113603.png)
+![](NLP/OpenClaw/pngs/Pasted%20image%2020260327113603.png)
 
 ### 簡介
 
@@ -42,7 +42,7 @@ tags:
 
 ### 安裝與設定TeleGram
 
-![](pngs/Pasted%20image%2020260327122920.png)
+![](NLP/OpenClaw/pngs/Pasted%20image%2020260327122920.png)
 
 **Telegram**（俗稱 TG 或紙飛機）==是一款主打**隱私安全**、**速度快**且**完全免費**的跨平台即時通訊軟體==。它目前在全球擁有超過 10 億活躍用戶，是除了 LINE 和 WhatsApp 之外最受歡迎的通訊工具之一。
 
@@ -53,7 +53,7 @@ tags:
 #### 開放、加入聯絡人
 
 - (否則要再一一鍵入姓名電話、邀請進入群組也較容易)
-- 點選Settings、左上角![](Pasted%20image%2020260327123606.png)符號、
+- 點選Settings、左上角![](NLP/OpenClaw/pngs/Pasted%20image%2020260327123606.png)符號、
 	- Share QR Code(讓別人加入聯絡人)
 	- Scan QR Code(加入對方成為聯絡人之一)
 	

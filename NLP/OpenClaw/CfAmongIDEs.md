@@ -40,7 +40,7 @@ tags:
 
 ## 🛰️ AntiGravity
 
-![](pngs/Pasted%20image%2020260330125330.png)
+![](NLP/OpenClaw/pngs/Pasted%20image%2020260330125330.png)
 
 在這份 Repository 中，確實有記載 AnythingLLM 的安裝方法，主要分別紀錄在 [NLP/AnythingLLM/product_yml.md]() 與 [NLP/AnythingLLM/HttpsEmbChat.md]() 這些文件中。
 
@@ -105,7 +105,7 @@ done
 
 ## 💻 VSCode
 
-![](pngs/Pasted%20image%2020260330124505.png)
+![](NLP/OpenClaw/pngs/Pasted%20image%2020260330124505.png)
 
 我會在整個專案中搜尋 `AnythingLLM` 的出現位置，然後打開有用的檔案來找安裝說明。
 已建立 3 個待辦事項
@@ -146,7 +146,7 @@ done
 
 ## 📝 Obsidian
 
-![](pngs/Pasted%20image%2020260330124126.png)
+![](NLP/OpenClaw/pngs/Pasted%20image%2020260330124126.png)
 
 我會在整個專案中搜尋 `AnythingLLM` 的出現位置，然後打開有用的檔案來找安裝說明。
 
@@ -212,7 +212,7 @@ done
 
 ## 🐾 OpenClaw
 
-![](pngs/Pasted%20image%2020260330123923.png)
+![](NLP/OpenClaw/pngs/Pasted%20image%2020260330123923.png)
 
 ```markdown
 # AnythingLLM 安裝與部署摘要（從 AIEE repo）
